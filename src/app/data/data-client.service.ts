@@ -8,7 +8,7 @@ import { ContactInfo, Sermon, Ministry, SliderItem, Blog, Pastor } from './api-d
 })
 export class DataClientService {
 
-  APIBase = 'https://us-central1-bread-f3926.cloudfunctions.net/app/api/';
+  APIBase = 'https://us-central1-chchalc.cloudfunctions.net/app/api/';
 
   environment = {
     urlContactInfo: this.APIBase + 'contactInfo',

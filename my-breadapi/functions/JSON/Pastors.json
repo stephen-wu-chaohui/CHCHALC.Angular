@@ -1,0 +1,48 @@
+[
+	{
+			"text": {
+					"english": "Pastor"
+			},
+			"deleted": false,
+			"id": "1833c261-b4bf-4973-a490-13c8a079c129",
+			"title": {
+					"english": "William Jersy"
+			},
+			"image": "pastor_2.jpg"
+	},
+	{
+			"title": {
+					"english": "Julius Smith"
+			},
+			"image": "pastor_4.jpg",
+			"text": {
+					"english": "Pastor"
+			},
+			"deleted": false,
+			"id": "75a98fd4-70e6-4832-8089-fe4d9be512b6"
+	},
+	{
+			"text": {
+					"chinese": "主任牧师",
+					"english": "Lead Pastor"
+			},
+			"deleted": false,
+			"id": "d58e9c64-6c77-490d-98c8-4a8737ff0510",
+			"title": {
+					"chinese": "黄德贤",
+					"english": "Elijah Wong"
+			},
+			"image": "pastor_1.jpg"
+	},
+	{
+			"id": "d8465c68-df29-4e90-a5c0-d84fc5ae4b07",
+			"title": {
+					"english": "Carl B. Oven"
+			},
+			"image": "pastor_3.jpg",
+			"text": {
+					"english": "Pastor"
+			},
+			"deleted": false
+	}
+]

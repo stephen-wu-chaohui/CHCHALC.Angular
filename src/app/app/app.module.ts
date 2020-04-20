@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { PagesModule } from '../pages/pages.module';
 import { ChchalcDataService } from '../data/chchalc-data.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../.././environments/environment';
 
 export function init_app(data: ChchalcDataService) {
 	return () => data.init();
@@ -19,7 +21,8 @@ export function init_app(data: ChchalcDataService) {
       BrowserModule,
       PagesModule,
 			AppLayoutModule,
-			RouterModule.forRoot([])
+			RouterModule.forRoot([]),
+			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],
 	 providers: [
     { provide: APP_INITIALIZER, useFactory: init_app, deps: [ChchalcDataService], multi: true }

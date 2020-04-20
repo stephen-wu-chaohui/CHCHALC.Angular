@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors({ origin: true }));
 
-const version = 'bread-f3926 v1.0';
+const version = 'ChchALC database API v1.0';
 
 app.get('/version', (req, res) => {
   return res.status(200).send(version);
@@ -182,12 +182,23 @@ function startSermonsEndpoints()
 }
 
 
-var serviceAccount = require("./bread-key.json");
+// var serviceAccount = require("./bread-key.json");
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://bread-f3926.firebaseio.com"
+// });
+// const db = admin.firestore();
+
+
+
+
+var serviceAccount = require("./chchalcKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://bread-f3926.firebaseio.com"
+  databaseURL: "https://chchalc.firebaseio.com"
 });
 const db = admin.firestore();
+
 
 startCRUDEndpoints('Pastors');
 startCRUDEndpoints('Posts');
@@ -201,3 +212,4 @@ startSermonsEndpoints();
 
 
 exports.app = functions.https.onRequest(app);
+

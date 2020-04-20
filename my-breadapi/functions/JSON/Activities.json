@@ -1,0 +1,98 @@
+[
+	{
+			"title": {
+					"english": "Communion"
+			},
+			"image": "services_2.png",
+			"deleted": false,
+			"id": "1b06c436-1807-4335-bb55-eb675468d09a"
+	},
+	{
+			"title": {
+					"english": "Daily Prayers"
+			},
+			"image": "services_6.png",
+			"deleted": false,
+			"id": "3257fe00-fad4-485c-aa1f-753a199a0e8a"
+	},
+	{
+			"id": "3f27c765-48df-46cc-89f4-754a4e44fc1d",
+			"title": {
+					"english": "Daily Mass"
+			},
+			"image": "services_5.png",
+			"deleted": false
+	},
+	{
+			"title": {
+					"english": "Sermons"
+			},
+			"image": "services_4.png",
+			"deleted": false,
+			"id": "49a9a0e9-33ad-4e9c-a97c-064b072ae623"
+	},
+	{
+			"deleted": false,
+			"id": "56222fe6-43a1-4975-b974-61b0ed9def1e",
+			"title": {
+					"english": "Teaching"
+			},
+			"image": "services_1.png"
+	},
+	{
+			"id": "5781fca7-26e0-49d7-946a-eb63361c6829",
+			"title": {
+					"english": "Confessions"
+			},
+			"image": "services_3.png",
+			"deleted": false
+	},
+	{
+			"deleted": false,
+			"id": "7e427e3a-801e-4128-839a-dad93c4ed40b",
+			"title": {
+					"english": "Teaching"
+			},
+			"image": "services_1.png"
+	},
+	{
+			"id": "8694f144-e277-47e4-b03e-19b14a2dc1a4",
+			"title": {
+					"english": "Daily Mass"
+			},
+			"image": "services_5.png",
+			"deleted": false
+	},
+	{
+			"deleted": false,
+			"id": "a574b931-3167-4485-b55c-1ba94ecde6f7",
+			"title": {
+					"english": "Sermons"
+			},
+			"image": "services_4.png"
+	},
+	{
+			"deleted": false,
+			"id": "a9622099-1bbe-4d57-ae38-d9cdd4b34a06",
+			"title": {
+					"english": "Communion"
+			},
+			"image": "services_2.png"
+	},
+	{
+			"deleted": false,
+			"id": "de4eb4e7-e58a-4620-af6e-f601c16b3ac0",
+			"title": {
+					"english": "Confessions"
+			},
+			"image": "services_3.png"
+	},
+	{
+			"title": {
+					"english": "Daily Prayers"
+			},
+			"image": "services_6.png",
+			"deleted": false,
+			"id": "fe3d0263-6bd3-4f21-99b7-32cb17280d61"
+	}
+]
