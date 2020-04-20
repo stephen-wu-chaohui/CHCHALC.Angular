@@ -1,0 +1,92 @@
+
+
+/*********************************
+7. Services
+*********************************/
+
+.services
+{
+	padding-top: 97px;
+	padding-bottom: 38px;
+}
+.services_background
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.services .section_title h2,
+.services .section_subtitle
+{
+	color: #FFFFFF;
+}
+.services_text
+{
+	margin-top: 76px;
+}
+.services_text p
+{
+	color: #FFFFFF;
+	font-weight: 400;
+}
+.services_row
+{
+	margin-top: 91px;
+}
+.services_item
+{
+	width: 100%;
+	margin-bottom: 60px;
+}
+.services_image
+{
+	width: 48px;
+	height: 48px;
+	margin: 0 auto;
+}
+.services_image
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+.services_title
+{
+	display: inline-block;
+	font-size: 18px;
+	color: #FFFFFF;
+	margin-top: 18px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.services_title::after
+{
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	width: 100%;
+	height: 1px;
+	background: #ffd600;
+	content: '';
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.services_item:hover .services_title
+{
+	color: #eb4141;
+}
+.services_item:hover .services_title::after
+{
+	visibility: visible;
+	opacity: 1;
+}

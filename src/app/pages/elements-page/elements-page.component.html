@@ -1,0 +1,239 @@
+
+	<!-- Home -->
+	<app-home title="Elements"></app-home>
+
+	<!-- Elements -->
+
+	<div class="elements">
+
+		<!-- Elements - Buttons -->
+		<div class="buttons">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="elements_title">Buttons</div>
+					</div>
+				</div>
+				<div class="row buttons_row">
+					<div class="col">
+						<div class="buttons_container">
+							<div class="button button_1 elements_button"><a href="#">Read More</a></div>
+							<div class="button button_2 elements_button"><a href="#">Read More</a></div>
+							<div class="button button_3 elements_button"><a href="#">Read More</a></div>
+							<div class="button button_4 elements_button"><a href="#">Read More</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Accordions & Tabs -->
+
+		<div class="accordions_tabs">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="elements_title">Accordions & Tabs</div>
+					</div>
+				</div>
+				<div class="row accordions_tabs_row">
+					<div class="col-lg-6">
+
+						<!-- Accordions -->
+						<div class="accordions">
+
+							<div class="elements_accordions">
+
+								<div class="accordion_container" *ngFor="let accord of accordions">
+									<div class="accordion d-flex flex-row align-items-center"><div>{{accord.title}}</div></div>
+									<div class="accordion_panel">
+										<p>{{accord.desc}}</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+
+						<!-- Tabs -->
+						<div class="tabs">
+
+							<div class="tabs_container">
+								<div class="tabs d-flex flex-row align-items-center justify-content-around">
+									<div class="tab" *ngFor="let t of tabs">{{t.title}}</div>
+								</div>
+								<div class="tab_panels">
+									<div class="tab_panel" *ngFor="let t of tabs">
+										<div class="tab_panel_content">
+											<div class="tab_text clearfix">
+												<img [src]="t.img" alt="">
+												<p>{{t.desc}}.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Loaders -->
+
+		<div class="loaders">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="elements_title">Loaders</div>
+					</div>
+				</div>
+				<div class="row loaders_container">
+					<div class="col-lg-3 loader_col" *ngFor="let loader of Loaders">
+						<!-- Loader -->
+						<div class="loader" data-perc="0.70"><span>{{loader.desc}}</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Milestones -->
+
+		<div class="milestones">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="elements_title">Milestones</div>
+					</div>
+				</div>
+				<div class="row milestones_container">
+
+					<!-- Milestone -->
+					<div class="col-lg-3 col-md-6 milestone_col">
+						<div class="milestone">
+							<div class="milestone_counter" data-end-value="14">0</div>
+							<div class="milestone_content">
+								<div class="milestone_title">Years</div>
+								<div class="milestone_title">of Experience</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Milestone -->
+					<div class="col-lg-3 col-md-6 milestone_col">
+						<div class="milestone">
+							<div class="milestone_counter" data-end-value="237">0</div>
+							<div class="milestone_content">
+								<div class="milestone_title">Charities</div>
+								<div class="milestone_title">Helped</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Milestone -->
+					<div class="col-lg-3 col-md-6 milestone_col">
+						<div class="milestone">
+							<div class="milestone_counter" data-end-value="11" data-sign-after="k">0</div>
+							<div class="milestone_content">
+								<div class="milestone_title">Community</div>
+								<div class="milestone_title">Members</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Milestone -->
+					<div class="col-lg-3 col-md-6 milestone_col">
+						<div class="milestone">
+							<div class="milestone_counter" data-end-value="12">0</div>
+							<div class="milestone_content">
+								<div class="milestone_title">Amazing</div>
+								<div class="milestone_title">Priests</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Icon Boxes -->
+
+		<div class="icon_boxes">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="elements_title">Icon Boxes</div>
+					</div>
+				</div>
+				<div class="row icon_boxes_row">
+
+					<!-- Icon Box -->
+					<div class="col-lg-4 ib_col">
+						<div class="icon_box">
+							<div class="ib_title_container">
+								<div class="ib_image"><img src="/assets/images/icon_box_1.png" alt=""></div>
+								<div class="ib_title">How to pray</div>
+								<div class="ib_text">
+									<p>Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.</p>
+								</div>
+								<div class="ib_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Icon Box -->
+					<div class="col-lg-4 ib_col">
+						<div class="icon_box">
+							<div class="ib_title_container">
+								<div class="ib_image"><img src="/assets/images/icon_box_2.png" alt=""></div>
+								<div class="ib_title">Bible Studies</div>
+								<div class="ib_text">
+									<p>Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.</p>
+								</div>
+								<div class="ib_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Icon Box -->
+					<div class="col-lg-4 ib_col">
+						<div class="icon_box">
+							<div class="ib_title_container">
+								<div class="ib_image"><img src="/assets/images/icon_box_3.png" alt=""></div>
+								<div class="ib_title">How to pray</div>
+								<div class="ib_text">
+									<p>Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.</p>
+								</div>
+								<div class="ib_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Newsletter -->
+
+	<div class="newsletter">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
+						<div class="newsletter_title">Subscribe to our newsletter</div>
+						<div class="newsletter_form_container ml-lg-auto">
+							<form action="#" id="newsletter_form" class="newsletter_form">
+								<input type="email" class="newsletter_input" placeholder="Your email" required="required">
+								<button id="newsletter_button" class="newsletter_button">Subscribe</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

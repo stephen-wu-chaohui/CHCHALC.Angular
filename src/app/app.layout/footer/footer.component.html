@@ -1,0 +1,77 @@
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- Footer Column -->
+				<div class="col-lg-4 footer_col">
+
+					<!-- Logo -->
+					<div class="logo_container">
+						<div class="logo">
+							<a href="#">
+								<img src="/assets/images/logo.png" alt="">
+								<span>{{data.tr(data.churchTitle)}}</span>
+							</a>
+						</div>
+					</div>
+					<div class="footer_social">
+						<ul>
+							<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-4 footer_col">
+					<div class="footer_links">
+						<div class="footer_title">{{data.tr(UsefulLinks)}}</div>
+						<ul>
+							<li><a [routerLink]="['/home']">Home</a></li>
+							<li><a routeLink="#">Donations</a></li>
+							<li><a [routerLink]="['/sermons']">Sermons</a></li>
+							<li><a routeLink="#">Causes</a></li>
+							<li><a routeLink="#">Quotes</a></li>
+
+							<li><a [routerLink]="['/blog']">Blog</a></li>
+							<li><a routeLink="#">Event List</a></li>
+							<li><a [routerLink]="['/ministries']">Ministries</a></li>
+							<li><a routeLink="#">Posters</a></li>
+							<li><a [routerLink]="['/contact']">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_col">
+					<div class="footer_contact" *ngIf="data.contactInfo.mainSite; let item">
+						<div class="footer_title">{{data.tr(ContactUs)}}</div>
+						<ul>
+							<li><span>{{data.tr(Address)}}</span>{{data.tr(item.address)}}</li>
+							<li class="footer_contact_phone">
+								<span>{{data.tr(Phone)}}</span>
+								<div>
+									<div *ngFor="let contactor of item.contactors">
+										{{contactor.phoneNumbers.join(', ')}}
+									</div>
+								</div>
+							</li>
+							<li *ngIf="item.email"><span>{{data.tr(Email)}}</span>{{item.email}}</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div class="copyright text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</div>
+
+	</footer>

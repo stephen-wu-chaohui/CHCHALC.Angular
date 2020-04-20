@@ -1,0 +1,81 @@
+<div class="blog_sidebar" *ngIf="data.Latest">
+
+	<!-- Sidebar - Search -->
+	<div class="sidebar_section">
+		<div class="sidebar_search">
+			<form action="#">
+				<input class="sidebar_search_input" type="search" placeholder="Search" required="required">
+				<button type="submit" class="sidebar_search_button d-flex flex-column align-items-center justify-content-center">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_10" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="13px" height="14px">
+						<path class="search_path" d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" fill="#353535"/>
+					</svg>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Sidebar - Latest News -->
+	<div class="sidebar_section">
+		<div class="sidebar_title">Latest News</div>
+		<div class="latest_news_container">
+
+			<!-- Latest News -->
+			<div class="latest_news d-flex flex-row align-items-start justify-content-start" *ngFor="let item of data.Latest">
+				<div class="latest_news_image_container">
+					<div class="latest_news_image">
+						<img [src]="'/assets/images/' + item.image" alt="">
+					</div>
+				</div>
+				<div class="latest_news_content">
+					<div class="news_month"></div>
+					<div class="latest_news_date">{{item.date | date:'dd MMM, yyyy'}}</div>
+					<div class="latest_news_title"><a routeLink="#">{{data.tr(item.title)}}</a></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Sidebar - Categories -->
+
+	<div class="sidebar_section">
+		<div class="sidebar_title">Categories</div>
+		<div class="sidebar_list">
+			<ul>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Bible Stories<span class="ml-auto">4</span></a></li>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Hope & Faithful<span class="ml-auto">5</span></a></li>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Play & Church<span class="ml-auto">4</span></a></li>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Community<span class="ml-auto">4</span></a></li>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Sermon & Pray<span class="ml-auto">6</span></a></li>
+				<li><a class="d-flex flex-row align-items-start justify-content-start" routeLink="#">Uncategorized<span class="ml-auto">3</span></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Sidebar - Archives -->
+
+	<div class="sidebar_section">
+		<div class="sidebar_title">Archives</div>
+		<div class="sidebar_list">
+			<ul>
+				<li><a routeLink="#">November 2017</a></li>
+				<li><a routeLink="#">December 2017</a></li>
+				<li><a routeLink="#">January 2018</a></li>
+				<li><a routeLink="#">February 2018</a></li>
+				<li><a routeLink="#">March 2018</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Sidebar Quote -->
+
+	<div class="sidebar_section">
+		<div class="sidebar_quote" *ngIf="data.contactInfo && data.contactInfo.quote">
+			<div class="sidebar_quote_background" [style.background]="'url(/assets/images/sidebar_quote.jpg)'"></div>
+			<div class="sidebar_quote_char"><img src="/assets/images/quote_char.png" alt=""></div>
+			<div class="sidebar_quote_text">{{data.tr(data.contactInfo.quote.description)}}</div>
+			<div class="sidebar_quote_source">{{data.tr(data.contactInfo.quote.source)}}</div>
+		</div>
+	</div>
+
+</div>

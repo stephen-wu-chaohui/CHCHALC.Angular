@@ -1,0 +1,169 @@
+
+/*********************************
+13. Footer
+*********************************/
+
+.footer
+{
+	width: 100%;
+	background: #161619;
+	padding-top: 88px;
+}
+.footer .logo a span
+{
+	font-family: 'Ma Shan Zheng', sans-serif;
+	font-size: 48px;
+	color: #FFFFFF;
+}
+.footer .logo a img
+{
+	display: inline-block;
+	-webkit-transform: translateY(5px);
+	-moz-transform: translateY(5px);
+	-ms-transform: translateY(5px);
+	-o-transform: translateY(5px);
+	transform: translateY(5px);
+}
+.logo_subtitle
+{
+	font-size: 14px;
+	font-weight: 500;
+	color: #797979;
+	margin-top: -11px;
+	padding-left: 4px;
+}
+.footer_social
+{
+	margin-top: 45px;
+	padding-left: 4px;
+}
+.footer_social ul li
+{
+	display: inline-block;
+	margin-right: 24px;
+}
+.footer_social ul li:last-child
+{
+	margin-right: 0;
+}
+.footer_social ul li a i
+{
+	font-size: 17px;
+	color: #eb4141;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.footer_social ul li:hover a i
+{
+	color: #FFFFFF;
+}
+.footer_links
+{
+	width: 100%;
+	padding-top: 35px;
+}
+.footer_title
+{
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 500;
+	color: #FFFFFF;
+}
+.footer_title::after
+{
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: #eb4141;
+	content: '';
+}
+.footer_links ul
+{
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	columns: 2;
+	margin-top: 42px;
+}
+.footer_links ul li
+{
+	margin-bottom: 15px;
+}
+.footer_links ul li a
+{
+	font-size: 14px;
+	color: #6b6b6b;
+	font-weight: 600;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.footer_links ul li a:hover
+{
+	color: #eb4141;
+}
+.footer_contact
+{
+	width: 100%;
+	padding-top: 35px;
+}
+.footer_contact ul
+{
+	margin-top: 42px;
+}
+.footer_contact ul li
+{
+	font-size: 14px;
+	font-weight: 600;
+	color: #6b6b6b;
+	line-height: 1.71;
+	margin-bottom: 17px;
+}
+.footer_contact ul li:last-child
+{
+	margin-bottom: 0;
+}
+.footer_contact ul li span
+{
+	font-weight: 500;
+	color: #eb4141;
+}
+.footer_contact_phone span
+{
+	float: left;
+}
+.footer_contact_phone div
+{
+	padding-left: 28px;
+}
+.copyright
+{
+	width: 100%;
+	height: 84px;
+	background: #0d0d0f;
+	color: #343439;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 84px;
+	margin-top: 75px;
+}
+
+@media only screen and (max-width: 991px)
+{
+	.footer .logo a span
+	{
+		font-size: 36px;
+		color: #FFFFFF;
+	}
+	.footer_col:not(:last-child)
+	{
+		margin-bottom: 30px;
+	}
+}

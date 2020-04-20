@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { AppLayoutModule } from 'src/app/app.layout/app.layout.module';
+import { SermonsPageComponent } from './sermons-page.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SermonsPageComponent
+  }
+];
+
+@NgModule({
+  imports: [
+		CommonModule,
+		AppLayoutModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [
+		SermonsPageComponent,
+	]
+})
+export class SermonsPageModule { }

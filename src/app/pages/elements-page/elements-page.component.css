@@ -1,0 +1,403 @@
+
+/*********************************
+6.1 Elements - Buttons
+*********************************/
+
+.buttons_row
+{
+	margin-top: 97px;
+}
+.elements_button
+{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.elements_button:not(:last-child)
+{
+	margin-right: 10px;
+}
+.button_1
+{
+	background: rgba(235,65,65,1);
+}
+.button_2
+{
+	background: rgba(0,0,0,1);
+}
+.button_2 a
+{
+	color: #FFFFFF;
+}
+.button_2:hover
+{
+	background: rgba(0,0,0,0.75);
+}
+.button_3
+{
+	background: #FFFFFF;
+	border: solid 2px #eb4141;
+}
+.button_3::after
+{
+	display: none;
+}
+.button_3 a
+{
+	color: #000000;
+	line-height: 50px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.button_3:hover
+{
+	background: #eb4141;
+}
+.button_3:hover a
+{
+	color: #FFFFFF;
+}
+.button_4
+{
+	background: rgba(0,0,0,1);
+}
+.button_4::after
+{
+	background: #eb4141;
+}
+.button_4 a
+{
+	color: #FFFFFF;
+}
+.button_4:hover
+{
+	background: rgba(0,0,0,0.75);
+}
+
+/*********************************
+6.2 Elements - Accordions & Tabs
+*********************************/
+
+.accordions_tabs
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 97px;
+}
+
+/*********************************
+6.2.1 Elements - Accordions
+*********************************/
+
+.elements_accordions
+{
+	margin-top: 97px;
+}
+.accordion_container
+{
+	margin-bottom: 20px;
+}
+.accordion
+{
+	height: 46px;
+	width: 100%;
+	background: #ebebeb;
+	padding-left: 16px;
+	cursor: pointer;
+	color: #000000;
+	font-size: 14px;
+	font-weight: 500;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.accordion div
+{
+	max-width: 90%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.accordion.active
+{
+	background: #eb4141;
+	color: #FFFFFF;
+}
+.accordion:active
+{
+	background: #fffbfa !important;
+}
+.accordion::after
+{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 13px;
+	height: 100%;
+	content: '+';
+	font-size: 16px;
+	color: #000000;
+	font-weight: 400;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.accordion.active::after
+{
+	color: #FFFFFF;
+	content: '-';
+}
+.accordion:hover
+{
+	background: #eb4141;
+	color: #FFFFFF;
+}
+.accordion_panel
+{
+	padding-right: 8px;
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+.accordion_panel p
+{
+	padding-top: 28px;
+}
+
+/*********************************
+6.2.2 Elements - Tabs
+*********************************/
+
+.tabs
+{
+	margin-top: 97px;
+}
+.tabs_container
+{
+	width: 100%;
+}
+.tab
+{
+	height: 46px;
+	background: #ebebeb;
+	font-size: 14px;
+	color: #000000;
+	font-weight: 500;
+	line-height: 46px;
+	flex-grow: 1;
+	text-align: center;
+	cursor: pointer;
+	margin-left: 2px;
+	margin-right: 7px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.tab.active,
+.tab:hover
+{
+	background: #eb4141;
+	color: #FFFFFF;
+}
+.tab_panels
+{
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 47px;
+	padding-bottom: 32px;
+}
+.tab_panel
+{
+	display: none !important;
+	width: 100%;
+	height: 100%;
+	-webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.tab_panel.active
+{
+	display: block !important;
+}
+.tab_panel_content p:last-of-type
+{
+	margin-bottom: 0;
+}
+.tab_text p
+{
+	-webkit-transform: translateY(-6px);
+	-moz-transform: translateY(-6px);
+	-ms-transform: translateY(-6px);
+	-o-transform: translateY(-6px);
+	transform: translateY(-6px);
+}
+.tab_text img
+{
+	width: 190px;
+	height: 177px;
+	float: right;
+	margin-left: 15px;
+}
+
+/*********************************
+6.3 Elements - Loaders
+*********************************/
+
+.loaders
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 97px;
+}
+.loaders_container
+{
+	margin-top: 97px;
+}
+.loader
+{
+	width: 157px;
+	height: 157px;
+	margin: 0 auto;
+}
+.loader span
+{
+	position: absolute;
+	left: 50%;
+	bottom: -39px;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	font-size: 16px;
+	font-weight: 500;
+	color: #7c7c7c;
+	white-space: nowrap;
+}
+
+/*********************************
+6.4 Elements - Milestones
+*********************************/
+
+.milestones
+{
+	margin-top: 125px;
+}
+.milestones_container
+{
+	margin-top: 98px;
+}
+.milestone
+{
+	margin-bottom: 60px;
+}
+.milestone_counter
+{
+	display: inline-block;
+	font-size: 48px;
+	color: #eb4141;
+	font-weight: 500;
+	line-height: 0.75;
+}
+.milestone_content
+{
+	display: inline-block;
+	text-align: left;
+	padding-left: 6px;
+}
+.milestone_title
+{
+	font-size: 16px;
+	font-weight: 500;
+	color: #7c7c7c;
+	white-space: pre-wrap;
+}
+.milestone_title:first-child
+{
+	margin-bottom: 0px;
+}
+.milestone_content
+{
+	-webkit-transform: translateY(2px);
+	-moz-transform: translateY(2px);
+	-ms-transform: translateY(2px);
+	-o-transform: translateY(2px);
+	transform: translateY(2px);
+}
+
+/*********************************
+6.5 Elements - Icon Boxes
+*********************************/
+
+.icon_boxes
+{
+	margin-top: 37px;
+}
+.icon_boxes_row
+{
+	margin-top: 97px;
+}
+.icon_box
+{
+	width: 100%;
+}
+.ib_image
+{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+}
+.ib_image img
+{
+	max-height: 100%;
+}
+.ib_title
+{
+	display: inline-block;
+	font-size: 18px;
+	color: #000000;
+	font-weight: 500;
+	padding-left: 17px;
+}
+.ib_text
+{
+	margin-top: 7px;
+}
+.ib_link
+{
+	margin-top: 17px;
+}
+.ib_link a
+{
+	font-size: 14px;
+	font-weight: 500;
+	font-style: italic;
+	color: #eb4141;
+}

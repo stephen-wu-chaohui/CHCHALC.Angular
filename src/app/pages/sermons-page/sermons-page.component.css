@@ -1,0 +1,271 @@
+
+/*********************************
+6. Sermon
+*********************************/
+
+.sermon
+{
+	padding-top: 97px;
+	padding-bottom: 98px;
+	background: #f0f4f8;
+	border-bottom: solid 3px #eb4141;
+}
+.sermon_background
+{
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.sermon_row
+{
+	margin-top: 84px;
+}
+.sermon_image
+{
+	width: 100%;
+}
+.sermon_image img
+{
+	width: 100%;
+}
+.sermon_content
+{
+	width: 100%;
+	margin-top: -8px;
+}
+.sermon_title a
+{
+	font-size: 24px;
+	font-weight: 500;
+	color: #000000;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.sermon_title a:hover
+{
+	color: #eb4141;
+}
+.sermon_list
+{
+	margin-top: 14px;
+}
+.sermon_list li
+{
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000;
+	margin-bottom: 14px;
+}
+.sermon_list li:last-child
+{
+	margin-bottom: 0;
+}
+.sermon_list li a
+{
+	color: #eb4141;
+}
+.sermon_text
+{
+	margin-top: 33px;
+}
+.sermon_buttons
+{
+	margin-top: 64px;
+}
+.sermon_buttons ul li
+{
+	display: inline-block;
+	margin-right: 18px;
+	cursor: pointer;
+}
+.sermon_buttons ul li img,
+.sermon_buttons ul li svg
+{
+	width: 27px;
+	height: 27px;
+}
+.sermon_buttons ul li img svg
+{
+	max-width: 100%;
+}
+.svg path,
+.svg rect,
+.svg polygon
+{
+	fill: #c4c4c5;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.sermon_item:hover .svg path,
+.sermon_item:hover .svg rect,
+.sermon_item:hover .svg polygon
+{
+	fill: #eb4141;
+}
+
+/*********************************
+7. Popular Sermons
+*********************************/
+
+.popular
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 97px;
+}
+.popular_row
+{
+	margin-top: 85px;
+}
+.popular_item
+{
+	width: 100%;
+	margin-bottom: 98px;
+}
+.popular_image
+{
+	width: 100%;
+}
+.popular_image img
+{
+	width: 100%;
+}
+.popular .sermon_content
+{
+	margin-top: 42px;
+}
+.popular .sermon_buttons
+{
+	margin-top: 30px;
+}
+
+
+
+/*********************************
+8. Featured
+*********************************/
+
+.featured
+{
+
+}
+.featured_col
+{
+	padding-left: 44px;
+	padding-right: 44px;
+	padding-top: 43px;
+	padding-bottom: 45px;
+}
+.featured_background
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.featured_1
+{
+	width: 100%;
+	border: solid 2px #eb4141;
+	padding-left: 158px;
+	padding-top: 67px;
+	padding-bottom: 66px;
+	padding-right: 140px;
+}
+.featured_col_2
+{
+	padding-left: 219px;
+	padding-top: 111px;
+	padding-bottom: 113px;
+	padding-right: 160px;
+}
+.featured_2
+{
+
+}
+.featured .sermon_title,
+.featured .sermon_list li,
+.featured .sermon_text p
+{
+	color: #FFFFFF;
+}
+.featured .sermon_buttons
+{
+	margin-top: 30px;
+}
+
+
+
+
+@media only screen and (max-width: 1440px)
+{
+	.featured_1
+	{
+		padding-left: 98px;
+		padding-right: 80px;
+	}
+	.featured_col_2
+	{
+		padding-left: 142px;
+		padding-right: 122px;
+	}
+}
+
+@media only screen and (max-width: 1199px)
+{
+	.featured_1
+	{
+		padding-left: 68px;
+		padding-right: 50px;
+	}
+	.featured_col_2
+	{
+		padding-left: 112px;
+		padding-right: 92px;
+	}
+}
+
+@media only screen and (max-width: 991px)
+{
+	.sermon_content
+	{
+		margin-top: 42px;
+	}
+	.featured .sermon_content
+	{
+		margin-top: 0;
+	}
+	.footer_col:not(:last-child)
+	{
+		margin-bottom: 30px;
+	}
+}
+
+
+@media only screen and (max-width: 575px)
+{
+	.featured_col
+	{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.featured_col_2
+	{
+		padding-left: 52px;
+		padding-right: 52px;
+	}
+	.featured_1
+	{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
