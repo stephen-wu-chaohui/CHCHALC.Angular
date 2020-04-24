@@ -1,0 +1,33 @@
+	<!-- Pastors -->
+	<div class="pastors" *ngIf="data.People">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<app-section [section]="data.Sections.pastors"></app-section>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="pastors_slider_container">
+
+						<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.People" class="pastors_slider">
+							<ngu-tile *nguCarouselDef="let item">
+								<div class="owl-item text-center pastors_item">
+									<div class="pastors_item_image"><img [src]="data.path(item.portrait)" alt=""></div>
+									<div class="pastors_item_title">{{data.tr(item.name)}}</div>
+									<div class="pastors_item_text">
+										<p>{{data.tr(item.title)}}</p>
+									</div>
+								</div>
+							</ngu-tile>
+						</ngu-carousel>
+
+						<div class="pastors_slider_nav pastors_slider_prev trans_200 d-flex flex-column align-items-center justify-content-center"><img src="/assets/images/arrow_l.png" alt=""></div>
+						<div class="pastors_slider_nav pastors_slider_next trans_200 d-flex flex-column align-items-center justify-content-center"><img src="/assets/images/arrow_r.png" alt=""></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+

@@ -1,0 +1,72 @@
+
+/*********************************
+11. News
+*********************************/
+
+.news
+{
+	width: 100%;
+	padding-top: 98px;
+	padding-bottom: 98px;
+	background: #FFFFFF;
+}
+.news_row
+{
+	margin-top: 95px;
+}
+.news_item
+{
+	width: 100%;
+}
+.news_image
+{
+	width: 100%;
+}
+.news_image img
+{
+	max-width: 100%;
+}
+.news_date
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 94px;
+	height: 94px;
+	background: #eb4141;
+}
+.news_day
+{
+	font-size: 30px;
+	color: #FFFFFF;
+	line-height: 0.75;
+}
+.news_month
+{
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 0.75;
+	margin-top: 10px;
+}
+.news_title
+{
+	font-size: 18px;
+	color: #000000;
+	font-weight: 500;
+	margin-top: 38px;
+}
+.news_text
+{
+	margin-top: 18px;
+}
+.news_link
+{
+	margin-top: 18px;
+}
+.news_link a
+{
+	font-size: 14px;
+	color: #eb4141;
+	font-style: italic;
+	font-weight: 500;
+}

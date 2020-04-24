@@ -15,12 +15,13 @@ export function init_app(data: ChchalcDataService) {
 
 @NgModule({
    declarations: [
-			AppComponent,
-		],
+      AppComponent
+
+   ],
    imports: [
       BrowserModule,
       PagesModule,
-			AppLayoutModule,
+      AppLayoutModule,
 			RouterModule.forRoot([]),
 			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],

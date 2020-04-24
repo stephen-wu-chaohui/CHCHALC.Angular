@@ -1,0 +1,20 @@
+				<!-- News Item -->
+				<div class="news_col">
+					<div class="news_item">
+						<div class="news_image">
+							<img [src]="data.path(item.image)" alt="">
+							<div class="news_date d-flex flex-column align-items-center justify-content-center">
+								<div class="news_day">{{item.start | date:'d'}}</div>
+								<div class="news_month">{{item.start | date:'MMM y'}}</div>
+							</div>
+						</div>
+						<div class="news_content">
+							<div class="news_title">{{data.tr(item.title)}}</div>
+							<div class="news_text">
+								<p>{{data.tr(item.description)}}</p>
+							</div>
+							<div class="news_link"><a href="/blog">Read More</a></div>
+						</div>
+					</div>
+				</div>
+

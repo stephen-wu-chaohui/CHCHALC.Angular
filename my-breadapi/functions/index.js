@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
+const moment = require('moment');
 const app = express();
 app.use(cors({ origin: true }));
 
@@ -59,6 +60,7 @@ function startCRUDEndpoints(controllerName)
 				}
 				})();
 		});
+
 
 	// update
 	app.put(`/api/${controllerName}/:item_id`, (req, res) => {
@@ -128,9 +130,8 @@ function startGetPutEndpoints(controllerName)
 
 async function readSermonList ()
 {
-	const youtube = 'https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLlZwsUoL6TOaEwk2wkvVrrZnsSiCl7VKb&part=snippet&key=AIzaSyDqyxV-9TUWmyVP27xwIuhV2lKLh8-gpas&maxResults=10';
+	const youtube = 'https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLlZwsUoL6TOaEwk2wkvVrrZnsSiCl7VKb&part=snippet&key=AIzaSyDqyxV-9TUWmyVP27xwIuhV2lKLh8-gpas&maxResults=50';
 	const request = require('request');
-	const moment = require('moment');
 
 	try {
 		request(youtube, { json: true }, async (err, res, body) => {
@@ -138,18 +139,27 @@ async function readSermonList ()
 				console.log(err);
 				return;
 			}
-			let result = body.items
-				.map(item => ({
-						image: (item.snippet.thumbnails.standard || item.snippet.thumbnails.default).url,
-						timestamp: moment().unix(),
+			body.items.forEach(
+				item => {
+					let start = moment(item.snippet.publishedAt, moment.defaultFormat).startOf('day').add(10, 'hours').format();
+					console.log(start);
+					const document = db.collection('sermons').doc(start);
+					document.set({
+						id: start,
+						image: {
+							baseURL: '',
+							filename: (item.snippet.thumbnails.standard || item.snippet.thumbnails.default).url
+						},
 						title: {english: item.snippet.title, chinese: item.snippet.title},
-						preacher: {english: 'Elijah Wong', chinese: '黃德賢'},
-						categories: ['Jesus'],
-						text: {english: item.snippet.description },
-						link: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
-				}));
-			const document = db.collection('sermons').doc('singleton');
-			await document.set({ lastUpdated: new Date(), result});
+						description: { english: item.snippet.description, chinese: item.snippet.description },
+						host: {
+							name: {english: 'Elijah Wong', chinese: '黃德賢'},
+							title: {english: 'Major Pastor', chinese: '主任牧师'}
+						},
+						start,
+						videoId: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
+				});
+			});
 		});
 	} catch (err) {
 			console.log(err);
@@ -163,32 +173,25 @@ function startSermonsEndpoints()
 	app.get('/api/sermons', (req, res) => {
 		(async () => {
 				try {
-					const document = db.collection('sermons').doc('singleton');
-					let item = await document.get();
-					let response = item.data().result;
-					return res.status(200).send(response);
+					const query = db.collection('sermons').orderBy('id', 'desc');
+					await query.get().then(querySnapshot => {
+						let items = querySnapshot.docs.map(doc => doc.data());
+						return res.status(200).send(items);
+					});
 				} catch (error) {
 					console.log(error);
 					return res.status(500).send(error);
 				}
-				})();
-		});
+		})();
+	});
 
 	// refresh item
 	app.get('/api/sermons/refresh', (req, res) => {
 		readSermonList();
 		return res.status(200).send('OK');
 	});
+
 }
-
-
-// var serviceAccount = require("./bread-key.json");
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://bread-f3926.firebaseio.com"
-// });
-// const db = admin.firestore();
-
 
 
 
@@ -200,15 +203,115 @@ admin.initializeApp({
 const db = admin.firestore();
 
 
-startCRUDEndpoints('Pastors');
-startCRUDEndpoints('Posts');
 startCRUDEndpoints('News');
 startCRUDEndpoints('Ministries');
 startCRUDEndpoints('Testimonies');
 startCRUDEndpoints('Activities');
 startCRUDEndpoints('Hightlights');
 startGetPutEndpoints('contactInfo');
+
 startSermonsEndpoints();
+
+/////////////////////////////////////////////////////////////////
+// PastorToPerson
+
+function startPastorToPerson() {
+	// refresh item
+	app.get('/api/person/refresh', async (req, res) => {
+		await refreshPersonTable();
+		return res.status(200).send('OK');
+	});
+}
+
+
+async function refreshPersonTable() {
+	let pasters = db.collection('Pastors');
+	await pasters.get().then(querySnapshot => {
+		let items = querySnapshot.docs.map(doc => doc.data());
+		let changed = items.map(item => ({
+			portrait: {
+				baseURL: '/assets/images/',
+				filename: item.image
+			},
+			title: item.text,
+			name: item.title,
+			id: item.id
+		}));
+
+		var collec = db.collection('Persons');
+		changed.forEach(v => collec.doc(v.id).set(v));
+		return true;
+	});
+}
+
+// startCRUDEndpoints('Pastors');
+// startPastorToPerson();
+startCRUDEndpoints('Persons');
+
+/////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////
+// Posts to Stories
+
+function startPost2Story() {
+	// refresh item
+	app.get('/api/Post2Story', async (req, res) => {
+		await doPost2Story();
+		return res.status(200).send('OK');
+	});
+}
+
+
+async function doPost2Story() {
+	let origin = db.collection('Posts');
+	await origin.get().then(querySnapshot => {
+		let items = querySnapshot.docs.map(doc => doc.data());
+		let changed = items.map(item => ({
+			image: {
+				baseURL: '/assets/images/',
+				filename: item.image
+			},
+			start: item.date,
+			comments: item.comments,
+			description: item.text,
+			title: item.text,
+
+			id: item.id,
+			lastUpdated: item.lastUpdated || 1587460963,
+			deleted: item.deleted || false,
+
+			belongs: [{ label: 'story'}],
+			host: {
+        title: {
+					english: "Lead Pastor",
+					chinese: "主任牧师"
+        },
+        name: {
+					english: "Elijah Wong",
+          chinese: "黄德贤"
+        },
+        id: "d58e9c64-6c77-490d-98c8-4a8737ff0510",
+        portrait: {
+					filename: "pastor_1.jpg",
+          baseURL: "/assets/images/"
+        }
+    	},
+			address: { chinese: '和平教室', english: 'Peace Classroom'},
+			minutes: 120
+		}));
+
+		var collec = db.collection('Stories');
+		changed.forEach(v => collec.doc(v.id).set(v));
+		return true;
+	});
+}
+
+
+// startCRUDEndpoints('Posts');
+// startPost2Story();
+startCRUDEndpoints('Stories');
+
 
 
 exports.app = functions.https.onRequest(app);

@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
   ContactInfo,
-  Blog,
-  Cause,
   Ministry,
-  Pastor,
-  Sermon,
   SliderItem,
   MultiText,
   MenuItem,
-  Resource
+  Resource,
+  Person,
+  Story
 } from './api-data';
 import { SettingsService } from './settings.service';
 import { DataClientService } from './data-client.service';
@@ -19,15 +17,6 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class ChchalcDataService {
-
-  loaded = false;
-
-  contactInfo = new ContactInfo();
-
-  Posts: Blog[];
-  News: Blog[];
-  Ministries: Blog[];
-
   Menu: MenuItem[] = [{
       title: { english: 'Home', chinese: '首页'},
       route: '/home'
@@ -45,12 +34,15 @@ export class ChchalcDataService {
       route: '/contact'
     }];
 
-	churchTitle = {
-		english: 'Abundant Life', chinese: '丰盛生命教会'
-	};
+  Sliders: SliderItem[];
+  contactInfo = new ContactInfo();
 
-	switchLanguage = {
-	  english: '切换到中文', chinese: 'Switch to English'
+  churchTitle = {
+    english: 'Abundant Life', chinese: '丰盛生命教会'
+  };
+
+  switchLanguage = {
+    english: '切换到中文', chinese: 'Switch to English'
   };
 
   Activities = [{
@@ -97,33 +89,180 @@ export class ChchalcDataService {
       text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
     }];
 
-  Latest = [{
-      image: 'latest_1.jpg',
-      date: new Date('2020-12-17T03:24:00'),
-      title: { english: 'How to pray the right way'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.'}
-    }, {
-      image: 'latest_2.jpg',
-      date: new Date('2020-01-07T03:24:00'),
-      title: { english: 'Latest news in the 18 community'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.'}
-    }, {
-      image: 'latest_3.jpg',
-      date: new Date('2020-02-05T03:24:00'),
-      title: { english: 'Church charities for 2018'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.'}
-    }, {
-      image: 'latest_4.jpg',
-      date: new Date('2020-02-05T03:24:00'),
-      title: { english: 'News in the youth community'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dic tumst malesuada congue magna at finibus. In hac habitasse platea.'}
-    }];
+    Sections = {
+      name: {
+          chinese: '丰盛生命教会',
+          english: 'Aboundant Life'
+      },
+      popularSermons: {
+          icon: {
+              baseURL: '/assets/images/',
+              filename: 'church_4.png'
+          },
+          title: {
+              english: 'Popular Sermons',
+              chinese: '热点讲道'
+          },
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          }
+      },
+      ministries: {
+          subtitle: {
+              english: 'God loves us all',
+              chinese: '神与我们同在'
+          },
+          icon: {
+              filename: 'church_1.png',
+              baseURL: '/assets/images/'
+          },
+          title: {
+              chinese: '我们的事工',
+              english: 'Our Ministries'
+          }
+      },
+      quote: {
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          },
+          description: {
+              english: 'One thing I ask from the LORD, this only do I seek: that I may dwell in the house of the LORD all the days of my life, to gaze on the beauty of the LORD and to seek him in his temple.',
+              chinese: '有一件事，我曾求耶和华，我仍要寻求：就是一生一世住在耶和华的殿中，瞻仰他的荣美，在他的殿里求问。'
+          },
+          source: {
+              chinese: '诗篇27章4节',
+              english: 'Psalm 27:4'
+          },
+          label: 'quote',
+          icon: {
+              baseURL: '/assets/images/',
+              filename: 'church_5.png'
+          },
+          title: {
+              chinese: '今日金句',
+              english: 'Quote of the day'
+          }
+      },
+      causes: {
+          icon: {
+              filename: 'church_4.png',
+              baseURL: '/assets/images/'
+          },
+          title: {
+              english: 'Our Church\'s Causes',
+              chinese: '教会课程'
+          },
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          }
+      },
+      contactImage: {
+          baseURL: '/assets/images/',
+          filename: 'contact_image.jpg'
+      },
+      greeting: {
+          icon: {
+              filename: 'church_1.png',
+              baseURL: '/assets/images/'
+          },
+          title: {
+              english: 'Welcome to Our Church',
+              chinese: '欢迎来到丰盛生命教会'
+          },
+          image: {
+              filename: 'intro.jpg',
+              baseURL: '/assets/images/'
+          },
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          },
+          description: {
+              chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
+              english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
+          }
+      },
+      pastors: {
+          icon: {
+              filename: 'church_2.png',
+              baseURL: '/assets/images/'
+          },
+          title: {
+              chinese: '我们的牧师',
+              english: 'Our Pastors'
+          },
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          }
+      },
+      todaySermon: {
+          icon: {
+              baseURL: '/assets/images/',
+              filename: 'church_3.png'
+          },
+          title: {
+              english: 'Today\'s Sermon',
+              chinese: '今日讲道'
+          },
+          subtitle: {
+              english: 'God loves us all',
+              chinese: '神与我们同在'
+          }
+      },
+      activities: {
+          icon: {
+              filename: 'church_2.png',
+              baseURL: '/assets/images/'
+          },
+          title: {
+              english: 'Our Church main activities',
+              chinese: '教会主要活动'
+          },
+          image: {
+              baseURL: '/assets/images/',
+              filename: 'intro.jpg'
+          },
+          subtitle: {
+              english: 'God loves us all',
+              chinese: '神与我们同在'
+          },
+          description: {
+              english: 'to bring people to Jesus and membership in his family',
+              chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+          }
+      },
+      latest: {
+          icon: {
+              baseURL: '/assets/images/',
+              filename: 'church_6.png'
+          },
+          title: {
+              chinese: '最新消息',
+              english: 'Latest News'
+          },
+          subtitle: {
+              chinese: '神与我们同在',
+              english: 'God loves us all'
+          }
+      },
+    };
 
-  Pastors: Pastor[];
-  today: Sermon;
-  Featured: Sermon[];
-  PopularSermons: Sermon[];
-  Sliders: SliderItem[];
+
+
+  Stories: Story[];
+  latestStories: Story[];
+
+  Ministries: Ministry[];
+
+  People: Person[];
+
+  today: Story;
+  Featured: Story[];
+  PopularSermons: Story[];
 
 
   constructor(private settings: SettingsService, private dataClient: DataClientService) {
@@ -148,17 +287,21 @@ export class ChchalcDataService {
     this.dataClient.getContactInfo().subscribe(next =>
       this.contactInfo = next
     );
-    this.dataClient.getPastors().subscribe(next =>
-      this.Pastors = next
+    this.dataClient.getPeople().subscribe(next =>
+      this.People = next
     );
-    this.dataClient.getPosts().subscribe(posts => {
-      this.Posts = posts;
-      this.Ministries = this.Posts;
+    this.dataClient.getStories().subscribe(items => {
+      this.Stories = items;
+      this.latestStories = items.slice(0, 3);
+    });
+    this.dataClient.getMinistries().subscribe(ministries => {
+      this.Ministries = ministries;
     });
     this.dataClient.getSermons().subscribe(sermons => {
       this.today = sermons[0];
       this.PopularSermons = sermons.slice(1);
-      this.Featured = sermons.filter(s => s.categories.find(v => v === 'featured'));
+      const lastIndex = this.PopularSermons.length - 1;
+      this.Featured = this.PopularSermons.slice(lastIndex - 1, lastIndex);
     });
   }
 }

@@ -8,23 +8,41 @@ export class MultiDocument {
   chinese?: Resource;
 }
 
+export class Coordinate {
+	latitute: number;
+	longitude: number;
+}
+
 export class Resource {
   baseURL: string;
   filename: string;
 }
 
 export class Person {
-  portrait: Resource;
+	id?: string;
+  portrait?: Resource;
   name: MultiText;
-  title: MultiText;
+  title?: MultiText;
 }
 
 ///////////////////////////////////////
 
-export class PostBase {
+export class Entity {
   id?: string;					// uuid as Id
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
-  deleted?: boolean;			// soft deleted or not
+	deleted?: boolean;			// soft deleted or not
+
+	image: Resource;
+	title: MultiText;
+	subtitle: MultiText;
+	description: MultiText;
+}
+
+export class Assemply extends Entity {
+	address: MultiText;
+	coordinate?: Coordinate;
+	peopleIds?: string[];
+	storyIds?: string[];
 }
 
 export class Comment {
@@ -36,7 +54,7 @@ export class Comment {
 
 export class Tag {
   label: string;			// one of: greeting, quote, sermon, event, testimory
-  eventId: string;
+  eventId?: string;
 }
 
 //////////////////////////////////////////////
@@ -51,22 +69,9 @@ export class Section {
 }
 
 export class ContactInfo {
-  name: MultiText;		// title of App
-  subtitle: MultiText;
-  mainSite: Site;
+	mainSite: Site;
   sites: Site[];
 	contactImage: Resource;
-// Sections below:
-  greeting: Section;
-  activities: Section;
-  todaySermon: Section;
-  causes: Section;
-  quote: Section;
-  latest: Section;
-  pastors: Section;
-  popularSermons: Section;
-  news: Section;
-  ministries: Section;
 }
 
 export class Site {
@@ -82,13 +87,6 @@ export class Contactor {
   email?: string;
 }
 
-
-export class Cause {
-  image: string;
-  title: MultiText;
-  text: MultiText;
-}
-
 export class SliderItem {
   image: string;
   title: MultiText;
@@ -99,39 +97,15 @@ export class MenuItem {
   route: string;
 }
 
-
-export class Blog extends PostBase {
-  image: string;
-  date: Date;
-  title: MultiText;
-  postBy: MultiText;
-  postIn: MultiText;
-  comments: Comment[];
-  text: MultiText;
-}
-
-export class Story extends PostBase {
+export class Story extends Entity {
   belongs: Tag[];			// tag set
-  image: Resource;
-  title: MultiText;
-  subtitle: MultiText;
-  description: MultiText;
   host: Person;
   address: MultiText;
   start: Date;
   minutes: number;
-  comments: Comment[];
-}
-
-export class Sermon extends PostBase {
-  image: string;
-  timestamp: number;
-  title: MultiText;
-  preacher: MultiText;
-  categories: string[];
-  comments?: Comment[];
-	text: MultiText;
-	link: string;
+	comments: Comment[];
+	videoId: string;
+	reference: MultiText;
 }
 
 
@@ -144,20 +118,4 @@ export class Ministry {
   text: MultiText;
 }
 
-export class Pastor {
-  image: string;
-  title: MultiText;
-  text: MultiText;
-}
-
-// export class Quote {
-//   image: string;
-//   source: MultiText;
-//   text: MultiText;
-// }
-
-// export class Service {
-//   image: string;
-//   title: MultiText;
-// }
 

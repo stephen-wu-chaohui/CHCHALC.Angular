@@ -1,0 +1,15 @@
+<!-- News -->
+<app-section-container [section]="data.Sections.activities" [light]="true">
+	<div class="row">
+		<div class="col">
+			<div class="services_text text-center">
+				<p>{{data.tr(data.Sections.activities.description)}}
+				</p>
+			</div>
+		</div>
+	</div>
+<div class="row activities_row">
+		<app-activity class="col-lg-2 col-md-4 col-sm-6" *ngFor="let item of data.Activities" [item]="item">
+		</app-activity>
+	</div>
+</app-section-container>

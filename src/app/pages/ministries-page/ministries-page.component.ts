@@ -12,6 +12,7 @@ export class MinistriesPageComponent implements OnInit {
   constructor(public data: ChchalcDataService) { }
 
   ngOnInit() {
+		console.log(this.data.Ministries);
   }
 
 }

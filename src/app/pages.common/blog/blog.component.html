@@ -1,0 +1,37 @@
+<div class="blog_content" *ngIf="data.Stories">
+
+	<!-- Blog Post -->
+	<div class="blog_post" *ngFor="let item of data.Stories">
+		<div class="blog_image" [appStoryEditor]="item">
+			<img [src]="data.path(item.image)" alt="">
+			<div class="news_date d-flex flex-column align-items-center justify-content-center">
+				<div class="news_day">{{item.start | date:'d'}}</div>
+				<div class="news_month">{{item.start | date:'MMM, yyyy'}}</div>
+			</div>
+		</div>
+		<div class="blog_title">{{data.tr(item.title)}}</div>
+		<div class="blog_meta">
+			<ul>
+				<li>By <a routeLink="#">{{data.tr(item.host.name)}}</a></li>
+				<li>In <a routeLink="#">{{data.tr(item.address)}}Community</a></li>
+				<li><a routeLink="#">{{item.comments.length}}</a></li>
+			</ul>
+		</div>
+		<div class="blog_text">
+			<p>{{data.tr(item.description)}}</p>
+		</div>
+		<div class="blog_link"><a routeLink="#">Read More</a></div>
+	</div>
+
+</div>
+
+<!-- Pagination -->
+<div class="blog_pages">
+	<ul>
+		<li class="active"><a routeLink="#">01.</a></li>
+		<li><a routeLink="#">02.</a></li>
+		<li><a routeLink="#">03.</a></li>
+	</ul>
+</div>
+
+

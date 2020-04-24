@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PagesCommonModule } from '../../pages.common/pages.common.module';
 
 @Component({
   selector: 'app-blog-page',

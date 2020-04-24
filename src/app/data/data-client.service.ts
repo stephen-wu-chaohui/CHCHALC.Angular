@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError, forkJoin } from 'rxjs';
-import { ContactInfo, Sermon, Ministry, SliderItem, Blog, Pastor } from './api-data';
+import { throwError } from 'rxjs';
+import { ContactInfo, Ministry, SliderItem, Person, Story } from './api-data';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataClientService {
-
-  APIBase = 'https://us-central1-chchalc.cloudfunctions.net/app/api/';
-
+	APIBase = 'https://us-central1-chchalc.cloudfunctions.net/app/api/';
+	// APIBase = 'http://localhost:5001/chchalc/us-central1/app/api/';
   environment = {
     urlContactInfo: this.APIBase + 'contactInfo',
-    urlPastors: this.APIBase + 'Pastors',
     urlSermons: this.APIBase + 'Sermons',
-    urlNews: this.APIBase + 'News',
     urlMinistries: this.APIBase + 'Ministries',
-    urlTestimonies: this.APIBase + 'Testimonies',
     urlActivities: this.APIBase + 'Activities',
     urlHightlights: this.APIBase + 'Hightlights',
-    urlPosts: this.APIBase + 'Posts',
-  };
+		urlPeople: this.APIBase + 'Persons',
+		urlStories: this.APIBase + 'Stories',
+	};
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -48,7 +46,7 @@ getContactInfo() {
 }
 
 getSermons() {
-  return this.httpClient.get<Sermon[]>(this.environment.urlSermons, this.httpOptions);
+  return this.httpClient.get<Story[]>(this.environment.urlSermons, this.httpOptions);
 }
 
 getServices() {
@@ -63,22 +61,12 @@ getSliders() {
   return this.httpClient.get<SliderItem[]>(this.environment.urlHightlights, this.httpOptions);
 }
 
-getPosts() {
-  return this.httpClient.get<Blog[]>(this.environment.urlPosts, this.httpOptions);
+getPeople() {
+  return this.httpClient.get<Person[]>(this.environment.urlPeople, this.httpOptions);
 }
 
-getPastors() {
-  return this.httpClient.get<Pastor[]>(this.environment.urlPastors, this.httpOptions);
-}
-
-getAllData() {
-  return forkJoin([
-    this.getContactInfo(),
-     this.getPastors(),
-     this.getPosts(),
-     this.getSliders(),
-     this.getSermons(),
-  ]);
+getStories() {
+  return this.httpClient.get<Story[]>(this.environment.urlStories, this.httpOptions);
 }
 
 

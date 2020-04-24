@@ -63,7 +63,6 @@
 .main_nav ul li
 {
 	display: inline-block;
-	padding: 30px;
 	font-size: large;
 	color: blue;
 	font-weight: 500;
@@ -73,13 +72,17 @@
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
+.main_nav ul li a {
+	display: block;
+	padding: 20px 40px;
+}
 .main_nav ul li:hover
 {
-	background-color: lightcoral;
+	background-color: aquamarine;
 }
 .main_nav ul li.active
 {
-	color: #eb4141;
+	background-color: lightcoral;
 }
 .language
 {

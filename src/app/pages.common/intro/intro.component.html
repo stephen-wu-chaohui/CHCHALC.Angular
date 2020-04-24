@@ -1,0 +1,19 @@
+	<!-- Intro -->
+
+	<app-section-container class="intro" [section]="data.Sections.greeting" *ngIf="data.Sections.greeting">
+		<div class="row intro_content">
+
+			<!-- Intro Text -->
+			<div class="col-lg-6">
+				<div class="intro_text">
+					<p>{{data.tr(data.Sections.greeting.description)}}</p>
+				</div>
+			</div>
+
+			<!-- Intro Image -->
+			<div class="col-lg-6">
+				<div class="intro_image"><img [src]="data.path(data.Sections.greeting.image)" alt=""></div>
+				<div class="button intro_button"><a href="">Read More</a></div>
+			</div>
+		</div>
+</app-section-container>

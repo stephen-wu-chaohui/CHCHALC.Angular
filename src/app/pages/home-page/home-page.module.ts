@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NguCarouselModule } from '@ngu/carousel';
-import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page.component';
-import { IntroComponent } from './intro/intro.component';
-import { SermonComponent } from './sermon/sermon.component';
-import { CausesComponent } from './causes/causes.component';
-import { NewsComponent } from './news/news.component';
-import { ServicesComponent } from './services/services.component';
 import { AppLayoutModule } from 'src/app/app.layout/app.layout.module';
-import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PagesCommonModule } from 'src/app/pages.common/pages.common.module';
+import { AppCommonModule } from 'src/app/app.common/app.common.module';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -19,22 +15,19 @@ const routes: Routes = [
   }
 ];
 
+
 @NgModule({
   imports: [
 		CommonModule,
 		NguCarouselModule,
-		AppLayoutModule,
 		HttpClientModule,
+		AppLayoutModule,
+		AppCommonModule,
+		PagesCommonModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
 		HomePageComponent,
-		HomeSliderComponent,
-		IntroComponent,
-		CausesComponent,
-		SermonComponent,
-		NewsComponent,
-		ServicesComponent,
 	]
 })
 export class HomePageModule { }
