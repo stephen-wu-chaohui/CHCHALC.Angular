@@ -2,14 +2,19 @@
 <app-section-container [section]="data.Sections.activities" [light]="true">
 	<div class="row">
 		<div class="col">
-			<div class="services_text text-center">
+			<div class="activity_text text-center">
 				<p>{{data.tr(data.Sections.activities.description)}}
 				</p>
 			</div>
 		</div>
 	</div>
 <div class="row activities_row">
-		<app-activity class="col-lg-2 col-md-4 col-sm-6" *ngFor="let item of data.Activities" [item]="item">
-		</app-activity>
+	<div class="col-lg-2 col-md-4 col-sm-6" *ngFor="let item of data.Activities">
+		<div class="activity_item text-center">
+			<div class="activity_image"><img [src]="item.image" alt=""></div>
+			<div class="activity_title">{{data.tr(item.title)}}</div>
+		</div>
 	</div>
+</div>
+
 </app-section-container>

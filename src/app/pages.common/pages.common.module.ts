@@ -4,7 +4,6 @@ import { NewsComponent } from './news/news.component';
 import { SermonComponent } from './sermon/sermon.component';
 import { AppCommonModule } from 'src/app/app.common/app.common.module';
 import { NewsSectionComponent } from './news-section/news-section.component';
-import { ActivityComponent } from './activity/activity.component';
 import { ActivitySectionComponent } from './activity-section/activity-section.component';
 import { QuoteSectionComponent } from './quote-section/quote-section.component';
 import { MinistrySectionComponent } from './ministry-section/ministry-section.component';
@@ -15,9 +14,9 @@ import { ContactFormSectionComponent } from './contact-form-section/contact-form
 import { ContactInfoSectionComponent } from './contact-info-section/contact-info-section.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { IntroComponent } from './intro/intro.component';
-import { CausesComponent } from './causes/causes.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
+import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
 
@@ -33,7 +32,6 @@ import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 		SermonComponent,
 		NewsComponent,
 		NewsSectionComponent,
-		ActivityComponent,
 		ActivitySectionComponent,
 		QuoteSectionComponent,
 		MinistrySectionComponent,
@@ -43,7 +41,7 @@ import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 		ContactInfoSectionComponent,
 		HomeSliderComponent,
 		IntroComponent,
-		CausesComponent,
+		CellgroupsSectionComponent,
 		BlogComponent,
 		BlogSidebarComponent,
 		ContactFormSectionComponent,
@@ -52,13 +50,11 @@ import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 	exports: [
 		HomeSliderComponent,
 		IntroComponent,
-		CausesComponent,
 		BlogComponent,
 		BlogSidebarComponent,
 		SermonComponent,
 		NewsComponent,
 		NewsSectionComponent,
-		ActivityComponent,
 		ActivitySectionComponent,
 		QuoteSectionComponent,
 		MinistrySectionComponent,
@@ -66,6 +62,7 @@ import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 		PopularSemonSectionComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
+		CellgroupsSectionComponent,
 	]
 })
 export class PagesCommonModule { }

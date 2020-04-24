@@ -71,185 +71,183 @@ export class ChchalcDataService {
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
   }];
 
-  Causes = [{
-      image: '/assets/images/causes_1.jpg',
-      title: { english: 'Children\'s aid'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
-    }, {
-      image: '/assets/images/causes_2.jpg',
-      title: { english: 'Aid for the Elderly'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
-    }, {
-      image: '/assets/images/causes_3.jpg',
-      title: { english: 'Aid for the Elderly'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
-    }, {
-      image: '/assets/images/causes_4.jpg',
-      title: { english: 'Aid for the Elderly'},
-      text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
-    }];
+  Sections = {
+    popularSermons: {
+        icon: {
+            baseURL: '/assets/images/',
+            filename: 'church_4.png'
+        },
+        title: {
+            english: 'Popular Sermons',
+            chinese: '热点讲道'
+        },
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        }
+    },
+    ministries: {
+        subtitle: {
+            english: 'God loves us all',
+            chinese: '神与我们同在'
+        },
+        icon: {
+            filename: 'church_1.png',
+            baseURL: '/assets/images/'
+        },
+        title: {
+            chinese: '我们的事工',
+            english: 'Our Ministries'
+        }
+    },
+    quote: {
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        },
+        description: {
+            english: 'One thing I ask from the LORD, this only do I seek: that I may dwell in the house of the LORD all the days of my life, to gaze on the beauty of the LORD and to seek him in his temple.',
+            chinese: '有一件事，我曾求耶和华，我仍要寻求：就是一生一世住在耶和华的殿中，瞻仰他的荣美，在他的殿里求问。'
+        },
+        source: {
+            chinese: '诗篇27章4节',
+            english: 'Psalm 27:4'
+        },
+        label: 'quote',
+        icon: {
+            baseURL: '/assets/images/',
+            filename: 'church_5.png'
+        },
+        title: {
+            chinese: '今日金句',
+            english: 'Quote of the day'
+        }
+    },
+    cellgroups: {
+        icon: {
+            filename: 'church_4.png',
+            baseURL: '/assets/images/'
+        },
+        title: {
+            english: 'Our Church\'s Cellgroups',
+            chinese: '我们的小家'
+        },
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        }
+    },
+    contactImage: {
+        baseURL: '/assets/images/',
+        filename: 'contact_image.jpg'
+    },
+    greeting: {
+        icon: {
+            filename: 'church_1.png',
+            baseURL: '/assets/images/'
+        },
+        title: {
+            english: 'Welcome to Our Church',
+            chinese: '欢迎来到丰盛生命教会'
+        },
+        image: {
+            filename: 'intro.jpg',
+            baseURL: '/assets/images/'
+        },
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        },
+        description: {
+            chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
+            english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
+        }
+    },
+    pastors: {
+        icon: {
+            filename: 'church_2.png',
+            baseURL: '/assets/images/'
+        },
+        title: {
+            chinese: '我们的牧师',
+            english: 'Our Pastors'
+        },
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        }
+    },
+    todaySermon: {
+        icon: {
+            baseURL: '/assets/images/',
+            filename: 'church_3.png'
+        },
+        title: {
+            english: 'Today\'s Sermon',
+            chinese: '今日讲道'
+        },
+        subtitle: {
+            english: 'God loves us all',
+            chinese: '神与我们同在'
+        }
+    },
+    activities: {
+        icon: {
+            filename: 'church_2.png',
+            baseURL: '/assets/images/'
+        },
+        title: {
+            english: 'Our Church main activities',
+            chinese: '教会主要活动'
+        },
+        image: {
+            baseURL: '/assets/images/',
+            filename: 'intro.jpg'
+        },
+        subtitle: {
+            english: 'God loves us all',
+            chinese: '神与我们同在'
+        },
+        description: {
+            english: 'to bring people to Jesus and membership in his family',
+            chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+        }
+    },
+    latest: {
+        icon: {
+            baseURL: '/assets/images/',
+            filename: 'church_6.png'
+        },
+        title: {
+            chinese: '最新消息',
+            english: 'Latest News'
+        },
+        subtitle: {
+            chinese: '神与我们同在',
+            english: 'God loves us all'
+        }
+    },
+  };
 
-    Sections = {
-      name: {
-          chinese: '丰盛生命教会',
-          english: 'Aboundant Life'
-      },
-      popularSermons: {
-          icon: {
-              baseURL: '/assets/images/',
-              filename: 'church_4.png'
-          },
-          title: {
-              english: 'Popular Sermons',
-              chinese: '热点讲道'
-          },
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          }
-      },
-      ministries: {
-          subtitle: {
-              english: 'God loves us all',
-              chinese: '神与我们同在'
-          },
-          icon: {
-              filename: 'church_1.png',
-              baseURL: '/assets/images/'
-          },
-          title: {
-              chinese: '我们的事工',
-              english: 'Our Ministries'
-          }
-      },
-      quote: {
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          },
-          description: {
-              english: 'One thing I ask from the LORD, this only do I seek: that I may dwell in the house of the LORD all the days of my life, to gaze on the beauty of the LORD and to seek him in his temple.',
-              chinese: '有一件事，我曾求耶和华，我仍要寻求：就是一生一世住在耶和华的殿中，瞻仰他的荣美，在他的殿里求问。'
-          },
-          source: {
-              chinese: '诗篇27章4节',
-              english: 'Psalm 27:4'
-          },
-          label: 'quote',
-          icon: {
-              baseURL: '/assets/images/',
-              filename: 'church_5.png'
-          },
-          title: {
-              chinese: '今日金句',
-              english: 'Quote of the day'
-          }
-      },
-      causes: {
-          icon: {
-              filename: 'church_4.png',
-              baseURL: '/assets/images/'
-          },
-          title: {
-              english: 'Our Church\'s Causes',
-              chinese: '教会课程'
-          },
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          }
-      },
-      contactImage: {
-          baseURL: '/assets/images/',
-          filename: 'contact_image.jpg'
-      },
-      greeting: {
-          icon: {
-              filename: 'church_1.png',
-              baseURL: '/assets/images/'
-          },
-          title: {
-              english: 'Welcome to Our Church',
-              chinese: '欢迎来到丰盛生命教会'
-          },
-          image: {
-              filename: 'intro.jpg',
-              baseURL: '/assets/images/'
-          },
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          },
-          description: {
-              chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
-              english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
-          }
-      },
-      pastors: {
-          icon: {
-              filename: 'church_2.png',
-              baseURL: '/assets/images/'
-          },
-          title: {
-              chinese: '我们的牧师',
-              english: 'Our Pastors'
-          },
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          }
-      },
-      todaySermon: {
-          icon: {
-              baseURL: '/assets/images/',
-              filename: 'church_3.png'
-          },
-          title: {
-              english: 'Today\'s Sermon',
-              chinese: '今日讲道'
-          },
-          subtitle: {
-              english: 'God loves us all',
-              chinese: '神与我们同在'
-          }
-      },
-      activities: {
-          icon: {
-              filename: 'church_2.png',
-              baseURL: '/assets/images/'
-          },
-          title: {
-              english: 'Our Church main activities',
-              chinese: '教会主要活动'
-          },
-          image: {
-              baseURL: '/assets/images/',
-              filename: 'intro.jpg'
-          },
-          subtitle: {
-              english: 'God loves us all',
-              chinese: '神与我们同在'
-          },
-          description: {
-              english: 'to bring people to Jesus and membership in his family',
-              chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
-          }
-      },
-      latest: {
-          icon: {
-              baseURL: '/assets/images/',
-              filename: 'church_6.png'
-          },
-          title: {
-              chinese: '最新消息',
-              english: 'Latest News'
-          },
-          subtitle: {
-              chinese: '神与我们同在',
-              english: 'God loves us all'
-          }
-      },
-    };
+  Cellgroups = [{
+    image: '/assets/images/causes_1.jpg',
+    title: { english: 'Rocky Life Group', chinese: '磐石小家'},
+    subtitle: { english: 'We are family'},
+    description: {
+      english: 'This is a place holder description of Rocky Life Group. Please use admin app to fill it',
+      chinese: '这处应该是磐石小家的问候话。请使用 admin 工具设置或修改它。'
+    },
+    address: { english: 'Town center, Wigram'},
+  }, {
+    image: '/assets/images/causes_3.jpg',
+    title: { english: 'Showers of Blessing', chinese: '恩雨小家'},
+    subtitle: { english: 'I see the clouds, Yes I am ready'},
+    description: {
+      english: 'This is a place holder description of Showers of Blessing. Please use admin app to fill it',
+      chinese: '这处应该是恩雨小家的问候话。请使用 admin 工具设置或修改它。'
+    },
+    address: { english: 'Bushinn center, Upper Riccarton'},
+  }];
 
 
 
