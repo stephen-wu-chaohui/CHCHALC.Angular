@@ -12,7 +12,7 @@
 				<div *ngFor="let item of data.Ministries" class="col-xl-4 col-md-6">
 					<div class="ministry">
 						<div class="ministry_image">
-							<img [src]="'/assets/images/' + item.image">
+							<img [src]="item.image">
 						</div>
 						<div class="ministry_title">{{data.tr(item.title)}}</div>
 						<div class="ministry_text">

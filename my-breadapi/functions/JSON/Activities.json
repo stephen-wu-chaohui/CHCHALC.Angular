@@ -3,10 +3,7 @@
 			"title": {
 					"english": "Communion"
 			},
-			"image":  {
-				"filename": "services_6.png",
-				"baseURL": "/assets/images/"
-			},
+			"image":  "/assets/images/services_6.png",
 			"deleted": false,
 			"id": "1b06c436-1807-4335-bb55-eb675468d09a"
 	},
@@ -14,10 +11,7 @@
 			"title": {
 					"english": "Daily Prayers"
 			},
-			"image":  {
-				"filename": "services_6.png",
-				"baseURL": "/assets/images/"
-			},
+			"image":  "/assets/images/services_6.png",
 			"deleted": false,
 			"id": "3257fe00-fad4-485c-aa1f-753a199a0e8a"
 	},
@@ -26,17 +20,14 @@
 			"title": {
 					"english": "Daily Mass"
 			},
-			"image": "services_5.png",
+			"image":  "/assets/images/services_6.png",
 			"deleted": false
 	},
 	{
 			"title": {
 					"english": "Sermons"
 			},
-			"image":   {
-				"filename": "services_4.png",
-				"baseURL": "/assets/images/"
-			},
+			"image":  "/assets/images/services_4.png",
 			"deleted": false,
 			"id": "49a9a0e9-33ad-4e9c-a97c-064b072ae623"
 	},
@@ -46,20 +37,14 @@
 			"title": {
 					"english": "Teaching"
 			},
-			"image":   {
-				"filename": "services_1.png",
-				"baseURL": "/assets/images/"
-			}
+			"image":  "/assets/images/services_1.png"
 	},
 	{
 			"id": "5781fca7-26e0-49d7-946a-eb63361c6829",
 			"title": {
 					"english": "Confessions"
 			},
-			"image": {
-				"filename": "services_3.png",
-				"baseURL": "/assets/images/"
-			},
+			"image":  "/assets/images/services_5.png",
 			"deleted": false
 	},
 	{
@@ -68,20 +53,14 @@
 			"title": {
 					"english": "Teaching"
 			},
-			"image": {
-				"filename": "services_1.png",
-				"baseURL": "/assets/images/"
-			}
+			"image":  "/assets/images/services_1.png"
 	},
 	{
 			"id": "8694f144-e277-47e4-b03e-19b14a2dc1a4",
 			"title": {
 					"english": "Daily Mass"
 			},
-			"image": {
-				"filename": "services_5.png",
-				"baseURL": "/assets/images/"
-			},
+			"image":  "/assets/images/services_5.png",
 			"deleted": false
 	},
 	{
@@ -90,7 +69,7 @@
 			"title": {
 					"english": "Sermons"
 			},
-			"image": "services_4.png"
+			"image":  "/assets/images/services_4.png"
 	},
 	{
 			"deleted": false,
@@ -98,7 +77,7 @@
 			"title": {
 					"english": "Communion"
 			},
-			"image": "services_2.png"
+			"image":  "/assets/images/services_2.png"
 	},
 	{
 			"deleted": false,
@@ -106,14 +85,5 @@
 			"title": {
 					"english": "Confessions"
 			},
-			"image": "services_3.png"
-	},
-	{
-			"title": {
-					"english": "Daily Prayers"
-			},
-			"image": "services_6.png",
-			"deleted": false,
-			"id": "fe3d0263-6bd3-4f21-99b7-32cb17280d61"
-	}
+			"image":  "/assets/images/services_3.png"
 ]

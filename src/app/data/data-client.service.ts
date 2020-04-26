@@ -1,24 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { ContactInfo, Ministry, SliderItem, Person, Story } from './api-data';
+import { throwError, Observable } from 'rxjs';
+
+export type OneOfList = ''|'contactInfo' |'Sermons' |'Activities' |'Hightlights' |'Persons' |'Stories' |'Cellgroups'|'Ministries';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class DataClientService {
-	APIBase = 'https://us-central1-chchalc.cloudfunctions.net/app/api/';
-	// APIBase = 'http://localhost:5001/chchalc/us-central1/app/api/';
-  environment = {
-    urlContactInfo: this.APIBase + 'contactInfo',
-    urlSermons: this.APIBase + 'Sermons',
-    urlMinistries: this.APIBase + 'Ministries',
-    urlActivities: this.APIBase + 'Activities',
-    urlHightlights: this.APIBase + 'Hightlights',
-		urlPeople: this.APIBase + 'Persons',
-		urlStories: this.APIBase + 'Stories',
-	};
+  private APIBase = 'https://us-central1-chchalc.cloudfunctions.net/app/api/';
+  // private APIBase = 'http://localhost:5001/chchalc/us-central1/app/api/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -39,35 +30,15 @@ export class DataClientService {
     return throwError(errorMessage);
   }
 
-constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-getContactInfo() {
-  return this.httpClient.get<ContactInfo>(this.environment.urlContactInfo, this.httpOptions);
-}
+  getAPIData<T>(listName: OneOfList): Observable<T> {
+    return this.httpClient.get<T>(this.APIBase + listName, this.httpOptions);
+  }
 
-getSermons() {
-  return this.httpClient.get<Story[]>(this.environment.urlSermons, this.httpOptions);
-}
-
-getServices() {
-  return this.httpClient.get<Ministry[]>(this.environment.urlActivities, this.httpOptions);
-}
-
-getMinistries() {
-  return this.httpClient.get<Ministry[]>(this.environment.urlMinistries, this.httpOptions);
-}
-
-getSliders() {
-  return this.httpClient.get<SliderItem[]>(this.environment.urlHightlights, this.httpOptions);
-}
-
-getPeople() {
-  return this.httpClient.get<Person[]>(this.environment.urlPeople, this.httpOptions);
-}
-
-getStories() {
-  return this.httpClient.get<Story[]>(this.environment.urlStories, this.httpOptions);
-}
-
+  upsert(listName: OneOfList, entity: any): Observable<any> {
+    const url = this.APIBase + listName;
+    return this.httpClient.post(url, entity);
+  }
 
 }

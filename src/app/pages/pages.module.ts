@@ -12,9 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { AppCommonModule } from '../app.common/app.common.module';
 import { PagesCommonModule } from '../pages.common/pages.common.module';
+import { AdminPageModule } from './admin-page/admin-page.module';
 
 export const PagesRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'admin', loadChildren: () => AdminPageModule },
 	{ path: 'home', loadChildren: () => HomePageModule },
   { path: 'blog', loadChildren: () => BlogPageModule },
   { path: 'contact', loadChildren: () => ContactPageModule },

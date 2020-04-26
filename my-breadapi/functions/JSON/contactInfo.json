@@ -1,8 +1,5 @@
 {
-	"contactImage": {
-			"baseURL": "/assets/images/",
-			"filename": "contact_image.jpg"
-	},
+	"contactImage": "/assets/images/contact_image.jpg",
 	"mainSite": {
 			"email": "admin@nzalc.org",
 			"name": {

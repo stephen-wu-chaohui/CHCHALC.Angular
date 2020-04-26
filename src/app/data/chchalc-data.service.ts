@@ -7,7 +7,8 @@ import {
   MenuItem,
   Resource,
   Person,
-  Story
+  Story,
+  Assemply
 } from './api-data';
 import { SettingsService } from './settings.service';
 import { DataClientService } from './data-client.service';
@@ -73,11 +74,8 @@ export class ChchalcDataService {
 
   Sections = {
     popularSermons: {
-        icon: {
-            baseURL: '/assets/images/',
-            filename: 'church_4.png'
-        },
-        title: {
+			icon: '/assets/images/church_4.png',
+			title: {
             english: 'Popular Sermons',
             chinese: '热点讲道'
         },
@@ -91,10 +89,7 @@ export class ChchalcDataService {
             english: 'God loves us all',
             chinese: '神与我们同在'
         },
-        icon: {
-            filename: 'church_1.png',
-            baseURL: '/assets/images/'
-        },
+				icon: '/assets/images/church_1.png',
         title: {
             chinese: '我们的事工',
             english: 'Our Ministries'
@@ -114,21 +109,15 @@ export class ChchalcDataService {
             english: 'Psalm 27:4'
         },
         label: 'quote',
-        icon: {
-            baseURL: '/assets/images/',
-            filename: 'church_5.png'
-        },
+				icon: '/assets/images/church_5.png',
         title: {
             chinese: '今日金句',
             english: 'Quote of the day'
         }
     },
     cellgroups: {
-        icon: {
-            filename: 'church_4.png',
-            baseURL: '/assets/images/'
-        },
-        title: {
+			icon: '/assets/images/church_4.png',
+			title: {
             english: 'Our Church\'s Cellgroups',
             chinese: '我们的小家'
         },
@@ -137,23 +126,14 @@ export class ChchalcDataService {
             english: 'God loves us all'
         }
     },
-    contactImage: {
-        baseURL: '/assets/images/',
-        filename: 'contact_image.jpg'
-    },
+    contactImage: '/assets/images/contact_image.jpg',
     greeting: {
-        icon: {
-            filename: 'church_1.png',
-            baseURL: '/assets/images/'
-        },
+        icon: '/assets/images/church_1.png',
         title: {
             english: 'Welcome to Our Church',
             chinese: '欢迎来到丰盛生命教会'
         },
-        image: {
-            filename: 'intro.jpg',
-            baseURL: '/assets/images/'
-        },
+        image: '/assets/images/intro.jpg',
         subtitle: {
             chinese: '神与我们同在',
             english: 'God loves us all'
@@ -164,11 +144,8 @@ export class ChchalcDataService {
         }
     },
     pastors: {
-        icon: {
-            filename: 'church_2.png',
-            baseURL: '/assets/images/'
-        },
-        title: {
+			icon: '/assets/images/church_2.png',
+			title: {
             chinese: '我们的牧师',
             english: 'Our Pastors'
         },
@@ -178,11 +155,8 @@ export class ChchalcDataService {
         }
     },
     todaySermon: {
-        icon: {
-            baseURL: '/assets/images/',
-            filename: 'church_3.png'
-        },
-        title: {
+			icon: '/assets/images/church_3.png',
+			title: {
             english: 'Today\'s Sermon',
             chinese: '今日讲道'
         },
@@ -192,18 +166,12 @@ export class ChchalcDataService {
         }
     },
     activities: {
-        icon: {
-            filename: 'church_2.png',
-            baseURL: '/assets/images/'
-        },
+        icon: '/assets/images/church_2.png',
         title: {
             english: 'Our Church main activities',
             chinese: '教会主要活动'
         },
-        image: {
-            baseURL: '/assets/images/',
-            filename: 'intro.jpg'
-        },
+        image: '/assets/images/intro.jpg',
         subtitle: {
             english: 'God loves us all',
             chinese: '神与我们同在'
@@ -214,10 +182,7 @@ export class ChchalcDataService {
         }
     },
     latest: {
-        icon: {
-            baseURL: '/assets/images/',
-            filename: 'church_6.png'
-        },
+        icon: '/assets/images/church_6.png',
         title: {
             chinese: '最新消息',
             english: 'Latest News'
@@ -229,7 +194,7 @@ export class ChchalcDataService {
     },
   };
 
-  Cellgroups = [{
+  Cellgroups: Assemply[] = [{
     image: '/assets/images/causes_1.jpg',
     title: { english: 'Rocky Life Group', chinese: '磐石小家'},
     subtitle: { english: 'We are family'},
@@ -239,7 +204,7 @@ export class ChchalcDataService {
     },
     address: { english: 'Town center, Wigram'},
   }, {
-    image: '/assets/images/causes_3.jpg',
+    image: '/assets/images/causes_2.jpg',
     title: { english: 'Showers of Blessing', chinese: '恩雨小家'},
     subtitle: { english: 'I see the clouds, Yes I am ready'},
     description: {
@@ -248,7 +213,6 @@ export class ChchalcDataService {
     },
     address: { english: 'Bushinn center, Upper Riccarton'},
   }];
-
 
 
   Stories: Story[];
@@ -262,6 +226,8 @@ export class ChchalcDataService {
   Featured: Story[];
   PopularSermons: Story[];
 
+	adminMode: boolean;
+
 
   constructor(private settings: SettingsService, private dataClient: DataClientService) {
   }
@@ -271,7 +237,7 @@ export class ChchalcDataService {
   }
 
   path(img: Resource) {
-    return img.baseURL + img.filename;
+    return img;
   }
 
   format(timestamp: number, fmt: string) {
@@ -279,27 +245,29 @@ export class ChchalcDataService {
   }
 
   init() {
-    this.dataClient.getSliders().subscribe(next =>
+    this.dataClient.getAPIData<SliderItem[]>('Hightlights').subscribe(next =>
       this.Sliders = next
     );
-    this.dataClient.getContactInfo().subscribe(next =>
+    this.dataClient.getAPIData<ContactInfo>('contactInfo').subscribe(next =>
       this.contactInfo = next
     );
-    this.dataClient.getPeople().subscribe(next =>
+    this.dataClient.getAPIData<Person[]>('Persons').subscribe(next =>
       this.People = next
     );
-    this.dataClient.getStories().subscribe(items => {
+    this.dataClient.getAPIData<Assemply[]>('Cellgroups').subscribe(next =>
+      this.Cellgroups = next
+    );
+    this.dataClient.getAPIData<Story[]>('Stories').subscribe(items => {
       this.Stories = items;
       this.latestStories = items.slice(0, 3);
     });
-    this.dataClient.getMinistries().subscribe(ministries => {
+    this.dataClient.getAPIData<Ministry[]>('Ministries').subscribe(ministries => {
       this.Ministries = ministries;
     });
-    this.dataClient.getSermons().subscribe(sermons => {
+    this.dataClient.getAPIData<Story[]>('Sermons').subscribe(sermons => {
       this.today = sermons[0];
       this.PopularSermons = sermons.slice(1);
-      const lastIndex = this.PopularSermons.length - 1;
-      this.Featured = this.PopularSermons.slice(lastIndex - 1, lastIndex);
+      this.Featured = this.PopularSermons.slice(0, 2);
     });
   }
 }

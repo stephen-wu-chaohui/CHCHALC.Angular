@@ -7,6 +7,7 @@ import { PagesModule } from '../pages/pages.module';
 import { ChchalcDataService } from '../data/chchalc-data.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../.././environments/environment';
+import { AppCommonModule } from '../app.common/app.common.module';
 
 export function init_app(data: ChchalcDataService) {
 	return () => data.init();
@@ -21,7 +22,8 @@ export function init_app(data: ChchalcDataService) {
    imports: [
       BrowserModule,
       PagesModule,
-      AppLayoutModule,
+			AppLayoutModule,
+			AppCommonModule,
 			RouterModule.forRoot([]),
 			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],

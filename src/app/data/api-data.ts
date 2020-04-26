@@ -3,20 +3,12 @@ export class MultiText {
   chinese?: string;
 }
 
-export class MultiDocument {
-  english: Resource;
-  chinese?: Resource;
-}
-
 export class Coordinate {
 	latitute: number;
 	longitude: number;
 }
 
-export class Resource {
-  baseURL: string;
-  filename: string;
-}
+export type Resource = string;
 
 export class Person {
 	id?: string;
@@ -106,6 +98,15 @@ export class Story extends Entity {
 	comments: Comment[];
 	videoId: string;
 	reference: MultiText;
+}
+
+export class Church {
+	info: Assemply;
+	people: Person[];
+	stories: Story[];
+	sermons: Story[];
+	cells: Assemply[];
+	minitories: Assemply[];
 }
 
 

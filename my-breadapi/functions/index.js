@@ -20,9 +20,10 @@ function startCRUDEndpoints(controllerName)
 		(async () => {
 				try {
 					console.log(req.body);
+					req.body.id = moment().fromNow();
 					await db.collection(controllerName).doc(req.body.id)
-							.create(req.body);
-					return res.status(200).send();
+							.set(req.body);
+					return res.status(200).send(req.body);
 				} catch (error) {
 					console.log(error);
 					return res.status(500).send(error);
@@ -142,14 +143,12 @@ async function readSermonList ()
 			body.items.forEach(
 				item => {
 					let start = moment(item.snippet.publishedAt, moment.defaultFormat).startOf('day').add(10, 'hours').format();
+					let docId = start;
 					console.log(start);
-					const document = db.collection('sermons').doc(start);
+					const document = db.collection('sermons').doc(docId);
 					document.set({
-						id: start,
-						image: {
-							baseURL: '',
-							filename: (item.snippet.thumbnails.standard || item.snippet.thumbnails.default).url
-						},
+						id: docId,
+						image: (item.snippet.thumbnails.standard || item.snippet.thumbnails.default).url,
 						title: {english: item.snippet.title, chinese: item.snippet.title},
 						description: { english: item.snippet.description, chinese: item.snippet.description },
 						host: {
@@ -201,9 +200,12 @@ admin.initializeApp({
   databaseURL: "https://chchalc.firebaseio.com"
 });
 const db = admin.firestore();
+const storage = admin.storage();
+
 
 
 startCRUDEndpoints('News');
+startCRUDEndpoints('Cellgroups');
 startCRUDEndpoints('Ministries');
 startCRUDEndpoints('Testimonies');
 startCRUDEndpoints('Activities');
@@ -211,6 +213,8 @@ startCRUDEndpoints('Hightlights');
 startGetPutEndpoints('contactInfo');
 
 startSermonsEndpoints();
+startCRUDEndpoints('Persons');
+startCRUDEndpoints('Stories');
 
 /////////////////////////////////////////////////////////////////
 // PastorToPerson
@@ -229,10 +233,7 @@ async function refreshPersonTable() {
 	await pasters.get().then(querySnapshot => {
 		let items = querySnapshot.docs.map(doc => doc.data());
 		let changed = items.map(item => ({
-			portrait: {
-				baseURL: '/assets/images/',
-				filename: item.image
-			},
+			portrait: '/assets/images/'+ item.image,
 			title: item.text,
 			name: item.title,
 			id: item.id
@@ -246,7 +247,6 @@ async function refreshPersonTable() {
 
 // startCRUDEndpoints('Pastors');
 // startPastorToPerson();
-startCRUDEndpoints('Persons');
 
 /////////////////////////////////////////////////////////////////
 
@@ -268,10 +268,7 @@ async function doPost2Story() {
 	await origin.get().then(querySnapshot => {
 		let items = querySnapshot.docs.map(doc => doc.data());
 		let changed = items.map(item => ({
-			image: {
-				baseURL: '/assets/images/',
-				filename: item.image
-			},
+			image: '/assets/images/' + item.image,
 			start: item.date,
 			comments: item.comments,
 			description: item.text,
@@ -292,10 +289,7 @@ async function doPost2Story() {
           chinese: "黄德贤"
         },
         id: "d58e9c64-6c77-490d-98c8-4a8737ff0510",
-        portrait: {
-					filename: "pastor_1.jpg",
-          baseURL: "/assets/images/"
-        }
+        portrait: "/assets/images/pastor_1.jpg",
     	},
 			address: { chinese: '和平教室', english: 'Peace Classroom'},
 			minutes: 120
@@ -310,7 +304,6 @@ async function doPost2Story() {
 
 // startCRUDEndpoints('Posts');
 // startPost2Story();
-startCRUDEndpoints('Stories');
 
 
 
