@@ -4,7 +4,7 @@
 	<app-section-container [section]="data.Sections.cellgroups">
 		<div class="row">
 			<div class="col">
-				<div class="cellgroups_slider_container">
+				<div class="cellgroups_slider_container" *ngIf="data.Cellgroups.length > 0">
 					<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.Cellgroups" class="cellgroups_slider">
 						<ngu-tile *nguCarouselDef="let item">
 							<div class="owl-item text-center cellgroups_item">

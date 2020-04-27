@@ -8,7 +8,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<div class="pastors_slider_container">
+					<div class="pastors_slider_container" *ngIf="data.People.length > 0">
 
 						<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.People" class="pastors_slider">
 							<ngu-tile *nguCarouselDef="let item">

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MultiText } from './api-data';
 
+export type Language = 'english'|'chinese';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
-  _language: string;
+  _language: Language;
 
   tr(text: MultiText): string {
     if (!text) {
@@ -23,17 +25,17 @@ export class SettingsService {
   }
 
   constructor() {
-    this._language = localStorage.getItem('language');
+    this._language = localStorage.getItem('language') as Language;
     if (!this._language) {
       this._language = 'english';
     }
   }
 
-  get language(): string {
+  get language(): Language {
     return this._language;
   }
 
-  set language(value: string) {
+  set language(value: Language) {
     this._language = value;
     this.save();
   }

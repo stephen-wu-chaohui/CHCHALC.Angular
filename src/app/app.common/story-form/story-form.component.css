@@ -1,5 +1,13 @@
-.modal-body {
-	max-height: calc(100vh-200px);
+.modal-content {
 	overflow-y: auto;
+	height: 100vh;
 }
 
+.preview {
+	max-width: 400px;
+	padding-bottom: 25px;
+}
+
+.formGroupName {
+	padding-left: 10px;
+}

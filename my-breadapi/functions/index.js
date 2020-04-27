@@ -20,7 +20,9 @@ function startCRUDEndpoints(controllerName)
 		(async () => {
 				try {
 					console.log(req.body);
-					req.body.id = moment().fromNow();
+					if (!req.body.id) {
+						req.body.id = moment().fromNow();
+					}
 					await db.collection(controllerName).doc(req.body.id)
 							.set(req.body);
 					return res.status(200).send(req.body);

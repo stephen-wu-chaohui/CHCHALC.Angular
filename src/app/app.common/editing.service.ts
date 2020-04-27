@@ -4,7 +4,7 @@ import { Story } from '../data/api-data';
 import * as _ from 'lodash';
 import { StoryFormComponent } from './story-form/story-form.component';
 import { ChchalcDataService } from '../data/chchalc-data.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -15,7 +15,10 @@ export class EditingService {
   story: Story;
   listName: OneOfList;
 
-  constructor(private data: ChchalcDataService, private dataClient: DataClientService) { }
+  constructor(
+    private data: ChchalcDataService,
+    private dataClient: DataClientService
+  ) { }
 
   register(form: StoryFormComponent) {  // for StoryFormComponent
     this.storyFormComponent = form;
@@ -39,13 +42,9 @@ export class EditingService {
     return await this.storyFormComponent.edit(story);
   }
 
-  save(changed: any): Observable<boolean> {  // used by save
-    if (!changed) {
-      console.error('Can\'t save a null change');
-      return of(false);
-    }
-    return this.dataClient.upsert(this.listName, changed).pipe(
+  async save(newRevision: Story): Promise<boolean> {  // used by save
+    return this.dataClient.upsert(this.listName, newRevision).pipe(
       map(updates => _.merge(this.story, updates) != null)
-    );
+    ).toPromise();
   }
 }

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { PagesModule } from '../pages/pages.module';
@@ -16,11 +19,12 @@ export function init_app(data: ChchalcDataService) {
 
 @NgModule({
    declarations: [
-      AppComponent
-
+			AppComponent,
    ],
    imports: [
       BrowserModule,
+			AngularFireModule.initializeApp(environment.firebase),
+			AngularFireStorageModule,
       PagesModule,
 			AppLayoutModule,
 			AppCommonModule,

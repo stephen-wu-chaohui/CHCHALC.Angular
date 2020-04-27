@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 
@@ -7,7 +7,7 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
   templateUrl: './cellgroups-section.component.html',
   styleUrls: ['./cellgroups-section.component.css']
 })
-export class CellgroupsSectionComponent {
+export class CellgroupsSectionComponent implements OnInit {
 
 	public carouselTileConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 2, md: 3, lg: 4, all: 0 },
@@ -21,6 +21,10 @@ export class CellgroupsSectionComponent {
     animation: 'lazy'
   };
 
-  constructor(public data: ChchalcDataService) { }
+	constructor(public data: ChchalcDataService) { }
+
+	ngOnInit() {
+
+	}
 
 }

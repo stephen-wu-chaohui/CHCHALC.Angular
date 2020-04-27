@@ -1,52 +1,108 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/storage';
+import * as _ from 'lodash';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { EditingService } from '../editing.service';
 import { Story } from 'src/app/data/api-data';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-story-form',
   templateUrl: './story-form.component.html',
   styleUrls: ['./story-form.component.css']
 })
-export class StoryFormComponent {
+export class StoryFormComponent implements OnInit {
+
+  formChanges = new FormGroup({
+    image: new FormControl(''),
+    title: new FormGroup({
+      chinese: new FormControl(''),
+      english: new FormControl('')
+    }),
+    subtitle: new FormGroup({
+      chinese: new FormControl(''),
+      english: new FormControl('')
+    }),
+    description: new FormGroup({
+      chinese: new FormControl(''),
+      english: new FormControl('')
+    }),
+    address: new FormGroup({
+      chinese: new FormControl(''),
+      english: new FormControl('')
+    }),
+    start: new FormControl(''),
+    minutes: new FormControl(''),
+    reference: new FormGroup({
+      chinese: new FormControl(''),
+      english: new FormControl('')
+    }),
+  });
+  deleted = false;
+  localUrl = '';
+
   show = false;
   story: Story;
-  changed: any = {};
-  localUrl = '';
+  fileSelected: File;
 
   confirmingClose = false;
   confirmingHide = false;
   confirmingRecover = false;
 
-  constructor(public data: ChchalcDataService, private editingService: EditingService) {
+  constructor(private storage: AngularFireStorage,
+              public data: ChchalcDataService,
+              private editingService: EditingService) {
     editingService.register(this);
+  }
+
+  ngOnInit(): void {
   }
 
   async edit(story: Story): Promise<boolean> {
     this.story = story;
-    this.changed = { deleted: this.story.deleted };
-    // ... fill fields on dialog
-    this.localUrl = this.data.path(story.image);
+    this.fillContent(story);
+    this.fileSelected = null;
     this.openDialog();
     return false;
   }
 
-  OnClickSaveChanges() {
+  async OnClickSaveChanges() {
     this.confirmingClose = false;
     this.confirmingHide = false;
     this.confirmingRecover = false;
-    this.editingService.save(this.changed).subscribe(successful => {
-      if (successful) {
-        this.closeDialog();
-      }
+
+    // .... upload image from localURL to changed.image
+    this.uploadImage().then(result => {
+      console.log('uploadImage', result);
+      const newRevision = this.acceptChanges();
+      this.editingService.save(newRevision).then(
+        res => {
+          if (res) {
+            this.closeDialog();
+          }
+        });
     });
   }
 
-  openDialog() {
+  private async uploadImage() {
+    const orgfile = this.fileSelected;
+    if (!this.fileSelected) {
+      return true;
+    }
+    const ref = this.storage.ref(`LIBRARY/${orgfile.lastModified}-${orgfile.name}`);
+    ref.put(orgfile).then( a => {
+      ref.getDownloadURL().subscribe(path =>
+        this.localUrl = path
+      );
+    });
+  }
+
+  private openDialog() {
     this.show = true;
   }
 
-  closeDialog() {
+  private closeDialog() {
     this.show = false;
   }
 
@@ -66,7 +122,7 @@ export class StoryFormComponent {
   OnClickHide() {
     this.confirmingHide = !this.confirmingHide;
     if (!this.confirmingHide) {
-      this.changed.deleted = true;
+      this.deleted = true;
     }
   }
 
@@ -79,7 +135,7 @@ export class StoryFormComponent {
   OnClickRecover() {
     this.confirmingRecover = !this.confirmingRecover;
     if (!this.confirmingRecover) {
-      this.changed.deleted = false;
+      this.deleted = false;
     }
   }
 
@@ -91,12 +147,42 @@ export class StoryFormComponent {
 
 
   handleUpload(event) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (ev: any) => {
-          this.localUrl = ev.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
+    if (!(event.target.files && event.target.files[0])) {
+      return;
+    }
+    this.fileSelected = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = (ev: any) => {
+      this.localUrl = ev.target.result;
+    };
+    reader.readAsDataURL(this.fileSelected);
   }
-}
+
+  private fillContent(story: Story) {
+    this.story = story;
+    this.deleted = story.deleted;
+    this.localUrl = story.image;
+    this.formChanges.patchValue({
+      story: story.image,
+      start: story.start,
+      title: story.title || { english: '', chinese: ''},
+      subtitle: story.subtitle || { english: '', chinese: ''},
+      description: story.description || { english: '', chinese: ''},
+      address: story.address || { english: '', chinese: ''},
+      minutes: story.minutes,
+      reference: story.reference || { english: '', chinese: ''}
+    });
+  }
+
+  private acceptChanges(): Story {
+    console.warn(this.formChanges.value);
+
+    const newRevision = _.merge({...this.story}, this.formChanges.value);
+    newRevision.deleted = this.deleted;
+    if (this.localUrl) {
+      newRevision.image = this.localUrl;
+    }
+    return newRevision;
+  }
 }

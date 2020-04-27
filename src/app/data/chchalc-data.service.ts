@@ -226,7 +226,7 @@ export class ChchalcDataService {
   Featured: Story[];
   PopularSermons: Story[];
 
-	adminMode: boolean;
+	adminMode: boolean = true;
 
 
   constructor(private settings: SettingsService, private dataClient: DataClientService) {

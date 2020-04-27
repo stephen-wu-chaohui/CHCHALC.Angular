@@ -1,27 +1,20 @@
 	<!-- Ministries -->
-	<div class="ministries" *ngIf="data.Ministries">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<app-section [section]="data.Sections.ministries"></app-section>
-				</div>
-			</div>
-			<div class="row ministries_row">
+	<app-section-container [section]="data.Sections.ministries">
+		<div class="row ministries_row">
 
-				<!-- Ministry Item -->
-				<div *ngFor="let item of data.Ministries" class="col-xl-4 col-md-6">
-					<div class="ministry">
-						<div class="ministry_image">
-							<img [src]="item.image">
-						</div>
-						<div class="ministry_title">{{data.tr(item.title)}}</div>
-						<div class="ministry_text">
-							<p>{{data.tr(item.text)}}</p>
-						</div>
-						<div class="button ministry_button"><a href="#">Read More</a></div>
+			<!-- Ministry Item -->
+			<div *ngFor="let item of data.Ministries" class="col-xl-4 col-md-6">
+				<div class="ministry">
+					<div class="ministry_image">
+						<img [src]="item.image">
 					</div>
+					<div class="ministry_title">{{data.tr(item.title)}}</div>
+					<div class="ministry_text">
+						<p>{{data.tr(item.text)}}</p>
+					</div>
+					<div class="button ministry_button"><a href="#">Read More</a></div>
 				</div>
-
 			</div>
+
 		</div>
-	</div>
+	</app-section-container>

@@ -12,9 +12,9 @@
 		<div class="blog_title">{{data.tr(item.title)}}</div>
 		<div class="blog_meta">
 			<ul>
-				<li>By <a routeLink="#">{{data.tr(item.host.name)}}</a></li>
-				<li>In <a routeLink="#">{{data.tr(item.address)}}Community</a></li>
-				<li><a routeLink="#">{{item.comments.length}}</a></li>
+				<li *ngIf="item.host">By <a routeLink="#">{{data.tr(item.host.name)}}</a></li>
+				<li *ngIf="item.address">In <a routeLink="#">{{data.tr(item.address)}}Community</a></li>
+				<li *ngIf="item.comments"><a routeLink="#">{{item.comments.length}}</a></li>
 			</ul>
 		</div>
 		<div class="blog_text">

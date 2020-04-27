@@ -1,7 +1,7 @@
 	<!-- Home -->
 
 	<div class="preface-home" *ngIf="data.Sliders">
-		<div class="home_slider_container">
+		<div class="home_slider_container" *ngIf="data.Sliders.length > 0">
 			<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.Sliders">
 				<ngu-tile *nguCarouselDef="let item; let i = index">
 					<div class="home_slider_background">

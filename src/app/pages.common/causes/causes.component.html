@@ -4,7 +4,7 @@
 <app-section-container [section]="data.Sections.causes">
 	<div class="row">
 		<div class="col">
-			<div class="causes_slider_container">
+			<div class="causes_slider_container" *ngIf="data.Sliders.causes.length > 0">
 				<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.Causes" class="causes_slider">
 					<ngu-tile *nguCarouselDef="let item">
 						<div class="owl-item text-center causes_item">
