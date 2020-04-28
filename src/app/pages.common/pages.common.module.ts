@@ -18,6 +18,8 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
 import { MinistryItemComponent } from './ministry-item/ministry-item.component';
+import { MinistryEditComponent } from './ministry-edit/ministry-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
 
@@ -25,6 +27,7 @@ import { MinistryItemComponent } from './ministry-item/ministry-item.component';
   imports: [
 		CommonModule,
 		NguCarouselModule,
+		ReactiveFormsModule,
 		AppCommonModule
   ],
   declarations: [
@@ -37,6 +40,7 @@ import { MinistryItemComponent } from './ministry-item/ministry-item.component';
 		QuoteSectionComponent,
 		MinistrySectionComponent,
 		MinistryItemComponent,
+		MinistryEditComponent,
 		PastorsSliderComponent,
 		PopularSemonSectionComponent,
 		ContactFormSectionComponent,

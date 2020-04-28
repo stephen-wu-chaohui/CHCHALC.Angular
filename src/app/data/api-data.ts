@@ -114,6 +114,8 @@ export class Church {
 
 
 export class Ministry {
+	id: string;
+	deleted: boolean;
   image: string;
   title: MultiText;
   text: MultiText;

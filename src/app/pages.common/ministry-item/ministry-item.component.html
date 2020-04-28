@@ -1,16 +1,12 @@
 <div class="ministry">
-	<div class="ministry_image"  [style.backgroundImage]="'url('+item.image+')'">
-		<label id="fileUploadBtn" for="fileUpload" class="btn btn-primary btn-outlined">Change</label>
-		<input type="file" #file accept='image/*' id="fileUpload" style="display: none;" (change)="preview(file.files)">
-		<button type="button" id="fileUploadRemove" class="btn btn-danger btn-outlined" (click)="onClick">Hide</button>
+	<div class="ministry_image">
+		<img [src]="item.image" width="100%">
 	</div>
 	<div class="ministry_title">
-		<textarea [readonly]="!data.adminMode" (input)="setDirty()">{{data.tr(item.title)}}</textarea>
+		<h1>{{data.tr(item.title)}}</h1>
 	</div>
 	<div class="ministry_text">
-		<textarea [readonly]="!data.adminMode" (input)="setDirty()">{{data.tr(item.text)}}</textarea>
+		<p>{{data.tr(item.text)}}</p>
 	</div>
-	<div class="button" *ngIf="!isDirty">Read More</div>
-	<div class="button" *ngIf="isDirty">Save</div>
-	<div style="background-color: red;color: azure;text-align: center;">{{message}}</div>
+	<div class="btn btn-primary btn-lg">Read More</div>
 </div>

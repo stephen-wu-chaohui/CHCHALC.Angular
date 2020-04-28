@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { EditingService } from '../editing.service';
 import { Story } from 'src/app/data/api-data';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-story-form',
@@ -91,7 +90,7 @@ export class StoryFormComponent implements OnInit {
       return true;
     }
     const ref = this.storage.ref(`LIBRARY/${orgfile.lastModified}-${orgfile.name}`);
-    ref.put(orgfile).then( a => {
+    ref.put(orgfile).then( () => {
       ref.getDownloadURL().subscribe(path =>
         this.localUrl = path
       );

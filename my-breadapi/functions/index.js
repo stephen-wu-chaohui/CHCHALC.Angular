@@ -21,7 +21,7 @@ function startCRUDEndpoints(controllerName)
 				try {
 					console.log(req.body);
 					if (!req.body.id) {
-						req.body.id = moment().fromNow();
+						req.body.id = moment().format();
 					}
 					await db.collection(controllerName).doc(req.body.id)
 							.set(req.body);
