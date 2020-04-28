@@ -17,6 +17,7 @@ import { IntroComponent } from './intro/intro.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
+import { MinistryItemComponent } from './ministry-item/ministry-item.component';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
 
@@ -35,6 +36,7 @@ import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-sect
 		ActivitySectionComponent,
 		QuoteSectionComponent,
 		MinistrySectionComponent,
+		MinistryItemComponent,
 		PastorsSliderComponent,
 		PopularSemonSectionComponent,
 		ContactFormSectionComponent,

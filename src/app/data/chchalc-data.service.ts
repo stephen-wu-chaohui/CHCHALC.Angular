@@ -22,13 +22,13 @@ export class ChchalcDataService {
       title: { english: 'Home', chinese: '首页'},
       route: '/home'
     }, {
-      title: { english: 'Ministries', chinese: '傳道'},
+      title: { english: 'Ministries', chinese: '事工'},
       route: '/ministries'
     }, {
-      title: { english: 'Sermons', chinese: '證道'},
+      title: { english: 'Sermons', chinese: '讲道'},
       route: '/sermons'
     }, {
-      title: { english: 'Blog', chinese: '部落格'},
+      title: { english: 'Blog', chinese: '博客'},
       route: '/blog'
     }, {
       title: { english: 'Contact', chinese: '聯係我們'},
@@ -227,7 +227,7 @@ export class ChchalcDataService {
   PopularSermons: Story[];
 
 	adminMode: boolean = true;
-
+	isDirty: boolean = false;
 
   constructor(private settings: SettingsService, private dataClient: DataClientService) {
   }
