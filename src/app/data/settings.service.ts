@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MultiText } from './api-data';
 
 export type Language = 'english'|'chinese';
@@ -8,6 +8,9 @@ export type Language = 'english'|'chinese';
 })
 export class SettingsService {
   _language: Language;
+
+  languageChanging: EventEmitter<string> = new EventEmitter();
+	languageChanged: EventEmitter<string> = new EventEmitter();
 
   tr(text: MultiText): string {
     if (!text) {
@@ -37,7 +40,7 @@ export class SettingsService {
 
   set language(value: Language) {
     this._language = value;
-    this.save();
+		this.save();
   }
 
   save() {
@@ -45,10 +48,12 @@ export class SettingsService {
   }
 
   toggleLanguage() {
+		this.languageChanging.emit(this.language);
     if (this.language === 'chinese') {
       this.language = 'english';
     } else {
       this.language = 'chinese';
-    }
+		}
+		this.languageChanged.emit(this.language);
   }
 }

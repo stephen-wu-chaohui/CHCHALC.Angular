@@ -21,12 +21,12 @@ export class HeaderComponent {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this.setHeader();
   }
 
   @HostListener('document:scroll', ['$event'])
-  onDocumentScroll(event) {
+  onDocumentScroll() {
     this.setHeader();
   }
 
