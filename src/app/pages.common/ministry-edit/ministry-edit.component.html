@@ -1,18 +1,29 @@
 <div class="ministry">
-	<div class="ministry_image">
-		<img [src]="image" width="100%" [ngClass]="item.deleted? 'deleted': ''">
-		<button type="button" id="fileUploadRemove" class="btn btn-danger btn-outlined" (click)="onClickHide()">Hide</button>
-		<input type="file" #file accept='image/*' id="fileUploadBtn" (change)="OnChangeImage(file.files)">
-	</div>
 	<form (ngSubmit)="OnSave()" [formGroup]="formChanges">
-		<div class="ministry_title">
-			<textarea (input)="setDirty()" formControlName="title">{{data.tr(item.title)}}</textarea>
+		<div class="image">
+			<img [src]="image" width="100%" [ngClass]="item.deleted? 'deleted': ''" (click)="onImageClick()"
+				mwlConfirmationPopover
+				popoverTitle="popoverTitle"
+				popoverMessage="popoverMessage"
+				confirmText="confirmText"
+				cancelText="cancelText"
+				placement="placement"
+				(confirm)="confirmClicked = true"
+				(cancel)="cancelClicked = true"
+				confirmButtonType="danger"
+				cancelButtonType="outline-secondary"
+				(click)="confirmClicked = false; cancelClicked = false"
+				[appendToBody]="false"
+			>
+			<button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()">Hide</button>
+			<input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
+			<input type="submit" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save">
 		</div>
-		<div class="ministry_text">
-			<textarea (input)="setDirty()" formControlName="text">{{data.tr(item.text)}}</textarea>
+		<div class="title">
+			<textarea class="content" (input)="setDirty()" formControlName="title">{{data.tr(item.title)}}</textarea>
 		</div>
-		<div class="btn btn-danger btn-block">{{message}}</div>
-		<input type="submit" class="btn btn-primary btn-block btn-lg" *ngIf="isDirty" value="Save">
+		<div class="text">
+			<textarea class="content" (input)="setDirty()" formControlName="text">{{data.tr(item.text)}}</textarea>
+		</div>
 	</form>
-		<div class="btn btn-primary btn-block btn-lg" *ngIf="!isDirty">Read More</div>
 </div>

@@ -52,7 +52,7 @@ function startCRUDEndpoints(controllerName)
 	app.get(`/api/${controllerName}`, (req, res) => {
 		(async () => {
 				try {
-						let query = db.collection(controllerName);
+						let query = db.collection(controllerName).orderBy('id', 'desc');
 						await query.get().then(querySnapshot => {
 							let items = querySnapshot.docs.map(doc => doc.data());
 							return res.status(200).send(items);

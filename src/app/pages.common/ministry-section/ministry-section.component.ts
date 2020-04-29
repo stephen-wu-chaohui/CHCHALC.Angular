@@ -15,7 +15,7 @@ export class MinistrySectionComponent implements OnInit {
 
 	createEmptyItem() {
 		return {
-	      image: 'assets/images/ministries_1.jpg',
+	      image: '',
 	      title: { chinese: '新的事工', english: 'New Ministry'},
 	      text: {
 	        chinese: '你们要去、使万民作我的门徒、奉父子圣灵的名、给他们施洗',

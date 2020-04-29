@@ -22,13 +22,17 @@ import { MinistryEditComponent } from './ministry-edit/ministry-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   imports: [
 		CommonModule,
 		NguCarouselModule,
 		ReactiveFormsModule,
-		AppCommonModule
+		AppCommonModule,
+    ConfirmationPopoverModule.forRoot({
+      focusButton: 'confirm',
+    }),
   ],
   declarations: [
 		BlogComponent,

@@ -2,9 +2,9 @@
 	<app-section-container [section]="data.Sections.ministries">
 		<div class="row ministries_row">
 			<div class="col-xl-4 col-md-6" *ngIf="data.adminMode">
-				<app-ministry-edit [item]="createEmptyItem()"></app-ministry-edit>
+				<app-ministry-edit></app-ministry-edit>
 			</div>
-			<div *ngFor="let item of data.Ministries" class="col-xl-4 col-md-6">
+			<div *ngFor="let item of data.hideDeleted(data.Ministries)" class="col-xl-4 col-md-6">
 				<app-ministry-edit *ngIf="data.adminMode" [item]="item"></app-ministry-edit>
 				<app-ministry-item *ngIf="!data.adminMode" [item]="item"></app-ministry-item>
 			</div>

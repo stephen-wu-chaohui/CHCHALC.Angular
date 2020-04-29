@@ -268,5 +268,9 @@ export class ChchalcDataService {
       this.PopularSermons = sermons.slice(1);
       this.Featured = this.PopularSermons.slice(0, 2);
     });
-  }
+	}
+
+	hideDeleted(list: any[]) {
+		return (this.adminMode || !list) ? list : list.filter(it => !it.deleted);
+	}
 }

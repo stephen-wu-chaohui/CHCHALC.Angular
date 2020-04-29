@@ -14,7 +14,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./ministry-edit.component.css']
 })
 export class MinistryEditComponent implements OnInit {
-  @Input() item: Ministry;
+  @Input() item: Ministry = null;
 
   formChanges = new FormGroup({
     title: new FormControl(''),
@@ -26,10 +26,22 @@ export class MinistryEditComponent implements OnInit {
   message = '';
   file: File;
 
+  confirmClicked = false;
+  cancelClicked = false;
+
   constructor(public data: ChchalcDataService,
               public settings: SettingsService,
               private dbapi: DataClientService,
-              private storage: AngularFireStorage) {}
+              private storage: AngularFireStorage
+  ) {
+    if (!this.item) {
+      this.item = this.newMinistry();
+    }
+  }
+
+  onImageClick() {
+  }
+
 
   ngOnInit() {
     this.image = this.item.image;
@@ -49,13 +61,13 @@ export class MinistryEditComponent implements OnInit {
     });
   }
 
-
   setDirty(flag = true) {
     this.isDirty = flag;
   }
 
   onClickHide() {
     this.item.deleted = !this.item.deleted;
+    this.setDirty();
   }
 
   OnChangeImage(files: File[]) {
@@ -109,15 +121,27 @@ export class MinistryEditComponent implements OnInit {
 
   saveItem() {
     this.applyChanges(this.settings.language);
-
-    if (!this.item.id) {
-      this.data.Ministries.unshift(this.item);
-    }
-    console.log(this.item);
     this.dbapi.upsert('Ministries', this.item).subscribe(
       next => {
-        _.merge(this.item, next);
+        if (!this.item.id) {
+          this.data.Ministries.unshift(next);
+          this.file = null;
+          this.image = null;
+          this.item = this.newMinistry();
+          this.patchValue();
+        }
         this.setDirty(false);
       });
+  }
+
+  newMinistry(): Ministry {
+    const newItem = new Ministry();
+    newItem.deleted = false;
+    newItem.title = { chinese: '新的事工', english: 'New Ministry'};
+    newItem.text = {
+        chinese: '你们要去、使万民作我的门徒、奉父子圣灵的名、给他们施洗',
+        english: 'Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit'
+    };
+    return newItem;
   }
 }
