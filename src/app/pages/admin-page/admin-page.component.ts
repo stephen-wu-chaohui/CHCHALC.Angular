@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { EditingService } from 'src/app/app.common/editing.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -10,7 +9,7 @@ import { EditingService } from 'src/app/app.common/editing.service';
 export class AdminPageComponent implements OnInit {
 	title = { english: 'Admin', chinese: '维护模式'};
 
-  constructor(private data: ChchalcDataService, private editing: EditingService) { }
+  constructor(private data: ChchalcDataService) { }
 
   ngOnInit() {
   }

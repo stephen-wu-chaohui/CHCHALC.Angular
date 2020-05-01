@@ -13,6 +13,7 @@ import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { AppCommonModule } from '../app.common/app.common.module';
 import { PagesCommonModule } from '../pages.common/pages.common.module';
 import { AdminPageModule } from './admin-page/admin-page.module';
+import { MinistriesSinglePageModule } from './ministries-single-page/ministries-single-page.module';
 
 export const PagesRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const PagesRoutes: Routes = [
   { path: 'blog', loadChildren: () => BlogPageModule },
   { path: 'contact', loadChildren: () => ContactPageModule },
   { path: 'ministries', loadChildren: () => MinistriesPageModule },
+  { path: 'ministries/:id', loadChildren: () => MinistriesSinglePageModule },
   { path: 'sermons', loadChildren: () => SermonsPageModule },
   { path: 'elements', loadChildren: () => ElementsPageModule },
   { path: 'sermon-single', loadChildren: () => SermonSinglePageModule },

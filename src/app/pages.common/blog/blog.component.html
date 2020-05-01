@@ -2,7 +2,7 @@
 
 	<!-- Blog Post -->
 	<div class="blog_post" *ngFor="let item of data.Stories">
-		<div class="blog_image" [appStoryEditor]="item" listName="Stories">
+		<div class="blog_image">
 			<img [src]="data.path(item.image)" alt="">
 			<div class="news_date d-flex flex-column align-items-center justify-content-center">
 				<div class="news_day">{{item.start | date:'d'}}</div>

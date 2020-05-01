@@ -1,0 +1,5 @@
+<ng-container>
+	<button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()">Hide</button>
+	<input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
+	<input type="submit" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save">
+</ng-container>

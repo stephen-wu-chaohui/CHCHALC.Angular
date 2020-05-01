@@ -218,39 +218,6 @@ startSermonsEndpoints();
 startCRUDEndpoints('Persons');
 startCRUDEndpoints('Stories');
 
-/////////////////////////////////////////////////////////////////
-// PastorToPerson
-
-function startPastorToPerson() {
-	// refresh item
-	app.get('/api/person/refresh', async (req, res) => {
-		await refreshPersonTable();
-		return res.status(200).send('OK');
-	});
-}
-
-
-async function refreshPersonTable() {
-	let pasters = db.collection('Pastors');
-	await pasters.get().then(querySnapshot => {
-		let items = querySnapshot.docs.map(doc => doc.data());
-		let changed = items.map(item => ({
-			portrait: '/assets/images/'+ item.image,
-			title: item.text,
-			name: item.title,
-			id: item.id
-		}));
-
-		var collec = db.collection('Persons');
-		changed.forEach(v => collec.doc(v.id).set(v));
-		return true;
-	});
-}
-
-// startCRUDEndpoints('Pastors');
-// startPastorToPerson();
-
-/////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////
@@ -291,7 +258,7 @@ async function doPost2Story() {
           chinese: "黄德贤"
         },
         id: "d58e9c64-6c77-490d-98c8-4a8737ff0510",
-        portrait: "/assets/images/pastor_1.jpg",
+        image: "/assets/images/pastor_1.jpg",
     	},
 			address: { chinese: '和平教室', english: 'Peace Classroom'},
 			minutes: 120

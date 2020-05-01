@@ -1,0 +1,23 @@
+<!-- <div class="owl-item text-center pastors_item">
+	<div class="pastors_item_image"><img [src]="data.path(item.image)" alt=""></div>
+	<div class="pastors_item_title">{{data.tr(item.name)}}</div>
+	<div class="pastors_item_text">
+		<p>{{data.tr(item.title)}}</p>
+	</div>
+</div> -->
+
+<app-entity-edit groupName="Persons" [item]="item" [formChanged]="formChanged"
+								 (itemCreated)="doItemCreated($event)"
+								 (applyChanges)="applyChanges($event)"
+								 (patchValue)="patchValue()"
+								 width="136px" height="136px" borderColor="red" borderRadius="50%"
+								 >
+	<form class="item" [formGroup]="formChanges">
+		<div class="name">
+			<input type="text" class="content" (changed)="setDirty()" formControlName="name">
+		</div>
+		<div class="title">
+			<textarea class="content" (input)="setDirty()" formControlName="title"></textarea>
+		</div>
+	</form>
+</app-entity-edit>

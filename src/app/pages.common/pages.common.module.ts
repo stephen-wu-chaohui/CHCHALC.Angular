@@ -23,16 +23,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ItemEditorModule } from './item-editor/item-editor.module';
+import { EntityEditComponent } from './entity-edit/entity-edit.component';
+import { PastorItemComponent } from './pastor-item/pastor-item.component';
+import { PastorEditComponent } from './pastor-edit/pastor-edit.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
 		CommonModule,
 		NguCarouselModule,
 		ReactiveFormsModule,
+		RouterModule,
 		AppCommonModule,
     ConfirmationPopoverModule.forRoot({
       focusButton: 'confirm',
-    }),
+		}),
+		ItemEditorModule
   ],
   declarations: [
 		BlogComponent,
@@ -46,6 +53,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 		MinistryItemComponent,
 		MinistryEditComponent,
 		PastorsSliderComponent,
+		PastorItemComponent,
+		PastorEditComponent,
 		PopularSemonSectionComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
@@ -56,6 +65,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 		BlogSidebarComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
+		EntityEditComponent
 	],
 	exports: [
 		HomeSliderComponent,
@@ -69,6 +79,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 		QuoteSectionComponent,
 		MinistrySectionComponent,
 		PastorsSliderComponent,
+		PastorItemComponent,
+		PastorEditComponent,
 		PopularSemonSectionComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,

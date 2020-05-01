@@ -12,7 +12,7 @@ export type Resource = string;
 
 export class Person {
 	id?: string;
-  portrait?: Resource;
+  image: Resource;
   name: MultiText;
   title?: MultiText;
 }
@@ -118,7 +118,12 @@ export class Ministry {
 	deleted: boolean;
   image: string;
   title: MultiText;
-  text: MultiText;
+	text: MultiText;
+
+	constructor() {
+		this.id = null;
+		this.deleted = false;
+	}
 }
 
 

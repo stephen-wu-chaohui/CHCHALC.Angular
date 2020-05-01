@@ -78,3 +78,43 @@
 	font-style: italic;
 	font-weight: 500;
 }
+
+
+.section_title_container
+{
+	text-align: center;
+}
+.section_title
+{
+	margin-top: 10px;
+}
+.section_title h2
+{
+	font-weight: 500;
+}
+.section_subtitle
+{
+	font-family: 'Noto Sans SC', serif;
+	font-size: 24px;
+	margin-top: -6px;
+}
+
+
+.light-text
+{
+	color: #ffffff;
+}
+
+.dark-text
+{
+	color: #1d1d1d;
+}
+
+
+@media only screen and (max-width: 575px)
+{
+	.section_subtitle
+	{
+		font-size: 16px;
+	}
+}
