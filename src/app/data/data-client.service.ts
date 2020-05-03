@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import { filter, map } from 'rxjs/operators';
 import { Entity } from './api-data';
 
-export type OneOfList = ''|'contactInfo' |'Sermons' |'Activities' |'Hightlights' |'Persons' |'Stories' |'Cellgroups'|'Ministries';
+export type OneOfList = ''|'contactInfo' |'sermons' |'activities' |'homeslides' |'persons' |'stories' |'cellgroups'|'ministries';
 
 @Injectable({
   providedIn: 'root'

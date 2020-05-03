@@ -38,9 +38,6 @@ export class ChchalcDataService {
       route: '/contact'
     }];
 
-  Sliders: SliderItem[];
-  contactInfo = new ContactInfo();
-
   churchTitle = {
     english: 'Abundant Life', chinese: '丰盛生命教会'
   };
@@ -199,7 +196,8 @@ export class ChchalcDataService {
     }
   };
 
-
+  Sliders: SliderItem[];
+  contactInfo = new ContactInfo();
   Cellgroups: Assemply[];
   Stories: Story[];
   latestStories: Story[];
@@ -219,7 +217,7 @@ export class ChchalcDataService {
   featuredSermons: Story[];
   PopularSermons: Story[];
 
-  adminMode: boolean = true;
+  adminMode: boolean = false;
 
   constructor(private settings: SettingsService, private dataClient: DataClientService, private store: AngularFirestore) {
   }
@@ -256,7 +254,7 @@ export class ChchalcDataService {
       }
     );
     this.PeopleObserver = this.store.collection('persons', a => a.orderBy('start', 'asc')).valueChanges();
-    this.SlidersObserver = this.store.collection('Hightlights').valueChanges();
+    this.SlidersObserver = this.store.collection('homeslides').valueChanges();
     this.StoriesObserver = this.store.collection('stories', a => a.orderBy('start', 'desc')).valueChanges();
     this.CellgroupsObserver = this.store.collection('cellgroups', a => a.orderBy('start', 'asc')).valueChanges();
     this.CellgroupsObserver.subscribe(next => {
