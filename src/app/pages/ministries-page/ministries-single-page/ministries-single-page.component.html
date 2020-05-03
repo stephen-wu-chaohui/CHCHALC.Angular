@@ -1,0 +1,10 @@
+<app-home [title]="title"></app-home>
+<app-intro [greeting]="greeting"></app-intro>
+<div *ngIf="folderMoments; else loading">
+  <app-quote-section></app-quote-section>
+  <app-story-section [section]="sectionMoments" [groupName]="folderMoments"></app-story-section>
+</div>
+<ng-template #loading>
+  <h2>Ministry not found...</h2>
+</ng-template>
+

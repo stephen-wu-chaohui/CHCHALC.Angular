@@ -10,13 +10,6 @@ export class Coordinate {
 
 export type Resource = string;
 
-export class Person {
-	id?: string;
-  image: Resource;
-  name: MultiText;
-  title?: MultiText;
-}
-
 ///////////////////////////////////////
 
 export class Entity {
@@ -24,17 +17,29 @@ export class Entity {
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
 	deleted?: boolean;			// soft deleted or not
 
+  start: Date;
 	image: Resource;
 	title: MultiText;
 	subtitle: MultiText;
-	description: MultiText;
+  description: MultiText;
+
+  constructor() {
+		this.id = null;
+    this.deleted = false;
+    this.start = new Date();
+  }
+}
+
+export class Person extends Entity {
+  name: MultiText;
 }
 
 export class Assemply extends Entity {
 	address: MultiText;
 	coordinate?: Coordinate;
 	peopleIds?: string[];
-	storyIds?: string[];
+  storyIds?: string[];
+
 }
 
 export class Comment {
@@ -93,7 +98,6 @@ export class Story extends Entity {
   belongs: Tag[];			// tag set
   host: Person;
   address: MultiText;
-  start: Date;
   minutes: number;
 	comments: Comment[];
 	videoId: string;
@@ -113,7 +117,7 @@ export class Church {
 /////////////// Legacy ////////////////////////
 
 
-export class Ministry {
+export class Ministry extends Assemply {
 	id: string;
 	deleted: boolean;
   image: string;
@@ -121,9 +125,14 @@ export class Ministry {
 	text: MultiText;
 
 	constructor() {
-		this.id = null;
-		this.deleted = false;
+    super();
 	}
 }
 
-
+export class Greeting extends Entity {
+	icon: Resource;
+	title: MultiText;
+	image: Resource;
+	subtitle: MultiText;
+	description: MultiText;
+}

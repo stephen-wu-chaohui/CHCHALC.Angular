@@ -1,0 +1,21 @@
+{
+	"image": "/assets/images/causes_1.jpg",
+	"title": { "english": "Rocky Life Group", "chinese": "磐石小家"},
+	"subtitle": { "english": "We are family"},
+	"description": {
+		"english": "This is a place holder description of Rocky Life Group. Please use admin app to fill it",
+		"chinese": "这处应该是磐石小家的问候话。请使用 admin 工具设置或修改它。"
+	},
+	"address": { "english": "Town center, Wigram"}
+}
+
+{
+	"image": "/assets/images/causes_2.jpg",
+	"title": { "english": "Showers of Blessing", "chinese": "恩雨小家"},
+	"subtitle": { "english": "I see the clouds, Yes I am ready"},
+	"description": {
+		"english": "This is a place holder description of Showers of Blessing. Please use admin app to fill it",
+		"chinese": "这处应该是恩雨小家的问候话。请使用 admin 工具设置或修改它。"
+	},
+	"address": { "english": "Bushinn center, Upper Riccarton"}
+}

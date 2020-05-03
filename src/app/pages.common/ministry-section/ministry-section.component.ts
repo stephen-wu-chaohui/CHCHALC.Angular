@@ -15,7 +15,6 @@ export class MinistrySectionComponent implements OnInit {
 	}
 
 	itemCreated($event) {
-		console.log('$event', $event);
-		this.data.Ministries.unshift($event);
+		// this.data.Ministries.unshift($event);
 	}
 }

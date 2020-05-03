@@ -6,16 +6,16 @@
 					"english": "God is all around us",
 					"chinese": "神与我们同在"
 			},
-			"image": "slider_background_1.jpg"
+			"image": "assets/images/slider_background_1.jpg"
 	},
 	{
-			"title": {
+    "deleted": false,
+    "id": "809f376a-e61a-4fcf-a7dc-1883d798b485",
+    "title": {
 					"english": "God is all around us",
 					"chinese": "神与我们同在"
 			},
-			"image": "slider_background_2.jpg",
-			"deleted": false,
-			"id": "809f376a-e61a-4fcf-a7dc-1883d798b485"
+			"image": "assets/images/slider_background_2.jpg"
 	},
 	{
 			"deleted": false,
@@ -24,6 +24,6 @@
 					"english": "God is all around us",
 					"chinese": "神与我们同在"
 			},
-			"image": "slider_background_3.jpg"
+			"image": "assets/images/slider_background_3.jpg"
 	}
 ]

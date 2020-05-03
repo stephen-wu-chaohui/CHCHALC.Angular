@@ -1,10 +1,10 @@
-<app-section-container [section]="data.Sections.ministries">
+<app-section-container [section]="section">
 	<div class="row story_row">
 		<div class="col-xl-4 col-md-6" *ngIf="data.adminMode">
-			<app-story-edit (itemCreated)="itemCreated($event)"></app-story-edit>
+			<app-story-edit [groupName]="groupName"></app-story-edit>
 		</div>
-		<div class="col-xl-4 col-md-6" *ngFor="let item of data.hideDeleted(data.Ministries)">
-			<app-story-edit *ngIf="data.adminMode" [item]="item"></app-story-edit>
+		<div class="col-xl-4 col-md-6" *ngFor="let item of observer|async">
+			<app-story-edit *ngIf="data.adminMode" [item]="item" [groupName]="groupName"></app-story-edit>
 			<app-story-view *ngIf="!data.adminMode" [item]="item"></app-story-view>
 		</div>
 

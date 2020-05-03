@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import * as moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
+import * as moment from 'moment';
+import { filter, map } from 'rxjs/operators';
 import { Entity } from './api-data';
 
 export type OneOfList = ''|'contactInfo' |'Sermons' |'Activities' |'Hightlights' |'Persons' |'Stories' |'Cellgroups'|'Ministries';
@@ -44,11 +45,23 @@ export class DataClientService {
     if (!entity.id) {
       entity.id = uuidv4();
     }
-    const dbentity = Object.assign({}, entity);
+		const dbentity = Object.assign({}, entity);
+		dbentity.lastUpdated = moment().unix();
     return this.store.collection(listName).doc(entity.id).set(dbentity);
   }
 
-  observeList(listName: string, includingDeleted: boolean) {
-    return this.store.collection(listName, ref => ref.where('deleted', '==', includingDeleted.toString())).snapshotChanges();
+  observeList<T>(listName: string, includingDeleted: boolean) {
+		// const query = this.store.collection(listName).ref.orderBy('timeStamp', 'desc');
+		let query = this.store.collection(listName).valueChanges();
+		if (!includingDeleted) {
+			query = query.pipe(map(arr => arr.filter((item: Entity) => !item.deleted)));
+		}
+		return query as Observable<T[]>;
+	}
+
+	single(collectionName: string): Observable<any> {
+		const query = this.store.collection(collectionName).doc('singleton');
+    return query.valueChanges();
   }
+
 }

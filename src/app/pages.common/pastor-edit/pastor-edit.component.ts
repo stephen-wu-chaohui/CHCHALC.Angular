@@ -55,11 +55,12 @@ export class PastorEditComponent {
   }
 
   doItemCreated($event) {
-		console.log('doItemCreated($event)', $event);
+		// console.log('doItemCreated($event)', $event);
 		if (this.itemCreated) {
 			this.itemCreated.emit($event);
 		}
     this.item = this.newPerson();
+    this.patchValue();
   }
 
   newPerson(): Person {

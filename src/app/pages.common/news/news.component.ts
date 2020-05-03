@@ -13,7 +13,7 @@ export class NewsComponent implements OnInit {
 	constructor(public data: ChchalcDataService) { }
 
   ngOnInit() {
-		console.log(this.item);
+		// console.log(this.item);
   }
 
 }

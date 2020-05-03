@@ -26,7 +26,7 @@ export function init_app(data: ChchalcDataService) {
       BrowserModule,
 			AngularFireModule.initializeApp(environment.firebase),
 			AngularFireStorageModule,
-			AngularFirestoreModule,
+			AngularFirestoreModule.enablePersistence(),
       PagesModule,
 			AppLayoutModule,
 			AppCommonModule,

@@ -60,10 +60,11 @@ export class MinistryEditComponent {
 			this.itemCreated.emit($event);
 		}
     this.item = this.newMinistry();
+    this.patchValue();
   }
 
   newMinistry(): Ministry {
-		const newItem = new Ministry();
+    const newItem = new Ministry();
 		newItem.id = uuidv4();
     newItem.title = { chinese: '新的事工', english: 'New Ministry'};
     newItem.text = {

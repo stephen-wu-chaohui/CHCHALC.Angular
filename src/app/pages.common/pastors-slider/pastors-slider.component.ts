@@ -27,7 +27,7 @@ export class PastorsSliderComponent implements OnInit {
 	}
 
 	itemCreated(person: Person) {
-		this.data.People.unshift(person);
+		// this.data.People.unshift(person);
 	}
 
 }

@@ -1,7 +1,7 @@
-<div class="blog_content" *ngIf="data.Stories">
+<div class="blog_content" *ngIf="data.StoriesObserver">
 
 	<!-- Blog Post -->
-	<div class="blog_post" *ngFor="let item of data.Stories">
+	<div class="blog_post" *ngFor="let item of data.StoriesObserver|async">
 		<div class="blog_image">
 			<img [src]="data.path(item.image)" alt="">
 			<div class="news_date d-flex flex-column align-items-center justify-content-center">

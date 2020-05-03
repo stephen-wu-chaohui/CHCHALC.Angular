@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ItemEditorComponent } from './item-editor.component';
+import { CellgroupEditComponent } from './cellgroup-edit.component';
 
-describe('ItemEditorComponent', () => {
-  let component: ItemEditorComponent;
-  let fixture: ComponentFixture<ItemEditorComponent>;
+describe('CellgroupEditComponent', () => {
+  let component: CellgroupEditComponent;
+  let fixture: ComponentFixture<CellgroupEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemEditorComponent ]
+      declarations: [ CellgroupEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemEditorComponent);
+    fixture = TestBed.createComponent(CellgroupEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

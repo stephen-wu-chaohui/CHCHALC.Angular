@@ -18,7 +18,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
 	@Input() height = '276px';
 	@Input() borderRadius = '50%';
 	@Input() borderColor = 'red';
-  @Input() groupName: OneOfList;
+  @Input() groupName: string;
   @Input() item: Entity = null;
   @Input() formChanged = false;
   @Output() applyChanges = new EventEmitter();
@@ -27,19 +27,18 @@ export class EntityEditComponent implements OnInit, OnChanges {
 
   image: any;
   isDirty = false;
+  isNew = true;
   message = '';
-	file: File;
+  file: File;
+  isSaving = false;
 
 	ngStyle = '';
 
   constructor(public data: ChchalcDataService,
               public settings: SettingsService,
 							private dbapi: DataClientService,
-							private store: AngularFirestore,
               private storage: AngularFireStorage
   ) {
-
-		this.ngStyle = `{width: ${this.width}px, height: ${this.height}px, border-radius: ${this.borderRadius}}`;
 	}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -52,6 +51,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
       this.item = changes.item.currentValue;
       this.image = this.item.image;
       this.isDirty = false;
+      this.isNew = !this.image;
       this.message = '';
       this.file = null;
     }
@@ -90,6 +90,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
       this.message = 'Only images are supported.';
       return;
     }
+    this.isSaving = false;
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
@@ -104,7 +105,8 @@ export class EntityEditComponent implements OnInit, OnChanges {
       return;
     }
     if (this.file) {
-      const ref = this.storage.ref(`${this.groupName}/${this.item.id}.${this.file.type}`);
+      this.isSaving = true;
+      const ref = this.storage.ref(`${this.groupName}/${this.item.id}`);
       ref.put(this.file).then(() => {
         ref.getDownloadURL().subscribe(path => {
           this.item.image = path;

@@ -206,17 +206,17 @@ const storage = admin.storage();
 
 
 
-startCRUDEndpoints('News');
-startCRUDEndpoints('Cellgroups');
-startCRUDEndpoints('Ministries');
-startCRUDEndpoints('Testimonies');
-startCRUDEndpoints('Activities');
-startCRUDEndpoints('Hightlights');
+startCRUDEndpoints('news');
+startCRUDEndpoints('cellgroups');
+startCRUDEndpoints('ministries');
+startCRUDEndpoints('testimonies');
+startCRUDEndpoints('activities');
+startCRUDEndpoints('homeslides');
 startGetPutEndpoints('contactInfo');
 
 startSermonsEndpoints();
-startCRUDEndpoints('Persons');
-startCRUDEndpoints('Stories');
+startCRUDEndpoints('persons');
+startCRUDEndpoints('stories');
 
 
 
@@ -264,7 +264,7 @@ async function doPost2Story() {
 			minutes: 120
 		}));
 
-		var collec = db.collection('Stories');
+		var collec = db.collection('stories');
 		changed.forEach(v => collec.doc(v.id).set(v));
 		return true;
 	});

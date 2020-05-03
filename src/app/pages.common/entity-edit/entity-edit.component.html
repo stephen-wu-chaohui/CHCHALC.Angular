@@ -1,11 +1,11 @@
 <div class="entity">
 		<div class="image">
-			<img [src]="image" class="round" width="100%"
+			<img [src]="image" class="round" width="100%" [class.saving]="isSaving"
 				[style.width]="width" [style.min-height]="height" [style.border-color]="borderColor" [style.border-radius]="borderRadius"
 				[ngClass]="item.deleted? 'deleted': ''" (click)="onImageClick()">
-			<button type="button" class="btn btn-primary btn-outlined tool-onsite top-left"
-				[routerLink]="['/ministries', item.id]" routerLinkActive="router-link-active" >Go!</button>
-			<button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()">Hide</button>
+			<button type="button" class="btn btn-primary btn-outlined tool-onsite top-left" *ngIf="!isDirty && !isNew"
+				[routerLink]="['/'+groupName, item.id]" routerLinkActive="router-link-active" >Go!</button>
+			<button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()" *ngIf="!isDirty && !isNew">Hide</button>
 			<input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
 			<input type="button" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save" (click)="onSave()">
 		</div>

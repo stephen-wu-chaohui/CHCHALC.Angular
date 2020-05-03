@@ -8,11 +8,14 @@ import {
   Resource,
   Person,
   Story,
-  Assemply
+  Assemply,
+  Greeting
 } from './api-data';
 import { SettingsService } from './settings.service';
 import { DataClientService } from './data-client.service';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +31,7 @@ export class ChchalcDataService {
       title: { english: 'Sermons', chinese: '讲道'},
       route: '/sermons'
     }, {
-      title: { english: 'Blog', chinese: '博客'},
+      title: { english: 'News', chinese: '新闻'},
       route: '/blog'
     }, {
       title: { english: 'Contact', chinese: '聯係我們'},
@@ -74,8 +77,8 @@ export class ChchalcDataService {
 
   Sections = {
     popularSermons: {
-			icon: '/assets/images/church_4.png',
-			title: {
+      icon: '/assets/images/church_4.png',
+      title: {
             english: 'Popular Sermons',
             chinese: '热点讲道'
         },
@@ -89,7 +92,7 @@ export class ChchalcDataService {
             english: 'God loves us all',
             chinese: '神与我们同在'
         },
-				icon: '/assets/images/church_1.png',
+        icon: '/assets/images/church_1.png',
         title: {
             chinese: '我们的事工',
             english: 'Our Ministries'
@@ -109,15 +112,15 @@ export class ChchalcDataService {
             english: 'Psalm 27:4'
         },
         label: 'quote',
-				icon: '/assets/images/church_5.png',
+        icon: '/assets/images/church_5.png',
         title: {
             chinese: '今日金句',
             english: 'Quote of the day'
         }
     },
     cellgroups: {
-			icon: '/assets/images/church_4.png',
-			title: {
+      icon: '/assets/images/church_4.png',
+      title: {
             english: 'Our Church\'s Cellgroups',
             chinese: '我们的小家'
         },
@@ -127,25 +130,9 @@ export class ChchalcDataService {
         }
     },
     contactImage: '/assets/images/contact_image.jpg',
-    greeting: {
-        icon: '/assets/images/church_1.png',
-        title: {
-            english: 'Welcome to Our Church',
-            chinese: '欢迎来到丰盛生命教会'
-        },
-        image: '/assets/images/intro.jpg',
-        subtitle: {
-            chinese: '神与我们同在',
-            english: 'God loves us all'
-        },
-        description: {
-            chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
-            english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
-        }
-    },
     pastors: {
-			icon: '/assets/images/church_2.png',
-			title: {
+      icon: '/assets/images/church_2.png',
+      title: {
             chinese: '我们的牧师',
             english: 'Our Pastors'
         },
@@ -155,8 +142,8 @@ export class ChchalcDataService {
         }
     },
     todaySermon: {
-			icon: '/assets/images/church_3.png',
-			title: {
+      icon: '/assets/images/church_3.png',
+      title: {
             english: 'Today\'s Sermon',
             chinese: '今日讲道'
         },
@@ -194,41 +181,47 @@ export class ChchalcDataService {
     },
   };
 
-  Cellgroups: Assemply[] = [{
-    image: '/assets/images/causes_1.jpg',
-    title: { english: 'Rocky Life Group', chinese: '磐石小家'},
-    subtitle: { english: 'We are family'},
-    description: {
-      english: 'This is a place holder description of Rocky Life Group. Please use admin app to fill it',
-      chinese: '这处应该是磐石小家的问候话。请使用 admin 工具设置或修改它。'
+  greeting: Greeting = {
+    start: new Date(),
+    icon: '/assets/images/church_1.png',
+    title: {
+        english: 'Welcome to Our Church',
+        chinese: '欢迎来到丰盛生命教会'
     },
-    address: { english: 'Town center, Wigram'},
-  }, {
-    image: '/assets/images/causes_2.jpg',
-    title: { english: 'Showers of Blessing', chinese: '恩雨小家'},
-    subtitle: { english: 'I see the clouds, Yes I am ready'},
-    description: {
-      english: 'This is a place holder description of Showers of Blessing. Please use admin app to fill it',
-      chinese: '这处应该是恩雨小家的问候话。请使用 admin 工具设置或修改它。'
+    image: '/assets/images/intro.jpg',
+    subtitle: {
+        chinese: '神与我们同在',
+        english: 'God loves us all'
     },
-    address: { english: 'Bushinn center, Upper Riccarton'},
-  }];
+    description: {
+        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
+        english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
+    }
+  };
 
 
+  Cellgroups: Assemply[];
   Stories: Story[];
   latestStories: Story[];
-
   Ministries: Ministry[];
-
   People: Person[];
 
-  today: Story;
-  Featured: Story[];
+
+  // MinistriesObserver: Observable<any>;
+  PeopleObserver: Observable<any>;
+  SlidersObserver: Observable<any>;
+  latestStoriesObserver: Observable<any>;
+  StoriesObserver: Observable<any>;
+  CellgroupsObserver: Observable<any>;
+  contactInfoObserver: Observable<any>;
+
+  todaySermon: Story;
+  featuredSermons: Story[];
   PopularSermons: Story[];
 
-	adminMode: boolean = false;
+  adminMode: boolean = true;
 
-  constructor(private settings: SettingsService, private dataClient: DataClientService) {
+  constructor(private settings: SettingsService, private dataClient: DataClientService, private store: AngularFirestore) {
   }
 
   tr(text: MultiText): string {
@@ -244,33 +237,36 @@ export class ChchalcDataService {
   }
 
   init() {
-    this.dataClient.getAPIData<SliderItem[]>('Hightlights').subscribe(next =>
-      this.Sliders = next
+    this.dataClient.single('contactInfo').subscribe(
+      next => {
+        this.contactInfo = next as ContactInfo;
+      }
     );
-    this.dataClient.getAPIData<ContactInfo>('contactInfo').subscribe(next =>
-      this.contactInfo = next
+    this.store.collection('sermons', a => a.orderBy('start', 'desc')).valueChanges().subscribe(
+      next => {
+        const sermons = (next as Story[]);
+        this.todaySermon = sermons.shift() as Story;
+        this.PopularSermons = sermons.slice(0, 30) as Story[];
+        this.featuredSermons = sermons.slice(0, 2) as Story[];
+      }
     );
-    this.dataClient.getAPIData<Person[]>('Persons').subscribe(next =>
-      this.People = next
+    this.store.collection('ministries', a => a.orderBy('start', 'asc')).valueChanges().subscribe(
+      next => {
+        this.Ministries = next as Ministry[];
+      }
     );
-    this.dataClient.getAPIData<Assemply[]>('Cellgroups').subscribe(next =>
-      this.Cellgroups = next
-    );
-    this.dataClient.getAPIData<Story[]>('Stories').subscribe(items => {
-      this.Stories = items;
-      this.latestStories = items.slice(0, 3);
+    this.PeopleObserver = this.store.collection('persons', a => a.orderBy('start', 'asc')).valueChanges();
+    this.SlidersObserver = this.store.collection('Hightlights').valueChanges();
+    this.StoriesObserver = this.store.collection('stories', a => a.orderBy('start', 'desc')).valueChanges();
+    this.CellgroupsObserver = this.store.collection('cellgroups', a => a.orderBy('start', 'asc')).valueChanges();
+    this.CellgroupsObserver.subscribe(next => {
+      this.Cellgroups = next as Assemply[];
+      return next;
     });
-    this.dataClient.getAPIData<Ministry[]>('Ministries').subscribe(ministries => {
-      this.Ministries = ministries;
-    });
-    this.dataClient.getAPIData<Story[]>('Sermons').subscribe(sermons => {
-      this.today = sermons[0];
-      this.PopularSermons = sermons.slice(1);
-      this.Featured = this.PopularSermons.slice(0, 2);
-    });
-	}
 
-	hideDeleted(list: any[]) {
-		return (this.adminMode || !list) ? list : list.filter(it => !it.deleted);
-	}
+  }
+
+  hideDeleted(list: any[]) {
+    return (this.adminMode || !list) ? list : list.filter(it => !it.deleted);
+  }
 }

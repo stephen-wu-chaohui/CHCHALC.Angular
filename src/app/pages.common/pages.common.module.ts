@@ -23,11 +23,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 // import { HomeComponent } from '../app.layout/home/home.component';
 // import { ContactMapComponent } from '../app.layout/contact-map/contact-map.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { ItemEditorModule } from './item-editor/item-editor.module';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
 import { PastorItemComponent } from './pastor-item/pastor-item.component';
 import { PastorEditComponent } from './pastor-edit/pastor-edit.component';
 import { RouterModule } from '@angular/router';
+import { StorySectionComponent } from './story-section/story-section.component';
+import { StoryEditComponent } from './story-edit/story-edit.component';
+import { StoryViewComponent } from './story-view/story-view.component';
+import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.component';
 
 @NgModule({
   imports: [
@@ -39,7 +42,6 @@ import { RouterModule } from '@angular/router';
     ConfirmationPopoverModule.forRoot({
       focusButton: 'confirm',
 		}),
-		ItemEditorModule
   ],
   declarations: [
 		BlogComponent,
@@ -60,12 +62,16 @@ import { RouterModule } from '@angular/router';
 		ContactInfoSectionComponent,
 		HomeSliderComponent,
 		IntroComponent,
-		CellgroupsSectionComponent,
+    CellgroupsSectionComponent,
+    CellgroupEditComponent,
 		BlogComponent,
 		BlogSidebarComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
-		EntityEditComponent
+    EntityEditComponent,
+    StorySectionComponent,
+    StoryEditComponent,
+    StoryViewComponent
 	],
 	exports: [
 		HomeSliderComponent,
@@ -85,6 +91,9 @@ import { RouterModule } from '@angular/router';
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
 		CellgroupsSectionComponent,
+    StorySectionComponent,
+    StoryEditComponent,
+    StoryViewComponent
 	]
 })
 export class PagesCommonModule { }

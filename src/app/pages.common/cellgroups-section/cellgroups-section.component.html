@@ -3,20 +3,11 @@
 
 	<app-section-container [section]="data.Sections.cellgroups">
 		<div class="row">
-			<div class="col">
-				<div class="cellgroups_slider_container" *ngIf="data.Cellgroups.length > 0">
-					<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.Cellgroups" class="cellgroups_slider">
-						<ngu-tile *nguCarouselDef="let item">
-							<div class="owl-item text-center cellgroups_item">
-								<div class="cellgroups_item_image"><img [src]="item.image" alt=""></div>
-									<div class="cellgroups_item_title">{{data.tr(item.title)}}</div>
-									<div class="cellgroups_item_text">
-										<p>{{data.tr(item.text)}}</p>
-									</div>
-								</div>
-							</ngu-tile>
-						</ngu-carousel>
-				</div>
-			</div>
+			<div *ngFor="let item of data.CellgroupsObserver|async" class="cellgroups_slider col-xl-4 col-md-6">
+        <app-cellgroup-edit [item]="item"></app-cellgroup-edit>
+      </div>
+			<div class="cellgroups_slider col-xl-4 col-md-6">
+        <app-cellgroup-edit></app-cellgroup-edit>
+      </div>
 		</div>
 	</app-section-container>

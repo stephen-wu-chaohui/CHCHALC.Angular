@@ -1,12 +1,12 @@
 	<!-- Pastors -->
 	<app-section-container [section]="data.Sections.pastors">
-		<div class="row" *ngIf="data.People">
-			<div class="col-xl-4 col-md-6" *ngIf="data.adminMode">
-				<app-pastor-edit (itemCreated)="itemCreated($event)"></app-pastor-edit>
-			</div>
-			<div class="col-xl-4 col-md-6" *ngFor="let item of data.hideDeleted(data.People)">
+		<div class="row" *ngIf="data.PeopleObserver">
+			<div class="col-xl-4 col-md-6" *ngFor="let item of data.PeopleObserver|async">
 				<app-pastor-edit *ngIf="data.adminMode" [item]="item"></app-pastor-edit>
 				<app-pastor-item *ngIf="!data.adminMode" [item]="item"></app-pastor-item>
+			</div>
+			<div class="col-xl-4 col-md-6" *ngIf="data.adminMode">
+				<app-pastor-edit (itemCreated)="itemCreated($event)"></app-pastor-edit>
 			</div>
 
 			<!-- <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.People" class="pastors_slider" *ngIf="data.People.length > 0">

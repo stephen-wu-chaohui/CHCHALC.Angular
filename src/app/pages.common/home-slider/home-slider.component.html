@@ -1,8 +1,8 @@
 	<!-- Home -->
 
-	<div class="preface-home" *ngIf="data.Sliders">
-		<div class="home_slider_container" *ngIf="data.Sliders.length > 0">
-			<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.Sliders">
+	<div class="preface-home" *ngIf="data.SlidersObserver">
+		<div class="home_slider_container">
+			<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.SlidersObserver | async">
 				<ngu-tile *nguCarouselDef="let item; let i = index">
 					<div class="home_slider_background">
 						<img class="home_slider_image" [src]="item.image">

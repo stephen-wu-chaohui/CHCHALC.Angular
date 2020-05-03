@@ -14,5 +14,6 @@ export class MinistryItemComponent implements OnInit {
   constructor(public data: ChchalcDataService) {}
 
   ngOnInit() {
+		// console.log('MinistryItemComponent.item', this.item);
   }
 }

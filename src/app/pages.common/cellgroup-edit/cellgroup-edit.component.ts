@@ -1,37 +1,36 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Story } from 'src/app/data/api-data';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Language } from 'src/app/data/settings.service';
+import { Assemply } from 'src/app/data/api-data';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-story-edit',
-  templateUrl: './story-edit.component.html',
-  styleUrls: ['./story-edit.component.css']
+  selector: 'app-cellgroup-edit',
+  templateUrl: './cellgroup-edit.component.html',
+  styleUrls: ['./cellgroup-edit.component.css']
 })
-export class StoryEditComponent {
-  @Input() item: Story;
-  @Input() groupName: string;
+export class CellgroupEditComponent {
+  @Input() item: Assemply;
   @Output() itemCreated = new EventEmitter();
 
   formChanged = false;
 
   formChanges = new FormGroup({
     title: new FormControl(''),
-    text: new FormControl(''),
+    desc: new FormControl(''),
   });
 
   constructor(public data: ChchalcDataService) {
     if (!this.item) {
-      this.item = this.newStory();
+      this.item = this.newCellgroup();
     }
   }
 
   patchValue() {
     this.formChanges.patchValue({
       title: this.data.tr(this.item.title),
-      text: this.data.tr(this.item.description),
+      desc: this.data.tr(this.item.description),
     });
   }
 
@@ -41,11 +40,11 @@ export class StoryEditComponent {
     switch (language) {
       case 'chinese':
         this.item.title.chinese = v.title;
-        this.item.description.chinese = v.text;
+        this.item.description.chinese = v.desc;
         break;
       case 'english':
         this.item.title.english = v.title;
-        this.item.description.english = v.text;
+        this.item.description.english = v.desc;
         break;
     }
   }
@@ -56,22 +55,22 @@ export class StoryEditComponent {
   }
 
   doItemCreated($event) {
-		console.log('doItemCreated($event)', $event);
 		if (this.itemCreated) {
-			this.itemCreated.emit($event);
+		 	this.itemCreated.emit($event);
 		}
-    this.item = this.newStory();
+    this.item = this.newCellgroup();
     this.patchValue();
   }
 
-  newStory(): Story {
-		const newItem = new Story();
-		newItem.id = uuidv4();
-    newItem.title = { chinese: '新的故事', english: 'New Story'};
+  newCellgroup(): Assemply {
+		const newItem = new Assemply();
+    newItem.id = uuidv4();
+    newItem.title = { chinese: '小家', english: 'Cellgroup'};
     newItem.description = {
-        chinese: '你们要去、使万民作我的门徒、奉父子圣灵的名、给他们施洗',
-        english: 'Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit'
+        chinese: '这处应该是小家的问候话。请使用 admin 工具设置或修改它',
+        english: 'This is a place holder description of the cellgroup. Please use admin app to fill it'
     };
     return newItem;
   }
+
 }
