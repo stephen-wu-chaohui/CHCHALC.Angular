@@ -7,7 +7,7 @@ import { PagesCommonModule } from '../../pages.common/pages.common.module';
   styleUrls: ['./blog-page.component.css' ]
 })
 export class BlogPageComponent implements OnInit {
-	title = { english: 'Blog', chinese: '部落格'};
+	title = { english: 'News', chinese: '新闻'};
 
 	constructor() { }
 

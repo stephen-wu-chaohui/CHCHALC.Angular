@@ -2,20 +2,10 @@
 	<app-section-container [section]="data.Sections.pastors">
 		<div class="row" *ngIf="data.PeopleObserver">
 			<div class="col-xl-4 col-md-6" *ngFor="let item of data.PeopleObserver|async">
-				<app-pastor-edit *ngIf="data.adminMode" [item]="item"></app-pastor-edit>
-				<app-pastor-item *ngIf="!data.adminMode" [item]="item"></app-pastor-item>
+				<app-pastor-edit  [item]="item"></app-pastor-edit>
 			</div>
 			<div class="col-xl-4 col-md-6" *ngIf="data.adminMode">
 				<app-pastor-edit (itemCreated)="itemCreated($event)"></app-pastor-edit>
 			</div>
-
-			<!-- <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.People" class="pastors_slider" *ngIf="data.People.length > 0">
-				<ngu-tile *nguCarouselDef="let item">
-					<app-pastor-edit *ngIf="data.adminMode" [item]="item"></app-pastor-edit>
-					<app-pastor-item *ngIf="!data.adminMode" [item]="item"></app-pastor-item>
-				</ngu-tile>
-			</ngu-carousel>
-			<div class="pastors_slider_nav pastors_slider_prev trans_200 d-flex flex-column align-items-center justify-content-center"><img src="/assets/images/arrow_l.png" alt=""></div>
-			<div class="pastors_slider_nav pastors_slider_next trans_200 d-flex flex-column align-items-center justify-content-center"><img src="/assets/images/arrow_r.png" alt=""></div> -->
 		</div>
 	</app-section-container>

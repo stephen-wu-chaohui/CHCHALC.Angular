@@ -6,7 +6,7 @@ import { DataClientService, OneOfList } from 'src/app/data/data-client.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as moment from 'moment';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-entity-edit',
@@ -37,7 +37,8 @@ export class EntityEditComponent implements OnInit, OnChanges {
   constructor(public data: ChchalcDataService,
               public settings: SettingsService,
 							private dbapi: DataClientService,
-              private storage: AngularFireStorage
+              private storage: AngularFireStorage,
+              private router: Router
   ) {
 	}
 
@@ -58,6 +59,10 @@ export class EntityEditComponent implements OnInit, OnChanges {
   }
 
   onImageClick() {
+    if (this.data.adminMode) {
+      return;
+    }
+    this.router.navigate(['/'+this.groupName, { id: this.item.id }]);
 	}
 
 

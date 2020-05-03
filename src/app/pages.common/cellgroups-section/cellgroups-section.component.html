@@ -6,7 +6,7 @@
 			<div *ngFor="let item of data.CellgroupsObserver|async" class="cellgroups_slider col-xl-4 col-md-6">
         <app-cellgroup-edit [item]="item"></app-cellgroup-edit>
       </div>
-			<div class="cellgroups_slider col-xl-4 col-md-6">
+			<div class="cellgroups_slider col-xl-4 col-md-6" *ngIf="data.adminMode">
         <app-cellgroup-edit></app-cellgroup-edit>
       </div>
 		</div>

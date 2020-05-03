@@ -14,10 +14,10 @@
 								 >
 	<form class="item" [formGroup]="formChanges">
 		<div class="name">
-			<input type="text" class="content" (changed)="setDirty()" formControlName="name">
+			<input type="text" class="content" (changed)="setDirty()" formControlName="name" [readonly]="!data.adminMode">
 		</div>
 		<div class="title">
-			<textarea class="content" (input)="setDirty()" formControlName="title"></textarea>
+			<textarea class="content" (input)="setDirty()" formControlName="title" [readonly]="!data.adminMode"></textarea>
 		</div>
 	</form>
 </app-entity-edit>

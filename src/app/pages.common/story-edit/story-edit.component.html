@@ -2,14 +2,14 @@
 								 (itemCreated)="doItemCreated($event)"
 								 (applyChanges)="applyChanges($event)"
 								 (patchValue)="patchValue()"
-								 width="100%" height="100%" borderColor="red" borderRadius="0"
+								 width="100%" height="150px" borderColor="red" borderRadius="0"
 								 >
 	<form [formGroup]="formChanges">
 		<div class="title">
-			<textarea class="content" (input)="setDirty()" formControlName="title"></textarea>
+			<textarea class="content" (input)="setDirty()" formControlName="title" [readonly]="!data.adminMode"></textarea>
 		</div>
 		<div class="text">
-			<textarea class="content" (input)="setDirty()" formControlName="text"></textarea>
+			<textarea class="content" (input)="setDirty()" formControlName="text" [readonly]="!data.adminMode"></textarea>
 		</div>
 	</form>
 </app-entity-edit>

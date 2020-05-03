@@ -202,16 +202,12 @@ export class ChchalcDataService {
   Stories: Story[];
   latestStories: Story[];
   Ministries: Ministry[];
-  People: Person[];
-
 
   // MinistriesObserver: Observable<any>;
   PeopleObserver: Observable<any>;
   SlidersObserver: Observable<any>;
-  latestStoriesObserver: Observable<any>;
-  StoriesObserver: Observable<any>;
+  NewsObserver: Observable<any>;
   CellgroupsObserver: Observable<any>;
-  contactInfoObserver: Observable<any>;
 
   todaySermon: Story;
   featuredSermons: Story[];
@@ -255,7 +251,7 @@ export class ChchalcDataService {
     );
     this.PeopleObserver = this.store.collection('persons', a => a.orderBy('start', 'asc')).valueChanges();
     this.SlidersObserver = this.store.collection('homeslides').valueChanges();
-    this.StoriesObserver = this.store.collection('stories', a => a.orderBy('start', 'desc')).valueChanges();
+    this.NewsObserver = this.store.collection('news', a => a.orderBy('start', 'desc')).valueChanges();
     this.CellgroupsObserver = this.store.collection('cellgroups', a => a.orderBy('start', 'asc')).valueChanges();
     this.CellgroupsObserver.subscribe(next => {
       this.Cellgroups = next as Assemply[];

@@ -1,7 +1,7 @@
 <!-- News -->
 <app-section-container [section]="data.Sections.latest">
 	<div class="row news_row">
-		<app-news class="col-md-6 col-lg-4" *ngFor="let item of data.StoriesObserver|async" [item]="item">
+		<app-news class="col-md-6 col-lg-4" *ngFor="let item of data.NewsObserver|async" [item]="item">
 		</app-news>
 	</div>
 </app-section-container>

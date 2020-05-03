@@ -1,7 +1,7 @@
-<div class="blog_content" *ngIf="data.StoriesObserver">
+<div class="blog_content" *ngIf="data.NewsObserver">
 
 	<!-- Blog Post -->
-	<div class="blog_post" *ngFor="let item of data.StoriesObserver|async">
+	<!-- <div class="blog_post" *ngFor="let item of data.NewsObserver|async">
 		<div class="blog_image">
 			<img [src]="data.path(item.image)" alt="">
 			<div class="news_date d-flex flex-column align-items-center justify-content-center">
@@ -21,7 +21,11 @@
 			<p>{{data.tr(item.description)}}</p>
 		</div>
 		<div class="blog_link"><a routeLink="#">Read More</a></div>
-	</div>
+	</div> -->
+
+  <app-story-section groupName="news"></app-story-section>
+
+
 
 </div>
 
