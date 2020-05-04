@@ -19,6 +19,9 @@ export class HomeSliderComponent implements OnInit {
     interval: { timing: 3000 },
     animation: 'lazy'
   };
+  comeAndJoinUs = {
+    english: 'Come and Join us', chinese: '欢迎加入我们'
+  };
 
   constructor(public data: ChchalcDataService) { }
 
