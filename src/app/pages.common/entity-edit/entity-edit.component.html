@@ -2,7 +2,7 @@
 		<div class="image">
 			<img [src]="image" class="round" width="100%" [class.saving]="isSaving"
 				[style.width]="width" [style.min-height]="height" [style.border-color]="borderColor" [style.border-radius]="borderRadius"
-        [class.deleted]="item.deleted" [routerLink]="['/'+groupName, item.id]" routerLinkActive="router-link-active">
+        [class.deleted]="item.deleted" (click)="imageClick.emit()">
       <ng-container *ngIf="data.adminMode">
         <button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()" *ngIf="!isDirty && !isNew">Hide</button>
   			<input type="file" #file accept='image/*,application/pdf' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">

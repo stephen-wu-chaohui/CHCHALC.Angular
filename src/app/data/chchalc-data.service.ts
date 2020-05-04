@@ -179,7 +179,7 @@ export class ChchalcDataService {
   };
 
   greeting: Greeting = {
-    start: new Date(),
+    start: new Date().getTime(),
     icon: '/assets/images/church_1.png',
     title: {
         english: 'Welcome to Our Church',
@@ -203,7 +203,6 @@ export class ChchalcDataService {
   latestStories: Story[];
   Ministries: Ministry[];
 
-  // MinistriesObserver: Observable<any>;
   PeopleObserver: Observable<any>;
   SlidersObserver: Observable<any>;
   NewsObserver: Observable<any>;

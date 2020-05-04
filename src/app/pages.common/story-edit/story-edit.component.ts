@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Language } from 'src/app/data/settings.service';
 import { v4 as uuidv4 } from 'uuid';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-story-edit',
@@ -16,13 +17,14 @@ export class StoryEditComponent {
   @Output() itemCreated = new EventEmitter();
 
   formChanged = false;
+  message: string;
 
   formChanges = new FormGroup({
     title: new FormControl(''),
     text: new FormControl(''),
   });
 
-  constructor(public data: ChchalcDataService) {
+  constructor(public data: ChchalcDataService, private storage: AngularFireStorage) {
     if (!this.item) {
       this.item = this.newStory();
     }
@@ -73,5 +75,31 @@ export class StoryEditComponent {
         english: 'Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit'
     };
     return newItem;
+  }
+
+  onFileChanged(files: File[]) {
+    if (files.length === 0) {
+      return;
+    }
+    const mimeType = files[0].type;
+    if (mimeType.match(/pdf\/*/) == null) {
+      this.message = 'Only pdfs are supported.';
+      return;
+    }
+
+    const pdf = files[0];
+    const ref = this.storage.ref(`${this.groupName}/${this.item.id}.pdf`);
+    ref.put(pdf).then(() => {
+      ref.getDownloadURL().subscribe(path => {
+        this.item.pdfPath = path;
+        this.message = 'PDF file is uploaded.';
+      });
+    });
+  }
+
+  imageClicked() {
+    if (this.item.pdfPath) {
+      window.open(this.item.pdfPath);
+    }
   }
 }

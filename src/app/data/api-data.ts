@@ -4,8 +4,8 @@ export class MultiText {
 }
 
 export class Coordinate {
-	latitute: number;
-	longitude: number;
+  latitute: number;
+  longitude: number;
 }
 
 export type Resource = string;
@@ -15,18 +15,19 @@ export type Resource = string;
 export class Entity {
   id?: string;					// uuid as Id
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
-	deleted?: boolean;			// soft deleted or not
+  deleted?: boolean;			// soft deleted or not
 
-  start: Date;
-	image: Resource;
-	title: MultiText;
-	subtitle: MultiText;
+  start: number;  // unix timestamp of UTC in Timestamp in Milliseconds
+  image: Resource;
+  title: MultiText;
+  subtitle: MultiText;
   description: MultiText;
 
   constructor() {
-		this.id = null;
+    this.id = null;
     this.deleted = false;
-    this.start = new Date();
+    this.lastUpdated = new Date().getTime();
+    this.start = new Date().getTime();
   }
 }
 
@@ -35,9 +36,9 @@ export class Person extends Entity {
 }
 
 export class Assemply extends Entity {
-	address: MultiText;
-	coordinate?: Coordinate;
-	peopleIds?: string[];
+  address: MultiText;
+  coordinate?: Coordinate;
+  peopleIds?: string[];
   storyIds?: string[];
 
 }
@@ -66,9 +67,9 @@ export class Section {
 }
 
 export class ContactInfo {
-	mainSite: Site;
+  mainSite: Site;
   sites: Site[];
-	contactImage: Resource;
+  contactImage: Resource;
 }
 
 export class Site {
@@ -99,18 +100,19 @@ export class Story extends Entity {
   host: Person;
   address: MultiText;
   minutes: number;
-	comments: Comment[];
-	videoId: string;
-	reference: MultiText;
+  comments: Comment[];
+  videoId: string;
+  reference: MultiText;
+  pdfPath: string;
 }
 
 export class Church {
-	info: Assemply;
-	people: Person[];
-	stories: Story[];
-	sermons: Story[];
-	cells: Assemply[];
-	minitories: Assemply[];
+  info: Assemply;
+  people: Person[];
+  stories: Story[];
+  sermons: Story[];
+  cells: Assemply[];
+  minitories: Assemply[];
 }
 
 
@@ -118,21 +120,21 @@ export class Church {
 
 
 export class Ministry extends Assemply {
-	id: string;
-	deleted: boolean;
+  id: string;
+  deleted: boolean;
   image: string;
   title: MultiText;
-	text: MultiText;
+  text: MultiText;
 
-	constructor() {
+  constructor() {
     super();
-	}
+  }
 }
 
 export class Greeting extends Entity {
-	icon: Resource;
-	title: MultiText;
-	image: Resource;
-	subtitle: MultiText;
-	description: MultiText;
+  icon: Resource;
+  title: MultiText;
+  image: Resource;
+  subtitle: MultiText;
+  description: MultiText;
 }

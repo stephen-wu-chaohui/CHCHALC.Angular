@@ -33,7 +33,7 @@ export class MinistriesSinglePageComponent implements OnInit {
       return;
     }
     this.greeting = {
-      start: new Date(2020, 4,12),
+      start: new Date(2020, 4,12).getTime(),
       icon: '/assets/images/church_1.png',
       title: {
         english: `Welcome to ${this.ministry.title.english}`,

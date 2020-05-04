@@ -4,6 +4,7 @@ import { Ministry } from 'src/app/data/api-data';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Language } from 'src/app/data/settings.service';
 import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ministry-edit',
@@ -21,7 +22,7 @@ export class MinistryEditComponent {
     text: new FormControl(''),
   });
 
-  constructor(public data: ChchalcDataService) {
+  constructor(public data: ChchalcDataService, private router: Router) {
     if (!this.item) {
       this.item = this.newMinistry();
     }
@@ -74,4 +75,7 @@ export class MinistryEditComponent {
     return newItem;
   }
 
+  imageClicked() {
+    this.router.navigate(['/ministries', this.item.id]);
+  }
 }

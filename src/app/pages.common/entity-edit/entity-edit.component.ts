@@ -24,6 +24,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
   @Output() applyChanges = new EventEmitter();
   @Output() patchValue = new EventEmitter();
   @Output() itemCreated = new EventEmitter();
+  @Output() imageClick = new EventEmitter();
 
   image: any;
   isDirty = false;
@@ -62,7 +63,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
     if (this.data.adminMode) {
       return;
     }
-    this.router.navigate(['/'+this.groupName, { id: this.item.id }]);
+    this.router.navigate(['/' + this.groupName, { id: this.item.id }]);
 	}
 
 

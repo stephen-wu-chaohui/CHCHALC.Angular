@@ -4,6 +4,7 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Language } from 'src/app/data/settings.service';
 import { Assemply } from 'src/app/data/api-data';
 import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cellgroup-edit',
@@ -21,7 +22,7 @@ export class CellgroupEditComponent {
     desc: new FormControl(''),
   });
 
-  constructor(public data: ChchalcDataService) {
+  constructor(public data: ChchalcDataService, private router: Router) {
     if (!this.item) {
       this.item = this.newCellgroup();
     }
@@ -73,4 +74,7 @@ export class CellgroupEditComponent {
     return newItem;
   }
 
+  imageClicked() {
+    this.router.navigate(['/cellgroups', this.item.id]);
+  }
 }
