@@ -5,6 +5,7 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Language } from 'src/app/data/settings.service';
 import { v4 as uuidv4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-story-edit',
@@ -18,13 +19,15 @@ export class StoryEditComponent {
 
   formChanged = false;
   message: string;
+  pictureFiles: File[];
 
   formChanges = new FormGroup({
     title: new FormControl(''),
     text: new FormControl(''),
   });
+  uploadPicturesMessage: string;
 
-  constructor(public data: ChchalcDataService, private storage: AngularFireStorage) {
+  constructor(public data: ChchalcDataService, private storage: AngularFireStorage, private router: Router) {
     if (!this.item) {
       this.item = this.newStory();
     }
@@ -82,8 +85,8 @@ export class StoryEditComponent {
       return;
     }
     const mimeType = files[0].type;
-    if (mimeType.match(/pdf\/*/) == null) {
-      this.message = 'Only pdfs are supported.';
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Only images are supported.';
       return;
     }
 
@@ -97,9 +100,34 @@ export class StoryEditComponent {
     });
   }
 
-  imageClicked() {
-    if (this.item.pdfPath) {
-      window.open(this.item.pdfPath);
+
+  onPicturesChanged(files: File[]) {
+    if (files.length === 0) {
+      return;
     }
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Only images are supported.';
+      return;
+    }
+    this.pictureFiles = files;
+    this.item.pictures = new Array(files.length) ;
+    Array.from(files).forEach((file, index) => {
+      const ref = this.storage.ref(`${this.groupName}/${this.item.id}-${file.name}`);
+      ref.put(file).then(() => {
+        ref.getDownloadURL().subscribe(path => {
+          this.item.pictures[index] = path;
+          this.uploadPicturesMessage = `${index+1}/${files.length} files uploaded.`;
+        });
+      });
+    });
+  }
+
+
+  imageClicked() {
+    // if (this.item.pdfPath) {
+    //   window.open(this.item.pdfPath);
+    // }
+    this.router.navigate([`/${this.groupName}`, this.item.id]);
   }
 }

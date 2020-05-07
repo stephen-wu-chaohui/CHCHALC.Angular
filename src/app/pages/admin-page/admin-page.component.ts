@@ -15,6 +15,8 @@ export class AdminPageComponent implements OnInit {
   }
 
 	setAdmin(admin: boolean = true) {
-		this.data.adminMode = admin;
+    this.data.adminMode = admin;
+    document.getElementById('admin-message-div-canaan').style.opacity = '1.0';
+    setTimeout('hideAdmin()', 5000);
 	}
 }

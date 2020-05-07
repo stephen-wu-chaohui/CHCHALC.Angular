@@ -5,7 +5,7 @@
 			<div class="col-lg-4" *ngFor="let item of data.PopularSermons">
 				<div class="popular_item">
 					<div class="popular_image">
-						<a [href]="item.videoId" target="_blank"><img [src]="data.path(item.image)" alt=""></a>
+						<a [href]="item.videoURL" target="_blank"><img [src]="data.path(item.image)" alt=""></a>
 					</div>
 					<div class="sermon_content">
 						<div class="sermon_title"><a routeLink="sermon_single.html">{{data.tr(item.title)}}</a></div>

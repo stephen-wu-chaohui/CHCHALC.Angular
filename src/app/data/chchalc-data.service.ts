@@ -212,7 +212,7 @@ export class ChchalcDataService {
   featuredSermons: Story[];
   PopularSermons: Story[];
 
-  adminMode: boolean = false;
+  adminMode: boolean = true;
 
   constructor(private settings: SettingsService, private dataClient: DataClientService, private store: AngularFirestore) {
   }

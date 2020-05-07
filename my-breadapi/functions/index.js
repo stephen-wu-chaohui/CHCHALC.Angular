@@ -158,7 +158,7 @@ async function readSermonList ()
 							title: {english: 'Major Pastor', chinese: '主任牧师'}
 						},
 						start,
-						videoId: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
+						videoURL: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
 				});
 			});
 		});

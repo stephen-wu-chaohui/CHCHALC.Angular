@@ -7,5 +7,5 @@
 
 .blog_sidebar
 {
-	width: 100%;
+	width: calc(100% - 0px);
 }

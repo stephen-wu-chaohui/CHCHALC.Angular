@@ -1,0 +1,4 @@
+<app-title [page]="page" *ngIf="page.title"></app-title>
+
+<app-section *ngFor="let section of page.sections" [section]="section">
+</app-section>

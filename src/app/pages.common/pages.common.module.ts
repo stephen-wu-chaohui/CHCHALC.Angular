@@ -31,6 +31,7 @@ import { StorySectionComponent } from './story-section/story-section.component';
 import { StoryEditComponent } from './story-edit/story-edit.component';
 import { StoryViewComponent } from './story-view/story-view.component';
 import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
 		HomeSliderComponent,
+    HomeComponent,
 		IntroComponent,
     CellgroupsSectionComponent,
     CellgroupEditComponent,
@@ -74,7 +76,8 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
     StoryViewComponent
 	],
 	exports: [
-		HomeSliderComponent,
+    HomeSliderComponent,
+    HomeComponent,
 		IntroComponent,
 		BlogComponent,
 		BlogSidebarComponent,

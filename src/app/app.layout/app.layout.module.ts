@@ -6,7 +6,6 @@ import { HeaderComponent } from './header/header.component';
 import { TopBarComponent } from './header/top-bar/top-bar.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AppCommonModule } from '../app.common/app.common.module';
 
@@ -23,14 +22,13 @@ import { AppCommonModule } from '../app.common/app.common.module';
     ContactMapComponent,
     FooterComponent,
     NewLetterComponent,
-    HomeComponent,
   ],
   exports: [
     HeaderComponent,
+    TopBarComponent,
     ContactMapComponent,
     FooterComponent,
     NewLetterComponent,
-    HomeComponent
  ],
 })
 export class AppLayoutModule { }

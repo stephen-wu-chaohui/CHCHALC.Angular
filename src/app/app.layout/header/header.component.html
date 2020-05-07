@@ -5,6 +5,11 @@
 
 		<div class="header_container">
 			<div class="container-fluid">
+				<div class="row" *ngIf="data.adminMode">
+          <div class="col alert">
+            <div alert>You are in admin mode</div>
+          </div>
+				</div>
 				<div class="row">
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">

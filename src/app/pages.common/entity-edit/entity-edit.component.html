@@ -1,11 +1,11 @@
 <div class="entity">
 		<div class="image">
-			<img [src]="image" class="round" width="100%" [class.saving]="isSaving"
+			<img [src]="image" class="round" width="100%" [class.saving]="isSaving" (load)="onLoad($event)"
 				[style.width]="width" [style.min-height]="height" [style.border-color]="borderColor" [style.border-radius]="borderRadius"
         [class.deleted]="item.deleted" (click)="imageClick.emit()">
       <ng-container *ngIf="data.adminMode">
         <button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()" *ngIf="!isDirty && !isNew">Hide</button>
-  			<input type="file" #file accept='image/*,application/pdf' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
+  			<input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
         <input type="button" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save" (click)="onSave()">
       </ng-container>
 		</div>

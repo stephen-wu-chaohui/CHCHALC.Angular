@@ -101,9 +101,10 @@ export class Story extends Entity {
   address: MultiText;
   minutes: number;
   comments: Comment[];
-  videoId: string;
   reference: MultiText;
   pdfPath: string;
+  videoURL: string;
+  pictures: string[];
 }
 
 export class Church {

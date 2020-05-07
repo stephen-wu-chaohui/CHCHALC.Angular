@@ -101,9 +101,19 @@ export class EntityEditComponent implements OnInit, OnChanges {
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
       this.image = reader.result;
+      console.log('this.image: ', this.image.width, this.image.height);
       this.file = files[0];
       this.setDirty();
     };
+  }
+
+  onLoad(evt) {
+    if (evt && evt.target) {
+      const width = evt.target.naturalWidth;
+      const height = evt.target.naturalHeight;
+      const portrait = height > width ? true : false;
+      console.log(width, height, 'portrait: ', portrait);
+    }
   }
 
   onSave() {
@@ -112,7 +122,7 @@ export class EntityEditComponent implements OnInit, OnChanges {
     }
     if (this.file) {
       this.isSaving = true;
-      const ref = this.storage.ref(`${this.groupName}/${this.item.id}`);
+      const ref = this.storage.ref(`${this.groupName}/${this.item.id}-${this.file.name}`);
       ref.put(this.file).then(() => {
         ref.getDownloadURL().subscribe(path => {
           this.item.image = path;

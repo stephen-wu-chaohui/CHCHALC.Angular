@@ -1,0 +1,66 @@
+
+.entity
+{
+	margin-bottom: 98px;
+	padding: 15px;
+	/* display: grid; */
+}
+.image
+{
+	padding: 15px;
+  width: 100%;
+}
+.image:hover {
+  border: 2px solid pink;
+}
+.image:hover .tool-onsite {
+	opacity: 0.7;
+}
+.image .saving
+{
+  opacity: 0.2;
+}
+.image img {
+  max-width: 100%;
+  min-height: 100px;
+}
+
+.round
+{
+	border-radius: 0.5;
+}
+
+.tool-onsite {
+	position: absolute;
+	opacity: 0.1;
+	margin: 10px;
+	padding: 10px;
+}
+
+.top-left {
+	top: 0px;
+	left: 0;
+}
+
+.bottom-left {
+	bottom: 0px;
+	left: 0;
+}
+
+.top-right {
+	top: 0px;
+	right: 0;
+}
+
+.bottom-right {
+	bottom: 0px;
+	right: 0;
+}
+
+.save {
+	opacity: 0.8;
+}
+.deleted {
+	filter: contrast(25%);
+}
+

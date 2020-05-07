@@ -1,0 +1,28 @@
+<app-home [title]="title"></app-home>
+
+<ng-container *ngIf="moment; else loading">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12 col-lg-6">
+        <img [src]="moment.image" (click)="onClick()">
+      </div>
+      <div class="col col-12 col-lg-6">
+        <h2>{{data.tr(moment.title)}}</h2>
+      </div>
+    </div>
+    <div class="row" *ngIf="moment.pictures">
+      <div class="col col-12 col-lg-6" *ngFor="let pic of moment.pictures">
+          <img class="image-page margin" [src]="pic" width="100%">
+      </div>
+    </div>
+    <div class="row" *ngIf="moment.pdfPath">
+      <div class="col-12 col-lg-6">
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <h2>Moment not found...</h2>
+</ng-template>

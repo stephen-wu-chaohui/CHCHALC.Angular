@@ -1,0 +1,13 @@
+
+<div class="entity" [ngClass]="section.entityDisplayOptions.position">
+  <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
+    <img [src]="entity.image" width="100%" (click)="imageClick()">
+  </div>
+  <div class="text" [ngClass]="section.entityDisplayOptions.contentStyle">
+    <div class="name">{{entity.name}}</div>
+    <div class="title">{{entity.name}}</div>
+    <div class="subtitle">{{entity.name}}</div>
+    <div class="text">{{entity.name}}</div>
+    <div class="reference">{{entity.reference}}</div>
+  </div>
+</div>
