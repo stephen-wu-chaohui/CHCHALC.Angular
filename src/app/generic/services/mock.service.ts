@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, pipe, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { WPage, WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL, CollectionRef, WEntityRoot } from './types';
 import { AbstrctEntityService } from './entity.service';
@@ -256,67 +256,41 @@ export class MockService extends AbstrctEntityService {
     subTitle: { english: 'Reborn Church', chinese: '重生的教会'},
     address: { english: '182 The Run Way, Wigram, Christchurch 8042'},
     coordinate: { lantitue: -43.549917, longitude: 172.562886 },
-    host: 'Lead Pastor',
-    availableCollections: [
-      { location: 'root', collectionName: 'sliders' },
-      { location: 'root', collectionName: 'sermons' },
-      { location: 'root', collectionName: 'welcome' },
-      { location: 'root', collectionName: 'pastors' },
-      { location: 'root', collectionName: 'cellgroups' },
-      { location: 'root', collectionName: 'news' },
-      { location: 'root', collectionName: 'ministries'}
-    ],
-    availablePages: ['home', 'church', 'sermons', 'news']
+    host: 'Lead Pastor'
   };
 
   get root(): WEntity { return this.church; }
 
-  private rootCollectionPathOf(parent: WEntity) {
-    const firstSeperator = parent.path.indexOf('/');
-    if (firstSeperator === -1) {
-      return parent.path;
+  collectionPathOf(path: Path, collectionName: string): Path {
+    const patterns = collectionName.split('/');
+    if (patterns.length === 1) {
+      return path + '/' + patterns[0];
     }
-    return parent.path.substring(0, firstSeperator);
-  }
-
-  private parentCollectionPathOf(parent: WEntity) {
-    let path = parent.path;
-    if (path.endsWith('/')) {
-      path = path.substring(0, path.length - 1);
+    if (patterns.length === 2 && patterns[0] === '.') {
+      return path + '/' + patterns[1];
     }
-    let lastIndex = path.lastIndexOf('/');
-    if (lastIndex <= 0) {
-      return path;
+    if (patterns.length === 2 && patterns[0] === '..') {
+      const names = path.split('/');
+      if (names.length < 2) {
+        console.error('path is too short:', path);
+        return null;
+      }
+      names.pop();
+      names.pop();
+      names.push(patterns[1]);
+      return names.join('/');
     }
-    lastIndex = path.lastIndexOf('/', lastIndex - 1);
-    if (lastIndex <= 0) {
-      return path;
+    if (patterns.length === 2 && patterns[0] === '') {
+      let names = path.split('/');
+      if (names.length < 2) {
+        console.error('path is too short:', path);
+        return null;
+      }
+      names = names.slice(0, 1);
+      names.push(patterns[1]);
+      return names.join('/');
     }
-    path = path.substring(0, lastIndex - 1);
-    return path;
-  }
-
-  private thisCollectionPathOf(parent: WEntity) {
-    let path = parent.path;
-    if (path.endsWith('/')) {
-      path = path.substring(0, path.length - 1);
-    }
-    return path;
-  }
-
-  collectionPathOf(parent: WEntity, collectionName: string): Path {
-    const collectionRef = parent.availableCollections.find(it => it.collectionName === collectionName);
-    if (collectionRef) {
-      return null;
-    }
-    switch (collectionRef.location) {
-      case 'root':
-        return this.rootCollectionPathOf(parent) + '/' + collectionRef.collectionName;
-      case 'parent':
-        return this.parentCollectionPathOf(parent) + '/' + collectionRef.collectionName;
-      case 'this':
-        return this.thisCollectionPathOf(parent) + '/' + collectionRef.collectionName;
-    }
+    return null;
   }
 
   async getEntity(collectionPath: Path, id: EntityId): Promise<WEntity> {
@@ -343,11 +317,14 @@ export class MockService extends AbstrctEntityService {
     }
   }
 
-  getObservable(host: WEntity, source: EntitySource): Observable<any[]> {
-    const collectionPath = this.collectionPathOf(host, source.collection);
+  getObservable(hostPath: Path, source: EntitySource): Observable<any[]> {
+    const collectionPath = this.collectionPathOf(hostPath, source.collection);
     const directionStr = source.directionStr || 'desc';
-    const query = this.store.collection(collectionPath, a => {
+    const query = this.store.collection(collectionPath, (a: CollectionReference) => {
       const cond = a.orderBy('start', directionStr);
+      if (!cond) {
+        return a;
+      }
       if (source.slice === 'first') {
         return cond.limit(source.maxinum);
       } else if (source.slice === 'last') {

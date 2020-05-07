@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WPage, WEntity } from '../services/types';
 import { ActivatedRoute } from '@angular/router';
 import { PageService } from '../services/page.service';
-import { EntityService } from '../services/entity.service';
+import { MockService } from '../services/mock.service';
 
 @Component({
   selector: 'app-page',
@@ -13,11 +13,15 @@ export class PageComponent implements OnInit {
   page: WPage;
   entity: WEntity;
 
-  constructor(activeRouter: ActivatedRoute, pageService: PageService, entityService: EntityService) {
+  constructor(activeRouter: ActivatedRoute, pageService: PageService, entityService: MockService) {
     const pageId = activeRouter.snapshot.params.pageId;
-    const entityPath = activeRouter.snapshot.params.entityPath;
-    this.page = pageService.getPage(pageId);
-    this.entity = entityService.getEntity(entityPath);
+    const entityId = activeRouter.snapshot.params.entityId;
+    console.log('PageId, entityId', pageId, entityId);
+
+    if (!entityId) {
+      this.page = entityService.topPages.find(p => p.id === 'home');
+      this.entity = entityService.root;
+    }
   }
 
   ngOnInit() {

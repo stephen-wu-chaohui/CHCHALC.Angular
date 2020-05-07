@@ -16,6 +16,7 @@ import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { PersonsPageComponent } from './persons-page/persons-page.component';
 import { CellgroupsPageComponent } from './cellgroups-page/cellgroups-page.component';
 import { MomentPageComponent } from './moment-page/moment-page.component';
+import { GenericModule } from '../generic/generic.module';
 
 // export const PagesRoutes: Routes = [
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,6 +44,7 @@ export const PagesRoutes: Routes = [
   { path: 'persons/:id', component: PersonsPageComponent },
   { path: 'cellgroups/:id', component: CellgroupsPageComponent },
   { path: 'cellgroups/:cellgroupId/moments/:momentId', component: MomentPageComponent },
+  { path: 'g', loadChildren: () => GenericModule },
 ];
 
 @NgModule({

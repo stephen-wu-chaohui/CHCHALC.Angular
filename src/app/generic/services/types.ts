@@ -14,7 +14,7 @@ export class CollectionRef {
   collectionName: string;
 }
 
-export const WEntityRoot = 'EntityRoot';
+export const WEntityRoot = 'EntityRoot/church';
 
 export class WEntity {
   id: EntityId;  // one of church, ministry, cellgroup, person, storage
@@ -27,8 +27,6 @@ export class WEntity {
   image?: ImageURL;
   priority?: PriorityEnum;
   link?: LinkURL;
-  availableCollections?: CollectionRef[];
-  availablePages?: PageName[];
 }
 
 export type WPerson = WEntity;
@@ -100,10 +98,10 @@ export class ServiceResponse {
 
 export interface IEntityService {
   readonly root: WEntity;
-  collectionPathOf(parent: WEntity, collectionName: string): Path;
+  collectionPathOf(path: Path, collectionName: string): Path;
   getEntity(collectionPath: Path, id: EntityId): Promise<WEntity>;
   setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;
   updateEntity(collectionPath: Path, newChanges: WEntity): Promise<ServiceResponse>;
-  getObservable(host: WEntity, source: EntitySource): Observable<WEntity[]>;
+  getObservable(hostPath: Path, source: EntitySource): Observable<WEntity[]>;
   uploadImage(folder: Path, file: File): Promise<ImageURL>;
 }

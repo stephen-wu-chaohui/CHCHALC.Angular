@@ -1,18 +1,21 @@
-<div class="container" [style.background]="backgroudImage()">
-  <div class="row" *ngIf="section.title">
-    <div class="col">
-      <div class="section_title_container">
-        <div class="section_image"><img [src]="section.icon" alt=""></div>
-        <div class="section_title" [class.text-light]="section.lightText"><h2>{{ss.tr(section.title)}}</h2></div>
-        <div class="section_subtitle" [class.text-light]="section.lightText">{{ss.tr(section.subtitle)}}</div>
+<div class="news">
+  <div class="section_background" [style.background]="backgroudImage()">
+  </div>
+  <div class="container">
+    <div class="row" *ngIf="section.title">
+      <div class="col">
+        <div class="section_title_container">
+          <div class="section_image"><img [src]="section.icon" alt=""></div>
+          <div class="section_title" [class.text-light]="section.lightText"><h2>{{ss.tr(section.title)}}</h2></div>
+          <div class="section_subtitle" [class.text-light]="section.lightText">{{ss.tr(section.subtitle)}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let entity of es.getObservable(host.path, section.entitySource)|async" [class]="getBootstrapColumnClasses()">
+        <app-entity [entity]="entity" [section]="section"></app-entity>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div *ngFor="let entity of es.getObservable(section.entitySource)|async" [class]="getBootstrapColumnClasses()">
-      <app-entity [entity]="entity" [section]="section"></app-entity>
-    </div>
-  </div>
 </div>
-
 

@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export abstract class AbstrctEntityService implements IEntityService {
   abstract root: WEntity;
-  abstract collectionPathOf(parent: WEntity, collectionName: string): Path;
+  abstract collectionPathOf(path: Path, collectionName: string): Path;
   abstract getEntity(collectionPath: Path, id: EntityId): Promise<WEntity>;
   abstract setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;
   abstract updateEntity(collectionPath: Path, newChanges: WEntity): Promise<ServiceResponse>;
-  abstract getObservable(host: WEntity, source: EntitySource): Observable<WEntity[]>;
+  abstract getObservable(hostPath: Path, source: EntitySource): Observable<WEntity[]>;
   abstract uploadImage(folder: Path, file: File): Promise<ImageURL>;
 }

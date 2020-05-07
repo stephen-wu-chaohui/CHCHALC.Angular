@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WSection } from '../services/types';
-import { EntityService } from '../services/entity.service';
+import { WSection, WEntity } from '../services/types';
 import { SettingsService } from 'src/app/data/settings.service';
+import { MockService } from '../services/mock.service';
 
 @Component({
   selector: 'app-section',
@@ -10,9 +10,9 @@ import { SettingsService } from 'src/app/data/settings.service';
 })
 export class SectionComponent implements OnInit {
   @Input() section: WSection;
+  @Input() host: WEntity;
 
-  constructor(public es: EntityService, public ss: SettingsService) {
-    this.es.getObservable(this.section.entitySource);
+  constructor(public es: MockService, public ss: SettingsService) {
   }
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class SectionComponent implements OnInit {
 
   getBootstrapColumnClasses() {
     const options = this.section.entityDisplayOptions;
-    switch(options.size) {
+    switch (options.size) {
     case 'slide':
     case 'row':
       return 'col-12';
@@ -33,7 +33,6 @@ export class SectionComponent implements OnInit {
     case 'icon':
       return 'col-lg-6 col-md-4 col-sm-6';
     }
-    return 'col-12';
   }
 
   backgroudImage() {
