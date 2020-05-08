@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { WSection, WEntity } from '../services/types';
 import { SettingsService } from 'src/app/data/settings.service';
 import { MockService } from '../services/mock.service';
 import { Observable } from 'rxjs';
+import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-new-section',
@@ -12,17 +14,22 @@ import { Observable } from 'rxjs';
 export class SectionComponent implements OnInit {
   @Input() section: WSection;
   @Input() host: WEntity;
+  @Input() itemTemplate: TemplateRef<any>;
+  @ContentChild(TemplateRef)
 
-  entitySource: Observable<WEntity[]>;
+  checked = false;
+  entitySource: any;
+  bootstrapColumnClasses = '';
 
-  constructor(public es: MockService, public ss: SettingsService) {
+  constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService) {
   }
 
   ngOnInit() {
-    this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource);
+    setTimeout(() => this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource), 100);
+    this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
   }
 
-  getBootstrapColumnClasses() {
+  private getBootstrapColumnClasses() {
     const options = this.section.entityDisplayOptions;
     switch (options.size) {
     case 'slide':
@@ -46,4 +53,7 @@ export class SectionComponent implements OnInit {
     return `url(${this.section.backgroudImage})`;
   }
 
+  createNew() {
+    return new WEntity();
+  }
 }

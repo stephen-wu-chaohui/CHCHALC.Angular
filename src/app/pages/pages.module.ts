@@ -16,24 +16,6 @@ import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { PersonsPageComponent } from './persons-page/persons-page.component';
 import { CellgroupsPageComponent } from './cellgroups-page/cellgroups-page.component';
 import { MomentPageComponent } from './moment-page/moment-page.component';
-// import { GenericModule } from '../generic/generic.module';
-import { PageComponent } from '../generic/page/page.component';
-import { SectionComponent } from '../generic/section/section.component';
-import { EntityComponent } from '../generic/entity/entity.component';
-import { TitleComponent } from '../generic/title/title.component';
-
-// export const PagesRoutes: Routes = [
-//   { path: '', redirectTo: 'home', pathMatch: 'full' },
-//   { path: 'admin', loadChildren: () => AdminPageModule },
-//   { path: 'home', loadChildren: () => HomePageModule },
-//   { path: 'blog', loadChildren: () => BlogPageModule },
-//   { path: 'contact', loadChildren: () => ContactPageModule },
-//   { path: 'ministries', loadChildren: () => MinistriesPageModule },
-//   { path: 'sermons', loadChildren: () => SermonsPageModule },
-//   { path: 'elements', loadChildren: () => ElementsPageModule },
-//   { path: 'persons/:id', loadChildren: () => PersonsPageModule },
-//   { path: 'cellgroups/:id', loadChildren: () => CellgroupsPageModule },
-// ];
 
 export const PagesRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,8 +30,6 @@ export const PagesRoutes: Routes = [
   { path: 'persons/:id', component: PersonsPageComponent },
   { path: 'cellgroups/:id', component: CellgroupsPageComponent },
   { path: 'cellgroups/:cellgroupId/moments/:momentId', component: MomentPageComponent },
-  { path: 'g/:entityId/:pageId', component: PageComponent },
-  { path: 'g', component: PageComponent },
 ];
 
 @NgModule({
@@ -73,11 +53,6 @@ export const PagesRoutes: Routes = [
     PersonsPageComponent,
     CellgroupsPageComponent,
     MomentPageComponent,
-    PageComponent,
-    SectionComponent,
-    EntityComponent,
-    TitleComponent
-
   ]
 })
 export class PagesModule { }

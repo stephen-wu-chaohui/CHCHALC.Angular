@@ -19,19 +19,20 @@ import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
 import { MinistryItemComponent } from './ministry-item/ministry-item.component';
 import { MinistryEditComponent } from './ministry-edit/ministry-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
 import { PastorEditComponent } from './pastor-edit/pastor-edit.component';
 import { RouterModule } from '@angular/router';
 import { StorySectionComponent } from './story-section/story-section.component';
 import { StoryEditComponent } from './story-edit/story-edit.component';
-import { CellgroupEditComponent } from '../pages.entities/cellgroup-edit/cellgroup-edit.component';
 import { HomeComponent } from './home/home.component';
+import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.component';
 
 @NgModule({
   imports: [
-		CommonModule,
+    CommonModule,
+    FormsModule,
 		NguCarouselModule,
 		ReactiveFormsModule,
 		RouterModule,

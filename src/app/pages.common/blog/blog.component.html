@@ -1,33 +1,4 @@
-<div class="blog_content" *ngIf="data.NewsObserver">
-
-	<!-- Blog Post -->
-	<!-- <div class="blog_post" *ngFor="let item of data.NewsObserver|async">
-		<div class="blog_image">
-			<img [src]="data.path(item.image)" alt="">
-			<div class="news_date d-flex flex-column align-items-center justify-content-center">
-				<div class="news_day">{{item.start | date:'d'}}</div>
-				<div class="news_month">{{item.start | date:'MMM, yyyy'}}</div>
-			</div>
-		</div>
-		<div class="blog_title">{{data.tr(item.title)}}</div>
-		<div class="blog_meta">
-			<ul>
-				<li *ngIf="item.host">By <a routeLink="#">{{data.tr(item.host.name)}}</a></li>
-				<li *ngIf="item.address">In <a routeLink="#">{{data.tr(item.address)}}Community</a></li>
-				<li *ngIf="item.comments"><a routeLink="#">{{item.comments.length}}</a></li>
-			</ul>
-		</div>
-		<div class="blog_text">
-			<p>{{data.tr(item.description)}}</p>
-		</div>
-		<div class="blog_link"><a routeLink="#">Read More</a></div>
-	</div> -->
-
-  <app-story-section groupName="news"></app-story-section>
-
-
-
-</div>
+<app-story-section groupName="news"></app-story-section>
 
 <!-- Pagination -->
 <div class="blog_pages">

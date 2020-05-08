@@ -1,0 +1,14 @@
+<!-- section includes properties to get items, as well as customerize layout of items  -->
+<app-new-section [section]="section" [host]="host" [itemTemplate]="editor"></app-new-section>
+
+<!-- collectionPath is from the section definition -->
+<!-- entity for update and create new entity in the collection -->
+<ng-template #editor let-entity>
+    <app-entity-edit [item]="entity" [groupName]="collectionPath" [formChanged]="formChanged"
+                     (applyChanges)="applyChanges(entity, $event)" (patchValue)="patchValue(entity)">
+        <form class="item" [formGroup]="formChanges">
+            <input type="text" class="name" (changed)="setDirty()" formControlName="name" [readonly]="!data.adminMode">
+            <textarea class="title" (input)="setDirty()" formControlName="title" [readonly]="!data.adminMode"></textarea>
+        </form>
+    </app-entity-edit>
+</ng-template>

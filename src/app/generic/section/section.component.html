@@ -1,5 +1,5 @@
-<div class="news">
-  <div class="section_background" [style.background]="backgroudImage()">
+<div class="section">
+  <div class="background" [style.background]="backgroudImage()">
   </div>
   <div class="container">
     <div class="row" *ngIf="section.title">
@@ -11,9 +11,17 @@
         </div>
       </div>
     </div>
+    <ng-container *ngIf="data.adminMode">
+      <input type="checkbox" [(ngModel)]="checked" checked data-toggle="toggle"><label>Create a new item`</label>
+      <div *ngIf="checked" [class]="bootstrapColumnClasses">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: createNew() }">
+        </ng-container>
+      </div>
+    </ng-container>
     <div class="row">
-      <div *ngFor="let entity of entitySource|async" [class]="getBootstrapColumnClasses()">
-        <app-entity [entity]="entity" [section]="section"></app-entity>
+      <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: entity }">
+        </ng-container>
       </div>
     </div>
   </div>
