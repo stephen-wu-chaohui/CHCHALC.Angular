@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsComponent } from './news/news.component';
-import { SermonComponent } from './sermon/sermon.component';
+import { NewsItemComponent } from './news-item/news-item.component';
+import { TodaySermonSectionComponent } from './today-sermon-section/today-sermon-section.component';
 import { AppCommonModule } from 'src/app/app.common/app.common.module';
 import { NewsSectionComponent } from './news-section/news-section.component';
 import { ActivitySectionComponent } from './activity-section/activity-section.component';
@@ -13,20 +13,19 @@ import { PopularSemonSectionComponent } from './popular-semon-section/popular-se
 import { ContactFormSectionComponent } from './contact-form-section/contact-form-section.component';
 import { ContactInfoSectionComponent } from './contact-info-section/contact-info-section.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
-import { IntroComponent } from './intro/intro.component';
-import { BlogComponent } from './blog/blog.component';
+import { IntroComponent } from './intro-section/intro-section.component';
+import { BlogSectionComponent } from './blog-section/blog-section.component';
 import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
-import { MinistryItemComponent } from './ministry-item/ministry-item.component';
 import { MinistryEditComponent } from './ministry-edit/ministry-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { EntityEditComponent } from './entity-edit/entity-edit.component';
+import { EntityEditComponent } from '../app.common/entity-edit/entity-edit.component';
 import { PastorEditComponent } from './pastor-edit/pastor-edit.component';
 import { RouterModule } from '@angular/router';
 import { StorySectionComponent } from './story-section/story-section.component';
 import { StoryEditComponent } from './story-edit/story-edit.component';
-import { HomeComponent } from './home/home.component';
+import { HomeSectionComponent } from './home-section/home-section.component';
 import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.component';
 
 @NgModule({
@@ -42,15 +41,14 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 		}),
   ],
   declarations: [
-		BlogComponent,
+		BlogSectionComponent,
 		BlogSidebarComponent,
-		SermonComponent,
-		NewsComponent,
+		TodaySermonSectionComponent,
+		NewsItemComponent,
 		NewsSectionComponent,
 		ActivitySectionComponent,
 		QuoteSectionComponent,
 		MinistrySectionComponent,
-		MinistryItemComponent,
 		MinistryEditComponent,
 		PastorsSliderComponent,
 		PastorEditComponent,
@@ -58,11 +56,11 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
 		HomeSliderComponent,
-    HomeComponent,
+    HomeSectionComponent,
 		IntroComponent,
     CellgroupsSectionComponent,
     CellgroupEditComponent,
-		BlogComponent,
+		BlogSectionComponent,
 		BlogSidebarComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
@@ -72,12 +70,12 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 	],
 	exports: [
     HomeSliderComponent,
-    HomeComponent,
+    HomeSectionComponent,
 		IntroComponent,
-		BlogComponent,
+		BlogSectionComponent,
 		BlogSidebarComponent,
-		SermonComponent,
-		NewsComponent,
+		TodaySermonSectionComponent,
+		NewsItemComponent,
 		NewsSectionComponent,
 		ActivitySectionComponent,
 		QuoteSectionComponent,

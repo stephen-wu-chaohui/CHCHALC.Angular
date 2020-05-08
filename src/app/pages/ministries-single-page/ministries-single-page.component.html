@@ -1,5 +1,5 @@
-<app-home [title]="title"></app-home>
-<app-intro [greeting]="greeting"></app-intro>
+<app-home-section [title]="title"></app-home-section>
+<app-intro-section [greeting]="greeting"></app-intro-section>
 <div *ngIf="folderMoments; else loading">
   <app-quote-section></app-quote-section>
   <app-story-section [section]="sectionMoments" [groupName]="folderMoments"></app-story-section>

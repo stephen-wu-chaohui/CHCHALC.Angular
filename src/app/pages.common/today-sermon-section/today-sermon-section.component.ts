@@ -5,11 +5,11 @@ import { last } from 'rxjs/operators';
 import { Story } from 'src/app/data/api-data';
 
 @Component({
-  selector: 'app-sermon',
-  templateUrl: './sermon.component.html',
-  styleUrls: ['./sermon.component.css']
+  selector: 'app-today-sermon-section',
+  templateUrl: './today-sermon-section.component.html',
+  styleUrls: ['./today-sermon-section.component.css']
 })
-export class SermonComponent implements OnInit {
+export class TodaySermonSectionComponent implements OnInit {
 	// todayObserver: Observable<any>;
 	today: any;
 

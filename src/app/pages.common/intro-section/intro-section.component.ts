@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 
 @Component({
-  selector: 'app-intro',
-  templateUrl: './intro.component.html',
-  styleUrls: ['./intro.component.css']
+  selector: 'app-intro-section',
+  templateUrl: './intro-section.component.html',
+  styleUrls: ['./intro-section.component.css']
 })
 export class IntroComponent implements OnInit {
 	@Input() greeting;

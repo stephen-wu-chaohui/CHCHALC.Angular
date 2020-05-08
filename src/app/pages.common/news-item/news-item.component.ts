@@ -4,11 +4,11 @@ import { Story } from 'src/app/data/api-data';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-news-item',
+  templateUrl: './news-item.component.html',
+  styleUrls: ['./news-item.component.css']
 })
-export class NewsComponent implements OnInit {
+export class NewsItemComponent implements OnInit {
 	@Input() item: Story;
 
 	constructor(public data: ChchalcDataService) { }

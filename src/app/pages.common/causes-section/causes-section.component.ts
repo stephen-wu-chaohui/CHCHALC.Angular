@@ -3,11 +3,11 @@ import { NguCarouselConfig } from '@ngu/carousel';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 
 @Component({
-  selector: 'app-causes',
-  templateUrl: './causes.component.html',
-  styleUrls: ['./causes.component.css']
+  selector: 'app-causes-section',
+  templateUrl: './causes-section.component.html',
+  styleUrls: ['./causes-section.component.css']
 })
-export class CausesComponent {
+export class CausesSectionComponent {
   public carouselTileConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 2, md: 3, lg: 4, all: 0 },
     speed: 500,
