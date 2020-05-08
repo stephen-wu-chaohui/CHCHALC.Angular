@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row">
-      <div *ngFor="let entity of es.getObservable(host.path, section.entitySource)|async" [class]="getBootstrapColumnClasses()">
+      <div *ngFor="let entity of entitySource|async" [class]="getBootstrapColumnClasses()">
         <app-entity [entity]="entity" [section]="section"></app-entity>
       </div>
     </div>

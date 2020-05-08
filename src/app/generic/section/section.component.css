@@ -78,7 +78,8 @@
 
 .section_title_container
 {
-	text-align: center;
+  text-align: center;
+  padding-bottom: 90px;
 }
 .section_title
 {

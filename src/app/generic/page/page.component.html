@@ -1,4 +1,4 @@
 <app-title [page]="page" *ngIf="page.title"></app-title>
 
-<app-section *ngFor="let section of page.sections" [section]="section" [host]="entity">
-</app-section>
+<app-new-section *ngFor="let section of page.sections" [section]="section" [host]="entity">
+</app-new-section>

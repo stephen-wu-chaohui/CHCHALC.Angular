@@ -23,6 +23,7 @@ export class WEntity {
   title: MultiText;
   subTitle?: MultiText;
   text?: MultiText;
+  description?: MultiText;
   reference?: MultiText;
   image?: ImageURL;
   priority?: PriorityEnum;

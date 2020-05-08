@@ -2,65 +2,56 @@
 .entity
 {
 	margin-bottom: 98px;
-	padding: 15px;
-	/* display: grid; */
+	/* padding: 15px; */
+	display: grid;
 }
 .image
 {
-	padding: 15px;
   width: 100%;
 }
 .image:hover {
   border: 2px solid pink;
-}
-.image:hover .tool-onsite {
-	opacity: 0.7;
-}
-.image .saving
-{
-  opacity: 0.2;
 }
 .image img {
   max-width: 100%;
   min-height: 100px;
 }
 
-.round
+
+
+.title
 {
-	border-radius: 0.5;
+	font-size: 24px;
+	font-weight: 500;
+	color: #000000;
+	margin-top: 20px;
+}
+.title .content
+{
+	width: 100%;
+	border: none;
+	text-align: center;
+	font-family: 'ZCOOL KuaiLe', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 
-.tool-onsite {
-	position: absolute;
-	opacity: 0.1;
-	margin: 10px;
-	padding: 10px;
+.text
+{
+	margin-top: 31px;
+	/* min-height: 100px; */
 }
-
-.top-left {
-	top: 0px;
-	left: 0;
-}
-
-.bottom-left {
-	bottom: 0px;
-	left: 0;
-}
-
-.top-right {
-	top: 0px;
-	right: 0;
-}
-
-.bottom-right {
-	bottom: 0px;
-	right: 0;
-}
-
-.save {
-	opacity: 0.8;
-}
-.deleted {
-	filter: contrast(25%);
+.text .content {
+	border: none;
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	outline: none;
+	font-family: 'ZCOOL KuaiLe', sans-serif;
+	font-size: 14px;
+	line-height: 2.14;
+	font-weight: 500;
+	color: #7c7c7c;
 }
 

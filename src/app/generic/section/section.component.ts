@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WSection, WEntity } from '../services/types';
 import { SettingsService } from 'src/app/data/settings.service';
 import { MockService } from '../services/mock.service';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-section',
+  selector: 'app-new-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.css']
 })
@@ -12,10 +13,13 @@ export class SectionComponent implements OnInit {
   @Input() section: WSection;
   @Input() host: WEntity;
 
+  entitySource: Observable<WEntity[]>;
+
   constructor(public es: MockService, public ss: SettingsService) {
   }
 
   ngOnInit() {
+    this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource);
   }
 
   getBootstrapColumnClasses() {

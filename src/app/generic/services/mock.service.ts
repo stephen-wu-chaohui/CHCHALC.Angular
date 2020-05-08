@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, pipe, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { WPage, WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL, CollectionRef, WEntityRoot } from './types';
+import { WPage, WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL, WEntityRoot } from './types';
 import { AbstrctEntityService } from './entity.service';
-import { stringify } from 'querystring';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class MockService extends AbstrctEntityService {
     id: 'home',
     sections: [{
       entitySource: {
-        collection: 'sliders',
+        collection: 'homeslides',
         priorities: ['high'],
       },
       entityDisplayOptions: {
@@ -70,6 +69,8 @@ export class MockService extends AbstrctEntityService {
       entitySource: {
         collection: 'sermons',
         priorities: ['high', 'low'],
+        slice: 'first',
+        maxinum: 1
       },
       entityDisplayOptions: {
         size: 'row',
@@ -250,7 +251,7 @@ export class MockService extends AbstrctEntityService {
 
   church: WAssembly = {
     id: 'church',
-    path: WEntityRoot,
+    path: '',
     name: { english: 'Chinese Abundant Life Church', chinese: '基督城华人丰盛生命教会'},
     title: { english: 'Abundant Life', chinese: '丰盛的生命'},
     subTitle: { english: 'Reborn Church', chinese: '重生的教会'},
@@ -262,15 +263,21 @@ export class MockService extends AbstrctEntityService {
   get root(): WEntity { return this.church; }
 
   collectionPathOf(path: Path, collectionName: string): Path {
+    const names = path.split('/');
     const patterns = collectionName.split('/');
+
     if (patterns.length === 1) {
-      return path + '/' + patterns[0];
+      if (path === '') {
+        return patterns[0];
+      }
+      names.push(patterns[0]);
+      return names.length == 1? patterns[0]: names.join('/');
     }
     if (patterns.length === 2 && patterns[0] === '.') {
-      return path + '/' + patterns[1];
+      names.push(patterns[1]);
+      return names.join('/');
     }
     if (patterns.length === 2 && patterns[0] === '..') {
-      const names = path.split('/');
       if (names.length < 2) {
         console.error('path is too short:', path);
         return null;
@@ -281,14 +288,15 @@ export class MockService extends AbstrctEntityService {
       return names.join('/');
     }
     if (patterns.length === 2 && patterns[0] === '') {
-      let names = path.split('/');
-      if (names.length < 2) {
-        console.error('path is too short:', path);
-        return null;
-      }
-      names = names.slice(0, 1);
-      names.push(patterns[1]);
-      return names.join('/');
+      // let names = path.split('/');
+      // if (names.length < 2) {
+      //   console.error('path is too short:', path);
+      //   return null;
+      // }
+      // names = names.slice(0, 1);
+      // names.push(patterns[1]);
+      // return names.join('/');
+      return patterns[1];
     }
     return null;
   }
@@ -334,7 +342,17 @@ export class MockService extends AbstrctEntityService {
       }
     });
 
-    return query.valueChanges();
+    console.log(collectionPath, source);
+
+    // console.log(collectionPath);
+    // query.valueChanges().subscribe( next => {
+    //   console.log(next);
+    // });
+
+    return query.valueChanges().pipe(map(a => {
+      // console.log(source.collection, a);
+      return a;
+    }));
   }
 
   async uploadImage(collectionPath: Path, file: File): Promise<ImageURL> {
