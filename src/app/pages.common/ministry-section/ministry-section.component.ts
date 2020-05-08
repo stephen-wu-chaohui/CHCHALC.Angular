@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { Ministry } from 'src/app/data/api-data';
 
 @Component({
   selector: 'app-ministry-section',
@@ -15,6 +14,5 @@ export class MinistrySectionComponent implements OnInit {
 	}
 
 	itemCreated($event) {
-		// this.data.Ministries.unshift($event);
 	}
 }

@@ -24,6 +24,8 @@ export class StoryEditComponent {
   formChanges = new FormGroup({
     title: new FormControl(''),
     text: new FormControl(''),
+    pdf: new FormControl(''),
+    pictures: new FormControl(''),
   });
   uploadPicturesMessage: string;
 

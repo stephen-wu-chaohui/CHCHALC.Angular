@@ -5,11 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataClientService } from 'src/app/data/data-client.service';
 
 @Component({
-  selector: 'app-cellgroups-page',
-  templateUrl: './cellgroups-page.component.html',
-  styleUrls: ['./cellgroups-page.component.css']
+  selector: 'app-cellgroup-page',
+  templateUrl: './cellgroup-page.component.html',
+  styleUrls: ['./cellgroup-page.component.css']
 })
-export class CellgroupsPageComponent implements OnInit {
+export class CellgroupPageComponent implements OnInit {
   greeting: Greeting;
   title: { english: 'Cellgroup', chinese: '小家' };
 

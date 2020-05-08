@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 import { DataClientService } from 'src/app/data/data-client.service';
 
 @Component({
-  selector: 'app-ministries-single-page',
-  templateUrl: './ministries-single-page.component.html',
-  styleUrls: ['./ministries-single-page.component.css']
+  selector: 'app-ministry-page',
+  templateUrl: './ministry-page.component.html',
+  styleUrls: ['./ministry-page.component.css']
 })
-export class MinistriesSinglePageComponent implements OnInit {
+export class MinistryPageComponent implements OnInit {
   greeting: Greeting;
   title: { english: 'Ministry', chinese: '事工' };
 

@@ -25,14 +25,14 @@ export class ChchalcDataService {
       title: { english: 'Home', chinese: '首页'},
       route: '/home'
     }, {
-      title: { english: 'Ministries', chinese: '事工'},
-      route: '/ministries'
+      title: { english: 'Church', chinese: '教会'},
+      route: '/church'
     }, {
       title: { english: 'Sermons', chinese: '讲道'},
       route: '/sermons'
     }, {
       title: { english: 'News', chinese: '新闻'},
-      route: '/blog'
+      route: '/news'
     }, {
       title: { english: 'Contact', chinese: '聯係我們'},
       route: '/contact'
@@ -92,7 +92,7 @@ export class ChchalcDataService {
         icon: '/assets/images/church_1.png',
         title: {
             chinese: '我们的事工',
-            english: 'Our Ministries'
+            english: 'Our ministries'
         }
     },
     quote: {

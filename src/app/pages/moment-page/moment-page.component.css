@@ -3,3 +3,7 @@
   border: 1px solid #888888;
   margin: 25px 0;
 }
+
+.title-area {
+  align-self: center;
+}

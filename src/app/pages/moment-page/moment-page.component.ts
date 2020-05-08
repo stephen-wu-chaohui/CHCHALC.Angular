@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./moment-page.component.css']
 })
 export class MomentPageComponent implements OnInit {
-  title = { english: 'Moment Page is under construction', chinese: '未实现的页面'};
+  title = { english: 'Moments', chinese: '精彩瞬间'};
 
   moment: Story;
 
