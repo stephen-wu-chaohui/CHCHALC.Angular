@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Assemply, Story } from 'src/app/data/api-data';
+import { Story } from 'src/app/data/api-data';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({

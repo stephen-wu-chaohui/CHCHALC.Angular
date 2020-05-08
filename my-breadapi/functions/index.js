@@ -144,9 +144,8 @@ async function readSermonList ()
 			}
 			body.items.forEach(
 				item => {
-					let start = moment(item.snippet.publishedAt, moment.defaultFormat).startOf('day').add(10, 'hours').format();
-					let docId = start;
-					console.log(start);
+					let start = moment(item.snippet.publishedAt, moment.defaultFormat).startOf('day').add(10, 'hours');
+					let docId = start.format();
 					const document = db.collection('sermons').doc(docId);
 					document.set({
 						id: docId,
@@ -157,7 +156,7 @@ async function readSermonList ()
 							name: {english: 'Elijah Wong', chinese: '黃德賢'},
 							title: {english: 'Major Pastor', chinese: '主任牧师'}
 						},
-						start,
+						start: start.unix(),
 						videoURL: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
 				});
 			});

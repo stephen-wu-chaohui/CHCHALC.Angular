@@ -25,7 +25,7 @@
 							<li *ngIf="data.todaySermon.host">Sermon by: <a href="/">{{data.tr(data.todaySermon.host.name)}}</a></li>
 							<li>Categories:
 								<a href="/">Sunday service</a></li>
-							<li>Date: <a href="/">{{data.todaySermon.start | date:'d MMM, yyyy'}}</a></li>
+							<li>Date: <a href="/">{{data.toDate(data.todaySermon.start) | date:'d MMM, yyyy'}}</a></li>
 						</ul>
 						<div class="sermon_text">
 							<p>{{data.tr(data.todaySermon.description)}}</p>

@@ -17,7 +17,7 @@ export class Entity {
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
   deleted?: boolean;			// soft deleted or not
 
-  start: number;  // unix timestamp of UTC in Timestamp in Milliseconds
+  start: number;
   image: Resource;
   title: MultiText;
   subtitle: MultiText;

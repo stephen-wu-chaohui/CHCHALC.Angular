@@ -15,6 +15,6 @@ export class NewsItemComponent implements OnInit {
 
   ngOnInit() { }
 
-  dayOfStart = () => moment(this.item.start).format('d');
-  monthOfStart = () => moment(this.item.start).format('MMM y');
+  dayOfStart = () => moment.unix(this.item.start).format('d');
+  monthOfStart = () => moment.unix(this.item.start).format('MMM\'YY');
 }

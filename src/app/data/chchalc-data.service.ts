@@ -214,13 +214,17 @@ export class ChchalcDataService {
   featuredSermons: Story[];
   PopularSermons: Story[];
 
-  adminMode: boolean = true;
+  adminMode: boolean = false;
 
   constructor(private settings: SettingsService, private dataClient: DataClientService, private store: AngularFirestore) {
   }
 
   tr(text: MultiText): string {
     return this.settings.tr(text);
+  }
+
+  toDate(unix): Date {
+    return moment.unix(unix).toDate();
   }
 
   path(img: Resource) {
