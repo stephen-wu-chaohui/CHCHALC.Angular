@@ -13,7 +13,7 @@ import { PopularSemonSectionComponent } from './popular-semon-section/popular-se
 import { ContactFormSectionComponent } from './contact-form-section/contact-form-section.component';
 import { ContactInfoSectionComponent } from './contact-info-section/contact-info-section.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
-import { IntroComponent } from './intro-section/intro-section.component';
+import { IntroSectionComponent } from './intro-section/intro-section.component';
 import { BlogSectionComponent } from './blog-section/blog-section.component';
 import { BlogSidebarComponent } from './blog-sidebar/blog-sidebar.component';
 import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-section.component';
@@ -57,7 +57,7 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 		ContactInfoSectionComponent,
 		HomeSliderComponent,
     HomeSectionComponent,
-		IntroComponent,
+		IntroSectionComponent,
     CellgroupsSectionComponent,
     CellgroupEditComponent,
 		BlogSectionComponent,
@@ -71,7 +71,7 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 	exports: [
     HomeSliderComponent,
     HomeSectionComponent,
-		IntroComponent,
+		IntroSectionComponent,
 		BlogSectionComponent,
 		BlogSidebarComponent,
 		TodaySermonSectionComponent,

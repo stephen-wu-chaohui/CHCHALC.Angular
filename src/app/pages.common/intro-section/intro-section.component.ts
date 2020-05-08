@@ -6,7 +6,7 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
   templateUrl: './intro-section.component.html',
   styleUrls: ['./intro-section.component.css']
 })
-export class IntroComponent implements OnInit {
+export class IntroSectionComponent implements OnInit {
 	@Input() greeting;
 
   constructor(public data: ChchalcDataService) { }
