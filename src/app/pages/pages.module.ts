@@ -28,6 +28,7 @@ export const PagesRoutes: Routes = [
   { path: 'persons/:id', component: PersonPageComponent },
   { path: 'cellgroups/:id', component: CellgroupPageComponent },
   { path: 'cellgroups/:cellgroupId/moments/:momentId', component: MomentPageComponent },
+  { path: 'g', loadChildren : () => import('../generic/generic.module').then(m => m.GenericModule) },
 ];
 
 @NgModule({

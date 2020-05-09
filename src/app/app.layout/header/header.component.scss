@@ -19,10 +19,11 @@
 .header.scrolled
 {
 	top: 0;
+  box-shadow: 1px 1px #888888;
 }
-.header.scrolled .header_content
+.scrolled .header_content
 {
-	height: 92px;
+  height: 48px;
 }
 
 .header_container
@@ -40,6 +41,10 @@
 	transition: all 400ms ease;
 }
 
+logo_container {
+  padding: 5px;
+}
+
 .logo a span
 {
 	font-family: 'Ma Shan Zheng', sans-serif;
@@ -53,6 +58,15 @@
 	display: left;
 	vertical-align: middle;
 	height: 64px;
+}
+
+.header.scrolled {
+  .logo a span {
+    font-size: 24px;
+  }
+  .logo a img {
+    height: 32px;
+  }
 }
 
 
@@ -102,79 +116,6 @@
 .language:hover
 {
 	background-color: aquamarine;
-}
-
-
-
-
-.search
-{
-	display: inline-block;
-	margin-left: 59px;
-	cursor: pointer;
-}
-.search_path
-{
-	fill: #353535;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.search:hover .search_path
-{
-	fill: #eb4141;
-}
-.header_search_form
-{
-	display: block;
-	position: relative;
-	width: 40%;
-}
-.header_search_container
-{
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	width: 100%;
-	background: #eb4141;
-	z-index: -1;
-	opacity: 0;
-	-webkit-transition: all 400ms ease;
-	-moz-transition: all 400ms ease;
-	-ms-transition: all 400ms ease;
-	-o-transition: all 400ms ease;
-	transition: all 400ms ease;
-}
-.header_search_container.active
-{
-	bottom: -73px;
-	opacity: 1;
-}
-.header_search_content
-{
-	width: 100%;
-	height: 73px;
-}
-.search_input
-{
-	width: 100%;
-	height: 40px;
-	border: none;
-	outline: none;
-	padding-left: 20px;
-}
-.header_search_button
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 40px;
-	height: 100%;
-	border: none;
-	outline: none;
-	cursor: pointer;
 }
 
 
@@ -301,11 +242,7 @@
 {
 	.header_content
 	{
-		height: 65px;
-	}
-	.header.scrolled .header_content
-	{
-		height: 65px;
+    height: 48px;
 	}
   .logo a span
   {
@@ -321,11 +258,7 @@
 {
 	.header_content
 	{
-		height: 65px;
-	}
-	.header.scrolled .header_content
-	{
-		height: 65px;
+    height: 48px;
 	}
   .logo a span
   {
@@ -333,7 +266,7 @@
   }
   .logo a img
   {
-	  height: 48px;
+	  height: 32px;
   }
 }
 
