@@ -1,9 +1,14 @@
 .margin {
-  box-shadow: 5px 10px #888888;
+  box-shadow: 2px 3px #888888;
   border: 1px solid #888888;
-  margin: 25px 0;
+  margin: 12px 0;
 }
 
 .title-area {
   align-self: center;
+}
+
+.moment-image {
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
