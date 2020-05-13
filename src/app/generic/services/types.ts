@@ -1,5 +1,6 @@
 import { MultiText } from 'src/app/data/api-data';
 import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 export type PageName = string;
 export type EntityId = string;
@@ -17,7 +18,11 @@ export class CollectionRef {
 export const WEntityRoot = 'EntityRoot/church';
 
 export class WEntity {
-  id: EntityId;  // one of church, ministry, cellgroup, person, storage
+  id: EntityId;  // one of church, ministry, cellgroup, person, storage or uuid
+  lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
+  deleted?: boolean;			// soft deleted or not
+  start: number;
+
   path: Path;
   name: MultiText;
   title: MultiText;
@@ -28,6 +33,16 @@ export class WEntity {
   image?: ImageURL;
   priority?: PriorityEnum;
   link?: LinkURL;
+
+  constructor(collectionPath: string) {
+    this.id = uuidv4();
+    this.path = `${collectionPath}/${this.id}`;
+    this.lastUpdated = new Date().getTime();
+    this.start = new Date().getTime();
+    this.image = 'assets/images/cross_1.png';
+    this.title = { english: '[title]', chinese: '[标题]'};
+    this.subTitle = { english: '[subTitle]', chinese: '[子标题]'};
+  }
 }
 
 export type WPerson = WEntity;
@@ -51,19 +66,22 @@ export class WPage {    // template of webpages used to display a document
   sections: WSection[];
 }
 
-export type SizeEnum = 'slide'|'row'|'large'|'medium'|'small'|'icon';    // for collection view
-export type Position = 'middle'|'left-right'|'top-bottom';
-export type ImageStyle = 'full'|'page'|'margin'|'icon';
-export type ContentStyle = 'image-only'|'image-title'|'text-only'|'all'|'quote';
+export type SizeEnum = 'slide'|'row'|'large'|'medium'|'small'|'tiny';   // for collection view, margin and padding for items
+export type ImageStyle = 'full'|'page'|'margin'|'icon';                 // margin, padding & shadows
+export type TextPosition = 'middle'|'left-right'|'top-bottom';                       // only useful when SizeEnum = 'slide'|'row'
+export type ContentStyle = 'image-only'|'image-title'|'text-only'|'all'|'quote'|'pastor';
+export type ContrastStyle = 'light'|'';                                    // text is light
+
 export type Action = 'Link'|'Route'|'none'|'';
 export type DirectionEnum = 'asc'|'desc';
 export type SliceEnum = 'last'|'first'|'';
 
 export class EntityDisplayOptions {
   size: SizeEnum;
-  position: Position;
+  position: TextPosition;
   imageStyle: ImageStyle;
   contentStyle: ContentStyle;
+  contrastStyle?: ContrastStyle;
 }
 
 export class EntitySource {
@@ -84,11 +102,7 @@ export class WSection {
   entitySource: EntitySource;
   entityDisplayOptions: EntityDisplayOptions;
   action?: Action;    // When 'Route', always jump to main page
-}
-
-export class EntityPagesBinding {
-  entity: WEntity;
-  pages: WPage[];
+  entityTemplate?: WPage[];
 }
 
 export class ServiceResponse {

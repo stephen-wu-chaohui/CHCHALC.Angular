@@ -1,4 +1,21 @@
-<div class="home_background" [style.background]="'url(/assets/images/home.jpg)'">
-  <h2 class="start">{{ss.tr(page.title)}}</h2>
-  <a class="end" routeLink="home">Home</a>
+
+<div class="home">
+	<div class="home_background" [style.background]="'url(/assets/images/home.jpg)'"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="home_container">
+					<div class="home_content d-flex flex-row align-items-center justify-content-start">
+						<div class="home_title">{{ss.tr(page.title)}}</div>
+						<div class="home_breadcrumbs ml-auto">
+							<ul class="breadcrumbs">
+								<li><a (click)="onHome()">{{ss.tr(Home)}}</a></li>
+								<li>{{ss.tr(page.title)}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

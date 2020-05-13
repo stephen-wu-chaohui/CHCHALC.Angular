@@ -10,21 +10,26 @@ import { MockService } from '../services/mock.service';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent implements OnInit {
-  page: WPage;
-  entity: WEntity;
+  get page() { return this.pageService.currentContext?.template[0]; }
+  get entity() { return this.pageService.currentContext?.entity; }
 
-  constructor(activeRouter: ActivatedRoute, pageService: PageService, entityService: MockService) {
-    const pageId = activeRouter.snapshot.params.pageId;
-    const entityId = activeRouter.snapshot.params.entityId;
-    console.log('PageId, entityId', pageId, entityId);
-
-    if (!entityId) {
-      this.page = entityService.topPages.find(p => p.id === 'home');
-      this.entity = entityService.root;
+  constructor(entityService: MockService, public pageService: PageService) {
+    if (!this.pageService.currentContext) {
+      this.pageService.routeTo({
+        entity: entityService.root,
+        template: pageService.topPages
+      });
     }
   }
 
   ngOnInit() {
   }
 
+  routeTo($event) {
+    this.pageService.routeTo($event);
+  }
+
+  back() {
+    return this.pageService.pop();
+  }
 }

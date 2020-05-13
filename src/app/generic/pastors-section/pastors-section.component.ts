@@ -76,6 +76,7 @@ export class PastorsSectionComponent implements OnInit {
 
     this.host = {
       id: 'church',
+      start: 1589232395000,
       path: '',
       name: { english: 'Chinese Abundant Life Church', chinese: '基督城华人丰盛生命教会'},
       title: { english: 'Abundant Life', chinese: '丰盛的生命'},

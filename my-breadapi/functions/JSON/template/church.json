@@ -1,0 +1,171 @@
+{
+    "id": "church",
+    "path": "pages/church",
+    "title": { "english": "Our church", "chinese": "教会"},
+    "sections": [{
+      "icon": "assets/images/church_2.png",
+      "title": { "english": "Our Ministries", "chinese": "我们的事工"},
+      "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+      "entitySource": {
+        "collection": "ministries",
+        "priorities": ["high", "low"],
+        "directionStr": "asc"
+      },
+      "entityDisplayOptions": {
+        "size": "medium",
+        "position": "top-bottom",
+        "imageStyle": "page",
+        "contentStyle": "image-title"
+      },
+      "action": "Route",
+      "entityTemplate": [{
+        "id": "home",
+        "sections": [{
+          "entitySource": {
+            "collection": "homeslides",
+            "priorities": ["high"]
+          },
+          "entityDisplayOptions": {
+            "size": "slide",
+            "position": "middle",
+            "imageStyle": "full",
+            "contentStyle": "image-title"
+          }
+        }, {
+          "entitySource": {
+            "collection": "welcome",
+            "priorities": ["high"],
+            "slice": "last",
+            "maxinum": 1
+          },
+          "entityDisplayOptions": {
+            "size": "row",
+            "position": "left-right",
+            "imageStyle": "full",
+            "contentStyle": "all"
+          }
+        }, {
+          "icon": "assets/images/church_2.png",
+          "title": { "english": "Our Church main activities", "chinese": "教会主要活动"},
+          "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+          "description": {
+            "english": "to bring people to Jesus and membership in his family",
+            "chinese": "带领人来到耶稣的跟前，并使人成为他家中的成员"
+          },
+          "backgroudImage": "/assets/images/services.jpg",
+          "lightText": true,
+          "entitySource": {
+            "collection": "activity",
+            "priorities": ["high", "low"]
+          },
+          "entityDisplayOptions": {
+            "size": "tiny",
+            "position": "top-bottom",
+            "imageStyle": "icon",
+            "contentStyle": "image-title"
+          },
+          "action": "Route"
+        }, {
+          "icon": "assets/images/church_3.png",
+          "title": { "english": "Today\"s Sermon", "chinese": "今日讲道"},
+          "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+          "backgroudImage": "/assets/images/sermon.png",
+          "entitySource": {
+            "collection": "sermons",
+            "priorities": ["high", "low"],
+            "slice": "first",
+            "maxinum": 1
+          },
+          "entityDisplayOptions": {
+            "size": "row",
+            "position": "left-right",
+            "imageStyle": "full",
+            "contentStyle": "all"
+          },
+          "action": "Link"
+        }, {
+          "icon": "assets/images/church_5.png",
+          "title": { "english": "Quote of the day", "chinese": "今日金句"},
+          "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+          "backgroudImage": "/assets/images/quote.jpg",
+          "lightText": true,
+          "entitySource": {
+            "collection": "quotes",
+            "priorities": ["high", "low"]
+          },
+          "entityDisplayOptions": {
+            "size": "row",
+            "position": "left-right",
+            "imageStyle": "full",
+            "contentStyle": "quote"
+          },
+          "action": "Link"
+        }, {
+          "icon": "assets/images/church_6.png",
+          "title": { "english": "Latest News", "chinese": "最新消息"},
+          "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+          "entitySource": {
+            "collection": "news",
+            "priorities": ["high"],
+            "slice": "last",
+            "maxinum": 3
+          },
+          "entityDisplayOptions": {
+            "size": "small",
+            "position": "top-bottom",
+            "imageStyle": "margin",
+            "contentStyle": "image-title"
+          },
+          "action": "Route"
+        }]
+      }]
+    }, {
+      "icon": "assets/images/church_5.png",
+      "title": { "english": "Quote of the day", "chinese": "今日金句"},
+      "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+      "backgroudImage": "/assets/images/quote.jpg",
+      "lightText": true,
+      "entitySource": {
+        "collection": "quotes",
+        "priorities": ["high", "low"]
+      },
+      "entityDisplayOptions": {
+        "size": "row",
+        "position": "left-right",
+        "imageStyle": "full",
+        "contentStyle": "quote"
+      },
+      "action": "Link"
+    }, {
+      "icon": "assets/images/church_6.png",
+      "title": { "english": "Our Pastors", "chinese": "我们的牧师"},
+      "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+      "entitySource": {
+        "collection": "persons",
+        "priorities": ["high", "low"],
+        "directionStr": "asc"
+      },
+      "entityDisplayOptions": {
+        "size": "medium",
+        "position": "top-bottom",
+        "imageStyle": "icon",
+        "contentStyle": "pastor"
+      },
+      "action": "Route"
+    }, {
+      "icon": "assets/images/church_4.png",
+      "title": { "english": "Our Church\"s Cellgroups", "chinese": "我们的小家"},
+      "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
+      "entitySource": {
+        "collection": "cellgroups",
+        "priorities": ["high", "low"]
+      },
+      "entityDisplayOptions": {
+        "size": "medium",
+        "position": "top-bottom",
+        "imageStyle": "page",
+        "contentStyle": "image-title"
+      },
+      "action": "Route"
+    }]
+  }

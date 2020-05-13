@@ -1,0 +1,149 @@
+.entity
+{
+	margin-bottom: 98px;
+	/* padding: 15px; */
+  display: grid;
+
+  &.middle {
+    position: fixed;
+  }
+  &.top-bottom {
+    position: relative;
+  }
+}
+
+
+/* 'slide'|'row'|'large'|'medium'|'small'|'icon'  */
+
+
+
+/*
+'full'|'page'|'margin'|'icon'
+*/
+.image
+{
+  text-align: center;
+  :hover {
+    cursor: grab;
+  }
+  img {
+    min-height: 100px;
+    width: 100%;
+  }
+  &.margin {
+    box-shadow: 2px 3px #888888;
+    border: 1px solid #888888;
+    margin: 12px 0;
+  }
+  &.icon {
+    img {
+      border-radius: 50%;
+    }
+    width: 80%;
+  }
+}
+
+.content {
+  text-align: center;
+  padding-top: 20px;
+
+  .title
+  {
+    font-size: 24px;
+    font-weight: 500;
+    color: #000000;
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+  }
+
+  &.image-only {
+    display: none;
+  }
+
+  &.image-title {
+    .name {
+      display: none;
+    }
+    .title {
+      font-size: 24px;
+    }
+    .subtitle {
+      display: none;
+    }
+    .text {
+      display: none;
+    }
+  }
+
+  &.text-only {
+    .name {
+      display: none;
+    }
+    .title {
+      display: none;
+    }
+    .subtitle {
+      display: none;
+    }
+    .text {
+      font-size: 18px;
+    }
+  }
+
+  &.all {
+    .name {
+      font-size: 18px;
+    }
+    .title {
+      font-size: 24px;
+    }
+    .subtitle {
+      font-size: 18px;
+    }
+    .text {
+      font-size: 18px;
+    }
+  }
+
+  &.quote {
+    .name {
+      display: none;
+    }
+    .title {
+      display: none;
+    }
+    .subtitle {
+      display: none;
+    }
+    .text {
+      font-size: 18px;
+    }
+    .reference {
+      font-size: 18px;
+      color: yellow;
+    }
+  }
+
+  &.pastor {
+    .name {
+      font-size: 24px;
+    }
+    .title {
+      font-size: 18px;
+    }
+    .subtitle {
+      display: none;
+    }
+    .text {
+      display: none;
+    }
+  }
+}
+
+

@@ -26,7 +26,7 @@ export class ChchalcDataService {
       route: '/home'
     }, {
       title: { english: 'Church', chinese: '教会'},
-      route: '/church'
+      route: '/chch'
     }, {
       title: { english: 'Sermons', chinese: '讲道'},
       route: '/sermons'

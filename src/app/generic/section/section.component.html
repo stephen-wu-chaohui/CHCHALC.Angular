@@ -12,16 +12,15 @@
       </div>
     </div>
     <ng-container *ngIf="data.adminMode">
-      <input type="checkbox" [(ngModel)]="checked" checked data-toggle="toggle"><label>Create a new item`</label>
+      <input type="checkbox" [(ngModel)]="checked" checked data-toggle="toggle"><label>Create a new item</label>
       <div *ngIf="checked" [class]="bootstrapColumnClasses">
-        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: createNew() }">
-        </ng-container>
+        <app-new-entity-edit [collectionPath]="collectionPath" [section]="section"></app-new-entity-edit>
       </div>
     </ng-container>
     <div class="row">
       <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: entity }">
-        </ng-container>
+        <app-new-entity-edit (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section" *ngIf="data.adminMode"></app-new-entity-edit>
+        <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section" *ngIf="!data.adminMode"></app-entity>
       </div>
     </div>
   </div>

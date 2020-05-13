@@ -3,8 +3,12 @@ const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
 const moment = require('moment');
+const bodyParser = require("body-parser");
+
 const app = express();
 app.use(cors({ origin: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const version = 'ChchALC database API v1.0';
 
@@ -19,11 +23,15 @@ function startCRUDEndpoints(controllerName)
 	app.post(`/api/${controllerName}`, (req, res) => {
 		(async () => {
 				try {
-					console.log(req.body);
+          console.log(req.body);
 					if (!req.body.id) {
 						req.body.id = moment().format();
-					}
-					await db.collection(controllerName).doc(req.body.id)
+          }
+          const arr = req.body.path.split('/');
+          arr.pop();
+          const collectionPath = arr.join('/');
+          console.log('collectionPath: ', collectionPath);
+					await db.collection(collectionPath).doc(req.body.id)
 							.set(req.body);
 					return res.status(200).send(req.body);
 				} catch (error) {
@@ -217,7 +225,7 @@ startSermonsEndpoints();
 startCRUDEndpoints('persons');
 startCRUDEndpoints('stories');
 
-
+startCRUDEndpoints('g');
 
 /////////////////////////////////////////////////////////////////
 // Posts to Stories

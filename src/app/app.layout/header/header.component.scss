@@ -5,6 +5,7 @@
 
 .header
 {
+	height: 115px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -15,16 +16,36 @@
 	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
+  .logo a {
+    span {
+    	font-family: 'Ma Shan Zheng', sans-serif;
+    	font-size: 48px;
+    	font-weight: bolder;
+    	color: firebrick;
+    	vertical-align: middle;
+    }
+    img {
+    	display: left;
+    	vertical-align: middle;
+    	height: 64px;
+    }
+  }
+  &.scrolled
+  {
+  	top: 0;
+    box-shadow: 1px 1px #888888;
+    height: 48px;
+    .logo a {
+      span {
+        font-size: 24px;
+      }
+      img {
+        height: 32px;
+      }
+    }
+  }
 }
-.header.scrolled
-{
-	top: 0;
-  box-shadow: 1px 1px #888888;
-}
-.scrolled .header_content
-{
-  height: 48px;
-}
+
 
 .header_container
 {
@@ -33,75 +54,48 @@
 }
 .header_content
 {
-	height: 115px;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
 	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
-	transition: all 400ms ease;
+  transition: all 400ms ease;
 }
 
 logo_container {
   padding: 5px;
-}
 
-.logo a span
-{
-	font-family: 'Ma Shan Zheng', sans-serif;
-	font-size: 48px;
-	font-weight: bolder;
-	color: firebrick;
-	vertical-align: middle;
 }
-.logo a img
-{
-	display: left;
-	vertical-align: middle;
-	height: 64px;
-}
-
-.header.scrolled {
-  .logo a span {
-    font-size: 24px;
-  }
-  .logo a img {
-    height: 32px;
-  }
-}
-
 
 .main_nav
 {
 	display: inline-block;
-}
-.main_nav ul li
-{
-	display: inline-block;
-	font-size: large;
-	color: blue;
-	font-weight: 500;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.main_nav ul li a {
-	display: block;
-	padding: 14px 28px;
-}
-.main_nav ul li:hover
-{
-	background-color: lightcyan;
-}
-.main_nav ul li.active
-{
-	background-color: lightpink;
+  ul li {
+  	display: inline-block;
+  	font-size: large;
+  	color: blue;
+  	font-weight: 500;
+  	-webkit-transition: all 200ms ease;
+  	-moz-transition: all 200ms ease;
+  	-ms-transition: all 200ms ease;
+  	-o-transition: all 200ms ease;
+  	transition: all 200ms ease;
+    a {
+    	display: block;
+    	padding: 10px 28px;
+    }
+    :hover {
+    	background-color: lightcyan;
+    }
+    &.active {
+    	background-color: lightpink;
+    }
+  }
 }
 .language
 {
+  height: 48px;
 	display: inline-block;
-	padding: 30px;
+	padding: 5px;
 	cursor: pointer;
 	color: #eb4141;
 
@@ -112,34 +106,30 @@ logo_container {
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
-}
-.language:hover
-{
-	background-color: aquamarine;
-}
 
+  :hover {
+  	background-color: aquamarine;
+  }
+}
 
 .hamburger
 {
 	display: none;
 	cursor: pointer;
 	margin-right: 10px
+  i {
+  	font-size: 20px;
+  	color: #353535;
+  	-webkit-transition: all 200ms ease;
+  	-moz-transition: all 200ms ease;
+  	-ms-transition: all 200ms ease;
+  	-o-transition: all 200ms ease;
+  	transition: all 200ms ease;
+  }
+  :hover i {
+  	color: #eb4141;
+  }
 }
-.hamburger i
-{
-	font-size: 20px;
-	color: #353535;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.hamburger:hover i
-{
-	color: #eb4141;
-}
-
 
 /*********************************
 4. Menu
@@ -148,8 +138,8 @@ logo_container {
 .menu
 {
 	position: fixed;
-	margin-top: 95px;
-	right: 0px;
+	margin-top: 48px;
+	right: 5px;
 	padding: 7px;
 	background: rgba(235, 220, 16, 0.98);
 	z-index: 101;
@@ -160,49 +150,50 @@ logo_container {
 	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
+
+  &.scrolled {
+  	margin-top: 36px;
+  }
+
+  &.active {
+  	visibility: visible;
+    opacity: 0.88;
+  }
 }
-.menu.active
-{
-	visibility: visible;
-  opacity: 0.88;
-}
-.menu_nav
-{
+
+.menu_nav {
 	margin-top: 0px;
 	text-align: center;
+  ul li a {
+  	display: block;
+  	font-size:large;
+  	font-weight: bold;
+  	color: blue;
+  	padding: 12px;
+    :hover {
+    	background-color: aquamarine;
+    	color: #eb4141;
+    }
+  }
 }
-.menu_nav ul li a
-{
-	display: block;
-	font-size:large;
-	font-weight: bold;
-	color: blue;
-	padding: 15px;
-}
-.menu_nav ul li a:hover
-{
-	background-color: aquamarine;
-	color: #eb4141;
-}
+
 .menu_close
 {
 	position: absolute;
 	top: 100px;
 	right: 100px;
 	cursor: pointer;
-}
-.menu_close i
-{
-	font-size: 20px;
-}
-.menu_close:hover i
-{
-	color: #eb4141;
+  i {
+  	font-size: 20px;
+  }
+  :hover i {
+  	color: #eb4141;
+  }
 }
 
 .alert {
   position: absolute;
-  background-color: orangered;
+  background-color: orange;
   color: white;
   width: 100%;
   height: 30px;
@@ -223,19 +214,30 @@ logo_container {
 	.hamburger
 	{
 		display: block;
-	}
+  }
 }
 
 @media only screen and (max-width: 767px)
 {
-	.top_bar
-	{
+	.top_bar {
 		display: none;
 	}
-	.header.scrolled
-	{
+	.header.scrolled {
 		top: 0px;
-	}
+  }
+  .menu {
+    top: 0px;
+  }
+  .header_content {
+    .logo_container .logo a {
+      span {
+        font-size: 24px;
+      }
+      img {
+        height: 32px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 575px)

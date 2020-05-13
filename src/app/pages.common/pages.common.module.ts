@@ -20,7 +20,6 @@ import { CellgroupsSectionComponent } from './cellgroups-section/cellgroups-sect
 import { MinistryEditComponent } from './ministry-edit/ministry-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { EntityEditComponent } from '../app.common/entity-edit/entity-edit.component';
 import { PastorEditComponent } from './pastor-edit/pastor-edit.component';
 import { RouterModule } from '@angular/router';
 import { StorySectionComponent } from './story-section/story-section.component';
@@ -64,7 +63,6 @@ import { CellgroupEditComponent } from './cellgroup-edit/cellgroup-edit.componen
 		BlogSidebarComponent,
 		ContactFormSectionComponent,
 		ContactInfoSectionComponent,
-    EntityEditComponent,
     StorySectionComponent,
     StoryEditComponent,
 	],

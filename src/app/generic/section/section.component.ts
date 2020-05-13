@@ -14,12 +14,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SectionComponent implements OnInit {
   @Input() section: WSection;
   @Input() host: WEntity;
+  @Output() routeTo = new EventEmitter();
   @Input() itemTemplate: TemplateRef<any>;
   @ContentChild(TemplateRef)
 
   checked = false;
   entitySource: any;
   bootstrapColumnClasses = '';
+  collectionPath = '';
 
   constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService) {
   }
@@ -27,6 +29,7 @@ export class SectionComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource), 100);
     this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
+    this.collectionPath = `${this.host.path}/${this.section.entitySource.collection}`;
   }
 
   private getBootstrapColumnClasses() {
@@ -36,13 +39,13 @@ export class SectionComponent implements OnInit {
     case 'row':
       return 'col-12';
     case 'large':
-      return 'col-lg-6 col-md-12';
+      return 'col-lg-6';
     case 'medium':
-      return 'col-lg-4 col-md-6 col-sm-12';
+      return 'col-lg-3 col-md-4';
     case 'small':
-      return 'col-lg-3 col-md-6 col-sm-12';
-    case 'icon':
-      return 'col-lg-6 col-md-4 col-sm-6';
+      return 'col-lg-2 col-md-3 col-sm-6';
+    case 'tiny':
+      return 'col-lg-2 col-md-3 col-sm-6';
     }
   }
 
@@ -51,9 +54,5 @@ export class SectionComponent implements OnInit {
       return '';
     }
     return `url(${this.section.backgroudImage})`;
-  }
-
-  createNew() {
-    return new WEntity();
   }
 }

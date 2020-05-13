@@ -1,4 +1,5 @@
-<app-title [page]="page" *ngIf="page.title"></app-title>
-
-<app-new-section *ngFor="let section of page.sections" [section]="section" [host]="entity">
-</app-new-section>
+<app-title [page]="page"></app-title>
+<ng-container *ngFor="let section of page.sections">
+  <app-new-section (routeTo)="routeTo($event)" [section]="section" [host]="entity">
+  </app-new-section>
+</ng-container>

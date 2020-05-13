@@ -1,0 +1,18 @@
+<div class="entity" [ngClass]="section.entityDisplayOptions.position">
+  <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
+    <img [src]="image" [class.saving]="isSaving" (load)="onLoad($event)"
+      [class.deleted]="entity.deleted" (click)= "imageClick()">
+    <ng-container *ngIf="data.adminMode">
+      <button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()" *ngIf="!isDirty && !isNew">Hide</button>
+      <input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
+      <input type="button" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save" (click)="onSave()">
+    </ng-container>
+  </div>
+  <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle">
+    <input type="text" class="name" (changed)="setDirty()" formControlName="name" [readonly]="!data.adminMode">
+    <textarea class="title" (input)="setDirty()" formControlName="title" [readonly]="!data.adminMode"></textarea>
+    <textarea  class="subtitle" (input)="setDirty()" formControlName="subTitle" [readonly]="!data.adminMode">{{data.tr(entity.subTitle)}}</textarea>
+    <textarea class="text" (input)="setDirty()" formControlName="text" [readonly]="!data.adminMode"></textarea>
+    <textarea class="reference" (input)="setDirty()" formControlName="reference" [readonly]="!data.adminMode"></textarea>
+  </form>
+</div>

@@ -1,9 +1,9 @@
 
 <div class="entity" [ngClass]="section.entityDisplayOptions.position">
   <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
-    <img [src]="entity.image" width="100%" (click)="imageClick()">
+    <img [src]="entity.image" (click)="imageClick()">
   </div>
-  <div class="text" [ngClass]="section.entityDisplayOptions.contentStyle">
+  <div class="content" [ngClass]="section.entityDisplayOptions.contentStyle">
     <div class="name">{{ss.tr(entity.name)}}</div>
     <div class="title">{{ss.tr(entity.title)}}</div>
     <div class="subtitle">{{ss.tr(entity.subTitle)}}</div>

@@ -15,6 +15,7 @@ import { SermonsPageComponent } from './sermons-page/sermons-page.component';
 import { PersonPageComponent } from './person-page/person-page.component';
 import { CellgroupPageComponent } from './cellgroup-page/cellgroup-page.component';
 import { MomentPageComponent } from './moment-page/moment-page.component';
+import { GenericModule } from '../generic/generic.module';
 
 export const PagesRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +29,7 @@ export const PagesRoutes: Routes = [
   { path: 'persons/:id', component: PersonPageComponent },
   { path: 'cellgroups/:id', component: CellgroupPageComponent },
   { path: 'cellgroups/:cellgroupId/moments/:momentId', component: MomentPageComponent },
-  { path: 'g', loadChildren : () => import('../generic/generic.module').then(m => m.GenericModule) },
+  { path: 'chch', loadChildren : () => import('../generic/generic.module').then(m => m.GenericModule) },
 ];
 
 @NgModule({
@@ -38,6 +39,7 @@ export const PagesRoutes: Routes = [
     AppLayoutModule,
     AppCommonModule,
     PagesCommonModule,
+    GenericModule,
     RouterModule.forChild(PagesRoutes)
   ],
   declarations: [

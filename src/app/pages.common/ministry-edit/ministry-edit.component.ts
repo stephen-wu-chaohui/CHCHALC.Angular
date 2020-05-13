@@ -58,7 +58,7 @@ export class MinistryEditComponent {
   doItemCreated($event) {
 		console.log('doItemCreated($event)', $event);
 		if (this.itemCreated) {
-			this.itemCreated.emit($event);
+      this.itemCreated.emit($event);
 		}
     this.item = this.newMinistry();
     this.patchValue();
