@@ -1,4 +1,4 @@
-<app-home-section [title]="title"></app-home-section>
+<app-title [page]="page"></app-title>
 
 <div class="container">
 	<h1>
@@ -7,7 +7,7 @@
 	<h2>So far, I haven't developed the UI to verify your password.</h2>
 	<h2>Just enjoy admin mode!</h2>
 	<h2>
-			<a [routerLink]="['/home']" (click)="setAdmin()">Click here to start </a>
+			<a routerLink='/home' (click)="setAdmin()">Click here to start </a>
 	</h2>
 </div>
 

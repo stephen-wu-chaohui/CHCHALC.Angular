@@ -7,11 +7,11 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
-import { PagesModule } from '../pages/pages.module';
 import { ChchalcDataService } from '../data/chchalc-data.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../.././environments/environment';
 import { AppCommonModule } from '../app.common/app.common.module';
+import { GenericModule } from '../generic/generic.module';
 
 export function init_app(data: ChchalcDataService) {
 	return () => data.init();
@@ -27,7 +27,7 @@ export function init_app(data: ChchalcDataService) {
 			AngularFireModule.initializeApp(environment.firebase),
 			AngularFireStorageModule,
 			AngularFirestoreModule.enablePersistence(),
-      PagesModule,
+      GenericModule,
 			AppLayoutModule,
 			AppCommonModule,
 			RouterModule.forRoot([]),

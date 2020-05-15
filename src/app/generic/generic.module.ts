@@ -13,12 +13,13 @@ import { ToolsPageComponent } from './tools-page/tools-page.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { IntroSectionComponent } from './intro-section/intro-section.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 export const routes: Routes = [
-  { path: '', component: PageComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: PageComponent },
   { path: 'tools', component: ToolsPageComponent },
-
-  // { path: 'chch', loadChildren : () => import('./generic.module').then(m => m.GenericModule) },
+  { path: 'admin', component: AdminPageComponent },
 ];
 
 @NgModule({
@@ -28,7 +29,7 @@ export const routes: Routes = [
     ReactiveFormsModule,
     NguCarouselModule,
     AppCommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forRoot(routes)
   ],
   declarations: [
     PageComponent,
@@ -39,7 +40,8 @@ export const routes: Routes = [
     TitleComponent,
     HomeSliderComponent,
     IntroSectionComponent,
-    ToolsPageComponent
+    ToolsPageComponent,
+    AdminPageComponent
   ], exports: [
     PageComponent,
     SectionComponent,
@@ -48,7 +50,8 @@ export const routes: Routes = [
     TitleComponent,
     HomeSliderComponent,
     IntroSectionComponent,
-    ToolsPageComponent
+    ToolsPageComponent,
+    AdminPageComponent
   ]
 })
 export class GenericModule { }

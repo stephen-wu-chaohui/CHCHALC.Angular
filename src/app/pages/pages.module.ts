@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { AppCommonModule } from '../app.common/app.common.module';
 import { PagesCommonModule } from '../pages.common/pages.common.module';
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPageComponent } from '../generic/admin-page/admin-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
@@ -40,7 +40,7 @@ export const PagesRoutes: Routes = [
     AppCommonModule,
     PagesCommonModule,
     GenericModule,
-    RouterModule.forChild(PagesRoutes)
+    // RouterModule.forChild(PagesRoutes)
   ],
   declarations: [
     AdminPageComponent,

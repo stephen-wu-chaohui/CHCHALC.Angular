@@ -7,7 +7,11 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-	title = { english: 'Admin', chinese: '维护模式'};
+  page = {
+    id: 'admin',
+    title: { english: 'Admin', chinese: '维护模式'},
+    sections: []
+  };
 
   constructor(private data: ChchalcDataService) { }
 
@@ -15,8 +19,6 @@ export class AdminPageComponent implements OnInit {
   }
 
 	setAdmin(admin: boolean = true) {
-    this.data.adminMode = admin;
-    document.getElementById('admin-message-div-canaan').style.opacity = '1.0';
-    setTimeout('hideAdmin()', 5000);
+    this.data.adminMode = admin;``
 	}
 }
