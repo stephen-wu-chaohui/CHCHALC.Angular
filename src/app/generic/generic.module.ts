@@ -6,8 +6,6 @@ import { SectionComponent } from './section/section.component';
 import { EntityComponent } from './entity/entity.component';
 import { TitleComponent } from './title/title.component';
 import { Routes, RouterModule } from '@angular/router';
-import { PastorsSectionComponent } from './pastors-section/pastors-section.component';
-import { AppCommonModule } from '../app.common/app.common.module';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
 import { ToolsPageComponent } from './tools-page/tools-page.component';
 import { NguCarouselModule } from '@ngu/carousel';
@@ -28,7 +26,6 @@ export const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NguCarouselModule,
-    AppCommonModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [
@@ -36,7 +33,6 @@ export const routes: Routes = [
     SectionComponent,
     EntityComponent,
     EntityEditComponent,
-    PastorsSectionComponent,
     TitleComponent,
     HomeSliderComponent,
     IntroSectionComponent,
@@ -46,7 +42,6 @@ export const routes: Routes = [
     PageComponent,
     SectionComponent,
     EntityComponent,
-    PastorsSectionComponent,
     TitleComponent,
     HomeSliderComponent,
     IntroSectionComponent,

@@ -10,7 +10,6 @@ import { AppLayoutModule } from '../app.layout/app.layout.module';
 import { ChchalcDataService } from '../data/chchalc-data.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../.././environments/environment';
-import { AppCommonModule } from '../app.common/app.common.module';
 import { GenericModule } from '../generic/generic.module';
 
 export function init_app(data: ChchalcDataService) {
@@ -29,7 +28,6 @@ export function init_app(data: ChchalcDataService) {
 			AngularFirestoreModule.enablePersistence(),
       GenericModule,
 			AppLayoutModule,
-			AppCommonModule,
 			RouterModule.forRoot([]),
 			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],

@@ -1,12 +1,21 @@
 	<!-- Intro -->
 
-	<app-section-container class="intro" [section]="greeting" *ngIf="greeting">
+  <div class="container">
+    <div class="row" *ngIf="greeting.title">
+      <div class="col">
+        <div class="section_title_container">
+          <div class="section_image"><img [src]="greeting.image" alt=""></div>
+          <div class="section_title"><h2>{{data.tr(greeting.title)}}</h2></div>
+          <div class="section_subtitle">{{data.tr(greeting.subTitle)}}</div>
+        </div>
+      </div>
+    </div>
 		<div class="row intro_content">
 
 			<!-- Intro Text -->
 			<div class="col-lg-6">
 				<div class="intro_text">
-					<p>{{data.tr(greeting.description)}}</p>
+					<p>{{data.tr(greeting.text)}}</p>
 				</div>
 			</div>
 
@@ -16,4 +25,4 @@
 				<div class="button intro_button"><a href="">Read More</a></div>
 			</div>
 		</div>
-</app-section-container>
+  </div>

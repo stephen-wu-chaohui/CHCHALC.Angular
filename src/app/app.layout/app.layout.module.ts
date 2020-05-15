@@ -7,12 +7,10 @@ import { TopBarComponent } from './header/top-bar/top-bar.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { GoogleMapsModule } from '@angular/google-maps'
-import { AppCommonModule } from '../app.common/app.common.module';
 
 @NgModule({
   imports: [
     CommonModule,
-		AppCommonModule,
 		RouterModule,
     GoogleMapsModule
   ],
