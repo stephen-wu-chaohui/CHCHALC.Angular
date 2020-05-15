@@ -36,12 +36,12 @@
     "lightText": true,
     "entitySource": {
       "collection": "activity",
-      "priorities": ["high", "low"],
+      "priorities": ["high", "low"]
     },
     "entityDisplayOptions": {
       "size": "tiny",
       "position": "top-bottom",
-      "imageStyle": ""icon"",
+      "imageStyle": "icon",
       "contentStyle": "image-title"
     },
     "action": "Route"

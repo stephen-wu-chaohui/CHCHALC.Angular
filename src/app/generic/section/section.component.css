@@ -1,3 +1,11 @@
+.section
+{
+	width: 100%;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background: #FFFFFF;
+}
+
 .background
 {
 	position: absolute;
@@ -7,12 +15,9 @@
 	height: 100%;
 }
 
-.section
-{
+.home_slider_image {
 	width: 100%;
-	padding-top: 98px;
-	padding-bottom: 98px;
-	background: #FFFFFF;
+	height: 100%;
 }
 
 .section_title_container

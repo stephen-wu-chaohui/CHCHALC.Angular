@@ -9,9 +9,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { PastorsSectionComponent } from './pastors-section/pastors-section.component';
 import { AppCommonModule } from '../app.common/app.common.module';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
+import { ToolsPageComponent } from './tools-page/tools-page.component';
+import { NguCarouselModule } from '@ngu/carousel';
+import { HomeSliderComponent } from './home-slider/home-slider.component';
+import { IntroSectionComponent } from './intro-section/intro-section.component';
 
 export const routes: Routes = [
   { path: '', component: PageComponent },
+  { path: 'tools', component: ToolsPageComponent },
+
+  // { path: 'chch', loadChildren : () => import('./generic.module').then(m => m.GenericModule) },
 ];
 
 @NgModule({
@@ -19,6 +26,7 @@ export const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NguCarouselModule,
     AppCommonModule,
     RouterModule.forChild(routes)
   ],
@@ -28,13 +36,19 @@ export const routes: Routes = [
     EntityComponent,
     EntityEditComponent,
     PastorsSectionComponent,
-    TitleComponent
+    TitleComponent,
+    HomeSliderComponent,
+    IntroSectionComponent,
+    ToolsPageComponent
   ], exports: [
     PageComponent,
     SectionComponent,
     EntityComponent,
     PastorsSectionComponent,
-    TitleComponent
+    TitleComponent,
+    HomeSliderComponent,
+    IntroSectionComponent,
+    ToolsPageComponent
   ]
 })
 export class GenericModule { }

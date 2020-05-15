@@ -1,4 +1,39 @@
 <div class="section">
+  <ng-container [ngSwitch]="section.entityDisplayOptions.size">
+    <ng-container *ngSwitchCase="'slide'">
+      <app-home-slider></app-home-slider>
+    </ng-container>
+    <!-- app-intro-section     -->
+    <ng-container *ngSwitchCase="'intro'">
+      <app-intro-section></app-intro-section>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="otherSize"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #slideMode>
+  <ngu-carousel [inputs]="carouselTileConfig" [dataSource]="entitySource|async">
+    <ngu-tile *nguCarouselDef="let item; let i = index">
+      <div class="background">
+        <img class="home_slider_image" [src]="item.image">
+        <div class="home_slider_content text-center">
+          <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
+            <img [src]="item.image">
+          </div>
+          <h1 class="slider-text">{{data.tr(item.title)}}</h1>
+          <div class="button home_slider_button">
+            <a href="">{{data.tr(comeAndJoinUs)}}</a>
+          </div>
+        </div>
+      </div>
+    </ngu-tile>
+  </ngu-carousel>
+</ng-template>
+
+
+<ng-template #otherSize>
   <div class="background" [style.background]="backgroudImage()">
   </div>
   <div class="container">
@@ -11,18 +46,28 @@
         </div>
       </div>
     </div>
-    <ng-container *ngIf="data.adminMode">
-      <input type="checkbox" [(ngModel)]="checked" checked data-toggle="toggle"><label>Create a new item</label>
-      <div *ngIf="checked" [class]="bootstrapColumnClasses">
-        <app-new-entity-edit [collectionPath]="collectionPath" [section]="section"></app-new-entity-edit>
-      </div>
+    <ng-container *ngIf="data.adminMode;then adminMode else runMode">
     </ng-container>
+  </div>
+
+  <ng-template #adminMode>
+    <input type="checkbox" [(ngModel)]="checked" checked data-toggle="toggle"><label>Create a new item</label>
+    <div *ngIf="checked" [class]="bootstrapColumnClasses">
+      <app-new-entity-edit [collectionPath]="collectionPath" [section]="section"></app-new-entity-edit>
+    </div>
     <div class="row">
       <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
         <app-new-entity-edit (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section" *ngIf="data.adminMode"></app-new-entity-edit>
-        <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section" *ngIf="!data.adminMode"></app-entity>
       </div>
     </div>
-  </div>
-</div>
+  </ng-template>
 
+  <ng-template #runMode>
+      <div class="row">
+        <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
+          <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section" *ngIf="!data.adminMode"></app-entity>
+        </div>
+      </div>
+  </ng-template>
+
+</ng-template>

@@ -5,6 +5,7 @@ import { MockService } from '../services/mock.service';
 import { Observable } from 'rxjs';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-new-section',
@@ -22,6 +23,21 @@ export class SectionComponent implements OnInit {
   entitySource: any;
   bootstrapColumnClasses = '';
   collectionPath = '';
+
+  public carouselTileConfig: NguCarouselConfig = {
+    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    speed: 500,
+    point: {
+      visible: true
+    },
+    touch: true,
+    loop: true,
+    interval: { timing: 3000 },
+    animation: 'lazy'
+  };
+  comeAndJoinUs = {
+    english: 'Come and Join us', chinese: '欢迎加入我们'
+  };
 
   constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService) {
   }

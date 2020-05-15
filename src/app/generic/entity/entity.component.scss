@@ -1,7 +1,6 @@
 .entity
 {
 	margin-bottom: 98px;
-	/* padding: 15px; */
   display: grid;
 
   &.middle {
@@ -24,22 +23,35 @@
 {
   text-align: center;
   :hover {
-    cursor: grab;
-  }
-  img {
-    min-height: 100px;
-    width: 100%;
+    cursor: pointer;
   }
   &.margin {
     box-shadow: 2px 3px #888888;
     border: 1px solid #888888;
     margin: 12px 0;
+    img {
+      min-height: 100px;
+      width: 100%;
+    }
   }
   &.icon {
     img {
       border-radius: 50%;
+      width: 100%;
     }
     width: 80%;
+  }
+  &.full {
+    img {
+      min-height: 100px;
+      width: 100%;
+    }
+  }
+  &.page {
+    img {
+      min-height: 100px;
+      width: 80%;
+    }
   }
 }
 
@@ -51,7 +63,6 @@
   {
     font-size: 24px;
     font-weight: 500;
-    color: #000000;
     margin-top: 20px;
     width: 100%;
     border: none;
@@ -147,3 +158,17 @@
 }
 
 
+.lightText {
+  .name {
+    color: whitesmoke;
+  }
+  .title {
+    color: whitesmoke;
+  }
+  .subtitle {
+    color: whitesmoke;
+  }
+  .text {
+    color: whitesmoke;
+  }
+}

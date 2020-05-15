@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-slider',
@@ -8,6 +9,8 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
   styleUrls: ['./home-slider.component.css']
 })
 export class HomeSliderComponent implements OnInit {
+  @Input() slideObservable: Observable<any>;
+
   public carouselTileConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
     speed: 500,
@@ -16,16 +19,19 @@ export class HomeSliderComponent implements OnInit {
     },
     touch: true,
     loop: true,
-    interval: { timing: 3000 },
+    interval: { timing: 1000 },
     animation: 'lazy'
   };
   comeAndJoinUs = {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
 
-  constructor(public data: ChchalcDataService) { }
+  constructor(public data: ChchalcDataService) {
+    if (!this.slideObservable) {
+      this.slideObservable = data.SlidersObserver;
+    }
+  }
 
   ngOnInit() {
   }
-
 }

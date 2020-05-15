@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { WEntity, WPage } from './types';
+import { NONE_TYPE } from '@angular/compiler';
 
 export class EntityPagesBinding {
   entity: WEntity;
   template: WPage[];
+  selectedPage?: number;
 }
 
 @Injectable({
@@ -96,18 +98,17 @@ export class PageService {
 
   newsPage: WPage = {
     id: 'news',
+    title: { english: 'News', chinese: '新闻'},
     sections: [{
       icon: 'assets/images/church_6.png',
       title: { english: 'News', chinese: '最新消息'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
-        collection: 'moments',
+        collection: 'news',
         priorities: ['high'],
-        slice: 'last',
-        maxinum: 3
       },
       entityDisplayOptions: {
-        size: 'small',
+        size: 'large',
         position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'image-title'
@@ -146,11 +147,13 @@ export class PageService {
       entitySource: {
         collection: 'quotes',
         priorities: ['high', 'low'],
+        slice: 'first',
+        maxinum: 1
       },
       entityDisplayOptions: {
         size: 'row',
         position: 'left-right',
-        imageStyle: 'full',
+        imageStyle: 'original',
         contentStyle: 'quote'
       },
       action: 'Link'
@@ -190,31 +193,177 @@ export class PageService {
     }]
   };
 
+  sermonsPage: WPage = {
+    id: 'sermons',
+    title: { english: 'Sermons', chinese: '讲道'},
+    sections: [{
+      icon: 'assets/images/church_3.png',
+      title: { english: 'Today"s Sermon', chinese: '今日讲道'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      backgroudImage: '/assets/images/sermon.png',
+      entitySource: {
+        collection: 'sermons',
+        priorities: ['high'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'row',
+        position: 'left-right',
+        imageStyle: 'full',
+        contentStyle: 'all'
+      },
+      action: 'Link'
+    }, {
+      icon: 'assets/images/church_4.png',
+      title: { english: 'Popular Sermons', chinese: '热点讲道'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      entitySource: {
+        collection: 'sermons',
+        priorities: ['high'],
+      },
+      entityDisplayOptions: {
+        size: 'medium',
+        position: 'top-bottom',
+        imageStyle: 'full',
+        contentStyle: 'image-title'
+      },
+      action: 'Link'
+    }, {
+      lightText: true,
+      entitySource: {
+        collection: 'sermons',
+        priorities: ['emergancy'],
+      },
+      entityDisplayOptions: {
+        size: 'large',
+        position: 'middle',
+        imageStyle: 'margin',
+        contentStyle: 'image-title'
+      },
+      action: 'Link'
+    }]
+  };
+
+  homePage: WPage = {
+    id: 'home',
+    title: { english: 'Home', chinese: '首页'},
+    homeBar: 'none',
+    sections: [{
+      entitySource: {
+        collection: 'homeslides',
+        priorities: ['high'],
+      },
+      entityDisplayOptions: {
+        size: 'slide',
+        position: 'left-right',
+        imageStyle: 'full',
+        contentStyle: 'image-title'
+      }
+    }, {
+      icon: 'assets/images/church_2.png',
+      title: { english: 'Welcome to ALC', chinese: '欢迎来到丰盛生命教会'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      description: {
+        english: 'to bring people to Jesus and membership in his family',
+        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+      },
+      entitySource: {
+        collection: 'welcome',
+        priorities: ['high'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'intro',
+        position: 'left-right',
+        imageStyle: 'full',
+        contentStyle: 'all'
+      }
+    }, {
+      icon: 'assets/images/church_2.png',
+      title: { english: 'Our Church main activities', chinese: '教会主要活动'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      description: {
+        english: 'to bring people to Jesus and membership in his family',
+        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+      },
+      backgroudImage: '/assets/images/services.jpg',
+      lightText: true,
+      entitySource: {
+        collection: 'activity',
+        priorities: ['high', 'low'],
+        directionStr: 'asc'
+      },
+      entityDisplayOptions: {
+        size: 'tiny',
+        position: 'top-bottom',
+        imageStyle: 'original',
+        contentStyle: 'image-title'
+      },
+      action: 'Route'
+    }, {
+      icon: 'assets/images/church_3.png',
+      title: { english: 'Today\'s Sermon', chinese: '今日讲道'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      backgroudImage: '/assets/images/sermon.png',
+      entitySource: {
+        collection: 'sermons',
+        priorities: ['high', 'low'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'row',
+        position: 'left-right',
+        imageStyle: 'page',
+        contentStyle: 'all'
+      },
+      action: 'Link'
+    }, {
+      icon: 'assets/images/church_5.png',
+      title: { english: 'Quote of the day', chinese: '今日金句'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      backgroudImage: '/assets/images/quote.jpg',
+      lightText: true,
+      entitySource: {
+        collection: 'quotes',
+        priorities: ['high', 'low'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'row',
+        position: 'left-right',
+        imageStyle: 'original',
+        contentStyle: 'quote'
+      },
+      action: 'Link'
+    }, {
+      icon: 'assets/images/church_6.png',
+      title: { english: 'Latest News', chinese: '最新消息'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      entitySource: {
+        collection: 'news',
+        priorities: ['high'],
+        slice: 'first',
+        maxinum: 20
+      },
+      entityDisplayOptions: {
+        size: 'large',
+        position: 'top-bottom',
+        imageStyle: 'margin',
+        contentStyle: 'image-title'
+      },
+      action: 'Route'
+    }]
+  };
+
   topPages = [
+    this.homePage,
     this.churchPage,
+    this.sermonsPage,
     this.newsPage
   ];
 
-  private routeStack: EntityPagesBinding[] = [];
-
-  constructor() { }
-
-  routeTo(context: EntityPagesBinding) {
-    this.routeStack.unshift(context);
-  }
-
-  get currentContext() {
-    if (!this.routeStack.length) {
-      return null;
-    }
-    return this.routeStack[0];
-  }
-
-  pop(): boolean {
-    if (!this.routeStack.length) {
-      return false;
-    }
-    this.routeStack.shift();
-    return this.routeStack.length > 0;
-  }
 }

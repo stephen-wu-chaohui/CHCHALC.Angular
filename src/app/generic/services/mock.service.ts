@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { WPage, WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL, WEntityRoot } from './types';
+import { WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL } from './types';
 import { AbstrctEntityService } from './entity.service';
 import { map } from 'rxjs/operators';
 

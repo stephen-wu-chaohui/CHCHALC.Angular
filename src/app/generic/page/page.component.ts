@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WPage, WEntity } from '../services/types';
-import { ActivatedRoute } from '@angular/router';
-import { PageService } from '../services/page.service';
-import { MockService } from '../services/mock.service';
+import { ContextService } from '../services/context.service';
+import { WPage } from '../services/types';
 
 @Component({
   selector: 'app-page',
@@ -10,26 +8,33 @@ import { MockService } from '../services/mock.service';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent implements OnInit {
-  get page() { return this.pageService.currentContext?.template[0]; }
-  get entity() { return this.pageService.currentContext?.entity; }
+  page: WPage;
 
-  constructor(entityService: MockService, public pageService: PageService) {
-    if (!this.pageService.currentContext) {
-      this.pageService.routeTo({
-        entity: entityService.root,
-        template: pageService.topPages
-      });
+  get entity() { return this.contextService.currentContext?.entity; }
+
+  constructor(public contextService: ContextService) {
+    contextService.contextChanged.subscribe(() => this.updatePage());
+    contextService.pageChanged.subscribe(() => this.updatePage());
+    this.updatePage();
+  }
+
+  updatePage() {
+    const cxt = this.contextService.currentContext;
+    if (!cxt) {
+      this.page = null;
     }
+    const index = cxt.selectedPage || 0;
+    this.page = cxt.template[index];
   }
 
   ngOnInit() {
   }
 
   routeTo($event) {
-    this.pageService.routeTo($event);
+    this.contextService.routeTo($event);
   }
 
   back() {
-    return this.pageService.pop();
+    return this.contextService.pop();
   }
 }

@@ -6,15 +6,15 @@
 .newsletter
 {
 	width: 100%;
-	background: #eb4141;
+	background: darkred;
 }
 .newsletter_content
 {
-	height: 154px;
+	height: 104px;
 }
 .newsletter_title
 {
-	font-size: 36px;
+	font-size: 28px;
 	color: #FFFFFF;
 	font-weight: 500;
 }
@@ -25,7 +25,7 @@
 .newsletter_input
 {
 	width: 463px;
-	height: 49px;
+	height: 40px;
 	border: none;
 	outline: none;
 	padding-left: 20px;
@@ -37,7 +37,7 @@
 	top: 0;
 	right: 0;
 	width: 157px;
-	height: 47px;
+	height: 40px;
 	background: #000000;
 	color: #FFFFFF;
 	border: none;

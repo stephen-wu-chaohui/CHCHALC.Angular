@@ -8,7 +8,7 @@ import { StoriesComponent } from './stories/stories';
 
 @NgModule({
   imports: [
-		CommonModule,
+    CommonModule,
 		ReactiveFormsModule,
   ],
   declarations: [

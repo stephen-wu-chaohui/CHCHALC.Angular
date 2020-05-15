@@ -1,8 +1,8 @@
 	<!-- Home -->
 
-	<div class="preface-home" *ngIf="data.SlidersObserver">
+	<div class="preface-home" *ngIf="slideObservable">
 		<div class="home_slider_container">
-			<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="data.SlidersObserver | async">
+			<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="slideObservable | async">
 				<ngu-tile *nguCarouselDef="let item; let i = index">
 					<div class="home_slider_background">
 						<img class="home_slider_image" [src]="item.image">
@@ -17,7 +17,7 @@
 						</div>
 					</div>
 				</ngu-tile>
-				<!-- <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button> -->
+				<button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
 			</ngu-carousel>
 		</div>
 	</div>

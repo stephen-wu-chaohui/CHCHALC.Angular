@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WPage } from '../services/types';
 import { SettingsService } from 'src/app/data/settings.service';
 import { Router } from '@angular/router';
-import { PageService } from '../services/page.service';
+import { ContextService } from '../services/context.service';
 
 @Component({
   selector: 'app-title',
@@ -13,11 +13,12 @@ export class TitleComponent {
   @Input() page: WPage;
 	Home = { english: 'Home', chinese: '首页'};
 
-  constructor(private router: Router, private pageService: PageService, public ss: SettingsService) { }
+  constructor(private contextService: ContextService, public ss: SettingsService) {
+  }
 
   onHome() {
-    if (!this.pageService.pop()) {
-      this.router.navigate(['/home']);
+    if (!this.contextService.pop()) {
+      this.contextService.setPage('home');
     }
   }
 }

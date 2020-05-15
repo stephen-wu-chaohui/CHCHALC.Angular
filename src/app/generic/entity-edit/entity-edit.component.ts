@@ -92,15 +92,12 @@ export class EntityEditComponent implements OnInit {
   ) {}
 
   imageClick() {
-    if (this.section.action === 'Link' && this.entity.link) {
-      // href to link;
-      console.log('Link clicked: ', this.entity.link);
-    }
-    if (this.section.action === 'Route' && this.section.entityTemplate) {
-      console.log('Link clicked: ', this.entity);
-      if (!this.isNew && !this.isDirty && !this.isSaving) {
-        this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
-      }
+    if (this.section.action === 'Link') {
+      console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
+      window.open(this.entity.link || this.entity.videoURL, '_blank');
+    } else if (this.section.action === 'Route' && this.section.entityTemplate) {
+      console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
+      this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
     }
   }
 

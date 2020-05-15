@@ -22,10 +22,10 @@ export class WEntity {
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
   deleted?: boolean;			// soft deleted or not
   start: number;
-
-  path: Path;
-  name: MultiText;
   title: MultiText;
+
+  path?: Path;
+  name?: MultiText;
   subTitle?: MultiText;
   text?: MultiText;
   description?: MultiText;
@@ -33,6 +33,7 @@ export class WEntity {
   image?: ImageURL;
   priority?: PriorityEnum;
   link?: LinkURL;
+  videoURL?: LinkURL;
 
   constructor(collectionPath: string) {
     this.id = uuidv4();
@@ -58,19 +59,21 @@ export type WMinistry = WAssembly;
 export type WCellGroup = WAssembly;
 export type WStory = WAssembly;
 export type WChurch = WAssembly;
+export type HomeBarStyle = 'none'|'normal';
 
 export class WPage {    // template of webpages used to display a document
   id: PageId;  // 'church', 'ministry', 'cellgroup', ''
   title?: MultiText;
+  homeBar?: HomeBarStyle;
   icon?: ImageURL;
   sections: WSection[];
 }
 
-export type SizeEnum = 'slide'|'row'|'large'|'medium'|'small'|'tiny';   // for collection view, margin and padding for items
-export type ImageStyle = 'full'|'page'|'margin'|'icon';                 // margin, padding & shadows
-export type TextPosition = 'middle'|'left-right'|'top-bottom';                       // only useful when SizeEnum = 'slide'|'row'
+export type SizeEnum = 'slide'|'intro'|'row'|'large'|'medium'|'small'|'tiny';    // for collection view, margin and padding for items
+export type ImageStyle = 'full'|'page'|'margin'|'icon'|'original';               // margin, padding & shadows
+export type TextPosition = 'middle'|'left-right'|'top-bottom';                   // only useful when SizeEnum = 'slide'|'row'
 export type ContentStyle = 'image-only'|'image-title'|'text-only'|'all'|'quote'|'pastor';
-export type ContrastStyle = 'light'|'';                                    // text is light
+export type ContrastStyle = 'light'|'';                                          // text is light
 
 export type Action = 'Link'|'Route'|'none'|'';
 export type DirectionEnum = 'asc'|'desc';

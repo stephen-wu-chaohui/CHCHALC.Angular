@@ -3,7 +3,7 @@
   <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
     <img [src]="entity.image" (click)="imageClick()">
   </div>
-  <div class="content" [ngClass]="section.entityDisplayOptions.contentStyle">
+  <div class="content" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
     <div class="name">{{ss.tr(entity.name)}}</div>
     <div class="title">{{ss.tr(entity.title)}}</div>
     <div class="subtitle">{{ss.tr(entity.subTitle)}}</div>

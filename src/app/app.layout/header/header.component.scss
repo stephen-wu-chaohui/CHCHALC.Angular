@@ -81,7 +81,8 @@ logo_container {
   	transition: all 200ms ease;
     a {
     	display: block;
-    	padding: 10px 28px;
+      padding: 10px;
+      cursor: pointer;
     }
     :hover {
     	background-color: lightcyan;
@@ -207,14 +208,6 @@ logo_container {
 
 @media only screen and (max-width: 1124px)
 {
-	.header_nav_container
-	{
-		display: none;
-	}
-	.hamburger
-	{
-		display: block;
-  }
 }
 
 @media only screen and (max-width: 767px)
@@ -228,7 +221,9 @@ logo_container {
   .menu {
     top: 0px;
   }
+
   .header_content {
+    height: 48px;
     .logo_container .logo a {
       span {
         font-size: 24px;
@@ -238,37 +233,24 @@ logo_container {
       }
     }
   }
+  .menu-shrink {
+  	.header_nav_container
+  	{
+  		display: none;
+  	}
+  	.hamburger
+  	{
+  		display: block;
+    }
+  }
 }
 
-@media only screen and (max-width: 575px)
-{
-	.header_content
-	{
-    height: 48px;
-	}
-  .logo a span
-  {
-		font-size: 24px;
-  }
-  .logo a img
-  {
-	  height: 48px;
-  }
-}
 
 @media only screen and (max-width: 319px)
 {
-	.header_content
-	{
-    height: 48px;
-	}
   .logo a span
   {
 		display: none;
-  }
-  .logo a img
-  {
-	  height: 32px;
   }
 }
 
