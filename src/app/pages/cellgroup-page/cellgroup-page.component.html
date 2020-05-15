@@ -1,8 +1,0 @@
-<app-quote-section></app-quote-section>
-<div *ngIf="folderMoments; else loading">
-  <app-story-section [section]="sectionMoments" [groupName]="folderMoments"></app-story-section>
-</div>
-<ng-template #loading>
-  <h2>Cellgroup not found...</h2>
-</ng-template>
-
