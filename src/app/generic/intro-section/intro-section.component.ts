@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { WEntity } from '../services/types';
+import { WEntity, WSection } from '../services/types';
 
 @Component({
   selector: 'app-intro-section',
@@ -8,13 +8,14 @@ import { WEntity } from '../services/types';
   styleUrls: ['./intro-section.component.css']
 })
 export class IntroSectionComponent implements OnInit {
-	@Input() greeting: WEntity;
+  @Input() section: WSection;
+  @Input() host: WEntity;
 
   constructor(public data: ChchalcDataService) { }
 
   ngOnInit() {
-    if (!this.greeting) {
-      this.greeting = {
+    // if (!this.host) {
+      this.host = {
         id: 'welcome-1',
         image: 'assets/images/intro.jpg',
         start: 0,
@@ -25,6 +26,6 @@ export class IntroSectionComponent implements OnInit {
             english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
         }
       }
-    }
+    // }
   }
 }

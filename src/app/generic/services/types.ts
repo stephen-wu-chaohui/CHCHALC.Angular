@@ -34,6 +34,7 @@ export class WEntity {
   priority?: PriorityEnum;
   link?: LinkURL;
   videoURL?: LinkURL;
+  jumpTo?: string;
 
   constructor(collectionPath: string) {
     this.id = uuidv4();
@@ -96,6 +97,7 @@ export class EntitySource {
 }
 
 export class WSection {
+  label?: string;
   icon?: ImageURL;
   title?: MultiText;
   subtitle?: MultiText;

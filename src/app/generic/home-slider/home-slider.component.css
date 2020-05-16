@@ -123,13 +123,6 @@ media quiries
 
 @media only screen and (max-width: 991px)
 {
-	.preface-home {
-		height: 50vh;
-	}
-	.home_slider_background
-	{
-		height: 50vh;
-	}
 	.home_slider_content h1
 	{
 		font-size: 64px;
@@ -172,6 +165,10 @@ media quiries
 	{
 		margin-bottom: 30px;
 	}
+}
+
+a {
+  cursor: pointer;
 }
 
 

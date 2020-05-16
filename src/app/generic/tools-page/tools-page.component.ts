@@ -7,7 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./tools-page.component.css']
 })
 export class ToolsPageComponent implements OnInit {
-  tool1 = {
+  slides = {
     name: 'add slides',
     collectionPath: 'slides',
     data: [{
@@ -28,7 +28,7 @@ export class ToolsPageComponent implements OnInit {
     }]
  };
 
- tool2 = {
+ welcome = {
   name: 'add welcome',
   collectionPath: 'welcome',
   data: [{
@@ -56,25 +56,29 @@ export class ToolsPageComponent implements OnInit {
     start: 1,
     image: '/assets/images/services_1.png',
     title: { english: 'Preaching', chinese: '宣教'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
+    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
+    jumpTo: 'church#ministries'
   }, {
     id: 'activity-2',
     start: 2,
     image: '/assets/images/services_2.png',
     title: { english: 'Fellowship', chinese: '团契'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
+    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
+    jumpTo: 'church#cellgroups'
   }, {
     id: 'activity-3',
     start: 3,
     image: '/assets/images/services_3.png',
     title: { english: 'Confessions', chinese: '告解'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
+    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
+    jumpTo: 'church#pastors'
   }, {
     id: 'activity-4',
     start: 4,
     image: '/assets/images/services_4.png',
     title: { english: 'Sermons', chinese: '讲道'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
+    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
+    jumpTo: 'sermons'
   }, {
     id: 'activity-5',
     start: 5,
@@ -122,8 +126,8 @@ quote = {
 
 
   tools = [
-    this.tool1,
-    this.tool2,
+    this.slides,
+    this.welcome,
     this.activities,
     this.quote
   ];

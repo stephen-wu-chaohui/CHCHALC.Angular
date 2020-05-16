@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { Observable } from 'rxjs';
+import { ContextService } from '../services/context.service';
 
 @Component({
   selector: 'app-home-slider',
@@ -26,7 +27,7 @@ export class HomeSliderComponent implements OnInit {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
 
-  constructor(public data: ChchalcDataService) {
+  constructor(public data: ChchalcDataService, public contxetService: ContextService) {
     if (!this.slideObservable) {
       this.slideObservable = data.SlidersObserver;
     }

@@ -8,7 +8,7 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 })
 export class FooterComponent implements OnInit {
 
-	UsefulLinks = { english: 'Useful Links', chinese: '友情链接'};
+	weAreHere = { english: 'We are here', chinese: '我们在这里'};
 	ContactUs = { english: 'Contact Us', chinese: '联系我们'};
 
 	Address = { english: 'Address: ', chinese: '地址：'};

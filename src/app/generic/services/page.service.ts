@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { WEntity, WPage } from './types';
-import { NONE_TYPE } from '@angular/compiler';
 
 export class EntityPagesBinding {
   entity: WEntity;
@@ -122,6 +121,7 @@ export class PageService {
     id: 'church',
     title: { english: 'Our church', chinese: '教会'},
     sections: [{
+      label: 'ministries',
       icon: 'assets/images/church_2.png',
       title: { english: 'Our Ministries', chinese: '我们的事工'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
@@ -158,6 +158,7 @@ export class PageService {
       },
       action: 'Link'
     }, {
+      label: 'pastors',
       icon: 'assets/images/church_6.png',
       title: { english: 'Our Pastors', chinese: '我们的牧师'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
@@ -175,6 +176,7 @@ export class PageService {
       action: 'Route',
       entityTemplate: [this.personalPage ]
     }, {
+      label: 'cellgroups',
       icon: 'assets/images/church_4.png',
       title: { english: 'Our Church\'s Cellgroups', chinese: '我们的小家'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
@@ -261,6 +263,7 @@ export class PageService {
         contentStyle: 'image-title'
       }
     }, {
+      label: 'welcome',
       icon: 'assets/images/church_2.png',
       title: { english: 'Welcome to ALC', chinese: '欢迎来到丰盛生命教会'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},

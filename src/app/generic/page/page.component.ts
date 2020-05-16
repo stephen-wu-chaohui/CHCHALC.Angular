@@ -13,18 +13,26 @@ export class PageComponent implements OnInit {
   get entity() { return this.contextService.currentContext?.entity; }
 
   constructor(public contextService: ContextService) {
-    contextService.contextChanged.subscribe(() => this.updatePage());
-    contextService.pageChanged.subscribe(() => this.updatePage());
-    this.updatePage();
+    contextService.contextChanged.subscribe(() => this.updatePage(''));
+    contextService.pageChanged.subscribe((router: string) => this.updatePage(router));
+    this.updatePage('');
   }
 
-  updatePage() {
+  updatePage(router) {
     const cxt = this.contextService.currentContext;
     if (!cxt) {
       this.page = null;
     }
     const index = cxt.selectedPage || 0;
     this.page = cxt.template[index];
+
+    const arr = router.split('#');
+    if (arr.length < 2) {
+      window.scrollTo(0, 0);
+    } else {
+      this.contextService.jumpTo(arr[1]);
+    }
+
   }
 
   ngOnInit() {

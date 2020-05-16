@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NguCarouselConfig } from '@ngu/carousel';
+import { ContextService } from '../services/context.service';
 
 @Component({
   selector: 'app-new-section',
@@ -39,7 +40,7 @@ export class SectionComponent implements OnInit {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
 
-  constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService) {
+  constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService, public contextService: ContextService) {
   }
 
   ngOnInit() {

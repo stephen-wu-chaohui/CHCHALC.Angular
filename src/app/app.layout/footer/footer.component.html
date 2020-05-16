@@ -8,13 +8,13 @@
 				<div class="col-lg-4 footer_col">
 
 					<!-- Logo -->
-					<div class="logo_container">
-						<div class="logo">
-							<a href="#">
-								<img src="/assets/images/logo.png" alt="">
-								<span>{{data.tr(data.churchTitle)}}</span>
-							</a>
-						</div>
+					<div class="logo_container p-2">
+            <div class="row">
+              <img width="75%" src="/assets/images/logo.png" alt="">
+            </div>
+            <div class="row text-center">
+              <span>{{data.tr(data.churchTitle)}}</span>
+            </div>
 					</div>
 					<div class="footer_social">
 						<ul>
@@ -29,25 +29,15 @@
 				<!-- Footer Column -->
 				<div class="col-lg-4 footer_col">
 					<div class="footer_links">
-						<div class="footer_title">{{data.tr(UsefulLinks)}}</div>
-						<ul>
-							<li><a [routerLink]="['/home']">Home</a></li>
-							<li><a routeLink="#">Donations</a></li>
-							<li><a [routerLink]="['/sermons']">Sermons</a></li>
-							<li><a routeLink="#">Causes</a></li>
-							<li><a routeLink="#">Quotes</a></li>
-
-							<li><a [routerLink]="['/blog']">Blog</a></li>
-							<li><a routeLink="#">Event List</a></li>
-							<li><a [routerLink]="['/ministries']">Ministries</a></li>
-							<li><a routeLink="#">Posters</a></li>
-							<li><a [routerLink]="['/contact']">Contact</a></li>
-						</ul>
+            <div class="footer_title">{{data.tr(weAreHere)}}</div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3528.0468844082798!2d172.5607002160029!3d-43.54991279112943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d32200013e04fa5%3A0xc8b0ae91f1dce9a2!2zNDPCsDMyJzU5LjciUyAxNzLCsDMzJzQ2LjQiRQ!5e1!3m2!1sen!2snz!4v1589613801857!5m2!1sen!2snz"
+                    width="100%" height="225" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+            </iframe>
 					</div>
 				</div>
 
 				<!-- Footer Column -->
-				<div class="col-lg-3 footer_col">
+				<div class="col-lg-3">
 					<div class="footer_contact" *ngIf="data.contactInfo.mainSite; let item">
 						<div class="footer_title">{{data.tr(ContactUs)}}</div>
 						<ul>

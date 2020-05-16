@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WEntity, WSection } from '../services/types';
 import { SettingsService } from 'src/app/data/settings.service';
+import { ContextService } from '../services/context.service';
 
 @Component({
   selector: 'app-entity',
@@ -12,7 +13,7 @@ export class EntityComponent implements OnInit {
   @Input() section: WSection;
   @Output() routeTo = new EventEmitter();
 
-  constructor(public ss: SettingsService) { }
+  constructor(public ss: SettingsService, public contextService: ContextService) { }
 
   ngOnInit() {
     console.log('EntityComponent: ', this.entity.title);
@@ -25,6 +26,8 @@ export class EntityComponent implements OnInit {
     } else if (this.section.action === 'Route' && this.section.entityTemplate) {
       console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
       this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
+    } else if (this.entity.jumpTo) {
+      this.contextService.setPage(this.entity.jumpTo);
     }
   }
 }

@@ -12,12 +12,12 @@
 							</div>
 							<h1 class="slider-text">{{data.tr(item.title)}}</h1>
 							<div class="button home_slider_button">
-								<a href="">{{data.tr(comeAndJoinUs)}}</a>
+								<a (click)="contxetService.jumpTo('welcome')">{{data.tr(comeAndJoinUs)}}</a>
 							</div>
 						</div>
 					</div>
 				</ngu-tile>
-				<button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
+				<!-- <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button> -->
 			</ngu-carousel>
 		</div>
 	</div>

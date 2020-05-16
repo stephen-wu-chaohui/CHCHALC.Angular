@@ -1,12 +1,12 @@
 	<!-- Intro -->
 
   <div class="container">
-    <div class="row" *ngIf="greeting.title">
+    <div class="row" *ngIf="section.title">
       <div class="col">
         <div class="section_title_container">
-          <div class="section_image"><img [src]="greeting.image" alt=""></div>
-          <div class="section_title"><h2>{{data.tr(greeting.title)}}</h2></div>
-          <div class="section_subtitle">{{data.tr(greeting.subTitle)}}</div>
+          <div class="section_image"><img [src]="section.icon" alt=""></div>
+          <div class="section_title"><h2>{{data.tr(section.title)}}</h2></div>
+          <div class="section_subtitle">{{data.tr(section.subtitle)}}</div>
         </div>
       </div>
     </div>
@@ -15,13 +15,13 @@
 			<!-- Intro Text -->
 			<div class="col-lg-6">
 				<div class="intro_text">
-					<p>{{data.tr(greeting.text)}}</p>
+					<p>{{data.tr(host.text||host.description)}}</p>
 				</div>
 			</div>
 
 			<!-- Intro Image -->
 			<div class="col-lg-6">
-				<div class="intro_image"><img [src]="data.path(greeting.image)" alt=""></div>
+				<div class="intro_image"><img [src]="data.path(host.image)" alt=""></div>
 				<div class="button intro_button"><a href="">Read More</a></div>
 			</div>
 		</div>

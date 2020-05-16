@@ -9,13 +9,13 @@
 	background: #161619;
 	padding-top: 88px;
 }
-.footer .logo a span
+.footer .logo_container span
 {
 	font-family: 'Ma Shan Zheng', sans-serif;
-	font-size: 48px;
+	font-size: 36px;
 	color: #FFFFFF;
 }
-.footer .logo a img
+.footer .logo_container img
 {
 	display: inline-block;
 	-webkit-transform: translateY(5px);
@@ -71,6 +71,7 @@
 	font-size: 18px;
 	font-weight: 500;
 	color: #FFFFFF;
+	margin-bottom: 12px;
 }
 .footer_title::after
 {
@@ -159,7 +160,7 @@
 {
 	.footer .logo a span
 	{
-		font-size: 36px;
+		font-size: 24px;
 		color: #FFFFFF;
 	}
 	.footer_col:not(:last-child)

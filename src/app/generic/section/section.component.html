@@ -1,11 +1,7 @@
-<div class="section">
+<div class="section" [id]="section.label">
   <ng-container [ngSwitch]="section.entityDisplayOptions.size">
     <ng-container *ngSwitchCase="'slide'">
       <app-home-slider></app-home-slider>
-    </ng-container>
-    <!-- app-intro-section     -->
-    <ng-container *ngSwitchCase="'intro'">
-      <app-intro-section></app-intro-section>
     </ng-container>
     <ng-container *ngSwitchDefault>
       <ng-container *ngTemplateOutlet="otherSize"></ng-container>
@@ -24,14 +20,13 @@
           </div>
           <h1 class="slider-text">{{data.tr(item.title)}}</h1>
           <div class="button home_slider_button">
-            <a href="">{{data.tr(comeAndJoinUs)}}</a>
+            <a (click)="contextService.jumpTo('welcome')">{{data.tr(comeAndJoinUs)}}</a>
           </div>
         </div>
       </div>
     </ngu-tile>
   </ngu-carousel>
 </ng-template>
-
 
 <ng-template #otherSize>
   <div class="background" [style.background]="backgroudImage()">
@@ -63,11 +58,33 @@
   </ng-template>
 
   <ng-template #runMode>
+    <ng-container *ngIf="section.entityDisplayOptions.size==='intro'; then intro else list">
+    </ng-container>
+
+    <ng-template #intro>
+      <div *ngFor="let entity of entitySource|async" class="row">
+        <div class="col-lg-6">
+          <div class="intro_text">
+            <p>{{data.tr(entity.text||entity.description)}}</p>
+          </div>
+        </div>
+
+        <!-- Intro Image -->
+        <div class="col-lg-6">
+          <div class="intro_image"><img [src]="data.path(entity.image)" alt=""></div>
+          <div class="button intro_button"><a (click)="contextService.setPage('church')">Read More</a></div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #list>
       <div class="row">
         <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
           <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section" *ngIf="!data.adminMode"></app-entity>
         </div>
       </div>
+    </ng-template>
+
   </ng-template>
 
 </ng-template>

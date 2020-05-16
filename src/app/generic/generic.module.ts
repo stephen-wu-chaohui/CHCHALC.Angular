@@ -18,6 +18,7 @@ export const routes: Routes = [
   { path: 'home', component: PageComponent },
   { path: 'tools', component: ToolsPageComponent },
   { path: 'admin', component: AdminPageComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -56,13 +56,26 @@ export class ContextService {
   }
 
   setPage(menuItem: string) {
-    if (menuItem === '..') {
+    const arr = menuItem.split('#');
+    const pageId = arr[0];
+    if (pageId === '') {
+      this.jumpTo(arr[1]);
+      return;
+    }
+    if (pageId === '..') {
       this.pop();
     } else {
       const template = this.currentContext.template;
-      this.currentContext.selectedPage = template.findIndex(t => t.id === menuItem);
+      this.currentContext.selectedPage = template.findIndex(t => t.id === pageId);
     }
     this.pageChanged.emit(menuItem);
+  }
+
+  jumpTo(sectionLabel) {
+    const elementRef = document.getElementById(sectionLabel);
+    if (elementRef) {
+      elementRef.scrollIntoView();
+    }
   }
 
 }

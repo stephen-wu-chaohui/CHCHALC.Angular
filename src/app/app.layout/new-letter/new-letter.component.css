@@ -18,6 +18,11 @@
 	color: #FFFFFF;
 	font-weight: 500;
 }
+.newsletter_title::selection {
+  background: darkred;
+  color: whitesmoke;
+}
+
 .newsletter_form
 {
 	position: relative;
