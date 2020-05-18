@@ -391,7 +391,8 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route'
+      action: 'Route',
+      entityTemplate: [this.storyPage]
     }]
   };
 

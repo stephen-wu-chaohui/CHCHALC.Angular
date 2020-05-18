@@ -90,7 +90,7 @@ export class SectionComponent implements OnInit {
           title: { english: '', chinese: ''},
         };
         const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
-        console.log('image path:', imagePath);
+        // console.log('image path:', imagePath);
         this.es.uploadImage(imagePath, file).then(
           path => {
             item.image = path;
@@ -107,7 +107,7 @@ export class SectionComponent implements OnInit {
     const a = file.name.lastIndexOf('-');
     const b = file.name.lastIndexOf('.');
     const numberPart = file.name.substring(a+1, b);
-    console.log('guess file name:', numberPart);
+    // console.log('guess file name:', numberPart);
     if (a === -1 || b === -1 || (b - a) < 2) {
       return file.lastModified;
     }

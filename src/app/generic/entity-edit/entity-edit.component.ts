@@ -87,10 +87,10 @@ export class EntityEditComponent implements OnInit {
 
   imageClick() {
     if (this.section.action === 'Link') {
-      console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
+      // console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
       window.open(this.entity.link || this.entity.videoURL, '_blank');
     } else if (this.section.action === 'Route' && this.section.entityTemplate) {
-      console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
+      // console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
       this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
     }
   }
@@ -133,7 +133,7 @@ export class EntityEditComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
       this.image = reader.result;
-      console.log('this.image: ', this.image.width, this.image.height);
+      // console.log('this.image: ', this.image.width, this.image.height);
       this.file = files[0];
       this.setDirty();
     };
@@ -167,8 +167,7 @@ export class EntityEditComponent implements OnInit {
 
   saveItem() {
     this.applyChanges(this.ss.language);
-    console.log('saveItem(entity):', this.collectionPath, this.entity);
+    // console.log('saveItem(entity):', this.collectionPath, this.entity);
     this.es.setEntity(this.collectionPath, this.entity).then(() => this.setDirty(false));
-    // this.dbapi.upsert(this.collectionPath, this.entity).then(() => this.setDirty(false));
   }
 }
