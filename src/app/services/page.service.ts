@@ -20,7 +20,8 @@ export class PageService {
       entitySource: {
         collection: 'photos',
         priorities: ['high', 'emergancy', 'low'],
-        directionStr: 'asc'
+        directionStr: 'asc',
+        editable: true
       },
       entityDisplayOptions: {
         size: 'large',
@@ -39,7 +40,8 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'moments',
-        priorities: ['high']
+        priorities: ['high'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'small',
@@ -60,7 +62,8 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'moments',
-        priorities: ['high']
+        priorities: ['high'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'small',
@@ -76,7 +79,8 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'bible-study',
-        priorities: ['high']
+        priorities: ['high'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'small',
@@ -92,7 +96,8 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'outdoors',
-        priorities: ['high']
+        priorities: ['high'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'small',
@@ -114,8 +119,7 @@ export class PageService {
       entitySource: {
         collection: 'moments',
         priorities: ['high'],
-        slice: 'last',
-        maxinum: 3
+        editable: true
       },
       entityDisplayOptions: {
         size: 'small',
@@ -138,6 +142,7 @@ export class PageService {
       entitySource: {
         collection: 'news',
         priorities: ['high'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'large',
@@ -162,6 +167,7 @@ export class PageService {
         collection: 'ministries',
         priorities: ['high', 'low'],
         directionStr: 'asc',
+        editable: true
       },
       entityDisplayOptions: {
         size: 'medium',
@@ -199,6 +205,7 @@ export class PageService {
         collection: 'persons',
         priorities: ['high', 'low'],
         directionStr: 'asc',
+        editable: true
       },
       entityDisplayOptions: {
         size: 'medium',
@@ -216,6 +223,7 @@ export class PageService {
       entitySource: {
         collection: 'cellgroups',
         priorities: ['high', 'low'],
+        editable: true
       },
       entityDisplayOptions: {
         size: 'medium',

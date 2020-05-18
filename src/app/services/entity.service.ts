@@ -11,6 +11,6 @@ export abstract class AbstrctEntityService implements IEntityService {
   abstract getEntity<TEntity extends WEntity>(collectionPath: Path, id: EntityId): Promise<TEntity>;
   abstract setEntity<TEntity extends WEntity>(collectionPath: Path, newValue: TEntity): Promise<ServiceResponse>;
   abstract updateEntity<TEntity extends WEntity>(collectionPath: Path, newChanges: TEntity): Promise<ServiceResponse>;
-  abstract getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource): Observable<TEntity[]>;
+  abstract getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource, includingDeleted: boolean): Observable<TEntity[]>;
   abstract uploadImage(folder: Path, file: File): Promise<ImageURL>;
 }

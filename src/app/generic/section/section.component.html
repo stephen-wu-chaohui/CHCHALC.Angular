@@ -40,11 +40,12 @@
           <div class="section_subtitle" [class.text-light]="section.lightText">{{ss.tr(section.subtitle)}}</div>
         </div>
       </div>
-      <div class="col-2" *ngIf="ss.adminMode">
+      <div class="col-2" *ngIf="ss.adminMode && section.entitySource.editable">
         <div style='height: 0px;width:0px; overflow:hidden;'>
           <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
         </div>
-        <div class="btn btn-primary" (click)="upload.click()" style="position: absolute;top: 50%;">Add
+        <div (click)="upload.click()" style="position: absolute;top: 50%;color: red">
+          <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px">
         </div>
       </div>
     </div>

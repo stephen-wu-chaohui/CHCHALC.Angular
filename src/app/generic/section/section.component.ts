@@ -47,7 +47,8 @@ export class SectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource), 100);
+    const includingDeleted = this.ss.adminMode;
+    setTimeout(() => this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, includingDeleted), 100);
     this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
     this.collectionPath = `${this.host.path}/${this.section.entitySource.collection}`;
   }

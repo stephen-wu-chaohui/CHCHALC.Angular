@@ -96,7 +96,7 @@ export class FirebaseService extends AbstrctEntityService {
     }
   }
 
-  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource): Observable<TEntity[]> {
+  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource, includingDeleted: boolean): Observable<TEntity[]> {
     const collectionPath = this.collectionPathOf(hostPath, source.collection);
     const directionStr = source.directionStr || 'desc';
     const query = this.store.collection<TEntity>(collectionPath, (a: CollectionReference) => {
@@ -119,7 +119,6 @@ export class FirebaseService extends AbstrctEntityService {
         return entity;
       })));
 
-    const includingDeleted = false;
     if (!includingDeleted) {
       changes = changes.pipe(map(
         items => items.filter(it => !it.deleted)

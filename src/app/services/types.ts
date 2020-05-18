@@ -106,6 +106,7 @@ export class EntitySource {
   directionStr?: DirectionEnum;
   slice?: SliceEnum;
   maxinum?: number;
+  editable?: boolean;
 }
 
 export class WSection {
@@ -134,6 +135,6 @@ export interface IEntityService {
   getEntity<TEntity extends WEntity>(collectionPath: Path, id: EntityId): Promise<TEntity>;
   setEntity<TEntity extends WEntity>(collectionPath: Path, newValue: TEntity): Promise<ServiceResponse>;
   updateEntity<TEntity extends WEntity>(collectionPath: Path, newChanges: TEntity): Promise<ServiceResponse>;
-  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource): Observable<TEntity[]>;
+  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource, includingDeleted: boolean): Observable<TEntity[]>;
   uploadImage(folder: Path, file: File): Promise<ImageURL>;
 }
