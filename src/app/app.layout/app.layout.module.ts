@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
-import { ContactMapComponent } from './contact-map/contact-map.component';
 import { NewLetterComponent } from './new-letter/new-letter.component';
 import { HeaderComponent } from './header/header.component';
 import { TopBarComponent } from './header/top-bar/top-bar.component';
@@ -17,14 +16,12 @@ import { GoogleMapsModule } from '@angular/google-maps'
   declarations: [
     HeaderComponent,
     TopBarComponent,
-    ContactMapComponent,
     FooterComponent,
     NewLetterComponent,
   ],
   exports: [
     HeaderComponent,
     TopBarComponent,
-    ContactMapComponent,
     FooterComponent,
     NewLetterComponent,
  ],

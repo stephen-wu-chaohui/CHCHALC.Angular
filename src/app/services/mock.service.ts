@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL } from './types';
@@ -14,7 +14,7 @@ export class MockService extends AbstrctEntityService {
     super();
   }
 
-  church: WAssembly = {
+  public church: WAssembly = {
     id: 'church',
     start: 1589232395000,
     path: '',
@@ -23,10 +23,15 @@ export class MockService extends AbstrctEntityService {
     subTitle: { english: 'Reborn Church', chinese: '重生的教会'},
     address: { english: '182 The Run Way, Wigram, Christchurch 8042'},
     coordinate: { lantitue: -43.549917, longitude: 172.562886 },
-    host: 'Lead Pastor'
+    host: 'Lead Pastor',
+    phoneNumbers: ['02102591292', '02102591292'],
+    email: 'admin@nzalc.org'
   };
 
-  get root(): WEntity { return this.church; }
+  get root(): Observable<WAssembly> {
+    // return from(this.getEntity<WAssembly>('churches', 'chchalc'));
+    return of(this.church);
+  }
 
   collectionPathOf(path: Path, collectionName: string): Path {
     const names = path.split('/');
@@ -67,9 +72,9 @@ export class MockService extends AbstrctEntityService {
     return null;
   }
 
-  async getEntity(collectionPath: Path, id: EntityId): Promise<WEntity> {
+  async getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T> {
     return this.store.collection(collectionPath).doc(id).get().toPromise().then(
-      obj => (obj.data) as unknown as WEntity
+      obj => (obj.data()) as T
     );
   }
 
@@ -94,11 +99,8 @@ export class MockService extends AbstrctEntityService {
   getObservable(hostPath: Path, source: EntitySource): Observable<any[]> {
     const collectionPath = this.collectionPathOf(hostPath, source.collection);
     const directionStr = source.directionStr || 'desc';
-    const query = this.store.collection(collectionPath, (a: CollectionReference) => {
-      const cond = a.orderBy('start', directionStr);
-      if (!cond) {
-        return a;
-      }
+    const query = this.store.collection<WEntity>(collectionPath, (a: CollectionReference) => {
+      const cond = a.orderBy('start', directionStr) || a;
       if (source.slice === 'first') {
         return cond.limit(source.maxinum);
       } else if (source.slice === 'last') {
@@ -108,11 +110,24 @@ export class MockService extends AbstrctEntityService {
       }
     });
 
-    return query.valueChanges().pipe(map(a => {
-      console.log(source.collection, a);
-      return a;
-    }));
+    let changes = query.snapshotChanges().pipe(map(
+      actions => actions.map(act => {
+        const doc = act.payload.doc;
+        const entity = doc.data();
+        entity.path = doc.ref.path;
+        entity.id = doc.ref.id;
+        return entity;
+      })));
+
+    const includingDeleted = false;
+    if (!includingDeleted) {
+      changes = changes.pipe(map(
+        items => items.filter(it => !it.deleted)
+      ));
+    }
+    return changes;
   }
+
 
   async uploadImage(collectionPath: Path, file: File): Promise<ImageURL> {
     const ref = this.storage.ref(`${collectionPath}/${file.name}`);

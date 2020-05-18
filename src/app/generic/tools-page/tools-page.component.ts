@@ -123,13 +123,31 @@ quote = {
   }]
  };
 
+ churches = {
+  name: 'add churches',
+  collectionPath: 'churches',
+  data: [{
+    id: 'chchalc',
+    start: 1589232395000,
+    path: '',
+    name: { english: 'Chinese Abundant Life Church', chinese: '基督城华人丰盛生命教会'},
+    title: { english: 'Abundant Life', chinese: '丰盛的生命'},
+    subTitle: { english: 'Reborn Church', chinese: '重生的教会'},
+    address: { english: '182 The Run Way, Wigram, Christchurch 8042'},
+    coordinate: { lantitue: -43.549917, longitude: 172.562886 },
+    host: 'Lead Pastor',
+    phoneNumbers: ['02102591292', '02102591292'],
+    email: 'admin@nzalc.org'
+  }]
+};
 
 
   tools = [
     this.slides,
     this.welcome,
     this.activities,
-    this.quote
+    this.quote,
+    this.churches
   ];
 
   constructor(private store: AngularFirestore) { }

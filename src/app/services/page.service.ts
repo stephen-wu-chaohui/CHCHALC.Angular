@@ -19,7 +19,8 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'photos',
-        priorities: ['high', 'emergancy', 'low']
+        priorities: ['high', 'emergancy', 'low'],
+        directionStr: 'asc'
       },
       entityDisplayOptions: {
         size: 'large',
@@ -59,6 +60,38 @@ export class PageService {
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'moments',
+        priorities: ['high']
+      },
+      entityDisplayOptions: {
+        size: 'small',
+        position: 'top-bottom',
+        imageStyle: 'margin',
+        contentStyle: 'image-title'
+      },
+      action: 'Route',
+      entityTemplate: [this.storyPage]
+    }, {
+      icon: 'assets/images/church_1.png',
+      title: { english: 'Bible Study', chinese: '查经'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      entitySource: {
+        collection: 'bible-study',
+        priorities: ['high']
+      },
+      entityDisplayOptions: {
+        size: 'small',
+        position: 'top-bottom',
+        imageStyle: 'margin',
+        contentStyle: 'image-title'
+      },
+      action: 'Route',
+      entityTemplate: [this.storyPage]
+    }, {
+      icon: 'assets/images/church_2.png',
+      title: { english: 'Outdoors', chinese: '传道'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      entitySource: {
+        collection: 'outdoors',
         priorities: ['high']
       },
       entityDisplayOptions: {

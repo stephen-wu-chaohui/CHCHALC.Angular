@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
-import { WSection, WEntity } from '../services/types';
-import { SettingsService } from 'src/app/data/settings.service';
-import { MockService } from '../services/mock.service';
-import { Observable } from 'rxjs';
-import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { WSection, WEntity } from '../../services/types';
+import { SettingsService } from 'src/app/services/settings.service';
+import { MockService } from '../../services/mock.service';
 import { NguCarouselConfig } from '@ngu/carousel';
-import { ContextService } from '../services/context.service';
+import { ContextService } from '../../services/context.service';
+import { v4 } from 'uuid';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-new-section',
@@ -40,7 +40,10 @@ export class SectionComponent implements OnInit {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
 
-  constructor(public es: MockService, public ss: SettingsService, public data: ChchalcDataService, public contextService: ContextService) {
+  constructor(public es: MockService,
+              public ss: SettingsService,
+              public contextService: ContextService,
+             ) {
   }
 
   ngOnInit() {
@@ -71,5 +74,53 @@ export class SectionComponent implements OnInit {
       return '';
     }
     return `url(${this.section.backgroudImage})`;
+  }
+
+  importMultipleFiles(files: File[]) {
+    if (files.length === 0) {
+      return;
+    }
+    _.forEach(files, file => {
+      const mimeType = file.type;
+      if (mimeType.match(/image\/*/) != null) {
+        const item: WEntity = {
+          id: v4(),
+          lastUpdated: moment().unix(),
+          start: moment().unix(),
+          title: { english: '', chinese: ''},
+        };
+        const collectionPath = `${this.host.path}/${this.collectionPath}`;
+        const imagePath = `${collectionPath}/${item.id}`;
+        this.es.uploadImage(imagePath, file).then(
+          path => {
+            item.image = path;
+            item.start = this.guessStartTime(file);
+            item.path = `${collectionPath}/${item.id}`;
+            this.es.setEntity(collectionPath, item).then();
+            //this.dbapi.upsert(this.collectionPath, item).then();
+          }
+        );
+        // const ref = this.storage.ref(`${collectionPath}/${item.id}-${file.name}`);
+        // ref.put(file).then(() => {
+        //   ref.getDownloadURL().subscribe(imgPath => {
+        //     item.image = imgPath;
+        //     item.start = this.guessStartTime(file);
+        //     item.path = `${collectionPath}/${item.id}`;
+        //     this.dbapi.upsert(this.collectionPath, item).then();
+        //   });
+        // });
+      }
+    });
+  }
+
+  guessStartTime(file: File): number {
+    const a = file.name.lastIndexOf('-');
+    const b = file.name.lastIndexOf('.');
+    const numberPart = file.name.substring(a+1, b);
+    console.log('guess file name:', numberPart);
+    if (a === -1 || b === -1 || (b - a) < 2) {
+      return file.lastModified;
+    }
+    return parseInt(numberPart, 10);
   }
 }

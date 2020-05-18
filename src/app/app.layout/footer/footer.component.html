@@ -2,7 +2,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div class="row">
+			<div class="row" *ngIf="es.root|async; let church">
 
 				<!-- Footer Column -->
 				<div class="col-lg-4 footer_col">
@@ -13,7 +13,7 @@
               <img width="75%" src="/assets/images/logo.png" alt="">
             </div>
             <div class="row text-center">
-              <span>{{data.tr(data.churchTitle)}}</span>
+              <span>{{ss.tr(church.title)}}</span>
             </div>
 					</div>
 					<div class="footer_social">
@@ -29,7 +29,7 @@
 				<!-- Footer Column -->
 				<div class="col-lg-4 footer_col">
 					<div class="footer_links">
-            <div class="footer_title">{{data.tr(weAreHere)}}</div>
+            <div class="footer_title">{{ss.tr(weAreHere)}}</div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3528.0468844082798!2d172.5607002160029!3d-43.54991279112943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d32200013e04fa5%3A0xc8b0ae91f1dce9a2!2zNDPCsDMyJzU5LjciUyAxNzLCsDMzJzQ2LjQiRQ!5e1!3m2!1sen!2snz!4v1589613801857!5m2!1sen!2snz"
                     width="100%" height="225" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
             </iframe>
@@ -38,19 +38,17 @@
 
 				<!-- Footer Column -->
 				<div class="col-lg-3">
-					<div class="footer_contact" *ngIf="data.contactInfo.mainSite; let item">
-						<div class="footer_title">{{data.tr(ContactUs)}}</div>
+					<div class="footer_contact">
+						<div class="footer_title">{{ss.tr(ContactUs)}}</div>
 						<ul>
-							<li><span>{{data.tr(Address)}}</span>{{data.tr(item.address)}}</li>
+							<li><span>{{ss.tr(Address)}}</span>{{ss.tr(church.address)}}</li>
 							<li class="footer_contact_phone">
-								<span>{{data.tr(Phone)}}</span>
+								<span>{{ss.tr(Phone)}}</span>
 								<div>
-									<div *ngFor="let contactor of item.contactors">
-										{{contactor.phoneNumbers.join(', ')}}
-									</div>
+										{{church.phoneNumbers.join(', ')}}
 								</div>
 							</li>
-							<li *ngIf="item.email"><span>{{data.tr(Email)}}</span>{{item.email}}</li>
+							<li *ngIf="church.email"><span>{{ss.tr(Email)}}</span>{{church.email}}</li>
 						</ul>
 					</div>
 				</div>

@@ -3,9 +3,9 @@
 
 		<!-- Header Content -->
 
-		<div class="header_container">
+		<div class="header_container" *ngIf="es.root|async; let church">
 			<div class="container-fluid">
-				<div class="row" *ngIf="data.adminMode">
+				<div class="row" *ngIf="ss.adminMode">
           <div class="col alert">
             <div alert>You are in admin mode</div>
           </div>
@@ -18,8 +18,8 @@
 							<div class="logo_container">
 								<div class="logo">
 									<a routeLink="#">
-										<img height="100%" src="/assets/images/logo.png" [alt]="data.tr(data.churchTitle)">
-										<span>{{data.tr(data.churchTitle)}}
+										<img height="100%" src="/assets/images/logo.png" [alt]="ss.tr(church.title)">
+										<span>{{ss.tr(church.title)}}
 										</span>
 									</a>
 								</div>
@@ -30,10 +30,10 @@
 								<nav class="main_nav">
 									<ul>
 										<li *ngFor="let menu of contextMenu" [class.active]="activeMenuItem==menu.route">
-											<a (click)="setMenu(menu.route)">{{data.tr(menu.title)}}</a>
+											<a (click)="setMenu(menu.route)">{{ss.tr(menu.title)}}</a>
 										</li>
 										<li class="language" (click)="toggleLanguage()">
-											<i class="fa fa-language" aria-hidden="true" title="[{{data.tr(data.switchLanguage)}}]"></i>
+											<i class="fa fa-language" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]"></i>
 										</li>
 									</ul>
 								</nav>
@@ -63,11 +63,11 @@
 			<nav class="menu_nav">
 				<ul>
 					<li *ngFor="let menu of contextMenu" [class.active]="activeMenuItem==menu.route">
-						<a (click)="toggleMenu(menu.route)">{{data.tr(menu.title)}}</a>
+						<a (click)="toggleMenu(menu.route)">{{ss.tr(menu.title)}}</a>
 					</li>
 				</ul>
 				<div class="language" (click)="toggleLanguage()">
-					<i class="fa fa-language" aria-hidden="true">{{data.tr(data.switchLanguage)}}</i>
+					<i class="fa fa-language" aria-hidden="true">{{ss.tr(switchLanguage)}}</i>
 				</div>
 			</nav>
 		</div>

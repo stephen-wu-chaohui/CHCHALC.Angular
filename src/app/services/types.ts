@@ -1,6 +1,16 @@
-import { MultiText } from 'src/app/data/api-data';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+
+export class MultiText {
+  english: string;
+  chinese?: string;
+}
+
+export class MenuItem {
+  title: MultiText;
+  route: string;
+}
+
 
 export type PageName = string;
 export type EntityId = string;
@@ -54,6 +64,8 @@ export class WAssembly extends WEntity {
   address: MultiText;
   coordinate: { lantitue: number, longitude: number; };
   host: PersonId;
+  phoneNumbers: string[];
+  email?: string;
 }
 
 export type WMinistry = WAssembly;
@@ -117,9 +129,9 @@ export class ServiceResponse {
 
 
 export interface IEntityService {
-  readonly root: WEntity;
+  readonly root: Observable<WAssembly>;
   collectionPathOf(path: Path, collectionName: string): Path;
-  getEntity(collectionPath: Path, id: EntityId): Promise<WEntity>;
+  getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T>;
   setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;
   updateEntity(collectionPath: Path, newChanges: WEntity): Promise<ServiceResponse>;
   getObservable(hostPath: Path, source: EntitySource): Observable<WEntity[]>;

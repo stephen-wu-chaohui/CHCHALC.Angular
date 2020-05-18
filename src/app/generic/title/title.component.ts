@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { WPage } from '../services/types';
-import { SettingsService } from 'src/app/data/settings.service';
+import { WPage } from '../../services/types';
+import { SettingsService } from 'src/app/services/settings.service';
 import { Router } from '@angular/router';
-import { ContextService } from '../services/context.service';
+import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'app-title',

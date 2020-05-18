@@ -10,7 +10,6 @@ import { EntityEditComponent } from './entity-edit/entity-edit.component';
 import { ToolsPageComponent } from './tools-page/tools-page.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
-import { IntroSectionComponent } from './intro-section/intro-section.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 export const routes: Routes = [
@@ -36,7 +35,6 @@ export const routes: Routes = [
     EntityEditComponent,
     TitleComponent,
     HomeSliderComponent,
-    IntroSectionComponent,
     ToolsPageComponent,
     AdminPageComponent
   ], exports: [
@@ -45,7 +43,6 @@ export const routes: Routes = [
     EntityComponent,
     TitleComponent,
     HomeSliderComponent,
-    IntroSectionComponent,
     ToolsPageComponent,
     AdminPageComponent
   ]

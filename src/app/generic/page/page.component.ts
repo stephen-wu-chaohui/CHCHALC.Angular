@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContextService } from '../services/context.service';
-import { WPage } from '../services/types';
+import { ContextService } from '../../services/context.service';
+import { WPage } from '../../services/types';
 
 @Component({
   selector: 'app-page',

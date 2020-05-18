@@ -7,13 +7,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from '../app.layout/app.layout.module';
-import { ChchalcDataService } from '../data/chchalc-data.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../.././environments/environment';
 import { GenericModule } from '../generic/generic.module';
+import { StartupService } from '../services/startup.service';
 
-export function init_app(data: ChchalcDataService) {
-	return () => data.init();
+export function init_app(startup: StartupService) {
+	return () => startup.init();
 }
 
 
@@ -32,7 +32,7 @@ export function init_app(data: ChchalcDataService) {
 			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],
 	 providers: [
-    { provide: APP_INITIALIZER, useFactory: init_app, deps: [ChchalcDataService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: init_app, deps: [StartupService], multi: true }
   ],
    bootstrap: [
       AppComponent

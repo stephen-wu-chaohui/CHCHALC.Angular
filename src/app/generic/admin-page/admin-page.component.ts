@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -13,12 +13,12 @@ export class AdminPageComponent implements OnInit {
     sections: []
   };
 
-  constructor(private data: ChchalcDataService) { }
+  constructor(private ss: SettingsService) { }
 
   ngOnInit() {
   }
 
-	setAdmin(admin: boolean = true) {
-    this.data.adminMode = admin;``
-	}
+  setAdmin(admin: boolean = true) {
+    this.ss.adminMode = admin;
+  }
 }

@@ -1,8 +1,8 @@
 import { Component, HostListener } from '@angular/core';
-import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { SettingsService } from 'src/app/data/settings.service';
-import { ContextService } from 'src/app/generic/services/context.service';
-import { MenuItem } from 'src/app/data/api-data';
+import { SettingsService } from 'src/app/services/settings.service';
+import { ContextService } from 'src/app/services/context.service';
+import { MenuItem } from 'src/app/services/types';
+import { MockService } from 'src/app/services/mock.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,11 @@ export class HeaderComponent {
   headerScrolled = false;
   activeMenuItem = 'home';
 
-  constructor(private setting: SettingsService, public data: ChchalcDataService, public contextService: ContextService) {
+  switchLanguage = {
+    english: '切换到中文', chinese: 'Switch to English'
+  };
+
+  constructor(public ss: SettingsService, public contextService: ContextService, public es: MockService) {
     this.contextMenu = this.contextService.contextMenu;
     contextService.contextChanged.subscribe(() => {
       this.contextMenu = this.contextService.contextMenu;
@@ -62,6 +66,6 @@ export class HeaderComponent {
 
   toggleLanguage() {
     this.menuActive = false;
-    this.setting.toggleLanguage();
+    this.ss.toggleLanguage();
   }
 }

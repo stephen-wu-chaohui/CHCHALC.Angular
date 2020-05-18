@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
+import { MockService } from 'src/app/services/mock.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,16 +9,21 @@ import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
 })
 export class FooterComponent implements OnInit {
 
-	weAreHere = { english: 'We are here', chinese: '我们在这里'};
-	ContactUs = { english: 'Contact Us', chinese: '联系我们'};
+  weAreHere = { english: 'We are here', chinese: '我们在这里'};
+  ContactUs = { english: 'Contact Us', chinese: '联系我们'};
 
-	Address = { english: 'Address: ', chinese: '地址：'};
-	Phone = { english: 'Phone: ', chinese: '电话：'};
-	Email = { english: 'Email: ', chinese: '邮件：'};
+  Address = { english: 'Address: ', chinese: '地址：'};
+  Phone = { english: 'Phone: ', chinese: '电话：'};
+  Email = { english: 'Email: ', chinese: '邮件：'};
 
-  constructor(public data: ChchalcDataService) { }
+  // contactInfo: Observable<ContactInfo>;
+
+  constructor(public ss: SettingsService, public es: MockService) {
+
+  }
 
   ngOnInit() {
+    // this.contactInfo = this.dataClient.single('contactInfo');
   }
 
 }

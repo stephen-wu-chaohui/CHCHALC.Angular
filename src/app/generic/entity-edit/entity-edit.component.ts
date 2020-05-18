@@ -1,14 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { WEntity, WSection } from '../services/types';
-import { SettingsService, Language } from 'src/app/data/settings.service';
-import { ChchalcDataService } from 'src/app/data/chchalc-data.service';
-import { DataClientService } from 'src/app/data/data-client.service';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { Router } from '@angular/router';
+import { WEntity, WSection } from '../../services/types';
+import { SettingsService, Language } from 'src/app/services/settings.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MockService } from '../../services/mock.service';
 
 @Component({
-  selector: 'app-new-entity-edit',
+  selector: 'app-entity-edit',
   templateUrl: './entity-edit.component.html',
   styleUrls: ['./entity-edit.component.scss']
 })
@@ -20,7 +17,6 @@ export class EntityEditComponent implements OnInit {
 
   image: any;
   isDirty = false;
-  isNew = true;
   message = '';
   file: File;
   isSaving = false;
@@ -36,12 +32,12 @@ export class EntityEditComponent implements OnInit {
 
   patchValue() {
     this.formChanges.patchValue({
-      name: this.data.tr(this.entity.name),
-      title: this.data.tr(this.entity.title),
-      subTitle: this.data.tr(this.entity.subTitle),
-      text: this.data.tr(this.entity.text),
-      description: this.data.tr(this.entity.description),
-      reference: this.data.tr(this.entity.reference),
+      name: this.ss.tr(this.entity.name),
+      title: this.ss.tr(this.entity.title),
+      subTitle: this.ss.tr(this.entity.subTitle),
+      text: this.ss.tr(this.entity.text),
+      description: this.ss.tr(this.entity.description),
+      reference: this.ss.tr(this.entity.reference),
     });
   }
 
@@ -85,10 +81,8 @@ export class EntityEditComponent implements OnInit {
     }
   }
 
-  constructor(public data: ChchalcDataService,
-              public settings: SettingsService,
-              private dbapi: DataClientService,
-              private storage: AngularFireStorage
+  constructor(public ss: SettingsService,
+              private es: MockService
   ) {}
 
   imageClick() {
@@ -102,20 +96,16 @@ export class EntityEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isNew = !this.entity;
-    if (this.isNew) {
-      this.entity = new WEntity(this.collectionPath);
-    }
     this.image = this.entity.image;
     this.message = '';
     this.file = null;
     this.isDirty = false;
 
     this.patchValue();
-    this.settings.languageChanging.subscribe(language => {
+    this.ss.languageChanging.subscribe(language => {
       this.applyChanges(language);
     });
-    this.settings.languageChanged.subscribe(() => {
+    this.ss.languageChanged.subscribe(() => {
       this.patchValue();
     });
   }
@@ -149,28 +139,26 @@ export class EntityEditComponent implements OnInit {
     };
   }
 
-  onLoad(evt) {
-    if (evt && evt.target) {
-      const width = evt.target.naturalWidth;
-      const height = evt.target.naturalHeight;
-      const portrait = height > width ? true : false;
-      // console.log(width, height, 'portrait: ', portrait);
-    }
-  }
-
   onSave() {
     if (!this.isDirty) {
       return;
     }
     if (this.file) {
       this.isSaving = true;
-      const ref = this.storage.ref(`${this.collectionPath}/${this.entity.id}-${this.file.name}`);
-      ref.put(this.file).then(() => {
-        ref.getDownloadURL().subscribe(path => {
+      this.es.uploadImage(this.entity.path, this.file).then(
+        path => {
           this.entity.image = path;
           this.saveItem();
-        });
-      });
+        }
+      );
+
+      // const ref = this.storage.ref(`${this.collectionPath}/${this.entity.id}-${this.file.name}`);
+      // ref.put(this.file).then(() => {
+      //   ref.getDownloadURL().subscribe(path => {
+      //     this.entity.image = path;
+      //     this.saveItem();
+      //   });
+      // });
     } else {
       this.saveItem();
     }
@@ -178,16 +166,9 @@ export class EntityEditComponent implements OnInit {
 
 
   saveItem() {
-    this.applyChanges(this.settings.language);
-    console.log('saveItem(entity):', this.collectionPath, this.entity)
-    this.dbapi.upsert(this.collectionPath, this.entity).then(
-      () => {
-        this.setDirty(false);
-        if (this.isNew) {
-          this.entity = new WEntity(this.collectionPath);
-        }
-      });
+    this.applyChanges(this.ss.language);
+    console.log('saveItem(entity):', this.collectionPath, this.entity);
+    this.es.setEntity(this.collectionPath, this.entity).then(() => this.setDirty(false));
+    // this.dbapi.upsert(this.collectionPath, this.entity).then(() => this.setDirty(false));
   }
-
-
 }

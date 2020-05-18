@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { WEntity, WSection } from '../services/types';
-import { SettingsService } from 'src/app/data/settings.service';
-import { ContextService } from '../services/context.service';
+import { WEntity, WSection } from '../../services/types';
+import { SettingsService } from 'src/app/services/settings.service';
+import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'app-entity',
