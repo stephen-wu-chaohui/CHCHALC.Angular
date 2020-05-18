@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MockService } from 'src/app/services/mock.service';
 import { SettingsService } from 'src/app/services/settings.service';
+import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
   selector: 'app-footer',
@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
 
   // contactInfo: Observable<ContactInfo>;
 
-  constructor(public ss: SettingsService, public es: MockService) {
+  constructor(public ss: SettingsService, public es: AbstrctEntityService) {
 
   }
 

@@ -11,6 +11,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../.././environments/environment';
 import { GenericModule } from '../generic/generic.module';
 import { StartupService } from '../services/startup.service';
+import { AbstrctEntityService } from '../services/entity.service';
+import { FirebaseService } from '../services/firebase.service';
 
 export function init_app(startup: StartupService) {
 	return () => startup.init();
@@ -32,8 +34,9 @@ export function init_app(startup: StartupService) {
 			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
    ],
 	 providers: [
-    { provide: APP_INITIALIZER, useFactory: init_app, deps: [StartupService], multi: true }
-  ],
+    { provide: APP_INITIALIZER, useFactory: init_app, deps: [StartupService], multi: true },
+    { provide: AbstrctEntityService, useClass: FirebaseService }
+   ],
    bootstrap: [
       AppComponent
    ]

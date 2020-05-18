@@ -129,7 +129,7 @@ export class ServiceResponse {
 
 
 export interface IEntityService {
-  readonly root: Observable<WAssembly>;
+  readonly root: WAssembly;
   collectionPathOf(path: Path, collectionName: string): Path;
   getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T>;
   setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;

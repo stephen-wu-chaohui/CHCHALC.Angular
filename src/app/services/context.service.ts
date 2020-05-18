@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { EntityPagesBinding, PageService } from './page.service';
-import { MockService } from './mock.service';
 import { MenuItem } from './types';
+import { AbstrctEntityService } from './entity.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,9 @@ export class ContextService {
   pageChanged: EventEmitter<string> = new EventEmitter();
   contextChanged: EventEmitter<string> = new EventEmitter();
 
-  constructor(private entityService: MockService, private pageService: PageService) {
+  constructor(private entityService: AbstrctEntityService, private pageService: PageService) {
     this.routeStack.unshift({
-      entity: entityService.church,
+      entity: entityService.root,
       template: pageService.topPages
     });
     this.contextChanged.emit();
@@ -29,7 +29,7 @@ export class ContextService {
   get currentContext() {
     if (this.routeStack.length === 0) {
       this.routeStack.unshift({
-        entity: this.entityService.church,
+        entity: this.entityService.root,
         template: this.pageService.topPages
       });
       this.contextChanged.emit();

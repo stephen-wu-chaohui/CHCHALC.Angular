@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings.service';
 import { ContextService } from 'src/app/services/context.service';
 import { MenuItem } from 'src/app/services/types';
-import { MockService } from 'src/app/services/mock.service';
+import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,7 @@ export class HeaderComponent {
     english: '切换到中文', chinese: 'Switch to English'
   };
 
-  constructor(public ss: SettingsService, public contextService: ContextService, public es: MockService) {
+  constructor(public ss: SettingsService, public contextService: ContextService, public es: AbstrctEntityService) {
     this.contextMenu = this.contextService.contextMenu;
     contextService.contextChanged.subscribe(() => {
       this.contextMenu = this.contextService.contextMenu;

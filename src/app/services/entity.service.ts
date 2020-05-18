@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class AbstrctEntityService implements IEntityService {
-  abstract root: Observable<WAssembly>;
+  abstract root: WAssembly;
   abstract collectionPathOf(path: Path, collectionName: string): Path;
   abstract getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T>;
   abstract setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;

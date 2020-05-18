@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { WSection, WEntity } from '../../services/types';
 import { SettingsService } from 'src/app/services/settings.service';
-import { MockService } from '../../services/mock.service';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { ContextService } from '../../services/context.service';
 import { v4 } from 'uuid';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
   selector: 'app-new-section',
@@ -40,7 +40,7 @@ export class SectionComponent implements OnInit {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
 
-  constructor(public es: MockService,
+  constructor(public es: AbstrctEntityService,
               public ss: SettingsService,
               public contextService: ContextService,
              ) {
@@ -97,18 +97,8 @@ export class SectionComponent implements OnInit {
             item.start = this.guessStartTime(file);
             item.path = `${collectionPath}/${item.id}`;
             this.es.setEntity(collectionPath, item).then();
-            //this.dbapi.upsert(this.collectionPath, item).then();
           }
         );
-        // const ref = this.storage.ref(`${collectionPath}/${item.id}-${file.name}`);
-        // ref.put(file).then(() => {
-        //   ref.getDownloadURL().subscribe(imgPath => {
-        //     item.image = imgPath;
-        //     item.start = this.guessStartTime(file);
-        //     item.path = `${collectionPath}/${item.id}`;
-        //     this.dbapi.upsert(this.collectionPath, item).then();
-        //   });
-        // });
       }
     });
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL } from './types';
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class MockService extends AbstrctEntityService {
+export class FirebaseService extends AbstrctEntityService {
   constructor(private store: AngularFirestore, private storage: AngularFireStorage) {
     super();
   }
@@ -28,9 +28,9 @@ export class MockService extends AbstrctEntityService {
     email: 'admin@nzalc.org'
   };
 
-  get root(): Observable<WAssembly> {
+  get root(): WAssembly {
     // return from(this.getEntity<WAssembly>('churches', 'chchalc'));
-    return of(this.church);
+    return this.church;
   }
 
   collectionPathOf(path: Path, collectionName: string): Path {

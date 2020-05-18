@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { WEntity, WSection } from '../../services/types';
 import { SettingsService, Language } from 'src/app/services/settings.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MockService } from '../../services/mock.service';
+import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
   selector: 'app-entity-edit',
@@ -82,7 +82,7 @@ export class EntityEditComponent implements OnInit {
   }
 
   constructor(public ss: SettingsService,
-              private es: MockService
+              private es: AbstrctEntityService
   ) {}
 
   imageClick() {
