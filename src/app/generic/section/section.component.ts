@@ -89,14 +89,14 @@ export class SectionComponent implements OnInit {
           start: moment().unix(),
           title: { english: '', chinese: ''},
         };
-        const collectionPath = `${this.host.path}/${this.collectionPath}`;
-        const imagePath = `${collectionPath}/${item.id}`;
+        const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
+        console.log('image path:', imagePath);
         this.es.uploadImage(imagePath, file).then(
           path => {
             item.image = path;
             item.start = this.guessStartTime(file);
-            item.path = `${collectionPath}/${item.id}`;
-            this.es.setEntity(collectionPath, item).then();
+            item.path = imagePath;
+            this.es.setEntity(this.collectionPath, item).then();
           }
         );
       }

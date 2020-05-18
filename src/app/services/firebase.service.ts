@@ -14,7 +14,7 @@ export class FirebaseService extends AbstrctEntityService {
     super();
   }
 
-  public church: WAssembly = {
+  private church: WAssembly = {
     id: 'church',
     start: 1589232395000,
     path: '',
@@ -72,34 +72,34 @@ export class FirebaseService extends AbstrctEntityService {
     return null;
   }
 
-  async getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T> {
+  async getEntity<TEntity extends WEntity>(collectionPath: Path, id: EntityId): Promise<TEntity> {
     return this.store.collection(collectionPath).doc(id).get().toPromise().then(
-      obj => (obj.data()) as T
+      obj => (obj.data()) as TEntity
     );
   }
 
-  async setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse> {
+  async setEntity<TEntity extends WEntity>(collectionPath: Path, newValue: TEntity): Promise<ServiceResponse> {
     try {
-      await this.store.collection(collectionPath).doc(newValue.id).set(newValue);
+      await this.store.collection(collectionPath).doc<TEntity>(newValue.id).set(newValue);
       return ({ status: 'OK', reason: null });
     } catch (reason) {
       return ({ status: 'Error', reason });
     }
   }
 
-  async updateEntity(collectionPath: Path, newChanges: WEntity): Promise<ServiceResponse> {
+  async updateEntity<TEntity extends WEntity>(collectionPath: Path, newChanges: TEntity): Promise<ServiceResponse> {
     try {
-      await this.store.collection(collectionPath).doc(newChanges.id).update(newChanges);
+      await this.store.collection(collectionPath).doc<TEntity>(newChanges.id).update(newChanges);
       return ({ status: 'OK', reason: null });
     } catch (reason) {
       return ({ status: 'Error', reason });
     }
   }
 
-  getObservable(hostPath: Path, source: EntitySource): Observable<any[]> {
+  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource): Observable<TEntity[]> {
     const collectionPath = this.collectionPathOf(hostPath, source.collection);
     const directionStr = source.directionStr || 'desc';
-    const query = this.store.collection<WEntity>(collectionPath, (a: CollectionReference) => {
+    const query = this.store.collection<TEntity>(collectionPath, (a: CollectionReference) => {
       const cond = a.orderBy('start', directionStr) || a;
       if (source.slice === 'first') {
         return cond.limit(source.maxinum);

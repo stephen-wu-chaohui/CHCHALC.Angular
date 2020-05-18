@@ -131,9 +131,9 @@ export class ServiceResponse {
 export interface IEntityService {
   readonly root: WAssembly;
   collectionPathOf(path: Path, collectionName: string): Path;
-  getEntity<T extends WEntity>(collectionPath: Path, id: EntityId): Promise<T>;
-  setEntity(collectionPath: Path, newValue: WEntity): Promise<ServiceResponse>;
-  updateEntity(collectionPath: Path, newChanges: WEntity): Promise<ServiceResponse>;
-  getObservable(hostPath: Path, source: EntitySource): Observable<WEntity[]>;
+  getEntity<TEntity extends WEntity>(collectionPath: Path, id: EntityId): Promise<TEntity>;
+  setEntity<TEntity extends WEntity>(collectionPath: Path, newValue: TEntity): Promise<ServiceResponse>;
+  updateEntity<TEntity extends WEntity>(collectionPath: Path, newChanges: TEntity): Promise<ServiceResponse>;
+  getObservable<TEntity extends WEntity>(hostPath: Path, source: EntitySource): Observable<TEntity[]>;
   uploadImage(folder: Path, file: File): Promise<ImageURL>;
 }
