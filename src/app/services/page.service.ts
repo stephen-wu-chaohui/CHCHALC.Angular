@@ -26,7 +26,7 @@ export class PageService {
       entityDisplayOptions: {
         size: 'large',
         position: 'left-right',
-        imageStyle: 'margin',
+        imageStyle: 'full',
         contentStyle: 'image-only'
       }
     }]
@@ -293,14 +293,17 @@ export class PageService {
     title: { english: 'Home', chinese: '首页'},
     homeBar: 'none',
     sections: [{
+      backgroudImage: '/assets/images/slider_background_1.jpg',
       entitySource: {
         collection: 'homeslides',
         priorities: ['high'],
+        slice: 'last',
+        maxinum: 1
       },
       entityDisplayOptions: {
         size: 'slide',
-        position: 'left-right',
-        imageStyle: 'full',
+        position: 'top-bottom',
+        imageStyle: 'original',
         contentStyle: 'image-title'
       }
     }, {

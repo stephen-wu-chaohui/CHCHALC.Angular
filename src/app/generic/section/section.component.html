@@ -1,94 +1,81 @@
 <div class="section" [id]="section.label">
-  <ng-container [ngSwitch]="section.entityDisplayOptions.size">
-    <ng-container *ngSwitchCase="'slide'">
-      <app-home-slider [slideObservable]="entitySource"></app-home-slider>
-    </ng-container>
-    <ng-container *ngSwitchDefault>
-      <ng-container *ngTemplateOutlet="otherSize"></ng-container>
-    </ng-container>
-  </ng-container>
-</div>
-
-<ng-template #slideMode>
-  <ngu-carousel [inputs]="carouselTileConfig" [dataSource]="entitySource|async">
-    <ngu-tile *nguCarouselDef="let item; let i = index">
-      <div class="background">
-        <img class="home_slider_image" [src]="item.image">
-        <div class="home_slider_content text-center">
-          <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
-            <img [src]="item.image">
-          </div>
-          <h1 class="slider-text">{{ss.tr(item.title)}}</h1>
-          <div class="button home_slider_button">
-            <a (click)="contextService.jumpTo('welcome')">{{ss.tr(comeAndJoinUs)}}</a>
-          </div>
-        </div>
-      </div>
-    </ngu-tile>
-  </ngu-carousel>
-</ng-template>
-
-<ng-template #otherSize>
-  <div class="background" [style.background]="backgroudImage()">
+  <div class="background" [style.background-image]="backgroudImage()">
   </div>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row" *ngIf="section.title">
-      <div class="col-10">
-        <div class="section_title_container">
+      <div class="col">
+        <div appEdit (editMode)="onEditMode()" class="section_title_container">
           <div class="section_image"><img [src]="section.icon" alt=""></div>
           <div class="section_title" [class.text-light]="section.lightText"><h2>{{ss.tr(section.title)}}</h2></div>
           <div class="section_subtitle" [class.text-light]="section.lightText">{{ss.tr(section.subtitle)}}</div>
         </div>
       </div>
-      <div class="col-2" *ngIf="ss.adminMode && section.entitySource.editable">
+    </div>
+    <ng-container [ngSwitch]="section.entityDisplayOptions.size">
+      <ng-container *ngSwitchCase="'intro'">
+        <ng-container *ngTemplateOutlet="intro"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'slide'">
+        <ng-container *ngTemplateOutlet="slide"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <ng-container *ngTemplateOutlet="list"></ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #intro>
+  <div *ngFor="let entity of entitySource|async" class="row">
+    <div class="col-lg-6">
+      <div class="intro_text">
+        <p>{{ss.tr(entity.text||entity.description)}}</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="intro_image"><img [src]="entity.image" alt=""></div>
+      <div class="button intro_button"><a (click)="contextService.setPage('church')">{{ss.tr(readMore)}}</a></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #slide>
+  <div *ngFor="let entity of entitySource|async" class="row vh-100">
+    <div class="col home_slider_content text-center">
+      <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
+        <img [src]="entity.image">
+      </div>
+      <h1 class="slider-text">{{ss.tr(entity.title)}}</h1>
+      <div class="button home_slider_button">
+        <a (click)="contextService.jumpTo('welcome')">{{ss.tr(comeAndJoinUs)}}</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #list>
+  <ng-container *ngIf="editMode; else runMode">
+    <div class="row">
+      <div class="col d-flex flex-column align-items-center justify-content-center p-4" *ngIf="section.entitySource.editable">
         <div style='height: 0px;width:0px; overflow:hidden;'>
           <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
         </div>
-        <div (click)="upload.click()" style="position: absolute;top: 50%;color: red">
-          <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px">
+        <div (click)="upload.click()">
+          <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px" [title]="'Add new ' + section.entitySource.collection">
         </div>
       </div>
     </div>
-    <ng-container *ngIf="ss.adminMode;then adminMode else runMode">
-    </ng-container>
-  </div>
-
-  <ng-template #adminMode>
     <div class="row">
       <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-        <app-entity-edit (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section" *ngIf="ss.adminMode"></app-entity-edit>
+        <app-entity-edit (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity-edit>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #runMode>
+    <div class="row" [class]="bootstrapRowClasses">
+      <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
+        <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section"></app-entity>
       </div>
     </div>
   </ng-template>
-
-  <ng-template #runMode>
-    <ng-container *ngIf="section.entityDisplayOptions.size==='intro'; then intro else list">
-    </ng-container>
-
-    <ng-template #intro>
-      <div *ngFor="let entity of entitySource|async" class="row">
-        <div class="col-lg-6">
-          <div class="intro_text">
-            <p>{{ss.tr(entity.text||entity.description)}}</p>
-          </div>
-        </div>
-
-        <!-- Intro Image -->
-        <div class="col-lg-6">
-          <div class="intro_image"><img [src]="entity.image" alt=""></div>
-          <div class="button intro_button"><a (click)="contextService.setPage('church')">Read More</a></div>
-        </div>
-      </div>
-    </ng-template>
-
-    <ng-template #list>
-      <div class="row">
-        <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-          <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section" *ngIf="!ss.adminMode"></app-entity>
-        </div>
-      </div>
-    </ng-template>
-
-  </ng-template>
-
 </ng-template>

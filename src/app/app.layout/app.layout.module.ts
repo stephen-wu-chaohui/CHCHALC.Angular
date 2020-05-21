@@ -10,7 +10,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 @NgModule({
   imports: [
     CommonModule,
-		RouterModule,
+    RouterModule,
     GoogleMapsModule
   ],
   declarations: [

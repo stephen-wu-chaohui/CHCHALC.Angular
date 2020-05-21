@@ -11,7 +11,7 @@ import { AbstrctEntityService } from 'src/app/services/entity.service';
 @Component({
   selector: 'app-new-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.css']
+  styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit {
   @Input() section: WSection;
@@ -21,8 +21,10 @@ export class SectionComponent implements OnInit {
   @ContentChild(TemplateRef)
 
   checked = false;
+  editMode: boolean;
   entitySource: any;
   bootstrapColumnClasses = '';
+  bootstrapRowClasses = '';
   collectionPath = '';
 
   public carouselTileConfig: NguCarouselConfig = {
@@ -39,6 +41,9 @@ export class SectionComponent implements OnInit {
   comeAndJoinUs = {
     english: 'Come and Join us', chinese: '欢迎加入我们'
   };
+  readMore = {
+    english: 'Read More', chinese: '了解我们教会'
+  };
 
   constructor(public es: AbstrctEntityService,
               public ss: SettingsService,
@@ -47,16 +52,34 @@ export class SectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    const includingDeleted = this.ss.adminMode;
-    setTimeout(() => this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, includingDeleted), 100);
+    const includingDeleted = this.editMode;
+    setTimeout(() =>
+      this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, includingDeleted)
+    , 100);
     this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
+    this.bootstrapRowClasses = this.getBootstrapRowClasses();
     this.collectionPath = `${this.host.path}/${this.section.entitySource.collection}`;
+  }
+
+  private getBootstrapRowClasses() {
+    const options = this.section.entityDisplayOptions;
+    switch (options.size) {
+    case 'slide':
+    case 'row':
+      return 'vh-100';
+    case 'large':
+    case 'medium':
+    case 'small':
+    case 'tiny':
+      return  '';
+    }
   }
 
   private getBootstrapColumnClasses() {
     const options = this.section.entityDisplayOptions;
     switch (options.size) {
     case 'slide':
+      return 'col home_slider_content text-center';
     case 'row':
       return 'col-12';
     case 'large':
@@ -113,5 +136,10 @@ export class SectionComponent implements OnInit {
       return file.lastModified;
     }
     return parseInt(numberPart, 10);
+  }
+
+  onEditMode() {
+    this.editMode = !this.editMode;
+    this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, this.editMode)
   }
 }

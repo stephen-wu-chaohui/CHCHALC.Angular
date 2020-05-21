@@ -9,7 +9,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
 import { ToolsPageComponent } from './tools-page/tools-page.component';
 import { NguCarouselModule } from '@ngu/carousel';
-import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 export const routes: Routes = [
@@ -34,15 +33,6 @@ export const routes: Routes = [
     EntityComponent,
     EntityEditComponent,
     TitleComponent,
-    HomeSliderComponent,
-    ToolsPageComponent,
-    AdminPageComponent
-  ], exports: [
-    PageComponent,
-    SectionComponent,
-    EntityComponent,
-    TitleComponent,
-    HomeSliderComponent,
     ToolsPageComponent,
     AdminPageComponent
   ]

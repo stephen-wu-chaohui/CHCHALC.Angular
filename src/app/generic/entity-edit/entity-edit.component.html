@@ -1,11 +1,19 @@
 <div class="entity" [ngClass]="section.entityDisplayOptions.position">
   <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
-    <img [src]="image" [class.saving]="isSaving"
-      [class.deleted]="entity.deleted" (click)= "imageClick()">
-    <ng-container *ngIf="ss.adminMode">
-      <button type="button" class="btn btn-danger btn-outlined tool-onsite top-right" (click)="onClickHide()" *ngIf="!isDirty">Hide</button>
-      <input type="file" #file accept='image/*' class="tool-onsite bottom-left" (change)="OnChangeImage(file.files)">
-      <input type="button" class="btn btn-primary btn-lg tool-onsite bottom-right" *ngIf="isDirty" value="Save" (click)="onSave()">
+    <img [src]="image" [class.deleted]="entity.deleted" (click)= "imageClick()">
+    <ng-container>
+      <i class="btn btn-danger btn-outlined tool-onsite top-right fa fa-minus-circle"
+         style="font-size:16px;color:Coral" (click)="onClickHide()" title="Hide">
+      </i>
+      <div style='height: 0px;width:0px; overflow:hidden;'>
+        <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
+      </div>
+      <i class="btn btn-danger btn-outlined tool-onsite bottom-left fa fa-file-image-o"
+        style="font-size:16px;color:GreenYellow" (click)="file.click()" title="Change image">
+      </i>
+      <i class="btn btn-danger btn-outlined tool-onsite bottom-right fa fa-cloud"
+        style="font-size:16px;color:Navy" (click)="onSave()" *ngIf="isDirty" title="Save">
+      </i>
     </ng-container>
   </div>
   <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle">

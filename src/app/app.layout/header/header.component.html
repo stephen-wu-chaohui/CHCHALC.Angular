@@ -3,7 +3,7 @@
 
 		<!-- Header Content -->
 
-		<div class="header_container" *ngIf="es.root; let church">
+		<div class="header_container d-flex flex-row align-items-center justify-content-start" *ngIf="es.root; let church">
 			<div class="container-fluid">
 				<div class="row" *ngIf="ss.adminMode">
           <div class="col alert">
@@ -28,12 +28,14 @@
 							<!-- Navigation and Search -->
 							<div class="header_nav_container ml-auto">
 								<nav class="main_nav">
-									<ul>
+									<ul class="d-flex flex-row align-items-center justify-content-start">
 										<li *ngFor="let menu of contextMenu" [class.active]="activeMenuItem==menu.route">
 											<a (click)="setMenu(menu.route)">{{ss.tr(menu.title)}}</a>
 										</li>
-										<li class="language" (click)="toggleLanguage()">
-											<i class="fa fa-language" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]"></i>
+										<li>
+                      <a (click)="toggleLanguage()">
+                        <i class="fa fa-language" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]"></i>
+                      </a>
 										</li>
 									</ul>
 								</nav>
@@ -53,7 +55,8 @@
 
   </header>
 
-  <div class="header_content" [class.scrolled]="headerScrolled"></div>
+
+  <div class="header" [class.scrolled]="headerScrolled"></div>
 
 
 	<!-- Menu -->
@@ -65,10 +68,10 @@
 					<li *ngFor="let menu of contextMenu" [class.active]="activeMenuItem==menu.route">
 						<a (click)="toggleMenu(menu.route)">{{ss.tr(menu.title)}}</a>
 					</li>
-				</ul>
-				<div class="language" (click)="toggleLanguage()">
-					<i class="fa fa-language" aria-hidden="true">{{ss.tr(switchLanguage)}}</i>
-				</div>
+          <li>
+            <a (click)="toggleLanguage()"><i class="fa fa-language" aria-hidden="true">{{ss.tr(switchLanguage)}}</i></a>
+          </li>
+        </ul>
 			</nav>
 		</div>
 	</div>

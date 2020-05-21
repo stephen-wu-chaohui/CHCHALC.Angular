@@ -151,14 +151,6 @@ export class EntityEditComponent implements OnInit {
           this.saveItem();
         }
       );
-
-      // const ref = this.storage.ref(`${this.collectionPath}/${this.entity.id}-${this.file.name}`);
-      // ref.put(this.file).then(() => {
-      //   ref.getDownloadURL().subscribe(path => {
-      //     this.entity.image = path;
-      //     this.saveItem();
-      //   });
-      // });
     } else {
       this.saveItem();
     }

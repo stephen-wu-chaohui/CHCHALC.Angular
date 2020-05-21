@@ -30,28 +30,27 @@
 	line-height: 0.75;
 }
 
-.breadcrumbs li
-{
-	display: inline-block;
-	position: relative;
-	font-size: 16px;
-	color: #eb4141;
-	font-weight: 600;
-	line-height: 0.75;
+.breadcrumbs {
+  li {
+  	display: inline-block;
+  	position: relative;
+  	font-size: 16px;
+  	color: #eb4141;
+  	font-weight: 600;
+  	line-height: 0.75;
+    :not(:last-child)::after {
+    	content: '/';
+    	margin-left: 5px;
+    	color: #FFFFFF;
+    }
+    a {
+    	color: #FFFFFF;
+    	font-weight: 500;
+      line-height: 0.75;
+      cursor: pointer;
+    }
+  }
 }
-.breadcrumbs li:not(:last-child)::after
-{
-	content: '/';
-	margin-left: 5px;
-	color: #FFFFFF;
-}
-.breadcrumbs li a
-{
-	color: #FFFFFF;
-	font-weight: 500;
-	line-height: 0.75;
-}
-
 
 
 @media only screen and (max-width: 767px)

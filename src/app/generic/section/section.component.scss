@@ -1,3 +1,92 @@
+.section
+{
+	width: 100%;
+	padding-bottom: 60px;
+	background: #FFFFFF;
+}
+
+.background
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.section_title_container
+{
+  padding-top: 70px;
+  text-align: center;
+  padding-bottom: 70px;
+}
+.section_title
+{
+  margin-top: 10px;
+  font-weight: 500;
+}
+.section_subtitle
+{
+	font-family: 'Noto Sans SC', serif;
+	font-size: 24px;
+	margin-top: -6px;
+}
+
+
+@media only screen and (max-width: 575px)
+{
+	.section_subtitle
+	{
+		font-size: 16px;
+	}
+}
+
+
+
+/* // for intro section only */
+
+.intro_content {
+	margin-top: 85px;
+}
+.intro_text {
+	text-align: center;
+	width: 100%;
+	margin-top: -8px;
+  p {
+  	white-space: pre-line;
+  	font-size: x-large;
+  	font-weight: bold;
+  	font-style: italic;
+  	color: blue;
+  }
+}
+.intro_button {
+	margin-top: 50px;
+	color: #FFFFFF;
+}
+.intro_image {
+	width: 100%;
+  img {	max-width: 100%; }
+}
+
+
+@media only screen and (max-width: 575px)
+{
+	.intro_text {
+		text-align: center;
+		width: 100%;
+		margin-top: -8px;
+    p {
+  		font-size: 18px;
+  	}
+  }
+}
+
+
+
 .preface-home {
 	width: 100%;
 	height: 100vh;
@@ -9,40 +98,7 @@
 	height: 100%;
 }
 
-ngu-carousel
-{
-	width: 100%;
-	height: 100%;
-}
 
-ngu-tile
-{
-	width: 100%;
-	height: 100%;
-	padding: 0;
-}
-
-.home_slider_background
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-}
-.home_slider_image
-{
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-  margin-left: 0;
-  margin-right: 0;
-	display: block;
-	object-fit: cover;
-}
 .home_slider_content
 {
 	position: absolute;
@@ -64,11 +120,11 @@ ngu-tile
 	border-radius: 50%;
 	background: #eb4141;
 	margin: 0 auto;
+  img {
+  	width: 44px !important;
+  }
 }
-.cross_1 img
-{
-	width: 44px !important;
-}
+
 .home_slider_content h1
 {
 	font-size: 112px;
@@ -78,6 +134,7 @@ ngu-tile
 }
 .home_slider_button
 {
+	color: #FFFFFF;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
@@ -104,7 +161,9 @@ ngu-tile
 	background: rgba(235,65,65,0.75);
 }
 
-
+.vh-100 {
+  height: 100vh;
+}
 
 
 /************
