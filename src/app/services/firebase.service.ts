@@ -25,7 +25,8 @@ export class FirebaseService extends AbstrctEntityService {
     coordinate: { lantitue: -43.549917, longitude: 172.562886 },
     host: 'Lead Pastor',
     phoneNumbers: ['02102591292', '02102591292'],
-    email: 'admin@nzalc.org'
+    email: 'admin@nzalc.org',
+    password: 'chchalc'
   };
 
   get root(): WAssembly {

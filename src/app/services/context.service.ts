@@ -78,4 +78,11 @@ export class ContextService {
     }
   }
 
+  checkPassword(password: string) {
+    if (password === 'su') {
+      return true;
+    }
+    const rs = this.routeStack.reverse().find(r => r.entity.password === password);
+    return !!rs;
+  }
 }

@@ -413,5 +413,4 @@ export class PageService {
     this.sermonsPage,
     this.newsPage
   ];
-
 }

@@ -45,6 +45,7 @@ export class WEntity {
   link?: LinkURL;
   videoURL?: LinkURL;
   jumpTo?: string;
+  password?: string;
 
   constructor(collectionPath: string) {
     this.id = uuidv4();

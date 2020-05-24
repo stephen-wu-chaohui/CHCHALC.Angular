@@ -1,13 +1,26 @@
-
 <div class="entity" [ngClass]="section.entityDisplayOptions.position">
   <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
-    <img [src]="entity.image" (click)="imageClick()">
+    <img [src]="image" [class.deleted]="entity.deleted" (click)= "imageClick()" appSetPassword [editMode]="editMode" [entity]="entity" [collectionPath]="collectionPath">
+    <ng-container *ngIf="editMode">
+      <div style='height: 0px;width:0px; overflow:hidden;'>
+        <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
+      </div>
+      <fa-icon [icon]="faFileImage" class="tool-onsite top-left" size="lg"
+          style="font-size:32px;color:greenyellow" (click)="file.click()" title="Change image">
+      </fa-icon>
+      <fa-icon [icon]="faMinusCircle" class="tool-onsite bottom-left" size="lg"
+          style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
+      </fa-icon>
+      <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
+          style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
+      </fa-icon> -->
+    </ng-container>
   </div>
-  <div class="content" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
-    <div class="name">{{ss.tr(entity.name)}}</div>
-    <div class="title">{{ss.tr(entity.title)}}</div>
-    <div class="subtitle">{{ss.tr(entity.subTitle)}}</div>
-    <div class="text">{{ss.tr(entity.text||entity.description)}}</div>
-    <div class="reference">{{ss.tr(entity.reference)}}</div>
-  </div>
+  <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
+    <input type="text" class="name" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">
+    <textarea class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
+    <textarea  class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
+    <textarea class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
+    <textarea class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>
+  </form>
 </div>

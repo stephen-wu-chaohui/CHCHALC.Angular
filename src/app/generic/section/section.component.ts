@@ -26,6 +26,7 @@ export class SectionComponent implements OnInit {
   bootstrapColumnClasses = '';
   bootstrapRowClasses = '';
   collectionPath = '';
+  busy = false;
 
   public carouselTileConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
@@ -115,12 +116,15 @@ export class SectionComponent implements OnInit {
         };
         const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
         // console.log('image path:', imagePath);
+        this.busy = true;
         this.es.uploadImage(imagePath, file).then(
           path => {
             item.image = path;
             item.start = this.guessStartTime(file);
             item.path = imagePath;
+            item.title = { english: file.name, chinese: file.name };
             this.es.setEntity(this.collectionPath, item).then();
+            this.busy = false;
           }
         );
       }
@@ -138,8 +142,8 @@ export class SectionComponent implements OnInit {
     return parseInt(numberPart, 10);
   }
 
-  onEditMode() {
-    this.editMode = !this.editMode;
-    this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, this.editMode)
+  onEditMode($event) {
+    this.editMode = $event;
+    this.entitySource = this.es.getObservable(this.host.path, this.section.entitySource, this.editMode);
   }
 }

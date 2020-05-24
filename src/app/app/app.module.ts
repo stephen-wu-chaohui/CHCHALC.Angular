@@ -13,6 +13,10 @@ import { GenericModule } from '../generic/generic.module';
 import { StartupService } from '../services/startup.service';
 import { AbstrctEntityService } from '../services/entity.service';
 import { FirebaseService } from '../services/firebase.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faMinusCircle, faFileImage, faCloud } from '@fortawesome/free-solid-svg-icons';
+import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 export function init_app(startup: StartupService) {
 	return () => startup.init();
@@ -31,7 +35,9 @@ export function init_app(startup: StartupService) {
       GenericModule,
 			AppLayoutModule,
 			RouterModule.forRoot([]),
-			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+			ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+			NgbModule,
+			FontAwesomeModule
    ],
 	 providers: [
     { provide: APP_INITIALIZER, useFactory: init_app, deps: [StartupService], multi: true },
@@ -41,4 +47,5 @@ export function init_app(startup: StartupService) {
       AppComponent
    ]
 })
-export class AppModule { }
+export class AppModule {
+}

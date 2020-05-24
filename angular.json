@@ -30,8 +30,7 @@
             ],
             "styles": [
 							"src/styles.scss",
-							"src/assets/styles/bootstrap4/bootstrap.min.css",
-							"src/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"src/assets/main_styles.css",
 							"src/assets/responsive.css"
             ],

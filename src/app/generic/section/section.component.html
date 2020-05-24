@@ -1,13 +1,27 @@
-<div class="section" [id]="section.label">
+<div class="section" [class.busy]="busy" [id]="section.label">
   <div class="background" [style.background-image]="backgroudImage()">
   </div>
   <div class="container-fluid">
     <div class="row" *ngIf="section.title">
       <div class="col">
-        <div appEdit (editMode)="onEditMode()" class="section_title_container">
-          <div class="section_image"><img [src]="section.icon" alt=""></div>
-          <div class="section_title" [class.text-light]="section.lightText"><h2>{{ss.tr(section.title)}}</h2></div>
-          <div class="section_subtitle" [class.text-light]="section.lightText">{{ss.tr(section.subtitle)}}</div>
+        <div class="section_title_container">
+          <div class="section_image">
+            <img class="pointer" [src]="section.icon" alt="" appEdit [editMode]="editMode" (editModeChanged)="onEditMode($event)">
+          </div>
+          <div class="section_title" [class.text-light]="section.lightText">
+            <h2>{{ss.tr(section.title)}}</h2>
+          </div>
+          <div class="section_subtitle" [class.text-light]="section.lightText">
+            <h3>{{ss.tr(section.subtitle)}}</h3>
+          </div>
+          <div class="col d-flex flex-column align-items-center justify-content-center p-1" *ngIf="section.entitySource.editable && editMode">
+            <div style='height: 0px;width:0px; overflow:hidden;'>
+              <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
+            </div>
+            <div (click)="upload.click()">
+              <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px" [title]="'Add new ' + section.entitySource.collection">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,28 +68,9 @@
 </ng-template>
 
 <ng-template #list>
-  <ng-container *ngIf="editMode; else runMode">
-    <div class="row">
-      <div class="col d-flex flex-column align-items-center justify-content-center p-4" *ngIf="section.entitySource.editable">
-        <div style='height: 0px;width:0px; overflow:hidden;'>
-          <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
-        </div>
-        <div (click)="upload.click()">
-          <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px" [title]="'Add new ' + section.entitySource.collection">
-        </div>
-      </div>
+  <div class="row" [class]="bootstrapRowClasses">
+    <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
+      <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
     </div>
-    <div class="row">
-      <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-        <app-entity-edit (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity-edit>
-      </div>
-    </div>
-  </ng-container>
-  <ng-template #runMode>
-    <div class="row" [class]="bootstrapRowClasses">
-      <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-        <app-entity (routeTo)="routeTo.emit($event)" [entity]="entity" [section]="section"></app-entity>
-      </div>
-    </div>
-  </ng-template>
+  </div>
 </ng-template>
