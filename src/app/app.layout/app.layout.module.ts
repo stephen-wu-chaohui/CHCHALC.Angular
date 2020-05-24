@@ -5,13 +5,13 @@ import { HeaderComponent } from './header/header.component';
 import { TopBarComponent } from './header/top-bar/top-bar.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    GoogleMapsModule
+    FontAwesomeModule
   ],
   declarations: [
     HeaderComponent,

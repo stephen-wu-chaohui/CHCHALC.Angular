@@ -34,7 +34,8 @@
 										</li>
 										<li>
                       <a (click)="toggleLanguage()">
-                        <i class="fa fa-language" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]"></i>
+                        <fa-icon class="language" [icon]="faLanguage" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]" size="lg">
+                        </fa-icon>
                       </a>
 										</li>
 									</ul>
@@ -43,9 +44,9 @@
 
 							<!-- Hamburger -->
 							<div class="hamburger ml-auto" (click)="toggleMenu()">
-								<i class="fa fa-bars" aria-hidden="true"></i>
-							</div>
-
+                <fa-icon [icon]="faBars" aria-hidden="true" title="[{{ss.tr(switchLanguage)}}]" size="lg">
+                </fa-icon>
+              </div>
 						</div>
 					</div>
 				</div>

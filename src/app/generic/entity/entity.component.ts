@@ -3,7 +3,10 @@ import { WEntity, WSection } from '../../services/types';
 import { SettingsService, Language } from 'src/app/services/settings.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AbstrctEntityService } from 'src/app/services/entity.service';
-import { faMinusCircle, faFileImage, faCloud } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle, faFileImage, faCloud, faKey } from '@fortawesome/free-solid-svg-icons';
+import { SetPasswordDialogComponent } from './set-password-dialog/set-password-dialog.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ContextService } from 'src/app/services/context.service';
 
 @Component({
   selector: 'app-entity',
@@ -20,6 +23,7 @@ export class EntityComponent implements OnInit, OnChanges {
   faMinusCircle = faMinusCircle;
   faFileImage = faFileImage;
   faCloud = faCloud;
+  faKey = faKey;
 
   image: any;
   isDirty = false;
@@ -88,6 +92,8 @@ export class EntityComponent implements OnInit, OnChanges {
   }
 
   constructor(public ss: SettingsService,
+              private modalService: NgbModal,
+              private cs: ContextService,
               private es: AbstrctEntityService
   ) {}
 
@@ -97,11 +103,15 @@ export class EntityComponent implements OnInit, OnChanges {
 
   imageClick() {
     if (this.section.action === 'Link') {
-      // console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
+      console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
       window.open(this.entity.link || this.entity.videoURL, '_blank');
-    } else if (this.section.action === 'Route' && this.section.entityTemplate) {
-      // console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
-      this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
+    } else if (this.section.action === 'Route') {
+      if (this.section.entityTemplate) {
+        console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
+        this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
+      } else if (this.entity.jumpTo) {
+        this.cs.setPage(this.entity.jumpTo);
+      }
     }
   }
 
@@ -180,4 +190,12 @@ export class EntityComponent implements OnInit, OnChanges {
     this.saveTimer = setTimeout(()=> this.onSave(), 2000);
   }
 
+  onSetPassword() {
+    const modalRef = this.modalService.open(SetPasswordDialogComponent, { size: 'sm', centered: true });
+    modalRef.componentInstance.title = 'Set password to this entity';
+    modalRef.result.then(password => {
+      this.entity.password = password;
+      this.setDirty();
+    });
+  }
 }

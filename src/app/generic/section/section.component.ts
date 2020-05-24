@@ -66,8 +66,8 @@ export class SectionComponent implements OnInit {
     const options = this.section.entityDisplayOptions;
     switch (options.size) {
     case 'slide':
-    case 'row':
       return 'vh-100';
+    case 'row':
     case 'large':
     case 'medium':
     case 'small':

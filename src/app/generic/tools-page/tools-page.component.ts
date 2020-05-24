@@ -98,7 +98,7 @@ quote = {
         chinese: '神与我们同在',
         english: 'God loves us all'
       },
-      description: {
+      text: {
           english: 'One thing I ask from the LORD, this only do I seek: that I may dwell in the house of the LORD all the days of my life, to gaze on the beauty of the LORD and to seek him in his temple.',
           chinese: '有一件事，我曾求耶和华，我仍要寻求：就是一生一世住在耶和华的殿中，瞻仰他的荣美，在他的殿里求问。'
       },

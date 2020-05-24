@@ -177,7 +177,9 @@
       display: none;
     }
     .text {
-      font-size: 18px;
+      font-size: 22px;
+      width: 80%;
+      font-style: italic;
     }
     .reference {
       font-size: 18px;
@@ -222,6 +224,13 @@
   }
 }
 
+textarea {
+  white-space: normal;
+  text-align: justify;
+  -moz-text-align-last: center; /* Firefox 12+ */
+  text-align-last: center;
+  resize: none;
+}
 
 @media only screen and (max-width: 767px)
 {
@@ -231,4 +240,5 @@
     margin: 0;
   }
 }
+
 

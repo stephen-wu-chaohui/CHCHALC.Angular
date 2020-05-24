@@ -3,6 +3,7 @@ import { SettingsService } from 'src/app/services/settings.service';
 import { ContextService } from 'src/app/services/context.service';
 import { MenuItem } from 'src/app/services/types';
 import { AbstrctEntityService } from 'src/app/services/entity.service';
+import { faLanguage, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,8 @@ export class HeaderComponent {
   searchActive = false;
   headerScrolled = false;
   activeMenuItem = 'home';
+  faLanguage = faLanguage;
+  faBars = faBars;
 
   switchLanguage = {
     english: '切换到中文', chinese: 'Switch to English'
