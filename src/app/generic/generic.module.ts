@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {AutosizeModule} from 'ngx-autosize';
 
 import { PageComponent } from './page/page.component';
 import { SectionComponent } from './section/section.component';
@@ -26,6 +27,7 @@ export const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    AutosizeModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [

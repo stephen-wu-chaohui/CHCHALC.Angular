@@ -270,6 +270,34 @@ a {
 }
 
 
-.pointer {
+.editing {
+  cursor: grab;
+  animation: 2s ease-in-out shake infinite;
+}
+
+.editable {
   cursor: pointer;
 }
+  
+.unselectable {
+	-webkit-user-select: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
+	-webkit-appearance:none;	
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-touch-callout:none; 
+  }
+
+  @keyframes shake {
+	  0% {
+		  transform: skewX(-20deg);
+	  }
+	  50% {
+		  transform: skewX(20deg);
+	  }
+	  100% {
+		  transform: skewX(-20deg);
+	  }
+  }

@@ -25,17 +25,16 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-							"src/assets",
+              "src/assets",
               "src/manifest.webmanifest"
             ],
             "styles": [
-							"src/styles.scss",
-							"node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"src/assets/main_styles.css",
-							"src/assets/responsive.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/main_styles.css",
+              "src/assets/responsive.css"
             ],
-            "scripts": [
-						]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -131,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "chchalc"
+    }
+  },
+  "defaultProject": "chchalc",
+  "cli": {
+    "analytics": "b8f95006-d61b-4cc3-91b2-f901be74a055"
+  }
 }

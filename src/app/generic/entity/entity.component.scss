@@ -232,6 +232,17 @@ textarea {
   resize: none;
 }
 
+.unselectable {
+	-webkit-user-select: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
+	-webkit-appearance:none;	
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-touch-callout:none; 
+}
+
 @media only screen and (max-width: 767px)
 {
   .margin {

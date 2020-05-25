@@ -12,7 +12,7 @@
           style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
       </fa-icon>
       <fa-icon [icon]="faKey" class="tool-onsite top-right" size="lg"
-          style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password">
+          style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password" *ngIf="availableSetPassword">
       </fa-icon>
       <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
           style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
@@ -21,9 +21,9 @@
   </div>
   <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
     <input type="text" class="name" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name"><br>
-    <textarea class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea><br>
-    <textarea  class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea><br>
-    <textarea class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea><br><br>
-    <textarea class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea><br>
+    <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea><br>
+    <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea><br>
+    <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea><br><br>
+    <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea><br>
   </form>
 </div>

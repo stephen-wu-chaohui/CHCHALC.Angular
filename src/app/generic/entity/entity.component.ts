@@ -30,6 +30,7 @@ export class EntityComponent implements OnInit, OnChanges {
   message = '';
   file: File;
   isSaving = false;
+  availableSetPassword = false;
 
   formChanges = new FormGroup({
     name: new FormControl(''),

@@ -10,6 +10,7 @@ export class EditDirective {
   @Input() editMode: boolean;
   @Output() editModeChanged = new EventEmitter();
   touchTimeout: any;
+  mouseClickCount = 0;
   closeResult: any;
 
   constructor(
@@ -21,12 +22,16 @@ export class EditDirective {
   }
 
   @HostListener('mousedown') touchstart() {
-    console.log('mousedown');
-    this.touchTimeout = setTimeout(() => {
+    if (this.touchTimeout) {
       this.changeEditMode();
-    }, 1000);
+    }
+    else {
+      this.touchTimeout = setTimeout(() => {
+        this.touchTimeout = null;
+      }, 1000);
+    }
   }
-
+  
   changeEditMode() {
     if (this.editMode) {
       this.editModeChanged.emit(false);
