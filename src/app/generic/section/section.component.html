@@ -39,20 +39,6 @@
   </div>
 </div>
 
-<ng-template #intro>
-  <div *ngFor="let entity of entitySource|async" class="row">
-    <div class="col-lg-6">
-      <div class="intro_text">
-        <p>{{ss.tr(entity.text||entity.description)}}</p>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="intro_image"><img [src]="entity.image" alt=""></div>
-      <div class="button intro_button"><a (click)="contextService.setPage('church')">{{ss.tr(readMore)}}</a></div>
-    </div>
-  </div>
-</ng-template>
-
 <ng-template #slide>
   <div *ngFor="let entity of entitySource|async" class="row vh-100">
     <div class="col home_slider_content text-center">
@@ -74,3 +60,22 @@
     </div>
   </div>
 </ng-template>
+
+<ng-template #intro>
+  <div *ngFor="let entity of entitySource|async" class="row">
+    <div class="col-lg-6">
+      <div class="intro_text">
+        <p>{{ss.tr(entity.text||entity.description)}}</p>
+      </div>
+      <div class="button intro_button">
+        <a (click)="contextService.setPage('church')">{{ss.tr(readMore)}}</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="intro_image">
+        <img [src]="entity.image" alt="">
+      </div>
+    </div>
+  </div>
+</ng-template>
+

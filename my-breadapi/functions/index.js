@@ -164,7 +164,12 @@ async function readSermonList ()
 							name: {english: 'Elijah Wong', chinese: '黃德賢'},
 							title: {english: 'Major Pastor', chinese: '主任牧师'}
 						},
-						start: start.unix(),
+            start: start.unix(),
+            links: [{
+              type: 'link',
+              text: {english: 'Start video', chinese: '观看视频'},
+              url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
+            }],
 						videoURL: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
 				});
 			});

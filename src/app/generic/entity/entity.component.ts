@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { WEntity, WSection } from '../../services/types';
+import { WEntity, WSection, Link } from '../../services/types';
 import { SettingsService, Language } from 'src/app/services/settings.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AbstrctEntityService } from 'src/app/services/entity.service';
@@ -103,16 +103,22 @@ export class EntityComponent implements OnInit, OnChanges {
   }
 
   imageClick() {
-    if (this.section.action === 'Link') {
-      console.log('Link clicked: ', this.entity.link || this.entity.videoURL);
-      window.open(this.entity.link || this.entity.videoURL, '_blank');
-    } else if (this.section.action === 'Route') {
-      if (this.section.entityTemplate) {
-        console.log('Link clicked: ', this.section.entitySource + '/' + this.entity.id);
-        this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
-      } else if (this.entity.jumpTo) {
-        this.cs.setPage(this.entity.jumpTo);
-      }
+    if (this.section.entityTemplate) {
+      this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
+    } else if (this.entity.links) {
+      const jumpTo = this.entity.links[0];
+      this.onClick(jumpTo);
+    }
+  }
+
+  onClick(jumpTo: Link) {
+    switch (jumpTo.type) {
+    case 'setPage':
+      this.cs.setPage(jumpTo.url);
+      break;
+    case 'link':
+      window.open(jumpTo.url, '_blank');
+      break;
     }
   }
 

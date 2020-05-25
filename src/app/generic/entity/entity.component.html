@@ -20,10 +20,15 @@
     </ng-container>
   </div>
   <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
-    <input type="text" class="name" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name"><br>
-    <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea><br>
-    <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea><br>
-    <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea><br><br>
-    <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea><br>
+    <input type="text" class="name" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">
+    <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
+    <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
+    <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
+    <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>
+    <ng-container *ngIf="entity.links">
+      <ng-container *ngFor="let link of entity.links">
+        <button class="btn btn-danger bg-danger light" type="button" (click)="onClick(link)">{{ss.tr(link.text)}}</button>
+      </ng-container>
+    </ng-container>
   </form>
 </div>

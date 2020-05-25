@@ -25,6 +25,12 @@ export class CollectionRef {
   collectionName: string;
 }
 
+export class Link {
+  type: 'setPage'|'link';
+  text: MultiText;
+  url: LinkURL;
+};
+
 export const WEntityRoot = 'EntityRoot/church';
 
 export class WEntity {
@@ -42,9 +48,7 @@ export class WEntity {
   reference?: MultiText;
   image?: ImageURL;
   priority?: PriorityEnum;
-  link?: LinkURL;
-  videoURL?: LinkURL;
-  jumpTo?: string;
+  links?: Link[];
   password?: string;
 
   constructor(collectionPath: string) {

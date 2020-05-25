@@ -32,6 +32,27 @@ export class PageService {
     }]
   };
 
+  slicePage: WPage = {
+    id: 'story',
+    sections: [{
+      icon: 'assets/images/church_6.png',
+      title: { english: 'Story', chinese: '讲道提纲'},
+      subtitle: { english: 'God loves us all', chinese: '神的话语是我生命的灵粮'},
+      entitySource: {
+        collection: 'pdfs',
+        priorities: ['high', 'emergancy', 'low'],
+        directionStr: 'asc',
+        editable: true
+      },
+      entityDisplayOptions: {
+        size: 'large',
+        position: 'top-bottom',
+        imageStyle: 'full',
+        contentStyle: 'image-only'
+      }
+    }]
+  };
+
   ministryPage: WPage = {
     id: 'home',
     sections: [{
@@ -49,7 +70,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }]
   };
@@ -71,7 +91,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }, {
       icon: 'assets/images/church_1.png',
@@ -88,7 +107,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }, {
       icon: 'assets/images/church_2.png',
@@ -105,7 +123,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }]
   };
@@ -127,7 +144,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }]
   };
@@ -150,7 +166,6 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.storyPage]
     }]
   };
@@ -175,7 +190,6 @@ export class PageService {
         imageStyle: 'page',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.ministryPage ]
     }, {
       icon: 'assets/images/church_5.png',
@@ -194,8 +208,7 @@ export class PageService {
         position: 'left-right',
         imageStyle: 'original',
         contentStyle: 'quote'
-      },
-      action: 'Link'
+      }
     }, {
       label: 'pastors',
       icon: 'assets/images/church_6.png',
@@ -213,7 +226,6 @@ export class PageService {
         imageStyle: 'icon',
         contentStyle: 'pastor'
       },
-      action: 'Route',
       entityTemplate: [this.personalPage ]
     }, {
       label: 'cellgroups',
@@ -231,7 +243,6 @@ export class PageService {
         imageStyle: 'page',
         contentStyle: 'image-title'
       },
-      action: 'Route',
       entityTemplate: [this.cellgroupPage ]
     }]
   };
@@ -254,9 +265,9 @@ export class PageService {
         size: 'row',
         position: 'left-right',
         imageStyle: 'full',
-        contentStyle: 'all'
+        contentStyle: 'image-title'
       },
-      action: 'Link'
+      entityTemplate: [this.slicePage]
     }, {
       icon: 'assets/images/church_4.png',
       title: { english: 'Popular Sermons', chinese: '热点讲道'},
@@ -271,7 +282,7 @@ export class PageService {
         imageStyle: 'full',
         contentStyle: 'image-title'
       },
-      action: 'Link'
+      entityTemplate: [this.slicePage]
     }, {
       lightText: true,
       entitySource: {
@@ -280,11 +291,11 @@ export class PageService {
       },
       entityDisplayOptions: {
         size: 'large',
-        position: 'middle',
+        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Link'
+      entityTemplate: [this.slicePage]
     }]
   };
 
@@ -347,8 +358,7 @@ export class PageService {
         position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'image-title'
-      },
-      action: 'Route'
+      }
     }, {
       icon: 'assets/images/church_3.png',
       title: { english: 'Today\'s Sermon', chinese: '今日讲道'},
@@ -364,9 +374,9 @@ export class PageService {
         size: 'row',
         position: 'left-right',
         imageStyle: 'page',
-        contentStyle: 'all'
+        contentStyle: 'image-title'
       },
-      action: 'Link'
+      entityTemplate: [this.slicePage]
     }, {
       icon: 'assets/images/church_5.png',
       title: { english: 'Quote of the day', chinese: '今日金句'},
@@ -381,11 +391,10 @@ export class PageService {
       },
       entityDisplayOptions: {
         size: 'row',
-        position: 'left-right',
+        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'quote'
       },
-      action: 'Link'
     }, {
       icon: 'assets/images/church_6.png',
       title: { english: 'Latest News', chinese: '最新消息'},
@@ -402,8 +411,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      action: 'Route',
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.slicePage]
     }]
   };
 

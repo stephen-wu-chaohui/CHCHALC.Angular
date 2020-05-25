@@ -16,7 +16,11 @@ export class ToolsPageComponent implements OnInit {
       start: 0,
       title: { chinese: '神与我们同在', english: 'God is all with us'},
       subTitle: { chinese: '欢迎加入我们', english: 'Come and Join us'},
-      jumpTo: '#welcome'
+      links: [{
+        type: 'setPage',
+        text: { chinese: '欢迎加入我们', english: 'Come and Join us'},
+        url: '#welcome'
+      }]
     }]
  };
 
@@ -33,6 +37,11 @@ export class ToolsPageComponent implements OnInit {
         chinese: '神与我们同在',
         english: 'God loves us all'
       },
+      links: [{
+        type: 'setPage',
+        text: { english: 'Read More', chinese: '了解我们教会' },
+        url: 'church'
+      }],
       text: {
           chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员，使他们在基督里成熟，装备他们在教会中参与事工，在世界以生命宣教，以此来宣扬神的名',
           english: 'to bring people to Jesus and membership in his family, develop them Christlike maturity, and equip them for their ministry in the church, and life mission in the world, in order to magnify God’s name'
@@ -49,40 +58,44 @@ export class ToolsPageComponent implements OnInit {
     image: '/assets/images/services_1.png',
     title: { english: 'Preaching', chinese: '宣教'},
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
-    jumpTo: 'church#ministries'
+    links: [{
+      type: 'setPage',
+      text: { english: 'Read More', chinese: '了解更多' },
+      url: 'church#ministries'
+    }],
   }, {
     id: 'activity-2',
     start: 2,
     image: '/assets/images/services_2.png',
     title: { english: 'Fellowship', chinese: '团契'},
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
-    jumpTo: 'church#cellgroups'
+    links: [{
+      type: 'setPage',
+      text: { english: 'Read More', chinese: '了解更多' },
+      url: 'church#cellgroups'
+    }]
   }, {
     id: 'activity-3',
     start: 3,
     image: '/assets/images/services_3.png',
     title: { english: 'Confessions', chinese: '告解'},
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
-    jumpTo: 'church#pastors'
+    links: [{
+      type: 'setPage',
+      text: { english: 'Read More', chinese: '了解更多' },
+      url: 'church#pastors'
+    }]
   }, {
     id: 'activity-4',
     start: 4,
     image: '/assets/images/services_4.png',
     title: { english: 'Sermons', chinese: '讲道'},
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
-    jumpTo: 'sermons'
-  }, {
-    id: 'activity-5',
-    start: 5,
-    image: '/assets/images/services_5.png',
-    title: { english: 'Reading', chinese: '查经'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
-  }, {
-    id: 'activity-6',
-    start: 6,
-    image: '/assets/images/services_6.png',
-    title: { english: 'Prayers', chinese: '祷告'},
-    text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'}
+    links: [{
+      type: 'setPage',
+      text: { english: 'Read More', chinese: '了解更多' },
+      url: 'sermons'
+    }]
   }]
 };
 
