@@ -46,46 +46,6 @@
 
 
 
-/* // for intro section only */
-
-.intro_content {
-	margin-top: 85px;
-}
-.intro_text {
-	text-align: center;
-	width: 100%;
-	margin-top: -8px;
-  p {
-  	white-space: pre-line;
-  	font-size: x-large;
-  	font-weight: bold;
-  	font-style: italic;
-  	color: blue;
-  }
-}
-.intro_button {
-	margin-top: 50px;
-	color: #FFFFFF;
-}
-.intro_image {
-	width: 100%;
-  img {	max-width: 100%; }
-}
-
-
-@media only screen and (max-width: 575px)
-{
-	.intro_text {
-		text-align: center;
-		width: 100%;
-		margin-top: -8px;
-    p {
-  		font-size: 18px;
-  	}
-  }
-}
-
-
 
 .preface-home {
 	width: 100%;
@@ -278,16 +238,16 @@ a {
 .editable {
   cursor: pointer;
 }
-  
+
 .unselectable {
-	-webkit-user-select: none; 
-	-moz-user-select: none; 
-	-ms-user-select: none; 
-	user-select: none; 
-	-webkit-appearance:none;	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-appearance:none;
 	-moz-appearance: none;
 	appearance: none;
-	-webkit-touch-callout:none; 
+	-webkit-touch-callout:none;
   }
 
   @keyframes shake {

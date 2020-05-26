@@ -82,15 +82,15 @@ export class SectionComponent implements OnInit {
     case 'slide':
       return 'col home_slider_content text-center';
     case 'row':
-      return 'col-12';
+      return 'col';
     case 'large':
       return 'col-lg-6';
     case 'medium':
-      return 'col-lg-3 col-md-4';
+      return 'col-lg-3 col-md-4 col-sm-6';
     case 'small':
-      return 'col-lg-2 col-md-3 col-sm-6';
+      return 'col-lg-2 col-md-3 col-sm-4';
     case 'tiny':
-      return 'col-lg-2 col-md-3 col-sm-6';
+      return 'col-lg-2 col-md-2 col-sm-3';
     }
   }
 

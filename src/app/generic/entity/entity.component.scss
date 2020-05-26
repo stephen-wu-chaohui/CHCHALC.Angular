@@ -1,21 +1,25 @@
 
 .entity
 {
-	margin-bottom: 48px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
 
   &.middle {
     position: fixed;
   }
   &.top-bottom {
-    position: relative;
-    flex-direction: row;
+    flex-direction: column;
   }
   &.left-right {
-    position: relative;
-    grid: auto-flow / 50% 1fr;
+    flex-direction: row;
+  }
+  &.right-left {
+    flex-direction: row-reverse;
   }
 }
+
 
 
 /* 'slide'|'row'|'large'|'medium'|'small'|'icon'  */
@@ -25,7 +29,12 @@
 */
 .image
 {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
+  flex: 1;
+
   :hover {
     cursor: pointer;
   }
@@ -33,6 +42,8 @@
     box-shadow: 2px 3px #888888;
     border: 1px solid #888888;
     margin: 12px 0;
+    min-width: 200px;
+    max-width: 600px;
     img {
       min-height: 100px;
       width: 100%;
@@ -44,18 +55,22 @@
       width: 100%;
     }
     width: 80%;
-  }
+    min-width: 60px;
+    max-width: 400px;
+}
   &.full {
     img {
       min-height: 100px;
       width: 100%;
     }
+    min-width: 400px;
   }
   &.page {
     img {
       min-height: 100px;
       width: 80%;
     }
+    min-width: 300px;
   }
 }
 
@@ -94,11 +109,14 @@
 }
 
 .content {
+  align-self: stretch;
   text-align: center;
   padding-top: 20px;
   display: flex;
+  align-items: center;
   flex-direction: column;
-
+  margin: 3px;
+  flex: 1;
 
   input, textarea {
     background-color: transparent;
@@ -112,6 +130,7 @@
   }
   .title
   {
+    align-self: stretch;
     font-size: 24px;
     font-weight: 500;
     margin-top: 20px;
@@ -157,7 +176,11 @@
       display: none;
     }
     .text {
-      font-size: 18px;
+      align-self: stretch;
+      font-size: x-large;
+      font-weight: bolder;
+      font-style: italic;
+      color: navy;
     }
   }
 
@@ -235,7 +258,7 @@
 }
 
 textarea {
-  white-space: normal;
+  white-space: pre-wrap;
   text-align: justify;
   -moz-text-align-last: center; /* Firefox 12+ */
   text-align-last: center;

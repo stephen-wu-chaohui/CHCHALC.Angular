@@ -27,7 +27,7 @@ export class CollectionRef {
 
 export class Link {
   type: 'setPage'|'link';
-  text: MultiText;
+  text?: MultiText;
   url: LinkURL;
 };
 
@@ -87,9 +87,9 @@ export class WPage {    // template of webpages used to display a document
   sections: WSection[];
 }
 
-export type SizeEnum = 'slide'|'intro'|'row'|'large'|'medium'|'small'|'tiny';    // for collection view, margin and padding for items
+export type SizeEnum = 'slide'|'row'|'large'|'medium'|'small'|'tiny';    // for collection view, margin and padding for items
 export type ImageStyle = 'full'|'page'|'margin'|'icon'|'original';               // margin, padding & shadows
-export type TextPosition = 'middle'|'left-right'|'top-bottom';                   // only useful when SizeEnum = 'slide'|'row'
+export type TextPosition = 'middle'|'left-right'|'right-left'|'top-bottom';      // only useful when SizeEnum = 'slide'|'row'
 export type ContentStyle = 'image-only'|'image-title'|'text-only'|'all'|'quote'|'pastor';
 export type ContrastStyle = 'light'|'';                                          // text is light
 

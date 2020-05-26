@@ -26,9 +26,6 @@
       </div>
     </div>
     <ng-container [ngSwitch]="section.entityDisplayOptions.size">
-      <ng-container *ngSwitchCase="'intro'">
-        <ng-container *ngTemplateOutlet="intro"></ng-container>
-      </ng-container>
       <ng-container *ngSwitchCase="'slide'">
         <ng-container *ngTemplateOutlet="slide"></ng-container>
       </ng-container>
@@ -57,24 +54,6 @@
   <div class="row" [class]="bootstrapRowClasses">
     <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
       <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-    </div>
-  </div>
-</ng-template>
-
-<ng-template #intro>
-  <div *ngFor="let entity of entitySource|async" class="row">
-    <div class="col-lg-6">
-      <div class="intro_text">
-        <p>{{ss.tr(entity.text||entity.description)}}</p>
-      </div>
-      <div class="button intro_button">
-        <a (click)="contextService.setPage('church')">{{ss.tr(readMore)}}</a>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="intro_image">
-        <img [src]="entity.image" alt="">
-      </div>
     </div>
   </div>
 </ng-template>

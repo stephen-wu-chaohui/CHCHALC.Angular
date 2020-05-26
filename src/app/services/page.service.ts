@@ -265,7 +265,7 @@ export class PageService {
         size: 'row',
         position: 'left-right',
         imageStyle: 'full',
-        contentStyle: 'image-title'
+        contentStyle: 'all'
       },
       entityTemplate: [this.slicePage]
     }, {
@@ -333,10 +333,10 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'intro',
-        position: 'left-right',
-        imageStyle: 'full',
-        contentStyle: 'all'
+        size: 'row',
+        position: 'right-left',
+        imageStyle: 'page',
+        contentStyle: 'text-only'
       }
     }, {
       icon: 'assets/images/church_2.png',

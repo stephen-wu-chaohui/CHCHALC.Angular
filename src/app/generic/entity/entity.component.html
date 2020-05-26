@@ -27,7 +27,9 @@
     <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>
     <ng-container *ngIf="entity.links">
       <ng-container *ngFor="let link of entity.links">
-        <button class="btn btn-danger bg-danger light" type="button" (click)="onClick(link)">{{ss.tr(link.text)}}</button>
+        <div class="button" *ngIf="link.text">
+          <a (click)="onClick(link)">{{ss.tr(link.text)}}</a>
+        </div>
       </ng-container>
     </ng-container>
   </form>
