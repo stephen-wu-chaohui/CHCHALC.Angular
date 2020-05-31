@@ -59,7 +59,7 @@
             "priorities": ["high", "low"]
           },
           "entityDisplayOptions": {
-            "size": "tiny",
+            "size": "small",
             "position": "top-bottom",
             "imageStyle": "icon",
             "contentStyle": "image-title"

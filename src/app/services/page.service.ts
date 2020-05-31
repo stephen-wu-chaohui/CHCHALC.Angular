@@ -161,7 +161,7 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'large',
+        size: 'medium',
         position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'image-title'
@@ -204,8 +204,8 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'row',
-        position: 'left-right',
+        size: 'full',
+        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'quote'
       }
@@ -221,7 +221,7 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'medium',
+        size: 'small',
         position: 'top-bottom',
         imageStyle: 'icon',
         contentStyle: 'pastor'
@@ -262,7 +262,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'row',
+        size: 'side-by-side',
         position: 'left-right',
         imageStyle: 'full',
         contentStyle: 'all'
@@ -280,19 +280,6 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'full',
-        contentStyle: 'image-title'
-      },
-      entityTemplate: [this.slicePage]
-    }, {
-      lightText: true,
-      entitySource: {
-        collection: 'sermons',
-        priorities: ['emergancy'],
-      },
-      entityDisplayOptions: {
-        size: 'large',
-        position: 'top-bottom',
-        imageStyle: 'margin',
         contentStyle: 'image-title'
       },
       entityTemplate: [this.slicePage]
@@ -333,7 +320,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'row',
+        size: 'side-by-side',
         position: 'right-left',
         imageStyle: 'page',
         contentStyle: 'text-only'
@@ -371,7 +358,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'row',
+        size: 'side-by-side',
         position: 'left-right',
         imageStyle: 'page',
         contentStyle: 'image-title'
@@ -390,7 +377,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'row',
+        size: 'full',
         position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'quote'
@@ -406,7 +393,7 @@ export class PageService {
         maxinum: 20
       },
       entityDisplayOptions: {
-        size: 'large',
+        size: 'medium',
         position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'image-title'

@@ -290,3 +290,8 @@ async function doPost2Story() {
 
 exports.app = functions.https.onRequest(app);
 
+exports.scheduledFunction = functions.pubsub.schedule('every 30 minutes').onRun(async (context) => {
+  await readSermonList();
+  // console.log("await readSermonList()");
+  return 0;
+});

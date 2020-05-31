@@ -1,7 +1,7 @@
 <div class="section" [class.busy]="busy" [id]="section.label">
   <div class="background" [style.background-image]="backgroudImage()">
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row" *ngIf="section.title">
       <div class="col">
         <div class="section_title_container unselectable">
@@ -37,24 +37,33 @@
 </div>
 
 <ng-template #slide>
-  <div *ngFor="let entity of entitySource|async" class="row vh-100">
-    <div class="col home_slider_content text-center">
-      <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
-        <img [src]="entity.image">
+  <div class="row vh-100 ">
+    <ng-container *ngFor="let entity of entitySource|async">
+      <div class="col home_slider_content text-center">
+        <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
+          <img [src]="entity.image">
+        </div>
+        <h1 class="slider-text">{{ss.tr(entity.title)}}</h1>
+        <div class="button home_slider_button">
+          <a (click)="contextService.jumpTo('welcome')">{{ss.tr(comeAndJoinUs)}}</a>
+        </div>
       </div>
-      <h1 class="slider-text">{{ss.tr(entity.title)}}</h1>
-      <div class="button home_slider_button">
-        <a (click)="contextService.jumpTo('welcome')">{{ss.tr(comeAndJoinUs)}}</a>
-      </div>
-    </div>
+    </ng-container>
   </div>
 </ng-template>
 
 <ng-template #list>
   <div class="row" [class]="bootstrapRowClasses">
-    <div *ngFor="let entity of entitySource|async" [class]="bootstrapColumnClasses">
-      <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-    </div>
+    <ng-container *ngFor="let entity of entitySource|async">
+      <div [class]="bootstrapColumnClasses">
+        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
+      </div>
+    </ng-container>
   </div>
+  <!-- <div class="section-container">
+    <ng-container *ngFor="let entity of entitySource|async">
+        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
+    </ng-container>
+  </div> -->
 </ng-template>
 

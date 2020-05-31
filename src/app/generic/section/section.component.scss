@@ -261,3 +261,16 @@ a {
 		  transform: skewX(-20deg);
 	  }
   }
+
+
+
+
+
+  .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-direction: row;
+    flex: 1;
+  }

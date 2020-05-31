@@ -32,6 +32,8 @@ export class EntityComponent implements OnInit, OnChanges {
   isSaving = false;
   availableSetPassword = false;
 
+  entityWidth = '';
+
   formChanges = new FormGroup({
     name: new FormControl(''),
     title: new FormControl(''),
@@ -135,6 +137,14 @@ export class EntityComponent implements OnInit, OnChanges {
     this.ss.languageChanged.subscribe(() => {
       this.patchValue();
     });
+    switch(this.section.entityDisplayOptions.size) {
+      case 'full': this.entityWidth = '640px'; break;
+      case 'large': this.entityWidth = '640px'; break;
+      case 'medium': this.entityWidth = '320px'; break;
+      case 'side-by-side': this.entityWidth = '480px'; break;
+      case 'small': this.entityWidth = '220px'; break;
+      case 'tiny': this.entityWidth = '160px'; break;
+    }
   }
 
   onClickHide() {

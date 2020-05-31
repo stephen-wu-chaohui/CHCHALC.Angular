@@ -3,8 +3,9 @@
 {
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
+  align-content: stretch;
+  justify-content: space-evenly;
+  flex: 1 0 auto;
 
   &.middle {
     position: fixed;
@@ -18,6 +19,22 @@
   &.right-left {
     flex-direction: row-reverse;
   }
+
+  .side-by-side {
+    width: 480px;
+  }
+  .large {
+    width: 640px;
+  }
+  .medium {
+    width: 320px;
+  }
+  .small {
+    width: 220px;
+  }
+  .tiny {
+    width: 160px;
+  }
 }
 
 
@@ -29,48 +46,31 @@
 */
 .image
 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 3px;
-  flex: 1;
+  margin: auto;
+  text-align: center;
 
   :hover {
     cursor: pointer;
   }
-  &.margin {
-    box-shadow: 2px 3px #888888;
-    border: 1px solid #888888;
-    margin: 12px 0;
-    min-width: 200px;
-    max-width: 600px;
-    img {
-      min-height: 100px;
+
+  img {
+    margin: auto;
+    &.full {
       width: 100%;
+      padding: 1px;
     }
-  }
-  &.icon {
-    img {
+    &.page {
+      width: 90%;
+    }
+    &.margin {
+      width: 90%;
+      box-shadow: 2px 3px #888888;
+      border: 1px solid #888888;
+    }
+    &.icon {
+      width: 90%;
       border-radius: 50%;
-      width: 100%;
     }
-    width: 80%;
-    min-width: 60px;
-    max-width: 400px;
-}
-  &.full {
-    img {
-      min-height: 100px;
-      width: 100%;
-    }
-    min-width: 400px;
-  }
-  &.page {
-    img {
-      min-height: 100px;
-      width: 80%;
-    }
-    min-width: 300px;
   }
 }
 
@@ -109,20 +109,39 @@
 }
 
 .content {
-  align-self: stretch;
-  text-align: center;
-  padding-top: 20px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  margin: 3px;
+  align-items: stretch;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  margin: auto;
   flex: 1;
+  width: 100%;
 
-  input, textarea {
+
+  &.full {
+    width: 640px;
+  }
+  &.page {
+    width: 400px;
+  }
+  &.margin {
+    width: 320px;
+  }
+  &.icon {
+    width: 240px;
+  }
+
+  textarea {
     background-color: transparent;
     border: none;
     padding: 5px;
-    margin: 5px;
+    margin: auto;
+    width: -webkit-fill-available;
+  }
+  div {
+    margin: auto;
+    width: -webkit-fill-available;
   }
 
   .editmode {
@@ -133,7 +152,7 @@
     align-self: stretch;
     font-size: 24px;
     font-weight: 500;
-    margin-top: 20px;
+    margin-top: 5px;
     width: 100%;
     border: none;
     text-align: center;
@@ -141,6 +160,10 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
     text-shadow: rgba(0,0,0,.01) 0 0 1px;
+  }
+  .name {
+    resize: none;
+    white-space: nowrap;
   }
 
   &.image-only {
@@ -177,7 +200,7 @@
     }
     .text {
       align-self: stretch;
-      font-size: x-large;
+      font-size: large;
       font-weight: bolder;
       font-style: italic;
       color: navy;
@@ -211,7 +234,6 @@
     }
     .text {
       font-size: 22px;
-      width: 80%;
       font-style: italic;
     }
     .reference {
@@ -223,6 +245,7 @@
   &.pastor {
     .name {
       font-size: 24px;
+      margin: auto;
     }
     .title {
       font-size: 18px;
@@ -263,6 +286,7 @@ textarea {
   -moz-text-align-last: center; /* Firefox 12+ */
   text-align-last: center;
   resize: none;
+  margin: auto;
 }
 
 .unselectable {

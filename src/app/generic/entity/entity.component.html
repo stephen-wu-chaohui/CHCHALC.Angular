@@ -1,6 +1,6 @@
 <div class="entity" [ngClass]="section.entityDisplayOptions.position">
-  <div class="image" [ngClass]="section.entityDisplayOptions.imageStyle">
-    <img [src]="image" [class.deleted]="entity.deleted" (click)= "imageClick()">
+  <div class="image" [ngClass]="section.entityDisplayOptions.size">
+    <img [src]="image" [ngClass]="section.entityDisplayOptions.imageStyle" [class.deleted]="entity.deleted" (click)= "imageClick()">
     <ng-container *ngIf="editMode">
       <div style='height: 0px;width:0px; overflow:hidden;'>
         <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
@@ -20,7 +20,7 @@
     </ng-container>
   </div>
   <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
-    <input type="text" class="name" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">
+    <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">{{ss.tr(entity.name)}}</textarea>
     <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
     <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
     <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
