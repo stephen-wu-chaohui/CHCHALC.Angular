@@ -1,0 +1,18 @@
+{
+  "subscription": {
+    "name": "Pay-As-You-Go"
+  },
+  "project": {
+    "location": "westus",
+    "name": "chchalc"
+  },
+  "storage": {
+    "location": "australiaeast",
+    "name": "chchalc"
+  },
+  "database": {
+    "created": true,
+    "endpoint": "https://chchalc.table.core.windows.net/chchalc",
+    "name": "chchalc"
+  }
+}
