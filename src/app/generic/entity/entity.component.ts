@@ -14,6 +14,12 @@ import { ContextService } from 'src/app/services/context.service';
   styleUrls: ['./entity.component.scss']
 })
 export class EntityComponent implements OnInit, OnChanges {
+
+  constructor(public ss: SettingsService,
+              private modalService: NgbModal,
+              private cs: ContextService,
+              private es: AbstrctEntityService
+  ) {}
   @Input() entity: WEntity;
   @Input() section: WSection;
   @Input() editMode: boolean;
@@ -42,6 +48,8 @@ export class EntityComponent implements OnInit, OnChanges {
     description: new FormControl(''),
     reference: new FormControl(''),
 });
+
+  saveTimer: any;
 
   patchValue() {
     this.formChanges.patchValue({
@@ -94,19 +102,16 @@ export class EntityComponent implements OnInit, OnChanges {
     }
   }
 
-  constructor(public ss: SettingsService,
-              private modalService: NgbModal,
-              private cs: ContextService,
-              private es: AbstrctEntityService
-  ) {}
-
   ngOnChanges(changes: SimpleChanges): void {
     this.editMode = changes.editMode.currentValue;
   }
 
   imageClick() {
-    if (this.section.entityTemplate) {
-      this.routeTo.emit({ entity: this.entity, template: this.section.entityTemplate });
+    if (!this.entity.uiTemplateId && this.section.entityTemplate) {
+      this.entity.uiTemplateId = this.section.entityTemplate;
+    }
+    if (this.entity.uiTemplateId) {
+      this.routeTo.emit({ entity: this.entity });
     } else if (this.entity.links) {
       const jumpTo = this.entity.links[0];
       this.onClick(jumpTo);
@@ -196,8 +201,6 @@ export class EntityComponent implements OnInit, OnChanges {
     // console.log('saveItem(entity):', this.collectionPath, this.entity);
     this.es.setEntity(this.collectionPath, this.entity).then(() => this.setDirty(false));
   }
-
-  saveTimer: any;
 
   setDirty(flag = true) {
     this.isDirty = flag;

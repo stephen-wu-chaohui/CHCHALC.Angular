@@ -3,7 +3,7 @@ import { WEntity, WPage } from './types';
 
 export class EntityPagesBinding {
   entity: WEntity;
-  template: WPage[];
+  // template: WPage[];
   selectedPage?: number;
 }
 
@@ -54,7 +54,7 @@ export class PageService {
   };
 
   ministryPage: WPage = {
-    id: 'home',
+    id: 'ministryPage',
     sections: [{
       icon: 'assets/images/church_6.png',
       title: { english: 'Testimonies', chinese: '见证'},
@@ -70,12 +70,12 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }]
   };
 
   cellgroupPage: WPage = {
-    id: 'home',
+    id: 'cellgroupPage',
     sections: [{
       icon: 'assets/images/church_6.png',
       title: { english: 'Testimonies', chinese: '见证'},
@@ -91,7 +91,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }, {
       icon: 'assets/images/church_1.png',
       title: { english: 'Bible Study', chinese: '查经'},
@@ -107,7 +107,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }, {
       icon: 'assets/images/church_2.png',
       title: { english: 'Outdoors', chinese: '传道'},
@@ -123,12 +123,12 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }]
   };
 
   personalPage: WPage = {
-    id: 'home',
+    id: 'personalPage',
     sections: [{
       icon: 'assets/images/church_6.png',
       title: { english: 'Confession', chinese: '我的告解'},
@@ -144,7 +144,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }]
   };
 
@@ -166,7 +166,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.storyPage]
+      entityTemplate: [this.storyPage.id]
     }]
   };
 
@@ -190,7 +190,7 @@ export class PageService {
         imageStyle: 'page',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.ministryPage ]
+      entityTemplate: [this.ministryPage.id ]
     }, {
       icon: 'assets/images/church_5.png',
       title: { english: 'Quote of the day', chinese: '今日金句'},
@@ -226,7 +226,7 @@ export class PageService {
         imageStyle: 'icon',
         contentStyle: 'pastor'
       },
-      entityTemplate: [this.personalPage ]
+      entityTemplate: [this.personalPage.id ]
     }, {
       label: 'cellgroups',
       icon: 'assets/images/church_4.png',
@@ -243,7 +243,7 @@ export class PageService {
         imageStyle: 'page',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.cellgroupPage ]
+      entityTemplate: [this.cellgroupPage.id ]
     }]
   };
 
@@ -267,7 +267,7 @@ export class PageService {
         imageStyle: 'full',
         contentStyle: 'all'
       },
-      entityTemplate: [this.slicePage]
+      entityTemplate: [this.slicePage.id]
     }, {
       icon: 'assets/images/church_4.png',
       title: { english: 'Popular Sermons', chinese: '热点讲道'},
@@ -282,7 +282,7 @@ export class PageService {
         imageStyle: 'full',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.slicePage]
+      entityTemplate: [this.slicePage.id]
     }]
   };
 
@@ -363,7 +363,7 @@ export class PageService {
         imageStyle: 'page',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.slicePage]
+      entityTemplate: [this.slicePage.id]
     }, {
       icon: 'assets/images/church_5.png',
       title: { english: 'Quote of the day', chinese: '今日金句'},
@@ -398,7 +398,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'image-title'
       },
-      entityTemplate: [this.slicePage]
+      entityTemplate: [this.slicePage.id]
     }]
   };
 
@@ -408,4 +408,26 @@ export class PageService {
     this.sermonsPage,
     this.newsPage
   ];
+
+  allPages = [
+    this.homePage,
+    this.churchPage,
+    this.sermonsPage,
+    this.newsPage,
+    this.cellgroupPage,
+    this.ministryPage,
+    this.personalPage,
+    this.slicePage,
+    this.storyPage,
+  ];
+
+
+  getTemplate(entity: WEntity): WPage[] {
+    return entity.uiTemplateId?.map(id => this.allPages.find(p => p.id === id));
+  }
+
+  findPage(pageId: string): WPage {
+    return this.allPages.find(p => p.id === pageId);
+  }
+
 }

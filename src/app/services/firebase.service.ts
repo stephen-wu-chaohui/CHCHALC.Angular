@@ -5,12 +5,13 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { WAssembly, WEntity, ServiceResponse, EntitySource, Path, EntityId, ImageURL } from './types';
 import { AbstrctEntityService } from './entity.service';
 import { map } from 'rxjs/operators';
+import { PageService } from './page.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService extends AbstrctEntityService {
-  constructor(private store: AngularFirestore, private storage: AngularFireStorage) {
+  constructor(private store: AngularFirestore, private storage: AngularFireStorage, private pageService: PageService) {
     super();
   }
 
@@ -26,7 +27,8 @@ export class FirebaseService extends AbstrctEntityService {
     host: 'Lead Pastor',
     phoneNumbers: ['02102591292', '02102591292'],
     email: 'admin@nzalc.org',
-    password: 'chchalc'
+    password: 'chchalc',
+    uiTemplateId: this.pageService.topPages.map(p => p.id)
   };
 
   get root(): WAssembly {

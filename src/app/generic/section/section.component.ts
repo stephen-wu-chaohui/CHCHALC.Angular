@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
-  selector: 'app-new-section',
+  selector: 'app-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
@@ -114,16 +114,16 @@ export class SectionComponent implements OnInit {
           lastUpdated: moment().unix(),
           start: moment().unix(),
           title: { english: '', chinese: ''},
+          uiTemplateId: this.section.entityTemplate
         };
         const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
-        // console.log('image path:', imagePath);
         this.busy = true;
         this.es.uploadImage(imagePath, file).then(
           path => {
             item.image = path;
             item.start = this.guessStartTime(file);
             item.path = imagePath;
-            item.title = { english: file.name, chinese: file.name };
+            item.title = { english: file.name };
             this.es.setEntity(this.collectionPath, item).then();
             this.busy = false;
           }

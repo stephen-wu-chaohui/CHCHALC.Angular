@@ -50,6 +50,7 @@ export class WEntity {
   priority?: PriorityEnum;
   links?: Link[];
   password?: string;
+  uiTemplateId?: string[];
 
   constructor(collectionPath: string) {
     this.id = uuidv4();
@@ -125,7 +126,7 @@ export class WSection {
   entitySource: EntitySource;
   entityDisplayOptions: EntityDisplayOptions;
   action?: Action;    // When 'Route', always jump to main page
-  entityTemplate?: WPage[];
+  entityTemplate?: string[];
 }
 
 export class ServiceResponse {

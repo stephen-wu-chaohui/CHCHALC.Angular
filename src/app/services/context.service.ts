@@ -16,7 +16,7 @@ export class ContextService {
   constructor(private entityService: AbstrctEntityService, private pageService: PageService) {
     this.routeStack.unshift({
       entity: entityService.root,
-      template: pageService.topPages
+      // template: pageService.topPages
     });
     this.contextChanged.emit();
    }
@@ -30,7 +30,7 @@ export class ContextService {
     if (this.routeStack.length === 0) {
       this.routeStack.unshift({
         entity: this.entityService.root,
-        template: this.pageService.topPages
+        // template: this.pageService.topPages
       });
       this.contextChanged.emit();
     }
@@ -47,7 +47,7 @@ export class ContextService {
   }
 
   get contextMenu(): MenuItem[] {
-    const template = this.currentContext.template;
+    const template = this.pageService.getTemplate(this.currentContext.entity);
     const menuItems = template.map(t => ({title: t.title, route: t.id}));
     if (this.routeStack.length > 1) {
       menuItems.unshift({title: this.backMenu, route: '..'});
@@ -65,7 +65,7 @@ export class ContextService {
     if (pageId === '..') {
       this.pop();
     } else {
-      const template = this.currentContext.template;
+      const template = this.pageService.getTemplate(this.currentContext.entity);
       this.currentContext.selectedPage = template.findIndex(t => t.id === pageId);
     }
     this.pageChanged.emit(menuItem);

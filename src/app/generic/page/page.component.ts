@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContextService } from '../../services/context.service';
 import { WPage } from '../../services/types';
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-page',
@@ -12,7 +13,7 @@ export class PageComponent implements OnInit {
 
   get entity() { return this.contextService.currentContext?.entity; }
 
-  constructor(public contextService: ContextService) {
+  constructor(public contextService: ContextService, private pageService: PageService) {
     contextService.contextChanged.subscribe(() => this.updatePage(''));
     contextService.pageChanged.subscribe((router: string) => this.updatePage(router));
     this.updatePage('');
@@ -24,7 +25,7 @@ export class PageComponent implements OnInit {
       this.page = null;
     }
     const index = cxt.selectedPage || 0;
-    this.page = cxt.template[index];
+    this.page = this.pageService.findPage(this.entity.uiTemplateId[index]);
 
     const arr = router.split('#');
     if (arr.length < 2) {
