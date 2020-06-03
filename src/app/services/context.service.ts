@@ -16,7 +16,6 @@ export class ContextService {
   constructor(private entityService: AbstrctEntityService, private pageService: PageService) {
     this.routeStack.unshift({
       entity: entityService.root,
-      // template: pageService.topPages
     });
     this.contextChanged.emit();
    }
@@ -27,14 +26,22 @@ export class ContextService {
   }
 
   get currentContext() {
-    if (this.routeStack.length === 0) {
-      this.routeStack.unshift({
-        entity: this.entityService.root,
-        // template: this.pageService.topPages
-      });
-      this.contextChanged.emit();
-    }
     return this.routeStack[0];
+  }
+
+  jumpTo(sectionLabel) {
+    const elementRef = document.getElementById(sectionLabel);
+    if (elementRef) {
+      elementRef.scrollIntoView();
+    }
+  }
+
+  saveScrollPos() {
+    this.currentContext.windowYPosition = window.pageYOffset;
+  }
+
+  resumeScrollPos() {
+    window.scrollTo(0, this.currentContext.windowYPosition);
   }
 
   pop(): boolean {
@@ -58,24 +65,13 @@ export class ContextService {
   setPage(menuItem: string) {
     const arr = menuItem.split('#');
     const pageId = arr[0];
-    if (pageId === '') {
-      this.jumpTo(arr[1]);
-      return;
-    }
     if (pageId === '..') {
       this.pop();
-    } else {
+    } else if (pageId !== '') {
       const template = this.pageService.getTemplate(this.currentContext.entity);
       this.currentContext.selectedPage = template.findIndex(t => t.id === pageId);
     }
     this.pageChanged.emit(menuItem);
-  }
-
-  jumpTo(sectionLabel) {
-    const elementRef = document.getElementById(sectionLabel);
-    if (elementRef) {
-      elementRef.scrollIntoView();
-    }
   }
 
   checkPassword(password: string) {

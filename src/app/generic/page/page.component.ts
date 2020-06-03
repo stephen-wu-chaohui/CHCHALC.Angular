@@ -20,6 +20,7 @@ export class PageComponent implements OnInit {
   }
 
   updatePage(router) {
+    // this.contextService.setPage(router);
     const cxt = this.contextService.currentContext;
     if (!cxt) {
       this.page = null;
@@ -29,11 +30,10 @@ export class PageComponent implements OnInit {
 
     const arr = router.split('#');
     if (arr.length < 2) {
-      window.scrollTo(0, 0);
+      setTimeout(() => this.contextService.resumeScrollPos(), 200);
     } else {
-      this.contextService.jumpTo(arr[1]);
+      setTimeout(() => this.contextService.jumpTo(arr[1]), 200);
     }
-
   }
 
   ngOnInit() {

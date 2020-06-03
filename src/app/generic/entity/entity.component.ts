@@ -111,6 +111,7 @@ export class EntityComponent implements OnInit, OnChanges {
       this.entity.uiTemplateId = this.section.entityTemplate;
     }
     if (this.entity.uiTemplateId) {
+      this.cs.saveScrollPos();
       this.routeTo.emit({ entity: this.entity });
     } else if (this.entity.links) {
       const jumpTo = this.entity.links[0];

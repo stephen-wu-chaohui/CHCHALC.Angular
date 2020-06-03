@@ -3,8 +3,8 @@ import { WEntity, WPage } from './types';
 
 export class EntityPagesBinding {
   entity: WEntity;
-  // template: WPage[];
   selectedPage?: number;
+  windowYPosition?: number;
 }
 
 @Injectable({
