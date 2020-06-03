@@ -33,7 +33,7 @@ export class PageService {
   };
 
   slicePage: WPage = {
-    id: 'story',
+    id: 'slice',
     sections: [{
       icon: 'assets/images/church_6.png',
       title: { english: 'Story', chinese: '讲道提纲'},
