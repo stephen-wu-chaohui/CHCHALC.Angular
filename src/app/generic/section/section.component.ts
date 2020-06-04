@@ -119,12 +119,13 @@ export class SectionComponent implements OnInit {
         const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
         this.busy = true;
         this.es.uploadImage(imagePath, file).then(
-          path => {
+          async path => {
             item.image = path;
             item.start = this.guessStartTime(file);
             item.path = imagePath;
-            item.title = { english: file.name };
-            this.es.setEntity(this.collectionPath, item).then();
+            item.title = { english: file.name, chinese: file.name };
+            item.uiTemplateId = this.section.entityTemplate || null;
+            await this.es.setEntity(this.collectionPath, item);
             this.busy = false;
           }
         );

@@ -30,9 +30,9 @@ export class PageComponent implements OnInit {
 
     const arr = router.split('#');
     if (arr.length < 2) {
-      setTimeout(() => this.contextService.resumeScrollPos(), 200);
+      setTimeout(() => this.contextService.resumeScrollPos(), 400);
     } else {
-      setTimeout(() => this.contextService.jumpTo(arr[1]), 200);
+      setTimeout(() => this.contextService.jumpTo(arr[1]), 400);
     }
   }
 
