@@ -27,7 +27,7 @@ export class PageService {
         size: 'large',
         position: 'left-right',
         imageStyle: 'full',
-        contentStyle: 'image-only'
+        contentStyle: 'item'
       }
     }]
   };
@@ -48,7 +48,7 @@ export class PageService {
         size: 'large',
         position: 'top-bottom',
         imageStyle: 'full',
-        contentStyle: 'image-only'
+        contentStyle: 'item'
       }
     }]
   };
@@ -68,7 +68,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }]
@@ -77,6 +77,43 @@ export class PageService {
   cellgroupPage: WPage = {
     id: 'cellgroupPage',
     sections: [{
+      // title: { english: 'Cellgroup Ground', chinese: '小家园地'},
+      // subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      // backgroundImage: '/assets/images/popular_4.jpg',
+      entitySource: {
+        collection: 'homeslides',
+        priorities: ['high'],
+        slice: 'last',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'slide',
+        position: 'top-bottom',
+        imageStyle: 'original',
+        contentStyle: 'frontpage'
+      },
+    }, {
+      label: 'welcome',
+      icon: 'assets/images/church_2.png',
+      title: { english: 'Welcome to RLG', chinese: '欢迎光临磐石小家'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      description: {
+        english: 'to bring people to Jesus and membership in his family',
+        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+      },
+      entitySource: {
+        collection: 'welcome',
+        priorities: ['high'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'side-by-side',
+        position: 'right-left',
+        imageStyle: 'page',
+        contentStyle: 'greeting',
+      }
+    }, {
       icon: 'assets/images/church_6.png',
       title: { english: 'Testimonies', chinese: '见证'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
@@ -89,7 +126,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }, {
@@ -105,7 +142,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }, {
@@ -121,7 +158,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }]
@@ -142,7 +179,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }]
@@ -164,7 +201,7 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
     }]
@@ -188,14 +225,14 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'page',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.ministryPage.id ]
     }, {
       icon: 'assets/images/church_5.png',
       title: { english: 'Quote of the day', chinese: '今日金句'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      backgroudImage: '/assets/images/quote.jpg',
+      backgroundImage: '/assets/images/quote.jpg',
       lightText: true,
       entitySource: {
         collection: 'quotes',
@@ -224,7 +261,7 @@ export class PageService {
         size: 'small',
         position: 'top-bottom',
         imageStyle: 'icon',
-        contentStyle: 'pastor'
+        contentStyle: 'item'
       },
       entityTemplate: [this.personalPage.id ]
     }, {
@@ -241,7 +278,7 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'page',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.cellgroupPage.id ]
     }]
@@ -254,7 +291,7 @@ export class PageService {
       icon: 'assets/images/church_3.png',
       title: { english: 'Today"s Sermon', chinese: '今日讲道'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      backgroudImage: '/assets/images/sermon.png',
+      backgroundImage: '/assets/images/sermon.png',
       entitySource: {
         collection: 'sermons',
         priorities: ['high'],
@@ -265,7 +302,7 @@ export class PageService {
         size: 'side-by-side',
         position: 'left-right',
         imageStyle: 'full',
-        contentStyle: 'all'
+        contentStyle: 'item'
       },
       entityTemplate: [this.slicePage.id]
     }, {
@@ -280,7 +317,7 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'full',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.slicePage.id]
     }]
@@ -291,7 +328,6 @@ export class PageService {
     title: { english: 'Home', chinese: '首页'},
     homeBar: 'none',
     sections: [{
-      backgroudImage: '/assets/images/slider_background_1.jpg',
       entitySource: {
         collection: 'homeslides',
         priorities: ['high'],
@@ -302,17 +338,13 @@ export class PageService {
         size: 'slide',
         position: 'top-bottom',
         imageStyle: 'original',
-        contentStyle: 'image-title'
+        contentStyle: 'frontpage'
       }
     }, {
       label: 'welcome',
       icon: 'assets/images/church_2.png',
-      title: { english: 'Welcome to ALC', chinese: '欢迎来到丰盛生命教会'},
+      title: { english: 'Welcome to Abundant Life Church', chinese: '欢迎来到丰盛生命教会'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      description: {
-        english: 'to bring people to Jesus and membership in his family',
-        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
-      },
       entitySource: {
         collection: 'welcome',
         priorities: ['high'],
@@ -323,7 +355,7 @@ export class PageService {
         size: 'side-by-side',
         position: 'right-left',
         imageStyle: 'page',
-        contentStyle: 'text-only'
+        contentStyle: 'greeting'
       }
     }, {
       icon: 'assets/images/church_2.png',
@@ -333,7 +365,7 @@ export class PageService {
         english: 'to bring people to Jesus and membership in his family',
         chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
       },
-      backgroudImage: '/assets/images/services.jpg',
+      backgroundImage: '/assets/images/services.jpg',
       lightText: true,
       entitySource: {
         collection: 'activity',
@@ -344,13 +376,13 @@ export class PageService {
         size: 'tiny',
         position: 'top-bottom',
         imageStyle: 'original',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       }
     }, {
       icon: 'assets/images/church_3.png',
       title: { english: 'Today\'s Sermon', chinese: '今日讲道'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      backgroudImage: '/assets/images/sermon.png',
+      backgroundImage: '/assets/images/sermon.png',
       entitySource: {
         collection: 'sermons',
         priorities: ['high', 'low'],
@@ -361,14 +393,14 @@ export class PageService {
         size: 'side-by-side',
         position: 'left-right',
         imageStyle: 'page',
-        contentStyle: 'image-title'
+        contentStyle: 'sermon'
       },
       entityTemplate: [this.slicePage.id]
     }, {
       icon: 'assets/images/church_5.png',
       title: { english: 'Quote of the day', chinese: '今日金句'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      backgroudImage: '/assets/images/quote.jpg',
+      backgroundImage: '/assets/images/quote.jpg',
       lightText: true,
       entitySource: {
         collection: 'quotes',
@@ -396,7 +428,7 @@ export class PageService {
         size: 'medium',
         position: 'top-bottom',
         imageStyle: 'margin',
-        contentStyle: 'image-title'
+        contentStyle: 'item'
       },
       entityTemplate: [this.slicePage.id]
     }]

@@ -4,7 +4,8 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+  width: 100%;
+  height: 84px;
 	z-index: 100;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
@@ -27,7 +28,8 @@
   }
   &.scrolled
   {
-  	top: 0;
+    top: 0;
+    height: 59px;
     box-shadow: 1px 1px #888888;
     .logo a {
       span {
@@ -38,6 +40,11 @@
       }
     }
   }
+}
+
+.header-placeholder {
+  width: 100%;
+  height: 84px;
 }
 
 
@@ -207,6 +214,10 @@ Menu
   }
   .menu {
     top: 0px;
+  }
+
+  .header-placeholder {
+    height: 59px;
   }
 
   .header_content {

@@ -47,6 +47,7 @@ export class WEntity {
   description?: MultiText;
   reference?: MultiText;
   image?: ImageURL;
+  backgroundImage?: ImageURL;
   priority?: PriorityEnum;
   links?: Link[];
   password?: string;
@@ -88,22 +89,28 @@ export class WPage {    // template of webpages used to display a document
   sections: WSection[];
 }
 
+export type ContentStyle = 'frontpage'|'greeting'|'sermon'|'quote'|'item'|'person';
+/*
+  frontpage: full-width, full-height, use background-image/color, image, title, sub-title, description, link  --- top-bottom
+  greeting: full-width, use background-image/color, image, title, sub-title, description, link  --- left-right
+  quote: full-width, use background-image/color, image, title, sub-title, description, link  --- top-bottom
+  item: large/medium/icon, use name, image, title, sub-title, description, link
+*/
+
+
 export type TextPosition = 'middle'|'left-right'|'right-left'|'top-bottom';
 export type SizeEnum = 'slide'|'full'|'side-by-side'|'large'|'medium'|'small'|'tiny';
 export type ImageStyle = 'full'|'page'|'margin'|'icon'|'original';
-export type ContentStyle = 'image-only'|'image-title'|'text-only'|'all'|'quote'|'pastor';
-export type ContrastStyle = 'light'|'';  // text is light
 
 export type Action = 'Link'|'Route'|'none'|'';
 export type DirectionEnum = 'asc'|'desc';
 export type SliceEnum = 'last'|'first'|'';
 
 export class EntityDisplayOptions {
+  contentStyle: ContentStyle;
   size: SizeEnum;
   position: TextPosition;
   imageStyle: ImageStyle;
-  contentStyle: ContentStyle;
-  contrastStyle?: ContrastStyle;
 }
 
 export class EntitySource {
@@ -121,7 +128,7 @@ export class WSection {
   title?: MultiText;
   subtitle?: MultiText;
   description?: MultiText;
-  backgroudImage?: ImageURL;
+  backgroundImage?: ImageURL;
   lightText?: boolean;
   entitySource: EntitySource;
   entityDisplayOptions: EntityDisplayOptions;

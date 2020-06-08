@@ -1,5 +1,5 @@
-<div class="entity" [ngClass]="section.entityDisplayOptions.position">
-  <div class="image" [ngClass]="section.entityDisplayOptions.size">
+<div class="entity"  [ngClass]="section.entityDisplayOptions.contentStyle" [style.background-image]="backgroundImage()">
+  <div class="image">
     <img [src]="image" [ngClass]="section.entityDisplayOptions.imageStyle" [class.deleted]="entity.deleted" (click)= "imageClick()">
     <ng-container *ngIf="editMode">
       <div style='height: 0px;width:0px; overflow:hidden;'>
@@ -19,18 +19,18 @@
       </fa-icon> -->
     </ng-container>
   </div>
-  <form class="content" [formGroup]="formChanges" [ngClass]="section.entityDisplayOptions.contentStyle" [class.lightText]="section.lightText">
+  <form class="content" [formGroup]="formChanges" [class.lightText]="section.lightText">
     <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">{{ss.tr(entity.name)}}</textarea>
     <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
     <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
     <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
     <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>
-    <ng-container *ngIf="entity.links">
+    <div class="links" *ngIf="entity.links">
       <ng-container *ngFor="let link of entity.links">
         <div class="button" *ngIf="link.text">
           <a (click)="onClick(link)">{{ss.tr(link.text)}}</a>
         </div>
       </ng-container>
-    </ng-container>
+    </div>
   </form>
 </div>

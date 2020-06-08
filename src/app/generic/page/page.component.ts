@@ -20,7 +20,6 @@ export class PageComponent implements OnInit {
   }
 
   updatePage(router) {
-    // this.contextService.setPage(router);
     const cxt = this.contextService.currentContext;
     if (!cxt) {
       this.page = null;
@@ -30,9 +29,9 @@ export class PageComponent implements OnInit {
 
     const arr = router.split('#');
     if (arr.length < 2) {
-      setTimeout(() => this.contextService.resumeScrollPos(), 400);
+      setTimeout(() => this.contextService.resumeScrollPos(), 300);
     } else {
-      setTimeout(() => this.contextService.jumpTo(arr[1]), 400);
+      setTimeout(() => this.contextService.jumpTo(arr[1]), 300);
     }
   }
 

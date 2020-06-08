@@ -158,6 +158,13 @@ export class EntityComponent implements OnInit, OnChanges {
     this.setDirty();
   }
 
+  backgroundImage() {
+    if (!this.entity.backgroundImage) {
+      return '';
+    }
+    return `url(${this.entity.backgroundImage})`;
+  }
+
   OnChangeImage(files: File[]) {
     if (files.length === 0) {
       return;
@@ -172,7 +179,6 @@ export class EntityComponent implements OnInit, OnChanges {
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
       this.image = reader.result;
-      // console.log('this.image: ', this.image.width, this.image.height);
       this.file = files[0];
       this.setDirty();
     };
@@ -182,15 +188,19 @@ export class EntityComponent implements OnInit, OnChanges {
     if (!this.isDirty) {
       return;
     }
+
     if (this.file) {
       this.isSaving = true;
-      this.es.uploadImage(this.entity.path, this.file).then(
-        path => {
-          this.entity.image = path;
-          this.isSaving = false;
-          this.saveItem();
-        }
-      );
+      // this.es.uploadImage(this.entity.path, this.file).then(
+      //   path => {
+      //     this.entity.image = path;
+      //     this.isSaving = false;
+      //     this.saveItem();
+      //   }
+      // );
+      this.entity.image = this.image;
+      this.isSaving = false;
+      this.saveItem();
     } else {
       this.saveItem();
     }
@@ -199,7 +209,6 @@ export class EntityComponent implements OnInit, OnChanges {
 
   saveItem() {
     this.applyChanges(this.ss.language);
-    // console.log('saveItem(entity):', this.collectionPath, this.entity);
     this.es.setEntity(this.collectionPath, this.entity).then(() => this.setDirty(false));
   }
 

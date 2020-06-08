@@ -41,7 +41,7 @@ export class ContextService {
   }
 
   resumeScrollPos() {
-    window.scrollTo(0, this.currentContext.windowYPosition);
+    window.scrollTo(0, this.currentContext.windowYPosition || 0);
   }
 
   pop(): boolean {

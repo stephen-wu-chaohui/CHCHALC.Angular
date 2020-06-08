@@ -39,12 +39,6 @@ export class SectionComponent implements OnInit {
     interval: { timing: 3000 },
     animation: 'lazy'
   };
-  comeAndJoinUs = {
-    english: 'Come and Join us', chinese: '欢迎加入我们'
-  };
-  readMore = {
-    english: 'Read More', chinese: '了解我们教会'
-  };
 
   constructor(public es: AbstrctEntityService,
               public ss: SettingsService,
@@ -95,11 +89,11 @@ export class SectionComponent implements OnInit {
     }
   }
 
-  backgroudImage() {
-    if (!this.section.backgroudImage) {
+  backgroundImage() {
+    if (!this.section.backgroundImage) {
       return '';
     }
-    return `url(${this.section.backgroudImage})`;
+    return `url(${this.section.backgroundImage})`;
   }
 
   importMultipleFiles(files: File[]) {

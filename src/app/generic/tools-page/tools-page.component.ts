@@ -13,9 +13,10 @@ export class ToolsPageComponent implements OnInit {
     data: [{
       id: 'slider-1',
       image: 'assets/images/cross_1.png',
-      start: 0,
+      backgroundImage: '/assets/images/slider_background_1.jpg',
       title: { chinese: '神与我们同在', english: 'God is all with us'},
       subTitle: { chinese: '欢迎加入我们', english: 'Come and Join us'},
+      start: 0,
       links: [{
         type: 'setPage',
         text: { chinese: '欢迎加入我们', english: 'Come and Join us'},
@@ -31,6 +32,8 @@ export class ToolsPageComponent implements OnInit {
       id: 'welcome-1',
       image: 'assets/images/intro.jpg',
       start: 0,
+      title: { english: 'Welcome to ALC', chinese: '欢迎来到丰盛生命教会'},
+      subTitle: { english: 'God loves us all', chinese: '神与我们同在'},
       path: 'welcome/welcome-1',
       links: [{
         type: 'setPage',

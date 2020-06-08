@@ -1,69 +1,49 @@
 <div class="section" [class.busy]="busy" [id]="section.label">
-  <div class="background" [style.background-image]="backgroudImage()">
+  <div class="background" [style.background-image]="backgroundImage()">
   </div>
-  <div class="container">
-    <div class="row" *ngIf="section.title">
-      <div class="col">
-        <div class="section_title_container unselectable">
-          <div class="section_image editable">
-            <img class="" [class.editing]="editMode" [src]="section.icon" alt="" appEdit [editMode]="editMode" (editModeChanged)="onEditMode($event)">
-          </div>
-          <div class="section_title" [class.text-light]="section.lightText">
-            <h2 class="unselectable">{{ss.tr(section.title)}}</h2>
-          </div>
-          <div class="section_subtitle unselectable" [class.text-light]="section.lightText">
-            <h3 class="unselectable">{{ss.tr(section.subtitle)}}</h3>
-          </div>
-          <div class="col d-flex flex-column align-items-center justify-content-center p-1" *ngIf="section.entitySource.editable && editMode">
-            <div style='height: 0px;width:0px; overflow:hidden;'>
-              <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
+
+  <ng-container *ngIf="section.entityDisplayOptions.contentStyle === 'frontpage'; else common">
+    <ng-container *ngFor="let entity of entitySource|async">
+      <div class="vh-100">
+        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #common >
+    <div class="container">
+      <div class="row" *ngIf="section.title">
+        <div class="col">
+          <div class="section_title_container unselectable">
+            <div class="section_image editable">
+              <img class="" [class.editing]="editMode" [src]="section.icon" alt="" appEdit [editMode]="editMode" (editModeChanged)="onEditMode($event)">
             </div>
-            <div (click)="upload.click()">
-              <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px" [title]="'Add new ' + section.entitySource.collection">
+            <div class="section_title" [class.text-light]="section.lightText">
+              <h2 class="unselectable">{{ss.tr(section.title)}}</h2>
+            </div>
+            <div class="section_subtitle unselectable" [class.text-light]="section.lightText">
+              <h3 class="unselectable">{{ss.tr(section.subtitle)}}</h3>
+            </div>
+            <div class="col d-flex flex-column align-items-center justify-content-center p-1" *ngIf="section.entitySource.editable && editMode">
+              <div style='height: 0px;width:0px; overflow:hidden;'>
+                <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
+              </div>
+              <div (click)="upload.click()">
+                <img src="assets/images/plus-circle-solid.svg" height="32px" width="32px" [title]="'Add new ' + section.entitySource.collection">
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row" [class]="bootstrapRowClasses">
+        <ng-container *ngFor="let entity of entitySource|async">
+          <div [class]="bootstrapColumnClasses">
+            <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
+          </div>
+        </ng-container>
       </div>
     </div>
-    <ng-container [ngSwitch]="section.entityDisplayOptions.size">
-      <ng-container *ngSwitchCase="'slide'">
-        <ng-container *ngTemplateOutlet="slide"></ng-container>
-      </ng-container>
-      <ng-container *ngSwitchDefault>
-        <ng-container *ngTemplateOutlet="list"></ng-container>
-      </ng-container>
-    </ng-container>
-  </div>
+  </ng-template>
 </div>
-
-<ng-template #slide>
-  <div class="row vh-100 ">
-    <ng-container *ngFor="let entity of entitySource|async">
-      <div class="col home_slider_content text-center">
-        <div class="cross_1 d-flex flex-column align-items-center justify-content-center">
-          <img [src]="entity.image">
-        </div>
-        <h1 class="slider-text">{{ss.tr(entity.title)}}</h1>
-        <div class="button home_slider_button">
-          <a (click)="contextService.jumpTo('welcome')">{{ss.tr(comeAndJoinUs)}}</a>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</ng-template>
-
-<ng-template #list>
-  <div class="row" [class]="bootstrapRowClasses">
-    <ng-container *ngFor="let entity of entitySource|async">
-      <div [class]="bootstrapColumnClasses">
-        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-      </div>
-    </ng-container>
-  </div>
-  <!-- <div class="section-container">
-    <ng-container *ngFor="let entity of entitySource|async">
-        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-    </ng-container>
-  </div> -->
-</ng-template>
 

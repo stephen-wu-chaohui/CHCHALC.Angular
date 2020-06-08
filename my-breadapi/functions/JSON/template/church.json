@@ -15,7 +15,7 @@
         "size": "medium",
         "position": "top-bottom",
         "imageStyle": "page",
-        "contentStyle": "image-title"
+        "contentStyle": "item"
       },
       "action": "Route",
       "entityTemplate": [{
@@ -29,7 +29,7 @@
             "size": "slide",
             "position": "middle",
             "imageStyle": "full",
-            "contentStyle": "image-title"
+            "contentStyle": "item"
           }
         }, {
           "entitySource": {
@@ -52,7 +52,7 @@
             "english": "to bring people to Jesus and membership in his family",
             "chinese": "带领人来到耶稣的跟前，并使人成为他家中的成员"
           },
-          "backgroudImage": "/assets/images/services.jpg",
+          "backgroundImage": "/assets/images/services.jpg",
           "lightText": true,
           "entitySource": {
             "collection": "activity",
@@ -62,14 +62,14 @@
             "size": "small",
             "position": "top-bottom",
             "imageStyle": "icon",
-            "contentStyle": "image-title"
+            "contentStyle": "item"
           },
           "action": "Route"
         }, {
           "icon": "assets/images/church_3.png",
           "title": { "english": "Today\"s Sermon", "chinese": "今日讲道"},
           "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
-          "backgroudImage": "/assets/images/sermon.png",
+          "backgroundImage": "/assets/images/sermon.png",
           "entitySource": {
             "collection": "sermons",
             "priorities": ["high", "low"],
@@ -87,7 +87,7 @@
           "icon": "assets/images/church_5.png",
           "title": { "english": "Quote of the day", "chinese": "今日金句"},
           "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
-          "backgroudImage": "/assets/images/quote.jpg",
+          "backgroundImage": "/assets/images/quote.jpg",
           "lightText": true,
           "entitySource": {
             "collection": "quotes",
@@ -114,7 +114,7 @@
             "size": "small",
             "position": "top-bottom",
             "imageStyle": "margin",
-            "contentStyle": "image-title"
+            "contentStyle": "item"
           },
           "action": "Route"
         }]
@@ -123,7 +123,7 @@
       "icon": "assets/images/church_5.png",
       "title": { "english": "Quote of the day", "chinese": "今日金句"},
       "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
-      "backgroudImage": "/assets/images/quote.jpg",
+      "backgroundImage": "/assets/images/quote.jpg",
       "lightText": true,
       "entitySource": {
         "collection": "quotes",
@@ -149,7 +149,7 @@
         "size": "medium",
         "position": "top-bottom",
         "imageStyle": "icon",
-        "contentStyle": "pastor"
+        "contentStyle": "item"
       },
       "action": "Route"
     }, {
@@ -164,7 +164,7 @@
         "size": "medium",
         "position": "top-bottom",
         "imageStyle": "page",
-        "contentStyle": "image-title"
+        "contentStyle": "item"
       },
       "action": "Route"
     }]

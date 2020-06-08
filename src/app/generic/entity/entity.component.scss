@@ -2,38 +2,121 @@
 .entity
 {
   display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  justify-content: space-evenly;
-  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 
-  &.middle {
-    position: fixed;
-  }
-  &.top-bottom {
+  .image {
+    margin: 0 auto;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  &.left-right {
-    flex-direction: row;
-  }
-  &.right-left {
-    flex-direction: row-reverse;
+  .content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .name { display: none; }
+    .title { display: none; }
+    .subtitle { display: none; }
+    .text { display: none; }
+    .reference { display: none; }
+    .links { margin-top: 4vh;}
   }
 
-  .side-by-side {
-    width: 480px;
+  &.frontpage {
+    width: 100%;
+    height: 100vh;
+    .image {
+      margin-top: 25vh;
+      width: 89px;
+      height: 89px;
+      border-radius: 50%;
+      background: #eb4141;
+      img {
+        width: 44px !important;
+      }
+    }
+    .content {
+      .title {
+        display: block;
+        font-size: 100px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+    }
   }
-  .large {
-    width: 640px;
+  &.greeting {
+    width: 100%;
+    flex-direction: row-reverse;
+    .content {
+      .text {
+        display: block;
+        font-size: 20px;
+        font-weight: 500;
+        color: navy;
+      }
+    }
   }
-  .medium {
-    width: 320px;
+  &.sermon {
+    width: 100%;
+    flex-direction: row;
+    .content {
+      .title {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: navy;
+      }
+    }
   }
-  .small {
-    width: 220px;
+  &.quote {
+    width: 100%;
+    flex-direction:column;
+    .content {
+      .text {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: whitesmoke;
+      }
+      .reference {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: yellow;
+      }
+    }
   }
-  .tiny {
-    width: 160px;
+  &.item {
+    .content {
+      .title {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
+  }
+  &.person {
+    .content {
+      .name {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      .title {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: darkgray;
+      }
+    }
   }
 }
 
@@ -60,10 +143,10 @@
       padding: 1px;
     }
     &.page {
-      width: 90%;
+      width: 100%;
     }
     &.margin {
-      width: 90%;
+      width: 100%;
       box-shadow: 2px 3px #888888;
       border: 1px solid #888888;
     }
@@ -72,6 +155,7 @@
       border-radius: 50%;
     }
   }
+
 }
 
 .tool-onsite:hover {
@@ -141,7 +225,7 @@
   }
   div {
     margin: auto;
-    width: -webkit-fill-available;
+    // width: -webkit-fill-available;
   }
 
   .editmode {
@@ -166,11 +250,32 @@
     white-space: nowrap;
   }
 
-  &.image-only {
+  &.item {
     display: none;
   }
 
-  &.image-title {
+  &.frontpage {
+    .name {
+      display: none;
+    }
+    .title {
+      font-size: 72px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-top: 29px;
+    }
+    .subtitle {
+      display: none;
+    }
+    .text {
+      display: none;
+    }
+    .reference {
+      display: none;
+    }
+  }
+
+  &.item {
     .name {
       display: none;
     }
@@ -188,7 +293,7 @@
     }
   }
 
-  &.text-only {
+  &.greeting {
     .name {
       display: none;
     }
@@ -207,20 +312,20 @@
     }
   }
 
-  &.all {
-    .name {
-      font-size: 18px;
-    }
-    .title {
-      font-size: 24px;
-    }
-    .subtitle {
-      font-size: 18px;
-    }
-    .text {
-      font-size: 18px;
-    }
-  }
+  // &.sermon {
+  //   .name {
+  //     font-size: 18px;
+  //   }
+  //   .title {
+  //     font-size: 24px;
+  //   }
+  //   .subtitle {
+  //     font-size: 18px;
+  //   }
+  //   .text {
+  //     font-size: 18px;
+  //   }
+  // }
 
   &.quote {
     .name {
@@ -242,21 +347,21 @@
     }
   }
 
-  &.pastor {
-    .name {
-      font-size: 24px;
-      margin: auto;
-    }
-    .title {
-      font-size: 18px;
-    }
-    .subtitle {
-      display: none;
-    }
-    .text {
-      display: none;
-    }
-  }
+  // &.person {
+  //   .name {
+  //     font-size: 24px;
+  //     margin: auto;
+  //   }
+  //   .title {
+  //     font-size: 18px;
+  //   }
+  //   .subtitle {
+  //     display: none;
+  //   }
+  //   .text {
+  //     display: none;
+  //   }
+  // }
 }
 
 .save {
@@ -289,6 +394,7 @@ textarea {
   margin: auto;
 }
 
+
 .unselectable {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -309,4 +415,29 @@ textarea {
   }
 }
 
+@media only screen and (max-width: 991px)
+{
+  .entity {
+    &.frontpage {
+      .content {
+        .title {
+          font-size: 56px;
+        }
+      }
+    }
+    &.greeting {
+      flex-direction: column-reverse;
+      .content {
+        .text {
+          display: block;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+    &.sermon {
+      flex-direction: column;
+    }
+  }
+}
 
