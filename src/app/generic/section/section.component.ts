@@ -1,12 +1,11 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
-import { WSection, WEntity } from '../../services/types';
+import { WSection, WEntity, MultiText } from '../../services/types';
 import { SettingsService } from 'src/app/services/settings.service';
-import { NguCarouselConfig } from '@ngu/carousel';
 import { ContextService } from '../../services/context.service';
+import { AbstrctEntityService } from 'src/app/services/entity.service';
 import { v4 } from 'uuid';
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import { AbstrctEntityService } from 'src/app/services/entity.service';
 
 @Component({
   selector: 'app-section',
@@ -26,19 +25,8 @@ export class SectionComponent implements OnInit {
   bootstrapColumnClasses = '';
   bootstrapRowClasses = '';
   collectionPath = '';
+  sectionTitle: MultiText;
   busy = false;
-
-  public carouselTileConfig: NguCarouselConfig = {
-    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-    speed: 500,
-    point: {
-      visible: true
-    },
-    touch: true,
-    loop: true,
-    interval: { timing: 3000 },
-    animation: 'lazy'
-  };
 
   constructor(public es: AbstrctEntityService,
               public ss: SettingsService,
@@ -54,6 +42,23 @@ export class SectionComponent implements OnInit {
     this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
     this.bootstrapRowClasses = this.getBootstrapRowClasses();
     this.collectionPath = `${this.host.path}/${this.section.entitySource.collection}`;
+    this.sectionTitle = this.buildSectionTitle();
+
+  }
+
+  buildSectionTitle(): MultiText {
+    if (!this.host) {
+      return this.section.title;
+    }
+    if (!this.section.title) {
+      return this.host.title;
+    }
+    const english = this.section.title.english.replace('{host}', this.host.title.english);
+    if (!this.section.title.chinese || !this.host.title.chinese) {
+      return {english};
+    }
+    const chinese = this.section.title.chinese.replace('{host}', this.host.title.chinese);
+    return { english, chinese };
   }
 
   private getBootstrapRowClasses() {
@@ -117,7 +122,6 @@ export class SectionComponent implements OnInit {
             item.image = path;
             item.start = this.guessStartTime(file);
             item.path = imagePath;
-            item.title = { english: file.name, chinese: file.name };
             item.uiTemplateId = this.section.entityTemplate || null;
             await this.es.setEntity(this.collectionPath, item);
             this.busy = false;

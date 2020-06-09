@@ -95,7 +95,7 @@ export class PageService {
     }, {
       label: 'welcome',
       icon: 'assets/images/church_2.png',
-      title: { english: 'Welcome to RLG', chinese: '欢迎光临磐石小家'},
+      title: { english: 'Welcome to {host}', chinese: '欢迎光临{host}'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       description: {
         english: 'to bring people to Jesus and membership in his family',
@@ -161,6 +161,49 @@ export class PageService {
         contentStyle: 'item'
       },
       entityTemplate: [this.storyPage.id]
+    }]
+  };
+  cellGroupsPage: WPage = {
+    id: 'cellgroups',
+    title: { english: 'Cellgroups', chinese: '小家'},
+    sections: [{
+      label: 'welcome',
+      icon: 'assets/images/church_2.png',
+      title: { english: 'Welcome to join us', chinese: '欢迎加入我们'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      description: {
+        english: 'to bring people to Jesus and membership in his family',
+        chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
+      },
+      entitySource: {
+        collection: 'cellGroupsFrontPage',
+        priorities: ['high'],
+        slice: 'first',
+        maxinum: 1
+      },
+      entityDisplayOptions: {
+        size: 'side-by-side',
+        position: 'right-left',
+        imageStyle: 'page',
+        contentStyle: 'frontpage',
+      }
+    }, {
+      label: 'cellgroups',
+      icon: 'assets/images/church_4.png',
+      title: { english: 'Our Church\'s Cellgroups', chinese: '我们的小家'},
+      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
+      entitySource: {
+        collection: 'cellgroups',
+        priorities: ['high', 'low'],
+        editable: true
+      },
+      entityDisplayOptions: {
+        size: 'medium',
+        position: 'top-bottom',
+        imageStyle: 'page',
+        contentStyle: 'item'
+      },
+      entityTemplate: [this.cellgroupPage.id ]
     }]
   };
 
@@ -264,23 +307,6 @@ export class PageService {
         contentStyle: 'item'
       },
       entityTemplate: [this.personalPage.id ]
-    }, {
-      label: 'cellgroups',
-      icon: 'assets/images/church_4.png',
-      title: { english: 'Our Church\'s Cellgroups', chinese: '我们的小家'},
-      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      entitySource: {
-        collection: 'cellgroups',
-        priorities: ['high', 'low'],
-        editable: true
-      },
-      entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
-        imageStyle: 'page',
-        contentStyle: 'item'
-      },
-      entityTemplate: [this.cellgroupPage.id ]
     }]
   };
 
@@ -438,7 +464,7 @@ export class PageService {
     this.homePage,
     this.churchPage,
     this.sermonsPage,
-    this.newsPage
+    this.cellGroupsPage
   ];
 
   allPages = [
@@ -447,6 +473,7 @@ export class PageService {
     this.sermonsPage,
     this.newsPage,
     this.cellgroupPage,
+    this.cellGroupsPage,
     this.ministryPage,
     this.personalPage,
     this.slicePage,

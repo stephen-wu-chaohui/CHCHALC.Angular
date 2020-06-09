@@ -3,7 +3,7 @@
   "sections": [{
     "entitySource": {
       "collection": "homeslides",
-      "priorities": ["high"],
+      "priorities": ["high"]
     },
     "entityDisplayOptions": {
       "size": "slide",
@@ -71,7 +71,7 @@
     "lightText": true,
     "entitySource": {
       "collection": "quotes",
-      "priorities": ["high", "low"],
+      "priorities": ["high", "low"]
     },
     "entityDisplayOptions": {
       "size": "row",
@@ -94,73 +94,6 @@
       "size": "small",
       "position": "top-bottom",
       "imageStyle": "margin",
-      "contentStyle": "item"
-    },
-    "action": "Route"
-  }]
-}, {
-  "id": "sermons",
-  "title": { "english": "Sermons", "chinese": "讲道"},
-  "sections": [{
-    "icon": "assets/images/church_3.png",
-    "title": { "english": "Today\"s Sermon", "chinese": "今日讲道"},
-    "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
-    "backgroundImage": "/assets/images/sermon.png",
-    "entitySource": {
-      "collection": "sermons",
-      "priorities": ["high"],
-      "slice": "last",
-      "maxinum": 1
-    },
-    "entityDisplayOptions": {
-      "size": "row",
-      "position": "left-right",
-      "imageStyle": "full",
-      "contentStyle": "all"
-    },
-    "action": "Link"
-  }, {
-    "icon": "assets/images/church_4.png",
-    "title": { "english": "Popular Sermons", "chinese": "热点讲道"},
-    "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
-    "entitySource": {
-      "collection": "sermons",
-      "priorities": ["high"],
-    },
-    "entityDisplayOptions": {
-      "size": "medium",
-      "position": "top-bottom",
-      "imageStyle": "full",
-      "contentStyle": "item"
-    },
-    "action": "Link"
-  }, {
-    "lightText": true,
-    "entitySource": {
-      "collection": "sermons",
-      "priorities": ["emergancy"],
-    },
-    "entityDisplayOptions": {
-      "size": "large",
-      "position": "middle",
-      "imageStyle": "margin",
-      "contentStyle": "item"
-    },
-    "action": "Link"
-  }]
-}, {
-  "id": "news",
-  "title": { "english": "News", "chinese": "新闻"},
-  "sections": [{
-    "entitySource": {
-      "collection": "news",
-      "priorities": ["high"],
-      "slice": "last",
-    },
-    "entityDisplayOptions": {
-      "size": "small",
-      "position": "top-bottom",
-      "imageStyle": "full",
       "contentStyle": "item"
     },
     "action": "Route"

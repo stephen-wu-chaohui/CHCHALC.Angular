@@ -19,7 +19,7 @@
               <img class="" [class.editing]="editMode" [src]="section.icon" alt="" appEdit [editMode]="editMode" (editModeChanged)="onEditMode($event)">
             </div>
             <div class="section_title" [class.text-light]="section.lightText">
-              <h2 class="unselectable">{{ss.tr(section.title)}}</h2>
+              <h2 class="unselectable">{{ss.tr(sectionTitle)}}</h2>
             </div>
             <div class="section_subtitle unselectable" [class.text-light]="section.lightText">
               <h3 class="unselectable">{{ss.tr(section.subtitle)}}</h3>
