@@ -26,7 +26,6 @@
             "priorities": ["high"]
           },
           "entityDisplayOptions": {
-            "size": "slide",
             "position": "middle",
             "imageStyle": "full",
             "contentStyle": "item"

@@ -21,7 +21,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     .name { display: none; }
     .title { display: none; }
     .subtitle { display: none; }
@@ -32,16 +31,8 @@
 
   &.frontpage {
     width: 100%;
-    height: 100vh;
     .image {
-      margin-top: 25vh;
-      width: 89px;
-      height: 89px;
-      border-radius: 50%;
-      background: #eb4141;
-      img {
-        width: 44px !important;
-      }
+      display: none;
     }
     .content {
       .title {
@@ -49,12 +40,16 @@
         font-size: 100px;
         font-weight: 700;
         color: #FFFFFF;
+        margin-top: 0;
+        margin-bottom: 0;
       }
       .text {
         display: block;
         font-size: 20px;
         font-weight: 500;
         color: yellow;
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }
@@ -228,10 +223,6 @@
     padding: 5px;
     margin: auto;
     width: -webkit-fill-available;
-  }
-  div {
-    margin: auto;
-    // width: -webkit-fill-available;
   }
 
   .editmode {

@@ -1,27 +1,10 @@
-<div class="entity"  [ngClass]="section.entityDisplayOptions.contentStyle" [style.background-image]="backgroundImage()">
+<div class="entity"  [ngClass]="section.entityDisplayOptions.contentStyle">
   <div class="image">
     <img [src]="image" [ngClass]="section.entityDisplayOptions.imageStyle" [class.deleted]="entity.deleted" (click)= "imageClick()">
-    <ng-container *ngIf="editMode">
-      <div style='height: 0px;width:0px; overflow:hidden;'>
-        <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
-      </div>
-      <fa-icon [icon]="faFileImage" class="tool-onsite top-left" size="lg"
-          style="font-size:32px;color:greenyellow" (click)="file.click()" title="Change image">
-      </fa-icon>
-      <fa-icon [icon]="faMinusCircle" class="tool-onsite bottom-left" size="lg"
-          style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
-      </fa-icon>
-      <fa-icon [icon]="faKey" class="tool-onsite top-right" size="lg"
-          style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password" *ngIf="availableSetPassword">
-      </fa-icon>
-      <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
-          style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
-      </fa-icon> -->
-    </ng-container>
   </div>
   <form class="content" [formGroup]="formChanges" [class.lightText]="section.lightText">
     <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">{{ss.tr(entity.name)}}</textarea>
-    <textarea autosize class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
+    <textarea rows="1" class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
     <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
     <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
     <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>
@@ -33,4 +16,21 @@
       </ng-container>
     </div>
   </form>
+  <ng-container *ngIf="editMode">
+    <div style='height: 0px;width:0px; overflow:hidden;'>
+      <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
+    </div>
+    <fa-icon [icon]="faFileImage" class="tool-onsite top-left" size="lg"
+        style="font-size:32px;color:greenyellow" (click)="file.click()" title="Change image">
+    </fa-icon>
+    <fa-icon [icon]="faMinusCircle" class="tool-onsite bottom-left" size="lg"
+        style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
+    </fa-icon>
+    <fa-icon [icon]="faKey" class="tool-onsite top-right" size="lg"
+        style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password" *ngIf="availableSetPassword">
+    </fa-icon>
+    <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
+        style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
+    </fa-icon> -->
+  </ng-container>
 </div>

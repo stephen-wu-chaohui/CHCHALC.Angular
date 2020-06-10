@@ -77,6 +77,7 @@ export class PageService {
   cellgroupPage: WPage = {
     id: 'cellgroupPage',
     sections: [{
+      icon: 'assets/images/church_1.png',
       // title: { english: 'Cellgroup Ground', chinese: '小家园地'},
       // subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       // backgroundImage: '/assets/images/popular_4.jpg',
@@ -354,6 +355,7 @@ export class PageService {
     title: { english: 'Home', chinese: '首页'},
     homeBar: 'none',
     sections: [{
+      icon: 'assets/images/cross_1.png',
       entitySource: {
         collection: 'homeslides',
         priorities: ['high'],

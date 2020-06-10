@@ -217,7 +217,7 @@ export class EntityComponent implements OnInit, OnChanges {
     if (this.saveTimer) {
       clearTimeout(this.saveTimer);
     }
-    this.saveTimer = setTimeout(()=> this.onSave(), 2000);
+    this.saveTimer = setTimeout(()=> this.onSave(), 5000);
   }
 
   onSetPassword() {

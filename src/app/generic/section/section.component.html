@@ -2,29 +2,20 @@
   <div class="background" [style.background-image]="backgroundImage()">
   </div>
 
-  <ng-container *ngIf="section.entityDisplayOptions.contentStyle === 'frontpage'; else common">
-    <ng-container *ngFor="let entity of entitySource|async">
-      <div class="vh-100">
-        <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-      </div>
-    </ng-container>
-  </ng-container>
-
-  <ng-template #common >
     <div class="container">
-      <div class="row" *ngIf="section.title">
+      <div class="row" *ngIf="section.icon">
         <div class="col">
           <div class="section_title_container unselectable">
-            <div class="section_image editable">
+            <div class="section_image editable" [ngClass]="section.entityDisplayOptions.contentStyle">
               <img class="" [class.editing]="editMode" [src]="section.icon" alt="" appEdit [editMode]="editMode" (editModeChanged)="onEditMode($event)">
             </div>
-            <div class="section_title" [class.text-light]="section.lightText">
+            <div class="section_title" [class.text-light]="section.lightText" *ngIf="section.title">
               <h2 class="unselectable">{{ss.tr(sectionTitle)}}</h2>
             </div>
-            <div class="section_subtitle unselectable" [class.text-light]="section.lightText">
+            <div class="section_subtitle unselectable" [class.text-light]="section.lightText"*ngIf="section.subtitle">
               <h3 class="unselectable">{{ss.tr(section.subtitle)}}</h3>
             </div>
-            <div class="col d-flex flex-column align-items-center justify-content-center p-1" *ngIf="section.entitySource.editable && editMode">
+            <div class="col d-flex flex-column align-items-center justify-content-center p-1" *ngIf="editMode">
               <div style='height: 0px;width:0px; overflow:hidden;'>
                 <input type="file" #upload accept='image/*' [multiple]="!section.entityTemplate" (change)="importMultipleFiles(upload.files)">
               </div>
@@ -36,14 +27,14 @@
         </div>
       </div>
 
-      <div class="row" [class]="bootstrapRowClasses">
-        <ng-container *ngFor="let entity of entitySource|async">
-          <div [class]="bootstrapColumnClasses">
-            <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
-          </div>
-        </ng-container>
-      </div>
+        <div class="row">
+          <ng-container *ngFor="let entity of entitySource|async">
+            <div [class]="bootstrapColumnClasses">
+              <app-entity [editMode]="editMode" (routeTo)="routeTo.emit($event)" [collectionPath]="collectionPath" [entity]="entity" [section]="section"></app-entity>
+            </div>
+          </ng-container>
+        </div>
     </div>
-  </ng-template>
+
 </div>
 
