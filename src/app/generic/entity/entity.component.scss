@@ -8,27 +8,77 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
+  text-align: center;
 
   .image {
+    margin: auto;
+    text-align: center;
+
+    :hover {
+      cursor: pointer;
+    }
+
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    img {
+      margin: auto;
+      &.full {
+        width: 100%;
+        padding: 1px;
+      }
+      &.margin {
+        width: 100%;
+        box-shadow: 2px 3px #888888;
+        border: 1px solid #888888;
+      }
+    }
   }
   .content {
-    flex: 1 1 auto;
     display: flex;
+    text-align: center;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    margin: auto;
+    flex: 1 1 auto;
+    width: 100%;
     .name { display: none; }
     .title { display: none; }
     .subtitle { display: none; }
     .text { display: none; }
     .reference { display: none; }
-    .links { margin-top: 4vh;}
-  }
 
+    .links {
+      margin-top: 1vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    textarea {
+      background-color: transparent;
+      border: none;
+      padding: 5px;
+      margin: auto;
+      white-space: pre-wrap;
+      text-align: justify;
+      -moz-text-align-last: center; // Firefox 12+
+      text-align: -webkit-center;
+      width: -webkit-fill-available;
+      text-align-last: center;
+      resize: none;
+      margin: auto;
+    }
+
+    .editmode {
+      border: 1px;
+    }
+  }
   &.frontpage {
     width: 100%;
     .image {
@@ -37,10 +87,11 @@
     .content {
       .title {
         display: block;
-        font-size: 100px;
-        font-weight: 700;
+        font-family: 'ZCOOL KuaiLe', sans-serif;
+        font-size: 72px;
+        font-weight: bolder;
         color: #FFFFFF;
-        margin-top: 0;
+        margin-top: 29px;
         margin-bottom: 0;
       }
       .text {
@@ -59,11 +110,15 @@
     .content {
       .text {
         display: block;
-        font-size: 20px;
-        font-weight: 500;
+        font-size: large;
+        font-weight: bolder;
+        font-style: italic;
         color: navy;
+        align-self: stretch;
       }
     }
+  }
+  &.page {
   }
   &.sermon {
     width: 100%;
@@ -86,6 +141,7 @@
         font-size: 24px;
         font-weight: 500;
         color: whitesmoke;
+        font-style: italic;
       }
       .reference {
         display: block;
@@ -96,6 +152,18 @@
     }
   }
   &.item {
+    .image {
+      width: 100%;
+    }
+    .content {
+      .title {
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
+  }
+  &.icon {
     .content {
       .title {
         display: block;
@@ -105,6 +173,12 @@
     }
   }
   &.person {
+    .image {
+      width: 90%;
+      img{
+        border-radius: 50%;
+      }
+    }
     .content {
       .name {
         display: block;
@@ -122,42 +196,6 @@
 }
 
 
-
-/* 'slide'|'row'|'large'|'medium'|'small'|'icon'  */
-
-/*
-'full'|'page'|'margin'|'icon'
-*/
-.image
-{
-  margin: auto;
-  text-align: center;
-
-  :hover {
-    cursor: pointer;
-  }
-
-  img {
-    margin: auto;
-    &.full {
-      width: 100%;
-      padding: 1px;
-    }
-    &.page {
-      width: 100%;
-    }
-    &.margin {
-      width: 100%;
-      box-shadow: 2px 3px #888888;
-      border: 1px solid #888888;
-    }
-    &.icon {
-      width: 90%;
-      border-radius: 50%;
-    }
-  }
-
-}
 
 .tool-onsite:hover {
   filter: brightness(80%);
@@ -193,174 +231,6 @@
   }
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding-top: 20px;
-  padding-bottom: 60px;
-  margin: auto;
-  flex: 1;
-  width: 100%;
-
-
-  &.full {
-    width: 640px;
-  }
-  &.page {
-    width: 400px;
-  }
-  &.margin {
-    width: 320px;
-  }
-  &.icon {
-    width: 240px;
-  }
-
-  textarea {
-    background-color: transparent;
-    border: none;
-    padding: 5px;
-    margin: auto;
-    width: -webkit-fill-available;
-  }
-
-  .editmode {
-    border: 1px;
-  }
-  .title
-  {
-    align-self: stretch;
-    font-size: 24px;
-    font-weight: 500;
-    margin-top: 5px;
-    width: 100%;
-    border: none;
-    text-align: center;
-    font-family: 'ZCOOL KuaiLe', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
-    text-shadow: rgba(0,0,0,.01) 0 0 1px;
-  }
-  .name {
-    resize: none;
-    white-space: nowrap;
-  }
-
-  &.item {
-    display: none;
-  }
-
-  &.frontpage {
-    .name {
-      display: none;
-    }
-    .title {
-      font-size: 72px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-top: 29px;
-    }
-    .subtitle {
-      display: none;
-    }
-    .text {
-      display: none;
-    }
-    .reference {
-      display: none;
-    }
-  }
-
-  &.item {
-    .name {
-      display: none;
-    }
-    .title {
-      font-size: 24px;
-    }
-    .subtitle {
-      display: none;
-    }
-    .text {
-      display: none;
-    }
-    .reference {
-      display: none;
-    }
-  }
-
-  &.greeting {
-    .name {
-      display: none;
-    }
-    .title {
-      display: none;
-    }
-    .subtitle {
-      display: none;
-    }
-    .text {
-      align-self: stretch;
-      font-size: large;
-      font-weight: bolder;
-      font-style: italic;
-      color: navy;
-    }
-  }
-
-  // &.sermon {
-  //   .name {
-  //     font-size: 18px;
-  //   }
-  //   .title {
-  //     font-size: 24px;
-  //   }
-  //   .subtitle {
-  //     font-size: 18px;
-  //   }
-  //   .text {
-  //     font-size: 18px;
-  //   }
-  // }
-
-  &.quote {
-    .name {
-      display: none;
-    }
-    .title {
-      display: none;
-    }
-    .subtitle {
-      display: none;
-    }
-    .text {
-      font-size: 22px;
-      font-style: italic;
-    }
-    .reference {
-      font-size: 18px;
-      color: yellow;
-    }
-  }
-
-  // &.person {
-  //   .name {
-  //     font-size: 24px;
-  //     margin: auto;
-  //   }
-  //   .title {
-  //     font-size: 18px;
-  //   }
-  //   .subtitle {
-  //     display: none;
-  //   }
-  //   .text {
-  //     display: none;
-  //   }
-  // }
-}
-
 .save {
 	opacity: 0.9;
 }
@@ -380,15 +250,6 @@
   .text {
     color: whitesmoke;
   }
-}
-
-textarea {
-  white-space: pre-wrap;
-  text-align: justify;
-  -moz-text-align-last: center; /* Firefox 12+ */
-  text-align-last: center;
-  resize: none;
-  margin: auto;
 }
 
 
@@ -418,7 +279,7 @@ textarea {
     &.frontpage {
       .content {
         .title {
-          font-size: 56px;
+          font-size: 36px;
         }
       }
     }

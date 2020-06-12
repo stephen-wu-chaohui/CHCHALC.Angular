@@ -6,7 +6,7 @@
       "priorities": ["high"]
     },
     "entityDisplayOptions": {
-      "size": "slide",
+      "size": "full",
       "position": "middle",
       "imageStyle": "full",
       "contentStyle": "item"

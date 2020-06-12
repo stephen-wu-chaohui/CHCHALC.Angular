@@ -24,7 +24,6 @@ export class SectionComponent implements OnInit {
   editMode: boolean;
   entitySource: Observable<WEntity[]>;
   bootstrapColumnClasses = '';
-  bootstrapRowClasses = '';
   collectionPath = '';
   sectionTitle: MultiText;
   busy = false;
@@ -45,7 +44,6 @@ export class SectionComponent implements OnInit {
         }
       }, 100);
     this.bootstrapColumnClasses = this.getBootstrapColumnClasses();
-    this.bootstrapRowClasses = this.getBootstrapRowClasses();
     this.collectionPath = `${this.host.path}/${this.section.entitySource.collection}`;
     this.sectionTitle = this.buildSectionTitle();
 
@@ -76,40 +74,21 @@ export class SectionComponent implements OnInit {
     return { english, chinese };
   }
 
-  private getBootstrapRowClasses() {
-    const options = this.section.entityDisplayOptions;
-    switch (options.size) {
-    case 'slide':
-      return 'vh-100';
-    case 'side-by-side':
-    case 'large':
-    case 'medium':
-    case 'small':
-    case 'tiny':
-      return  '';
-    }
-  }
-
   private getBootstrapColumnClasses() {
     const options = this.section.entityDisplayOptions;
     switch(options.contentStyle) {
-      case 'frontpage':
-        return 'col';
-    }
-    switch (options.size) {
-    case 'slide':
-      return 'col home_slider_content text-center';
-    case 'side-by-side':
-    case 'full':
-        return 'col';
-    case 'large':
-      return 'col-lg-6';
-    case 'medium':
+    case 'frontpage':
+    case 'quote':
+    case 'page':
+    case 'greeting':
+    case 'sermon':
+      return 'col-12';
+    case 'item':
       return 'col-lg-4 col-md-6';
-    case 'small':
-      return 'col-lg-3 col-md-4 col-sm-6';
-    case 'tiny':
-      return 'col-lg-2 col-md-2 col-sm-3';
+    case 'person':
+      return 'col-lg-3 col-md-4';
+    case 'icon':
+      return 'col-lg-2 col-md-3 col-sm-6';
     }
   }
 

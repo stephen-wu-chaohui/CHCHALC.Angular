@@ -89,7 +89,8 @@ export class WPage {    // template of webpages used to display a document
   sections: WSection[];
 }
 
-export type ContentStyle = 'frontpage'|'greeting'|'sermon'|'quote'|'item'|'person';
+export type ContentStyle = 'frontpage'|'greeting'|'page'|'sermon'|'quote'|'item'|'person'|'icon';
+export type ImageStyle = 'full'|'margin'|'original';
 /*
   frontpage: full-width, full-height, use background-image/color, image, title, sub-title, description, link  --- top-bottom
   greeting: full-width, use background-image/color, image, title, sub-title, description, link  --- left-right
@@ -97,20 +98,13 @@ export type ContentStyle = 'frontpage'|'greeting'|'sermon'|'quote'|'item'|'perso
   item: large/medium/icon, use name, image, title, sub-title, description, link
 */
 
-
-export type TextPosition = 'middle'|'left-right'|'right-left'|'top-bottom';
-export type SizeEnum = 'slide'|'full'|'side-by-side'|'large'|'medium'|'small'|'tiny';
-export type ImageStyle = 'full'|'page'|'margin'|'icon'|'original';
-
 export type Action = 'Link'|'Route'|'none'|'';
 export type DirectionEnum = 'asc'|'desc';
 export type SliceEnum = 'last'|'first'|'';
 
 export class EntityDisplayOptions {
   contentStyle: ContentStyle;
-  size: SizeEnum;
-  position: TextPosition;
-  imageStyle: ImageStyle;
+  imageStyle?: ImageStyle;
 }
 
 export class EntitySource {

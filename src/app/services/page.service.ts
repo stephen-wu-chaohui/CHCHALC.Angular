@@ -24,10 +24,8 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'large',
-        position: 'left-right',
-        imageStyle: 'full',
-        contentStyle: 'item'
+        contentStyle: 'page',
+        imageStyle: 'full'
       }
     }]
   };
@@ -45,10 +43,8 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'large',
-        position: 'top-bottom',
         imageStyle: 'full',
-        contentStyle: 'item'
+        contentStyle: 'page'
       }
     }]
   };
@@ -65,8 +61,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -78,9 +72,6 @@ export class PageService {
     id: 'cellgroupPage',
     sections: [{
       icon: 'assets/images/church_1.png',
-      // title: { english: 'Cellgroup Ground', chinese: '小家园地'},
-      // subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
-      // backgroundImage: '/assets/images/popular_4.jpg',
       entitySource: {
         collection: 'homeslides',
         priorities: ['high'],
@@ -88,8 +79,6 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'slide',
-        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'frontpage'
       },
@@ -109,9 +98,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'side-by-side',
-        position: 'right-left',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'greeting',
       }
     }, {
@@ -124,8 +111,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -140,8 +125,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -156,8 +139,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -170,8 +151,6 @@ export class PageService {
     sections: [{
       label: 'welcome',
       icon: 'assets/images/church_2.png',
-      title: { english: 'Welcome to join us', chinese: '欢迎加入我们'},
-      subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       description: {
         english: 'to bring people to Jesus and membership in his family',
         chinese: '带领人来到耶稣的跟前，并使人成为他家中的成员'
@@ -183,9 +162,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'side-by-side',
-        position: 'right-left',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'frontpage',
       }
     }, {
@@ -199,9 +176,7 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'item'
       },
       entityTemplate: [this.cellgroupPage.id ]
@@ -220,8 +195,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -242,8 +215,6 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
@@ -266,9 +237,7 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'item'
       },
       entityTemplate: [this.ministryPage.id ]
@@ -285,8 +254,6 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'full',
-        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'quote'
       }
@@ -302,10 +269,8 @@ export class PageService {
         editable: true
       },
       entityDisplayOptions: {
-        size: 'small',
-        position: 'top-bottom',
-        imageStyle: 'icon',
-        contentStyle: 'item'
+        contentStyle: 'person',
+        imageStyle: 'full'
       },
       entityTemplate: [this.personalPage.id ]
     }]
@@ -326,10 +291,8 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'side-by-side',
-        position: 'left-right',
         imageStyle: 'full',
-        contentStyle: 'item'
+        contentStyle: 'sermon'
       },
       entityTemplate: [this.slicePage.id]
     }, {
@@ -341,8 +304,6 @@ export class PageService {
         priorities: ['high'],
       },
       entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
         imageStyle: 'full',
         contentStyle: 'item'
       },
@@ -363,8 +324,6 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'slide',
-        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'frontpage'
       }
@@ -380,9 +339,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'side-by-side',
-        position: 'right-left',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'greeting'
       }
     }, {
@@ -401,10 +358,8 @@ export class PageService {
         directionStr: 'asc'
       },
       entityDisplayOptions: {
-        size: 'tiny',
-        position: 'top-bottom',
-        imageStyle: 'original',
-        contentStyle: 'item'
+        contentStyle: 'icon',
+        imageStyle: 'original'
       }
     }, {
       icon: 'assets/images/church_3.png',
@@ -418,9 +373,7 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'side-by-side',
-        position: 'left-right',
-        imageStyle: 'page',
+        imageStyle: 'full',
         contentStyle: 'sermon'
       },
       entityTemplate: [this.slicePage.id]
@@ -437,8 +390,6 @@ export class PageService {
         maxinum: 1
       },
       entityDisplayOptions: {
-        size: 'full',
-        position: 'top-bottom',
         imageStyle: 'original',
         contentStyle: 'quote'
       },
@@ -453,8 +404,6 @@ export class PageService {
         maxinum: 20
       },
       entityDisplayOptions: {
-        size: 'medium',
-        position: 'top-bottom',
         imageStyle: 'margin',
         contentStyle: 'item'
       },
