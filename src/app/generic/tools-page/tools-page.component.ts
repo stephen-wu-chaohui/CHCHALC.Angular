@@ -132,10 +132,10 @@ quote = {
     name: { english: 'Chinese Abundant Life Church', chinese: '基督城华人丰盛生命教会'},
     title: { english: 'Abundant Life', chinese: '丰盛的生命'},
     subTitle: { english: 'Reborn Church', chinese: '重生的教会'},
-    address: { english: '182 The Run Way, Wigram, Christchurch 8042'},
+    address: { english: '182 The Runway, Wigram skies, Christchurch'},
     coordinate: { lantitue: -43.549917, longitude: 172.562886 },
     host: 'Lead Pastor',
-    phoneNumbers: ['02102591292', '02102591292'],
+    phoneNumbers: ['021 901 359'],
     email: 'admin@nzalc.org'
   }]
 };
