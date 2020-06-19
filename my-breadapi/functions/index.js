@@ -219,7 +219,7 @@ const storage = admin.storage();
 
 
 startCRUDEndpoints('news');
-startCRUDEndpoints('cellgroups');
+startCRUDEndpoints('lifegroups');
 startCRUDEndpoints('ministries');
 startCRUDEndpoints('testimonies');
 startCRUDEndpoints('activities');

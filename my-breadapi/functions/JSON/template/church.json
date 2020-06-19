@@ -153,7 +153,7 @@
       "action": "Route"
     }, {
       "icon": "assets/images/church_4.png",
-      "title": { "english": "Our Church\"s Cellgroups", "chinese": "我们的小家"},
+      "title": { "english": "Our Church\"s Lifegroups", "chinese": "我们的小家"},
       "subtitle": { "english": "God loves us all", "chinese": "神与我们同在"},
       "entitySource": {
         "collection": "cellgroups",

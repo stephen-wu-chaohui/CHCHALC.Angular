@@ -118,16 +118,28 @@ export class SectionComponent implements OnInit {
         };
         const imagePath = this.es.collectionPathOf(this.collectionPath, item.id);
         this.busy = true;
-        this.es.uploadImage(imagePath, file).then(
-          async path => {
-            item.image = path;
+        item.path = imagePath;
+        if (this.section.entityTemplate) {
+          this.es.uploadImage(imagePath, file).then(
+            async path => {
+              item.image = path;
+              item.uiTemplateId = this.section.entityTemplate;
+              item.start = this.guessStartTime(file);
+              this.es.setEntity(this.collectionPath, item);
+              this.busy = false;
+            }
+          );
+        } else {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            item.image = reader.result as string;
+            item.uiTemplateId = null;
             item.start = this.guessStartTime(file);
-            item.path = imagePath;
-            item.uiTemplateId = this.section.entityTemplate || null;
-            await this.es.setEntity(this.collectionPath, item);
+            this.es.setEntity(this.collectionPath, item);
             this.busy = false;
-          }
-        );
+        };
+        }
       }
     });
   }

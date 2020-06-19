@@ -68,7 +68,7 @@ export class ToolsPageComponent implements OnInit {
     text: { english: 'Praesent malesuada congue magna at finibus. In hac habitasse platea dictumst.'},
     links: [{
       type: 'setPage',
-      url: 'church#cellgroups'
+      url: 'lifegroups'
     }]
   }, {
     id: 'activity-3',

@@ -87,10 +87,10 @@
     .content {
       .title {
         display: block;
-        font-family: 'ZCOOL KuaiLe', sans-serif;
-        font-size: 72px;
+        // font-family: 'ZCOOL KuaiLe', sans-serif;
+        font-size: 90px;
         font-weight: bolder;
-        color: #FFFFFF;
+        color: yellow;
         margin-top: 29px;
         margin-bottom: 0;
       }
@@ -107,6 +107,10 @@
   &.greeting {
     width: 100%;
     flex-direction: row-reverse;
+    .image {
+      width: 80%;
+      padding: 10px;
+    }
     .content {
       .text {
         display: block;
@@ -117,6 +121,9 @@
         align-self: stretch;
       }
     }
+  }
+  &.greeting:nth-child(even) {
+    flex-direction: row;
   }
   &.page {
   }
@@ -167,7 +174,7 @@
     .content {
       .title {
         display: block;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
       }
     }
@@ -264,22 +271,13 @@
 	-webkit-touch-callout:none;
 }
 
-@media only screen and (max-width: 767px)
-{
-  .margin {
-    box-shadow: none;
-    border: none;
-    margin: 0;
-  }
-}
-
 @media only screen and (max-width: 991px)
 {
   .entity {
     &.frontpage {
       .content {
         .title {
-          font-size: 36px;
+          font-size: 62px;
         }
       }
     }
@@ -295,6 +293,24 @@
     }
     &.sermon {
       flex-direction: column;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px)
+{
+  .margin {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+  }
+  .entity {
+    &.frontpage {
+      .content {
+        .title {
+          font-size: 42px;
+        }
+      }
     }
   }
 }

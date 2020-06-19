@@ -34,7 +34,7 @@ export class Link {
 export const WEntityRoot = 'EntityRoot/church';
 
 export class WEntity {
-  id: EntityId;  // one of church, ministry, cellgroup, person, storage or uuid
+  id: EntityId;  // one of church, ministry, lifegroup, person, storage or uuid
   lastUpdated?: number;	// unix timestamp of UTC in Timestamp in Milliseconds
   deleted?: boolean;			// soft deleted or not
   start: number;
@@ -76,13 +76,12 @@ export class WAssembly extends WEntity {
 }
 
 export type WMinistry = WAssembly;
-export type WCellGroup = WAssembly;
 export type WStory = WAssembly;
 export type WChurch = WAssembly;
 export type HomeBarStyle = 'none'|'normal';
 
 export class WPage {    // template of webpages used to display a document
-  id: PageId;  // 'church', 'ministry', 'cellgroup', ''
+  id: PageId;  // 'church', 'ministry', 'lifegroup', ''
   title?: MultiText;
   homeBar?: HomeBarStyle;
   icon?: ImageURL;

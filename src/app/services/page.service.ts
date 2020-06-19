@@ -68,8 +68,8 @@ export class PageService {
     }]
   };
 
-  cellgroupPage: WPage = {
-    id: 'cellgroupPage',
+  lifegroupPage: WPage = {
+    id: 'lifegroupPage',
     sections: [{
       icon: 'assets/images/church_1.png',
       entitySource: {
@@ -95,7 +95,7 @@ export class PageService {
         collection: 'welcome',
         priorities: ['high'],
         slice: 'first',
-        maxinum: 1
+        maxinum: 3
       },
       entityDisplayOptions: {
         imageStyle: 'full',
@@ -103,7 +103,7 @@ export class PageService {
       }
     }, {
       icon: 'assets/images/church_6.png',
-      title: { english: 'Testimonies', chinese: '见证'},
+      title: { english: 'Testimony Gallery', chinese: '见证'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'moments',
@@ -145,9 +145,10 @@ export class PageService {
       entityTemplate: [this.storyPage.id]
     }]
   };
-  cellGroupsPage: WPage = {
-    id: 'cellgroups',
-    title: { english: 'Cellgroups', chinese: '小家'},
+
+  lifeGroupsPage: WPage = {
+    id: 'lifegroups',
+    title: { english: 'Lifegroups', chinese: '小家'},
     sections: [{
       label: 'welcome',
       icon: 'assets/images/church_2.png',
@@ -166,9 +167,9 @@ export class PageService {
         contentStyle: 'frontpage',
       }
     }, {
-      label: 'cellgroups',
+      label: 'lifegroups',
       icon: 'assets/images/church_4.png',
-      title: { english: 'Our Church\'s Cellgroups', chinese: '我们的小家'},
+      title: { english: 'Our Church\'s Lifegroups', chinese: '我们的小家'},
       subtitle: { english: 'God loves us all', chinese: '神与我们同在'},
       entitySource: {
         collection: 'cellgroups',
@@ -179,7 +180,7 @@ export class PageService {
         imageStyle: 'full',
         contentStyle: 'item'
       },
-      entityTemplate: [this.cellgroupPage.id ]
+      entityTemplate: [this.lifegroupPage.id ]
     }]
   };
 
@@ -336,7 +337,7 @@ export class PageService {
         collection: 'welcome',
         priorities: ['high'],
         slice: 'first',
-        maxinum: 1
+        maxinum: 3
       },
       entityDisplayOptions: {
         imageStyle: 'full',
@@ -407,7 +408,7 @@ export class PageService {
         imageStyle: 'margin',
         contentStyle: 'item'
       },
-      entityTemplate: [this.slicePage.id]
+      entityTemplate: [this.storyPage.id]
     }]
   };
 
@@ -415,7 +416,7 @@ export class PageService {
     this.homePage,
     this.churchPage,
     this.sermonsPage,
-    this.cellGroupsPage
+    this.lifeGroupsPage
   ];
 
   allPages = [
@@ -423,8 +424,8 @@ export class PageService {
     this.churchPage,
     this.sermonsPage,
     this.newsPage,
-    this.cellgroupPage,
-    this.cellGroupsPage,
+    this.lifegroupPage,
+    this.lifeGroupsPage,
     this.ministryPage,
     this.personalPage,
     this.slicePage,
