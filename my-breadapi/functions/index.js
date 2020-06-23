@@ -165,12 +165,14 @@ async function readSermonList ()
 							title: {english: 'Major Pastor', chinese: '主任牧师'}
 						},
             start: start.unix(),
-            links: [{
+            imageLink:{
               type: 'link',
-              text: {english: 'Start video', chinese: '观看视频'},
               url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
-            }],
-						videoURL: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
+            },
+            links: [{
+              type: 'template',
+              text: {english: 'View slides', chinese: '查看文稿'},
+            }]
 				});
 			});
 		});
@@ -235,52 +237,52 @@ startCRUDEndpoints('g');
 /////////////////////////////////////////////////////////////////
 // Posts to Stories
 
-function startPost2Story() {
-	// refresh item
-	app.get('/api/Post2Story', async (req, res) => {
-		await doPost2Story();
-		return res.status(200).send('OK');
-	});
-}
+// function startPost2Story() {
+// 	// refresh item
+// 	app.get('/api/Post2Story', async (req, res) => {
+// 		await doPost2Story();
+// 		return res.status(200).send('OK');
+// 	});
+// }
 
 
-async function doPost2Story() {
-	let origin = db.collection('Posts');
-	await origin.get().then(querySnapshot => {
-		let items = querySnapshot.docs.map(doc => doc.data());
-		let changed = items.map(item => ({
-			image: '/assets/images/' + item.image,
-			start: item.date,
-			comments: item.comments,
-			description: item.text,
-			title: item.text,
+// async function doPost2Story() {
+// 	let origin = db.collection('Posts');
+// 	await origin.get().then(querySnapshot => {
+// 		let items = querySnapshot.docs.map(doc => doc.data());
+// 		let changed = items.map(item => ({
+// 			image: '/assets/images/' + item.image,
+// 			start: item.date,
+// 			comments: item.comments,
+// 			description: item.text,
+// 			title: item.text,
 
-			id: item.id,
-			lastUpdated: item.lastUpdated || 1587460963,
-			deleted: item.deleted || false,
+// 			id: item.id,
+// 			lastUpdated: item.lastUpdated || 1587460963,
+// 			deleted: item.deleted || false,
 
-			belongs: [{ label: 'story'}],
-			host: {
-        title: {
-					english: "Lead Pastor",
-					chinese: "主任牧师"
-        },
-        name: {
-					english: "Elijah Wong",
-          chinese: "黄德贤"
-        },
-        id: "d58e9c64-6c77-490d-98c8-4a8737ff0510",
-        image: "/assets/images/pastor_1.jpg",
-    	},
-			address: { chinese: '和平教室', english: 'Peace Classroom'},
-			minutes: 120
-		}));
+// 			belongs: [{ label: 'story'}],
+// 			host: {
+//         title: {
+// 					english: "Lead Pastor",
+// 					chinese: "主任牧师"
+//         },
+//         name: {
+// 					english: "Elijah Wong",
+//           chinese: "黄德贤"
+//         },
+//         id: "d58e9c64-6c77-490d-98c8-4a8737ff0510",
+//         image: "/assets/images/pastor_1.jpg",
+//     	},
+// 			address: { chinese: '和平教室', english: 'Peace Classroom'},
+// 			minutes: 120
+// 		}));
 
-		var collec = db.collection('stories');
-		changed.forEach(v => collec.doc(v.id).set(v));
-		return true;
-	});
-}
+// 		var collec = db.collection('stories');
+// 		changed.forEach(v => collec.doc(v.id).set(v));
+// 		return true;
+// 	});
+// }
 
 
 // startCRUDEndpoints('Posts');

@@ -105,10 +105,10 @@ export class EntityComponent implements OnInit, OnChanges {
   }
 
   imageClick() {
-    if (!this.entity.uiTemplateId && this.section.entityTemplate) {
-      this.entity.uiTemplateId = this.section.entityTemplate;
-    }
-    if (this.entity.uiTemplateId) {
+    if (this.entity.imageLink) {
+      const jumpTo = this.entity.imageLink;
+      this.onClick(jumpTo);
+    } else if (this.entity.uiTemplateId) {
       this.cs.saveScrollPos();
       this.routeTo.emit({ entity: this.entity });
     } else if (this.entity.links) {
@@ -124,6 +124,12 @@ export class EntityComponent implements OnInit, OnChanges {
       break;
     case 'link':
       window.open(jumpTo.url, '_blank');
+      break;
+    case 'template':
+      if (this.entity.uiTemplateId) {
+        this.cs.saveScrollPos();
+        this.routeTo.emit({ entity: this.entity });
+      }
       break;
     }
   }
@@ -141,6 +147,10 @@ export class EntityComponent implements OnInit, OnChanges {
     this.ss.languageChanged.subscribe(() => {
       this.patchValue();
     });
+
+    if (!this.entity.uiTemplateId && this.section.entityTemplate) {
+      this.entity.uiTemplateId = this.section.entityTemplate;
+    }
   }
 
   onClickHide() {

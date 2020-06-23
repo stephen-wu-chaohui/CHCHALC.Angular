@@ -295,7 +295,7 @@ export class PageService {
         imageStyle: 'full',
         contentStyle: 'sermon'
       },
-      entityTemplate: [this.slicePage.id]
+      entityTemplate: [this.slicePage.id],
     }, {
       icon: 'assets/images/church_4.png',
       title: { english: 'Popular Sermons', chinese: '热点讲道'},

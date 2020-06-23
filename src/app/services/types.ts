@@ -26,7 +26,7 @@ export class CollectionRef {
 }
 
 export class Link {
-  type: 'setPage'|'link';
+  type: 'setPage'|'link'|'template';
   text?: MultiText;
   url: LinkURL;
 }
@@ -52,6 +52,7 @@ export class WEntity {
   links?: Link[];
   password?: string;
   uiTemplateId?: string[];
+  imageLink?: Link;
 
   constructor(collectionPath: string) {
     this.id = uuidv4();
