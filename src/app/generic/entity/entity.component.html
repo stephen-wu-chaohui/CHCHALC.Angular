@@ -20,8 +20,8 @@
     </fa-icon> -->
   </div>
   <form class="content" [formGroup]="formChanges" [class.lightText]="section.lightText">
-    <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name">{{ss.tr(entity.name)}}</textarea>
-    <textarea class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title">{{ss.tr(entity.title)}}</textarea>
+    <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name" (click)="imageClick()">{{ss.tr(entity.name)}}</textarea>
+    <textarea class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title" (click)="imageClick()">{{ss.tr(entity.title)}}</textarea>
     <textarea autosize class="subtitle" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="subTitle">{{ss.tr(entity.subTitle)}}</textarea>
     <textarea autosize class="text" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="text">{{ss.tr(entity.text)}}</textarea>
     <textarea autosize class="reference" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="reference">{{ss.tr(entity.reference)}}</textarea>

@@ -73,10 +73,12 @@
       text-align-last: center;
       resize: none;
       margin: auto;
+      cursor: pointer;
     }
 
     .editmode {
       border: 1px;
+      cursor: crosshair;
     }
   }
   &.frontpage {
