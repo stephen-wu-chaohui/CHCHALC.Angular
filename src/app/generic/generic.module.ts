@@ -13,6 +13,7 @@ import { ToolsPageComponent } from './tools-page/tools-page.component';
 import { EditDirective } from './section/edit.directive';
 import { PasswordDialogComponent } from './section/password-dialog/password-dialog.component';
 import { SetPasswordDialogComponent } from './entity/set-password-dialog/set-password-dialog.component';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +29,8 @@ export const routes: Routes = [
     ReactiveFormsModule,
     FontAwesomeModule,
     AutosizeModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgxYoutubePlayerModule.forRoot()
   ],
   declarations: [
     PageComponent,

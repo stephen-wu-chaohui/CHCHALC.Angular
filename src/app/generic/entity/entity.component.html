@@ -1,24 +1,33 @@
 <div class="entity"  [ngClass]="section.entityDisplayOptions.contentStyle">
-  <div class="image">
-    <img [src]="image" [ngClass]="section.entityDisplayOptions.imageStyle" [class.deleted]="entity.deleted" (click)= "imageClick()">
-  </div>
-  <div class="row" *ngIf="editMode">
-    <div style='height: 0px;width:0px; overflow:hidden;'>
-      <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
+  <ng-container *ngIf="entity.videoId; else imaging">
+    <youtube-player
+    [videoId]="entity.videoId"
+    >
+  </youtube-player>
+
+  </ng-container>
+  <ng-template #imaging>
+    <div class="image">
+      <img [src]="image" [ngClass]="section.entityDisplayOptions.imageStyle" [class.deleted]="entity.deleted" (click)= "imageClick()">
     </div>
-    <fa-icon [icon]="faFileImage" class="col-3 m-1" size="lg"
-        style="font-size:32px;color:greenyellow" (click)="file.click()" title="Change image">
-    </fa-icon>
-    <fa-icon [icon]="faMinusCircle" class="col-3 m-1" size="lg"
-        style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
-    </fa-icon>
-    <fa-icon [icon]="faKey" class="col-3 m-1" size="lg"
-        style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password" *ngIf="availableSetPassword">
-    </fa-icon>
-    <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
-        style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
-    </fa-icon> -->
-  </div>
+    <div class="row" *ngIf="editMode">
+      <div style='height: 0px;width:0px; overflow:hidden;'>
+        <input type="file" #file accept='image/*' (change)="OnChangeImage(file.files)">
+      </div>
+      <fa-icon [icon]="faFileImage" class="col-3 m-1" size="lg"
+          style="font-size:32px;color:greenyellow" (click)="file.click()" title="Change image">
+      </fa-icon>
+      <fa-icon [icon]="faMinusCircle" class="col-3 m-1" size="lg"
+          style="font-size:32px;color:orange" (click)="onClickHide()" title="Hide">
+      </fa-icon>
+      <fa-icon [icon]="faKey" class="col-3 m-1" size="lg"
+          style="font-size:32px;color:orange" (click)="onSetPassword()" title="Set Password" *ngIf="availableSetPassword">
+      </fa-icon>
+      <!-- <fa-icon [icon]="faCloud" class="tool-onsite bottom-right" size="lg"
+          style="font-size:32px;color:purple" (click)="onSave()" title="Save to cloud" *ngIf="isDirty" >
+      </fa-icon> -->
+    </div>
+  </ng-template>
   <form class="content" [formGroup]="formChanges" [class.lightText]="section.lightText">
     <textarea class="name" rows="1" [class.editmode]="editMode" [readonly]="!editMode" (changed)="setDirty()" formControlName="name" (click)="imageClick()">{{ss.tr(entity.name)}}</textarea>
     <textarea class="title" [class.editmode]="editMode" [readonly]="!editMode" (input)="setDirty()" formControlName="title" (click)="imageClick()">{{ss.tr(entity.title)}}</textarea>

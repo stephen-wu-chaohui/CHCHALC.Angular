@@ -53,6 +53,7 @@ export class WEntity {
   password?: string;
   uiTemplateId?: string[];
   imageLink?: Link;
+  videoId?: string;
 
   constructor(collectionPath: string) {
     this.id = uuidv4();

@@ -69,7 +69,8 @@ function startCRUDEndpoints(controllerName)
 						console.log(error);
 						return res.status(500).send(error);
 				}
-				})();
+        return res.status(200).send('');
+      })();
 		});
 
 
@@ -156,7 +157,7 @@ async function readSermonList ()
 					let docId = start.format();
 					const document = db.collection('sermons').doc(docId);
 					document.set({
-						id: docId,
+						id: item.snippet.resourceId.videoId,
 						image: (item.snippet.thumbnails.standard || item.snippet.thumbnails.default).url,
 						title: {english: item.snippet.title, chinese: item.snippet.title},
 						description: { english: item.snippet.description, chinese: item.snippet.description },
@@ -165,10 +166,7 @@ async function readSermonList ()
 							title: {english: 'Major Pastor', chinese: '主任牧师'}
 						},
             start: start.unix(),
-            imageLink:{
-              type: 'link',
-              url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
-            },
+            videoId: item.snippet.resourceId.videoId,
             links: [{
               type: 'template',
               text: {english: 'View slides', chinese: '查看文稿'},
@@ -196,7 +194,8 @@ function startSermonsEndpoints()
 				} catch (error) {
 					console.log(error);
 					return res.status(500).send(error);
-				}
+        }
+        return res.status(200).send('');
 		})();
 	});
 
