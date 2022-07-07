@@ -39,7 +39,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^1.9.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-autosize": "^1.8.0",
     "ngx-spinner": "^9.0.2",
     "ngx-youtube-player": "^9.1.0",
